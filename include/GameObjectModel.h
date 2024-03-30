@@ -2,6 +2,7 @@
 #define SPLAT_GOM
 
 #include <unordered_map>
+#include <unordered_set>
 #include <mutex>
 
 #include "Asset.h"
@@ -19,6 +20,8 @@ namespace SPlat {
 
         std::mutex lock;
 
+        std::unordered_set<size_t> ids;
+
         std::unordered_map<size_t, Asset*> assets;
 
         GameObjectModel() = default;
@@ -32,6 +35,14 @@ namespace SPlat {
         Asset& update_asset(size_t, Asset&);
 
         Asset& delete_asset(size_t);
+
+        std::unordered_set<size_t> getIds() {
+            lock.lock();
+            std::unordered_set<size_t> clone = ids;
+            lock.unlock();
+
+            return clone;
+        }
 
         /// @ref: https://stackoverflow.com/questions/1008019/how-do-you-implement-the-singleton-design-pattern/1008289#1008289
         static GameObjectModel& get_instance() {

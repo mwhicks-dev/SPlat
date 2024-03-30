@@ -8,6 +8,7 @@ namespace SPlat {
         // Get Asset ID
         size_t id = assets.size();
         while (assets.count(id) > 0) id++;
+        ids.insert(id);
 
         // Assign ID and store
         asset.id = id;
@@ -63,6 +64,7 @@ namespace SPlat {
         Asset& asset = *assets[id];
 
         assets.erase(id);
+        ids.erase(id);
 
         lock.unlock();
 
