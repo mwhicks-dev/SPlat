@@ -1,6 +1,7 @@
 #ifndef SPLAT_GOM
 #define SPLAT_GOM
 
+#include <unordered_map>
 #include <mutex>
 
 #include "Asset.h"
@@ -15,8 +16,6 @@
 namespace SPlat {
 
     class GameObjectModel {
-
-        static GameObjectModel * instance;
 
         std::mutex lock;
 
@@ -34,11 +33,10 @@ namespace SPlat {
 
         Asset& delete_asset(size_t);
 
+        /// @ref: https://stackoverflow.com/questions/1008019/how-do-you-implement-the-singleton-design-pattern/1008289#1008289
         static GameObjectModel& get_instance() {
-            if (instance == nullptr) {
-                instance = new GameObjectModel();
-            }
-            return *instance;
+            static GameObjectModel instance;
+            return instance;
         }
 
         ~GameObjectModel() {
