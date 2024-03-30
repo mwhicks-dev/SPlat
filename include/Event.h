@@ -16,6 +16,30 @@ namespace SPlat {
         /** Priority of event. Lower integers are higher priority. */
         virtual int get_priority(void) = 0;
 
+        bool operator > (Event &e) {
+            return this->get_priority() > e.get_priority();
+        }
+
+        bool operator < (Event &e) {
+            return this->get_priority() < e.get_priority();
+        }
+
+        bool operator >= (Event &e) {
+            return this->get_priority() >= e.get_priority();
+        }
+
+        bool operator <= (Event &e) {
+            return this->get_priority() <= e.get_priority();
+        }
+
+        bool operator == (Event &e) {
+            return this->get_priority() == e.get_priority();
+        }
+
+        bool operator != (Event &e) {
+            return this->get_priority() != e.get_priority();
+        }
+
     };
 
     class SetEvent : public Event {
