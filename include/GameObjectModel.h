@@ -16,19 +16,30 @@ namespace SPlat {
 
     class GameObjectModel {
 
-        static std::mutex lock;
+        static GameObjectModel * instance;
 
-        static std::unordered_map<size_t, Asset*> assets;
+        std::mutex lock;
+
+        std::unordered_map<size_t, Asset*> assets;
+
+        GameObjectModel() = default;
 
     public:
 
-        static Asset& create_asset(Asset&);
+        Asset& create_asset(Asset&);
 
-        static Asset& read_asset(size_t);
+        Asset& read_asset(size_t);
 
-        static Asset& update_asset(size_t, Asset&);
+        Asset& update_asset(size_t, Asset&);
 
-        static Asset& delete_asset(size_t);
+        Asset& delete_asset(size_t);
+
+        static GameObjectModel& get_instance() {
+            if (instance == nullptr) {
+                instance = new GameObjectModel();
+            }
+            return *instance;
+        }
 
     };
 
