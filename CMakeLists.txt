@@ -18,3 +18,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(gom_test test/TestGameObjectModel.cpp
     src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp)
 target_link_libraries(gom_test gtest gtest_main sfml-graphics)
+
+add_executable(demo test/Demo.cpp
+    src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp src/Client.cpp)
+target_link_libraries(demo sfml-system sfml-graphics sfml-window)
