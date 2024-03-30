@@ -6,10 +6,9 @@
 #include "Asset.h"
 
 /// NOTE
-/// Even though references are passed and stored, all memory management is to 
-/// be handled internally by the GOM class. No Asset should ever be created by 
-/// a SPlat user in the heap; instead, stack should be passed, which will then 
-/// be totally managed by our GOM.
+/// For now, new Assets will be created by the user; later, I may add some top 
+/// level interfaces that allow creation of individual GOM types, but will 
+/// have to wait and see what is best.
 
 /// I may make the GOM a singleton so that it is easier to deconstruct.
 
@@ -19,13 +18,13 @@ namespace SPlat {
 
         static std::mutex lock;
 
-        static std::unordered_map<size_t, Asset&> assets;
+        static std::unordered_map<size_t, Asset*> assets;
 
     public:
 
         static Asset& create_asset(Asset&);
 
-        static Asset& read_asset(Asset&);
+        static Asset& read_asset(size_t);
 
         static Asset& update_asset(size_t, Asset&);
 

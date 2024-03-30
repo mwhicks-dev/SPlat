@@ -7,13 +7,13 @@ namespace SPlat {
 
     class Asset : public sf::RectangleShape {
 
+    public:
+
         size_t id;
 
         Asset * standing_on;
 
         sf::Vector2f velocity;
-
-    public:
 
         Asset(sf::Vector2f&);
 
