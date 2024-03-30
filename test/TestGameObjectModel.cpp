@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 
 #include "Character.h"
+#include "Platform.h"
+#include "MovingPlatform.h"
 #include "GameObjectModel.h"
 
 TEST(GOMTest, Acquisition) {
@@ -12,7 +14,23 @@ TEST(GOMTest, Acquisition) {
     }
 }
 
-TEST(GOMTest, TestCharacter) {
+TEST(GOMTest, TestAsset) {
+    sf::Vector2f size(50, 100);
+
+    SPlat::Asset& asset = *new SPlat::Character(size);
+    ASSERT_EQ(0, asset.get_priority());
+    delete &asset;
+
+    asset = *new SPlat::Platform(size);
+    ASSERT_EQ(-2, asset.get_priority());
+    delete &asset;
+
+    asset = *new SPlat::MovingPlatform(size);
+    ASSERT_EQ(-1, asset.get_priority());
+    delete &asset;
+}
+
+TEST(GOMTest, TestGOM) {
     sf::Vector2f size(50, 100);
     SPlat::Character& character = *new SPlat::Character(size);
 

@@ -16,5 +16,5 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 add_executable(gom_test test/TestGameObjectModel.cpp
-    src/Asset.cpp src/Character.cpp src/GameObjectModel.cpp)
+    src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp)
 target_link_libraries(gom_test gtest gtest_main sfml-graphics)
