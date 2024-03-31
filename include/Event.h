@@ -1,6 +1,8 @@
 #ifndef SPLAT_EVENT_H
 #define SPLAT_EVENT_H
 
+#include <mutex>
+
 #include <SFML/Graphics.hpp>
 
 namespace SPlat {
@@ -47,6 +49,41 @@ namespace SPlat {
     public:
 
         int get_priority(void) override { return 0; }
+
+    };
+
+    class SingletonEvent : public Event {
+
+        std::mutex lock;
+
+        SingletonEvent() = default;
+
+    }
+
+    class SwitchEvent : public SingletonEvent {   /// events that are toggled
+
+        bool flag = false;
+
+    public:
+
+        int get_priority(void) override { return -1; }
+
+        bool get_flag() { lock.lock(); bool out = flag; lock.unlock();
+            return out; }
+
+    };
+
+    template <typename T>
+    class KeyHeldEvent<T> : public SwitchEvent {
+
+        KeyHeldEvent<T>() = default;
+
+    public:
+
+        static KeyHeldEvent<T>& get_instance() {
+            static KeyHeldEvent<T> instance;
+            return instance;
+        }
 
     };
 
