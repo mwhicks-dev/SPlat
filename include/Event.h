@@ -22,13 +22,25 @@ namespace SPlat {
         /// @brief set type and args
         /// @param type event type id
         /// @param args specific event args
-        Event(string, string);
+        Event(string type, string args) {
+            this.type = type;
+            this.args = args;
+        }
 
         /// @brief runs handler with args
         /// @throws std::domain_error if type has not been specified 
-        void dispatch();
+        void dispatch() {
+            // throw domain error if no event spec
+            if (handlers.count(type) == 0)
+                throw std::domain_error("No such event type " + type);
+            
+            handler[type](args);
+        }
 
-        static void add_handler(std::string, void (*)(std::string));
+        static void add_handler(std::string type, void (*func)(std::string)) {
+            // override existing/defaults OK
+            handlers[type] = func;
+        }
 
     };
 
