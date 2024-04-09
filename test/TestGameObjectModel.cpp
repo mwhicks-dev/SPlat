@@ -83,7 +83,4 @@ TEST(GOMTest, TestGOM) {
     ASSERT_EQ(character3.id, 2);
     ASSERT_EQ(character3.getPosition(), sf::Vector2f(0, 0));
     ASSERT_EQ(character3.getSize(), sf::Vector2f(150, 200));
-
-    SPlat::GameObjectModel::get_instance().delete_asset(character2.id);
-    SPlat::GameObjectModel::get_instance().delete_asset(character3.id);
 }

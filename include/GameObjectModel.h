@@ -50,11 +50,11 @@ namespace SPlat {
             return instance;
         }
 
-        ~GameObjectModel() {
+        /*~GameObjectModel() {
             for (std::pair<size_t, Asset*> entry : assets) {
                 delete entry.second;
             }
-        }
+        }*/
 
     };
 
