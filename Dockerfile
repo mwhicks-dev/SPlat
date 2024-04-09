@@ -12,4 +12,4 @@ COPY . /home
 RUN cmake .
 RUN cmake --build .
 
-ENTRYPOINT ./gom_test
+ENTRYPOINT ./gom_test && ./serialization_test
