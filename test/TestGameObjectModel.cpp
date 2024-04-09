@@ -32,14 +32,14 @@ TEST(GOMTest, TestAsset) {
 
 TEST(GOMTest, TestGOM) {
     sf::Vector2f size(50, 100);
-    SPlat::Character base = SPlat::Character(size);
+    SPlat::Character &base = *new SPlat::Character(size);
 
     SPlat::Asset& character = SPlat::GameObjectModel::get_instance().create_asset(base);
     ASSERT_EQ(character.id, 0);
     ASSERT_EQ(character.getPosition(), sf::Vector2f(0, 0));
     ASSERT_EQ(character.getSize(), sf::Vector2f(50, 100));
 
-    SPlat::Character base2(size);
+    SPlat::Character base2 = *new SPlat::Character(size);
     SPlat::Asset& character2 = SPlat::GameObjectModel::get_instance().create_asset(base2);
     ASSERT_EQ(character.id, 0);
     ASSERT_EQ(character.getPosition(), sf::Vector2f(0, 0));
@@ -75,12 +75,15 @@ TEST(GOMTest, TestGOM) {
     ASSERT_EQ(character2.getPosition(), sf::Vector2f(0, 0));
     ASSERT_EQ(character2.getSize(), sf::Vector2f(50, 100));
 
-    SPlat::Character base3(size);
-    SPlat::Asset& character3 = SPlat::GameObjectModel::get_instance().create_asset(character3);
+    SPlat::Character &base3 = *new SPlat::Character(size);
+    SPlat::Asset& character3 = SPlat::GameObjectModel::get_instance().create_asset(base3);
     ASSERT_EQ(character2.id, 1);
     ASSERT_EQ(character2.getPosition(), sf::Vector2f(0, 0));
     ASSERT_EQ(character2.getSize(), sf::Vector2f(50, 100));
     ASSERT_EQ(character3.id, 2);
     ASSERT_EQ(character3.getPosition(), sf::Vector2f(0, 0));
     ASSERT_EQ(character3.getSize(), sf::Vector2f(150, 200));
+
+    SPlat::GameObjectModel::get_instance().delete_asset(character2.id);
+    SPlat::GameObjectModel::get_instance().delete_asset(character3.id);
 }
