@@ -1,8 +1,6 @@
 #ifndef SPLAT_EVENT_H
 #define SPLAT_EVENT_H
 
-#include <mutex>
-
 #include <SFML/Graphics.hpp>
 
 namespace SPlat {
@@ -10,160 +8,27 @@ namespace SPlat {
     /** Event interface */
     class Event {
 
-    public:
+        /// @brief event type identifier
+        std::string type;
 
-        /** This function is ran whenever an event is processed. */
-        virtual void resolve(void) = 0;
+        /// @brief event args
+        std::string args;
 
-        /** Priority of event. Lower integers are higher priority. */
-        virtual int get_priority(void) = 0;
-
-        bool operator > (Event &e) {
-            return this->get_priority() > e.get_priority();
-        }
-
-        bool operator < (Event &e) {
-            return this->get_priority() < e.get_priority();
-        }
-
-        bool operator >= (Event &e) {
-            return this->get_priority() >= e.get_priority();
-        }
-
-        bool operator <= (Event &e) {
-            return this->get_priority() <= e.get_priority();
-        }
-
-        bool operator == (Event &e) {
-            return this->get_priority() == e.get_priority();
-        }
-
-        bool operator != (Event &e) {
-            return this->get_priority() != e.get_priority();
-        }
-
-    };
-
-    class SetEvent : public Event {
+        /// @brief type -> handle(args)
+        static std::map<std::string, void (*)(string)> handlers;
 
     public:
 
-        int get_priority(void) override { return 0; }
+        /// @brief set type and args
+        /// @param type event type id
+        /// @param args specific event args
+        Event(string, string);
 
-    };
+        /// @brief runs handler with args
+        /// @throws std::domain_error if type has not been specified 
+        void dispatch();
 
-    class SingletonEvent : public Event {
-
-        std::mutex lock;
-
-        SingletonEvent() = default;
-
-    }
-
-    class SwitchEvent : public SingletonEvent {   /// events that are toggled
-
-        bool flag = false;
-
-    public:
-
-        int get_priority(void) override { return -1; }
-
-        bool get_flag() { lock.lock(); bool out = flag; lock.unlock();
-            return out; }
-
-    };
-
-    template <typename T>
-    class KeyHeldEvent<T> : public SwitchEvent {
-
-        KeyHeldEvent<T>() = default;
-
-    public:
-
-        static KeyHeldEvent<T>& get_instance() {
-            static KeyHeldEvent<T> instance;
-            return instance;
-        }
-
-    };
-
-    class AddEvent : public Event {
-
-    public:
-
-        int get_priority(void) override { return 1; }
-
-    };
-
-    class AssetEvent : public Event {  /// events dealing with assets template
-
-        size_t asset_id;
-
-    public:
-
-        AssetEvent(size_t asset_id) { this->asset_id = asset_id; }
-
-    };
-
-    class VelocityEvent : public AssetEvent {  /// events dealing with velocity
-
-        sf::Vector2f velocity;
-
-    public:
-
-        VelocityEvent(size_t asset_id, sf::Vector2f velocity)
-        : AssetEvent(asset_id) { this->velocity = velocity; }
-
-    };
-
-    class PositionEvent : public AssetEvent {  /// events dealing with velocity
-
-        sf::Vector2f position;
-
-    public:
-
-        PositionEvent(size_t asset_id, sf::Vector2f position)
-        : AssetEvent(asset_id) { this->position = position; }
-
-    };
-
-    class SetVelocityEvent : public SetEvent, public VelocityEvent {
-
-    public:
-
-        SetVelocityEvent(size_t, sf::Vector2f);
-
-        void resolve() override;
-
-    };
-
-    class AddVelocityEvent : public AddEvent, public VelocityEvent {
-
-    public:
-
-        AddVelocityEvent(size_t, sf::Vector2f);
-
-        void resolve() override;
-
-    };
-
-    class SetPositionEvent : public SetEvent, public PositionEvent {
-
-    public:
-
-        SetPositionEvent(size_t, sf::Vector2f);
-
-        void resolve() override;
-
-    };
-
-    class AddPositionEvent : public AddEvent, public PositionEvent {
-
-    public:
-
-        AddPositionEvent(size_t, sf::Vector2f);
-
-        void resolve() override;
+        static void add_handler(std::string, void (*)(std::string));
 
     };
 
