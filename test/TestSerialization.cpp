@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include <gtest/gtest.h>
 
 #include "Serialization.h"
@@ -15,9 +13,6 @@ TEST(SerializationTest, Vector2f) {
         cereal::JSONOutputArchive oar(ss);
         oar(original);
     }
-
-    // Print JSON
-    std::cout << ss.str() << std::endl;
 
     {  // Deserialize JSON
         cereal::JSONInputArchive iar(ss);
