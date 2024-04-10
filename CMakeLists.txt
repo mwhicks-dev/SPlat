@@ -22,7 +22,7 @@ target_link_libraries(gom_test gtest gtest_main sfml-graphics)
 add_executable(serialization_test test/TestSerialization.cpp)
 target_link_libraries(serialization_test gtest gtest_main sfml-graphics)
 
-add_executable(event_test test/TestEvents.cpp)
+add_executable(event_test test/TestEvents.cpp src/Event.cpp src/KeyEvents.cpp)
 target_link_libraries(event_test gtest gtest_main sfml-graphics sfml-window)
 
 add_executable(demo test/Demo.cpp
