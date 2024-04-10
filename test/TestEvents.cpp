@@ -2,6 +2,7 @@
 #include <iostream>
 #include "events/KeyEvents.h"
 #include "events/CreateAssetEvent.h"
+#include "events/ControlAssetEvent.h"
 #include "model/GameObjectModel.h"
 #include "model/Platform.h"
 
@@ -58,12 +59,26 @@ TEST(EventTest, CreateAssetEvent) {
     ASSERT_EQ(Model::GameObjectModel::get_instance().getIds().size(), 0);
 
     // Dispatch create asset event
-    SPlat::Events::CreateAssetEvent({
+    Events::CreateAssetEvent(
         sf::Vector2f(100, 100), // position
         sf::Vector2f(50, 100),  // size
         SPlat::Model::Platform::TYPE  // type
-    }).dispatch();
+    ).dispatch();
 
     // Assert that now one asset
     ASSERT_EQ(Model::GameObjectModel::get_instance().getIds().size(), 1);
+}
+
+TEST(EventTest, ControlAssetEvent) {
+    Events::Event::handlers[Events::ControlAssetEvent::TYPE]
+        = Events::ControlAssetEvent::handler;
+    
+    // Assert no controlled object
+    ASSERT_THROW(Events::ControlAssetEvent::get_controlled_asset_id(), std::logic_error);
+
+    // Set arbitrary ID as controlled
+    Events::ControlAssetEvent(173).dispatch();
+
+    // Assert appropriate ID controlled
+    ASSERT_EQ(173, Events::ControlAssetEvent::get_controlled_asset_id());
 }
