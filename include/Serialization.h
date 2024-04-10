@@ -1,3 +1,6 @@
+#ifndef SPLAT_SERIALIZATION_H
+#define SPLAT_SERIALIZATION_H
+
 #include <SFML/Graphics.hpp>
 
 #include "cereal/cereal.hpp"
@@ -20,3 +23,4 @@ namespace cereal {
 
 }
 
+#endif
