@@ -17,15 +17,16 @@ FetchContent_MakeAvailable(googletest)
 
 set(MODEL_IMPLEMENTATIONS src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp)
 set(EVENT_IMPLEMENTATIONS src/Event.cpp src/KeyEvents.cpp src/CreateAssetEvent.cpp)
+set(ALL_IMPLEMENTATIONS ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
 
 add_executable(gom_test test/TestGameObjectModel.cpp ${MODEL_IMPLEMENTATIONS})
 target_link_libraries(gom_test gtest gtest_main sfml-graphics)
 
-add_executable(serialization_test test/TestSerialization.cpp)
+add_executable(serialization_test test/TestSerialization.cpp ${ALL_IMPLEMENTATIONS})
 target_link_libraries(serialization_test gtest gtest_main sfml-graphics)
 
-add_executable(event_test test/TestEvents.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
+add_executable(event_test test/TestEvents.cpp ${ALL_IMPLEMENTATIONS})
 target_link_libraries(event_test gtest gtest_main sfml-graphics sfml-window)
 
-add_executable(demo test/Demo.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS} src/Client.cpp)
+add_executable(demo test/Demo.cpp ${ALL_IMPLEMENTATIONS} src/Client.cpp)
 target_link_libraries(demo sfml-system sfml-graphics sfml-window)

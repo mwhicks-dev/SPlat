@@ -1,7 +1,9 @@
 #include <gtest/gtest.h>
 
-#include "Serialization.h"
 #include "cereal/archives/json.hpp"
+
+#include "events/Event.h"
+#include "Serialization.h"
 
 /// @brief JSON serialization of Vector2f 
 TEST(SerializationTest, Vector2f) {
@@ -21,4 +23,23 @@ TEST(SerializationTest, Vector2f) {
 
     ASSERT_TRUE(abs(original.x - deserialized.x) < 0.001);
     ASSERT_TRUE(abs(original.y - deserialized.y) < 0.001);
+}
+
+/// @brief JSON serialization of Event 
+TEST(SerializationTest, Event) {
+    std::stringstream ss;
+    SPlat::Events::Event event("event_type", "event_args"), deserialized;
+
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(event);
+    }
+
+    {
+        cereal::JSONInputArchive iar(ss);
+        iar(deserialized);
+    }
+
+    ASSERT_EQ(deserialized.type, "event_type");
+    ASSERT_EQ(deserialized.args, "event_args");
 }
