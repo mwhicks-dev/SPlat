@@ -26,5 +26,7 @@ add_executable(event_test test/TestEvents.cpp src/Event.cpp src/KeyEvents.cpp)
 target_link_libraries(event_test gtest gtest_main sfml-graphics sfml-window)
 
 add_executable(demo test/Demo.cpp
-    src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp src/Client.cpp)
+    src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp 
+    src/Event.cpp src/CreateAssetEvent.cpp
+    src/Client.cpp)
 target_link_libraries(demo sfml-system sfml-graphics sfml-window)

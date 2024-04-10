@@ -1,14 +1,20 @@
-#include "model/Character.h"
 #include "Client.h"
+#include "model/Character.h"
+#include "events/CreateAssetEvent.h"
 
 using namespace SPlat;
 
 int main() {
-    sf::Vector2f size(50, 100);
-    Model::Character character(size);
-    character.setPosition(100, 100);
+    // Add create asset event handler to set
+    Events::Event::handlers[Events::CreateAssetEvent::CREATE_ASSET_EVENT_TAG] 
+        = Events::CreateAssetEvent::handler;
 
-    Model::GameObjectModel::get_instance().create_asset(character);
+    // Create asset with dispatched event
+    SPlat::Events::CreateAssetEvent({
+        sf::Vector2f(100, 100), // position
+        sf::Vector2f(50, 100),  // size
+        SPlat::Model::Character::TYPE  // type
+    }).dispatch();
 
     Client client; client.start();
 }
