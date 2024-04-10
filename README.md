@@ -15,6 +15,6 @@ docker build -t SPlat/test . && docker run -it --rm SPlat/test
 I use the following libraries in this implementation:
 * [SFML](https://www.sfml-dev.org/) for core engine and multimedia
 * [cereal](https://uscilab.github.io/cereal/index.html) for serialization
-* [CMake](https://cmake.org) for testing
+* [CMake](https://cmake.org) and [Docker](https://www.docker.com) for testing
 
 Thanks to all 3rd parties for their contributions!
