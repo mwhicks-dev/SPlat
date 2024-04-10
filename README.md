@@ -7,8 +7,7 @@
 Tests (via Docker):
 
 ```bash
-docker build -t SPlat/test .
-docker run -it --rm SPlat/test
+docker build -t SPlat/test . && docker run -it --rm SPlat/test
 ```
 
 ## Libraries
