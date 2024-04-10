@@ -16,6 +16,8 @@ namespace SPlat {
     /// @brief class holding shared (static) data for key-related events
     class KeyEvent : public Event {
 
+    protected:
+
         /// @brief set of keys that are currently held
         static std::set<sf::Keyboard::Key> held;
 
@@ -34,6 +36,10 @@ namespace SPlat {
 
             return out;
         }
+
+        friend void SPlat::Function::key_press_handler(std::string);
+
+        friend void SPlat::Function::key_release_handler(std::string);
 
     };
 
@@ -100,6 +106,52 @@ namespace SPlat {
             ar(key);
         }
     };
+
+    namespace Function {
+
+        /// @brief function executed on key press event
+        /// @param serialized arguments passed as serialized string
+        static void key_press_handler(std::string serialized) {
+            // deserialize KeyEventArgs from args
+            KeyEventArgs args;
+            std::stringstream ss; ss << serialized;
+            {
+                cereal::JSONInputArchive iar(ss);
+                iar(args);
+            }
+
+            // Set pressed key as held
+            SPlat::KeyEvent::held_lock.lock();
+            if (SPlat::KeyEvent::held.count(args.key) == 0)
+                SPlat::KeyEvent::held.insert(args.key);
+            SPlat::KeyEvent::held_lock.unlock();
+        }
+
+        /// @brief function executed on key release event
+        /// @param serialized arguments passed as serialized string
+        static void key_release_handler(std::string serialized) {
+            // deserialize KeyEventArgs from args
+            KeyEventArgs args;
+            std::stringstream ss; ss << serialized;
+            {
+                cereal::JSONInputArchive iar(ss);
+                iar(args);
+            }
+
+            // Unset pressed key as held
+            SPlat::KeyEvent::held_lock.lock();
+            if (SPlat::KeyEvent::held.count(args.key) > 0)
+                SPlat::KeyEvent::held.erase(args.key);
+            SPlat::KeyEvent::held_lock.unlock();
+        }
+
+    }
+
+    Event::set_handler(KeyPressEvent::KEY_PRESS_EVENT_TAG, 
+        SPlat::Function::key_press_handler);
+
+    Event::set_handler(KeyReleaseEvent::KEY_RELEASE_EVENT_TAG,
+        SPlat::Function::key_release_handler);
 
 }
 
