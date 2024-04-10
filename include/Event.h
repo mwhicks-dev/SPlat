@@ -14,10 +14,10 @@ namespace SPlat {
         /// @brief event args
         std::string args;
 
+    public:
+
         /// @brief type -> handle(args)
         static std::map<std::string, void (*)(string)> handlers;
-
-    public:
 
         /// @brief set type and args
         /// @param type event type id
@@ -37,7 +37,7 @@ namespace SPlat {
             handler[type](args);
         }
 
-        static void add_handler(std::string type, void (*func)(std::string)) {
+        static void set_handler(std::string type, void (*func)(std::string)) {
             // override existing/defaults OK
             handlers[type] = func;
         }
