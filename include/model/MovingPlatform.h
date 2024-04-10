@@ -11,6 +11,8 @@ namespace SPlat {
 
         public:
 
+            static std::string TYPE;
+
             MovingPlatform(sf::Vector2f&);
 
             int get_priority() override;
