@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include "events/KeyEvents.h"
+#include "events/CreateAssetEvent.h"
+#include "model/GameObjectModel.h"
+#include "model/Platform.h"
 
 using namespace SPlat;
 
@@ -45,4 +48,22 @@ TEST(EventTest, KeyEvents) {
 
     // Assert that key is not held
     ASSERT_FALSE(Events::KeyEvent::is_key_held(k));
+}
+
+TEST(EventTest, CreateAssetEvent) {
+    Events::Event::handlers[Events::CreateAssetEvent::CREATE_ASSET_EVENT_TAG]
+        = Events::CreateAssetEvent::handler;
+    
+    // Assert that there are no assets
+    ASSERT_EQ(Model::GameObjectModel::get_instance().getIds().size(), 0);
+
+    // Dispatch create asset event
+    SPlat::Events::CreateAssetEvent({
+        sf::Vector2f(100, 100), // position
+        sf::Vector2f(50, 100),  // size
+        SPlat::Model::Platform::TYPE  // type
+    }).dispatch();
+
+    // Assert that now one asset
+    ASSERT_EQ(Model::GameObjectModel::get_instance().getIds().size(), 1);
 }

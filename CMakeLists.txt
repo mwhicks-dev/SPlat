@@ -15,18 +15,17 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(gom_test test/TestGameObjectModel.cpp
-    src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp)
+set(MODEL_IMPLEMENTATIONS src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp)
+set(EVENT_IMPLEMENTATIONS src/Event.cpp src/KeyEvents.cpp src/CreateAssetEvent.cpp)
+
+add_executable(gom_test test/TestGameObjectModel.cpp ${MODEL_IMPLEMENTATIONS})
 target_link_libraries(gom_test gtest gtest_main sfml-graphics)
 
 add_executable(serialization_test test/TestSerialization.cpp)
 target_link_libraries(serialization_test gtest gtest_main sfml-graphics)
 
-add_executable(event_test test/TestEvents.cpp src/Event.cpp src/KeyEvents.cpp)
+add_executable(event_test test/TestEvents.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
 target_link_libraries(event_test gtest gtest_main sfml-graphics sfml-window)
 
-add_executable(demo test/Demo.cpp
-    src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp 
-    src/Event.cpp src/CreateAssetEvent.cpp
-    src/Client.cpp)
+add_executable(demo test/Demo.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS} src/Client.cpp)
 target_link_libraries(demo sfml-system sfml-graphics sfml-window)
