@@ -65,7 +65,9 @@ namespace SPlat {
     public:
 
         /// @brief unique identifier for key press events
-        const std::string KEY_PRESS_EVENT_TAG = "key_press";
+        static std::string KEY_PRESS_EVENT_TAG;
+
+        static void handler(std::string);
 
         /// @brief convert keypress to serializable event
         /// @param key keyboard key pressed
@@ -90,7 +92,9 @@ namespace SPlat {
     public:
 
         /// @brief unique identifier for key release events
-        const std::string KEY_RELEASE_EVENT_TAG = "key_release";
+        static std::string KEY_RELEASE_EVENT_TAG;
+
+        static void handler(std::string);
 
         /// @brief convert keyrelease to serializable event
         /// @param key keyboard key released

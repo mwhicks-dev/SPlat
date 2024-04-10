@@ -3,9 +3,13 @@
 std::set<sf::Keyboard::Key> SPlat::KeyEvent::held;
 std::mutex SPlat::KeyEvent::held_lock;
 
+std::string SPlat::KeyPressEvent::KEY_PRESS_EVENT_TAG = "key_press";
+
+std::string SPlat::KeyReleaseEvent::KEY_RELEASE_EVENT_TAG = "key_release";
+
 /// @brief function executed on key press event
 /// @param serialized arguments passed as serialized string
-static void SPlat::key_press_handler(std::string serialized) {
+void SPlat::KeyPressEvent::handler(std::string serialized) {
     // deserialize KeyEventArgs from args
     KeyEventArgs args;
     std::stringstream ss; ss << serialized;
@@ -23,7 +27,7 @@ static void SPlat::key_press_handler(std::string serialized) {
 
 /// @brief function executed on key release event
 /// @param serialized arguments passed as serialized string
-static void SPlat::key_release_handler(std::string serialized) {
+void SPlat::KeyReleaseEvent::handler(std::string serialized) {
     // deserialize KeyEventArgs from args
     KeyEventArgs args;
     std::stringstream ss; ss << serialized;

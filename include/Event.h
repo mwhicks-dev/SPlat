@@ -43,10 +43,7 @@ namespace SPlat {
             handlers[type](args);
         }
 
-        static void set_handler(std::string type, void (*func)(std::string)) {
-            // override existing/defaults OK
-            handlers[type] = func;
-        }
+        static void set_handler(std::string, void (*)(std::string));
 
     };
 
