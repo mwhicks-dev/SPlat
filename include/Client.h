@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
-#include "GameObjectModel.h"
+#include "model/GameObjectModel.h"
 
 namespace SPlat {
 

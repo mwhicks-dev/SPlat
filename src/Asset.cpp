@@ -1,9 +1,7 @@
-#include "Asset.h"
+#include "model/Asset.h"
 
-namespace SPlat {
+using namespace SPlat::Model;
 
-    Asset::Asset(sf::Vector2f& size) {
-        this->setSize(size);
-    }
-
+Asset::Asset(sf::Vector2f& size) {
+    this->setSize(size);
 }

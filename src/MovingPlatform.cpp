@@ -1,10 +1,8 @@
-#include "MovingPlatform.h"
+#include "model/MovingPlatform.h"
 
-namespace SPlat {
+using namespace SPlat::Model;
 
-    MovingPlatform::MovingPlatform(sf::Vector2f& size)
-    : Platform(size) {}
+MovingPlatform::MovingPlatform(sf::Vector2f& size)
+: Platform(size) {}
 
-    int MovingPlatform::get_priority() { return -1; }
-
-}
+int MovingPlatform::get_priority() { return -1; }

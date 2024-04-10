@@ -1,15 +1,17 @@
-#include "KeyEvents.h"
+#include "events/KeyEvents.h"
 
-std::set<sf::Keyboard::Key> SPlat::KeyEvent::held;
-std::mutex SPlat::KeyEvent::held_lock;
+using namespace SPlat::Events;
 
-std::string SPlat::KeyPressEvent::KEY_PRESS_EVENT_TAG = "key_press";
+std::set<sf::Keyboard::Key> KeyEvent::held;
+std::mutex KeyEvent::held_lock;
 
-std::string SPlat::KeyReleaseEvent::KEY_RELEASE_EVENT_TAG = "key_release";
+std::string KeyPressEvent::KEY_PRESS_EVENT_TAG = "key_press";
+
+std::string KeyReleaseEvent::KEY_RELEASE_EVENT_TAG = "key_release";
 
 /// @brief function executed on key press event
 /// @param serialized arguments passed as serialized string
-void SPlat::KeyPressEvent::handler(std::string serialized) {
+void KeyPressEvent::handler(std::string serialized) {
     // deserialize KeyEventArgs from args
     KeyEventArgs args;
     std::stringstream ss; ss << serialized;
@@ -19,15 +21,15 @@ void SPlat::KeyPressEvent::handler(std::string serialized) {
     }
 
     // Set pressed key as held
-    SPlat::KeyEvent::held_lock.lock();
-    if (SPlat::KeyEvent::held.count(args.key) == 0)
-        SPlat::KeyEvent::held.insert(args.key);
-    SPlat::KeyEvent::held_lock.unlock();
+    KeyEvent::held_lock.lock();
+    if (KeyEvent::held.count(args.key) == 0)
+        KeyEvent::held.insert(args.key);
+    KeyEvent::held_lock.unlock();
 }
 
 /// @brief function executed on key release event
 /// @param serialized arguments passed as serialized string
-void SPlat::KeyReleaseEvent::handler(std::string serialized) {
+void KeyReleaseEvent::handler(std::string serialized) {
     // deserialize KeyEventArgs from args
     KeyEventArgs args;
     std::stringstream ss; ss << serialized;
@@ -37,8 +39,8 @@ void SPlat::KeyReleaseEvent::handler(std::string serialized) {
     }
 
     // Unset pressed key as held
-    SPlat::KeyEvent::held_lock.lock();
-    if (SPlat::KeyEvent::held.count(args.key) > 0)
-        SPlat::KeyEvent::held.erase(args.key);
-    SPlat::KeyEvent::held_lock.unlock();
+    KeyEvent::held_lock.lock();
+    if (KeyEvent::held.count(args.key) > 0)
+        KeyEvent::held.erase(args.key);
+    KeyEvent::held_lock.unlock();
 }

@@ -1,12 +1,14 @@
-#include "Character.h"
+#include "model/Character.h"
 #include "Client.h"
+
+using namespace SPlat;
 
 int main() {
     sf::Vector2f size(50, 100);
-    SPlat::Character character(size);
+    Model::Character character(size);
     character.setPosition(100, 100);
 
-    SPlat::GameObjectModel::get_instance().create_asset(character);
+    Model::GameObjectModel::get_instance().create_asset(character);
 
-    SPlat::Client client; client.start();
+    Client client; client.start();
 }

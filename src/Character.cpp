@@ -1,10 +1,8 @@
-#include "Character.h"
+#include "model/Character.h"
 
-namespace SPlat {
+using namespace SPlat::Model;
 
-    Character::Character(sf::Vector2f& size)
-    : Asset(size) {}
+Character::Character(sf::Vector2f& size)
+: Asset(size) {}
 
-    int Character::get_priority() { return 0; }
-
-}
+int Character::get_priority() { return 0; }

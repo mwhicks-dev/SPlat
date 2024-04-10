@@ -1,10 +1,8 @@
-#include "Platform.h"
+#include "model/Platform.h"
 
-namespace SPlat {
+using namespace SPlat::Model;
 
-    Platform::Platform(sf::Vector2f& size) 
-    : Asset(size) {}
+Platform::Platform(sf::Vector2f& size) 
+: Asset(size) {}
 
-    int Platform::get_priority() { return -2; }
-
-}
+int Platform::get_priority() { return -2; }

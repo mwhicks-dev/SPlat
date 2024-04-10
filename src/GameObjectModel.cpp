@@ -1,74 +1,72 @@
-#include "GameObjectModel.h"
+#include "model/GameObjectModel.h"
 
-namespace SPlat {
+using namespace SPlat::Model;
 
-    Asset& GameObjectModel::create_asset(Asset& asset) {
-        lock.lock();
+Asset& GameObjectModel::create_asset(Asset& asset) {
+    lock.lock();
 
-        // Get Asset ID
-        size_t id = assets.size();
-        while (assets.count(id) > 0) id++;
-        ids.insert(id);
+    // Get Asset ID
+    size_t id = assets.size();
+    while (assets.count(id) > 0) id++;
+    ids.insert(id);
 
-        // Assign ID and store
-        asset.id = id;
-        assets[id] = &asset;
+    // Assign ID and store
+    asset.id = id;
+    assets[id] = &asset;
 
+    lock.unlock();
+
+    return asset;
+}
+
+Asset& GameObjectModel::read_asset(size_t id) {
+    lock.lock();
+
+    if (assets.count(id) == 0) {
         lock.unlock();
+        throw std::invalid_argument("No asset with id " + id);
+    }
+    
+    Asset& asset = *assets[id];
 
-        return asset;
+    lock.unlock();
+
+    return asset;
+}
+
+Asset& GameObjectModel::update_asset(size_t id, Asset& update) {
+    lock.lock();
+
+    if (assets.count(id) == 0) {
+        lock.unlock();
+        throw std::invalid_argument("No asset with id " + id);
     }
 
-    Asset& GameObjectModel::read_asset(size_t id) {
-        lock.lock();
+    Asset& asset = *assets[id];
 
-        if (assets.count(id) == 0) {
-            lock.unlock();
-            throw std::invalid_argument("No asset with id " + id);
-        }
-        
-        Asset& asset = *assets[id];
+    asset.setPosition(update.getPosition());
+    asset.setTexture(update.getTexture());
+    asset.setTextureRect(update.getTextureRect());
 
+    lock.unlock();
+
+    return asset;
+}
+
+Asset& GameObjectModel::delete_asset(size_t id) {
+    lock.lock();
+
+    if (assets.count(id) == 0) {
         lock.unlock();
-
-        return asset;
+        throw std::invalid_argument("No asset with id " + id);
     }
 
-    Asset& GameObjectModel::update_asset(size_t id, Asset& update) {
-        lock.lock();
+    Asset& asset = *assets[id];
 
-        if (assets.count(id) == 0) {
-            lock.unlock();
-            throw std::invalid_argument("No asset with id " + id);
-        }
+    assets.erase(id);
+    ids.erase(id);
 
-        Asset& asset = *assets[id];
+    lock.unlock();
 
-        asset.setPosition(update.getPosition());
-        asset.setTexture(update.getTexture());
-        asset.setTextureRect(update.getTextureRect());
-
-        lock.unlock();
-
-        return asset;
-    }
-
-    Asset& GameObjectModel::delete_asset(size_t id) {
-        lock.lock();
-
-        if (assets.count(id) == 0) {
-            lock.unlock();
-            throw std::invalid_argument("No asset with id " + id);
-        }
-
-        Asset& asset = *assets[id];
-
-        assets.erase(id);
-        ids.erase(id);
-
-        lock.unlock();
-
-        return asset;
-    }
-
+    return asset;
 }
