@@ -43,8 +43,6 @@ namespace SPlat {
             handlers[type](args);
         }
 
-        static void set_handler(std::string, void (*)(std::string));
-
     };
 
 }
