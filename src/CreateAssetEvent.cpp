@@ -6,7 +6,7 @@
 
 using namespace SPlat::Events;
 
-std::string CreateAssetEvent::CREATE_ASSET_EVENT_TAG = "create_asset";
+std::string CreateAssetEvent::TYPE = "create_asset";
 
 /// @brief function executed on create asset event dispatch
 /// @param serialized arguments passed as serialized string

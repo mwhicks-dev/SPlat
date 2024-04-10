@@ -6,7 +6,7 @@ using namespace SPlat;
 
 int main() {
     // Add create asset event handler to set
-    Events::Event::handlers[Events::CreateAssetEvent::CREATE_ASSET_EVENT_TAG] 
+    Events::Event::handlers[Events::CreateAssetEvent::TYPE] 
         = Events::CreateAssetEvent::handler;
 
     // Create asset with dispatched event

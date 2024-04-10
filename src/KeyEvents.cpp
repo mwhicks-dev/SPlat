@@ -5,9 +5,9 @@ using namespace SPlat::Events;
 std::set<sf::Keyboard::Key> KeyEvent::held;
 std::mutex KeyEvent::held_lock;
 
-std::string KeyPressEvent::KEY_PRESS_EVENT_TAG = "key_press";
+std::string KeyPressEvent::TYPE = "key_press";
 
-std::string KeyReleaseEvent::KEY_RELEASE_EVENT_TAG = "key_release";
+std::string KeyReleaseEvent::TYPE = "key_release";
 
 /// @brief function executed on key press event
 /// @param serialized arguments passed as serialized string

@@ -40,7 +40,7 @@ namespace SPlat {
         public:
 
             /// @brief unique identifier for create asset event
-            static std::string CREATE_ASSET_EVENT_TAG;
+            static std::string TYPE;
 
             /// @brief handler function that creates asset given args
             /// @param args serialized CreateAssetEventArgs to use
@@ -60,7 +60,7 @@ namespace SPlat {
                     oar(args);
                 }
 
-                this->type = CREATE_ASSET_EVENT_TAG;
+                this->type = TYPE;
                 this->args = ss.str();
             }
 

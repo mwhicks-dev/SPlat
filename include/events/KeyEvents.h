@@ -59,7 +59,7 @@ namespace SPlat {
         public:
 
             /// @brief unique identifier for key press events
-            static std::string KEY_PRESS_EVENT_TAG;
+            static std::string TYPE;
 
             static void handler(std::string);
 
@@ -74,7 +74,7 @@ namespace SPlat {
                     oar(args);
                 }
 
-                this->type = KEY_PRESS_EVENT_TAG;
+                this->type = TYPE;
                 this->args = ss.str();
             }
 
@@ -86,7 +86,7 @@ namespace SPlat {
         public:
 
             /// @brief unique identifier for key release events
-            static std::string KEY_RELEASE_EVENT_TAG;
+            static std::string TYPE;
 
             static void handler(std::string);
 
@@ -101,7 +101,7 @@ namespace SPlat {
                     oar(args);
                 }
 
-                this->type = KEY_RELEASE_EVENT_TAG;
+                this->type = TYPE;
                 this->args = ss.str();
             }
 

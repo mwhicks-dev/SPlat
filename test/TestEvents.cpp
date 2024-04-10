@@ -8,8 +8,8 @@
 using namespace SPlat;
 
 TEST(EventTest, KeyEvents) {
-    Events::Event::handlers[Events::KeyPressEvent::KEY_PRESS_EVENT_TAG] = Events::KeyPressEvent::handler;
-    Events::Event::handlers[Events::KeyReleaseEvent::KEY_RELEASE_EVENT_TAG] = Events::KeyReleaseEvent::handler;
+    Events::Event::handlers[Events::KeyPressEvent::TYPE] = Events::KeyPressEvent::handler;
+    Events::Event::handlers[Events::KeyReleaseEvent::TYPE] = Events::KeyReleaseEvent::handler;
 
     // Pick arbitrary key -- should pass for any
     sf::Keyboard::Key k(sf::Keyboard::Key::Q);
@@ -51,7 +51,7 @@ TEST(EventTest, KeyEvents) {
 }
 
 TEST(EventTest, CreateAssetEvent) {
-    Events::Event::handlers[Events::CreateAssetEvent::CREATE_ASSET_EVENT_TAG]
+    Events::Event::handlers[Events::CreateAssetEvent::TYPE]
         = Events::CreateAssetEvent::handler;
     
     // Assert that there are no assets
