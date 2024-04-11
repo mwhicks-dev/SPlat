@@ -16,13 +16,20 @@ void Controller::run(std::pair<bool&, std::mutex> runtime) {
         runtime.second.unlock();
 
         // get event and handler
+        bool has_event = false;
+        Events::Event event;
+        void (*handler)(std::string);
         events_lock.lock();
-        Events::Event event = events.front(); events.pop();
-        void (*handler)(std::string) = Events::Event::handlers[event.type];
+        if (events.size() > 0) {
+            event = events.front(); events.pop();
+            handler = Events::Event::handlers[event.type];
+            has_event = true;
+        }
         events_lock.unlock();
 
         // process event
-        handler(event.args);
+        if (has_event)
+            handler(event.args);
     }
 }
 
