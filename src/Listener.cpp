@@ -7,12 +7,12 @@ void Listener::run() {
         // break if no events to process
         events_lock.lock();
         if (events.empty()) {
-            events.unlock();
+            events_lock.unlock();
             break;
         }
         // dequeue event if nonempty
         Event event = events.front(); events.pop();
-        events.unlock();
+        events_lock.unlock();
 
         // dispatch event
         event.dispatch();
