@@ -4,16 +4,22 @@
 #include "events/KeyEvents.h"
 
 #include <thread>
-#include <iostream>
 
 using namespace SPlat;
+
+void Client::handle_key_event(sf::Keyboard::Key key) {
+    if (sf::Keyboard::isKeyPressed(key) && !Events::KeyEvent::is_key_held(key)) {
+        ctl.push_event(Events::KeyPressEvent(key));
+    } else if (!sf::Keyboard::isKeyPressed(key) && Events::KeyEvent::is_key_held(key)) {
+        ctl.push_event(Events::KeyReleaseEvent(key));
+    }
+}
 
 void Client::start() {
     window.create(sf::VideoMode(800, 600), "SPlat");
     std::pair<bool, std::mutex>& runtime = *new std::pair<bool, std::mutex>();
     runtime.first = true;
 
-    Controller ctl;  // single controller
     std::thread t(&Controller::run, &ctl, std::ref(runtime));
 
     while (window.isOpen()) {
@@ -24,13 +30,9 @@ void Client::start() {
         }
 
         // check for keyboard inputs
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !Events::KeyEvent::is_key_held(sf::Keyboard::Left)) {
-            ctl.push_event(Events::KeyPressEvent(sf::Keyboard::Left));
-            std::cout << "left key press" << std::endl;
-        } else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && Events::KeyEvent::is_key_held(sf::Keyboard::Left)) {
-            ctl.push_event(Events::KeyReleaseEvent(sf::Keyboard::Left));
-            std::cout << "left key release" << std::endl;
-        }
+        handle_key_event(sf::Keyboard::Key::Left);
+        handle_key_event(sf::Keyboard::Key::Right);
+        handle_key_event(sf::Keyboard::Key::Up);
 
         // draw all assets
         window.clear(sf::Color::Black);
