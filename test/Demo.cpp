@@ -1,6 +1,7 @@
 #include "Client.h"
 #include "model/Character.h"
 #include "events/CreateAssetEvent.h"
+#include "events/KeyEvents.h"
 
 using namespace SPlat;
 
@@ -15,6 +16,11 @@ int main() {
         sf::Vector2f(50, 100),  // size
         SPlat::Model::Character::TYPE  // type
     }).dispatch();
+
+    Events::Event::handlers[Events::KeyPressEvent::TYPE]
+        = Events::KeyPressEvent::handler;
+    Events::Event::handlers[Events::KeyReleaseEvent::TYPE]
+        = Events::KeyReleaseEvent::handler;
 
     Client client; client.start();
 }
