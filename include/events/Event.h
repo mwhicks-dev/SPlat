@@ -21,6 +21,9 @@ namespace SPlat {
             /// @brief event args
             std::string args;
 
+            /// @brief safeguard for handlers
+            static std::mutex handlers_lock;
+
             /// @brief type -> handle(args)
             static std::map<std::string, void (*)(std::string)> handlers;
 
@@ -39,10 +42,15 @@ namespace SPlat {
             /// @throws std::domain_error if type has not been specified 
             void dispatch() {
                 // throw domain error if no event spec
-                if (handlers.count(type) == 0)
+                handlers_lock.lock();
+                if (handlers.count(type) == 0) {
+                    handlers_lock.unlock();
                     throw std::domain_error("No such event type " + type);
+                }
+                void (*handler)(std::string) = handlers[type];
+                handlers_lock.unlock();
                 
-                handlers[type](args);
+                handler(args);
             }
 
         };
