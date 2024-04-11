@@ -1,7 +1,6 @@
 #include "Client.h"
 #include "model/Character.h"
-#include "events/CreateAssetEvent.h"
-#include "events/KeyEvents.h"
+#include "utilities/Functions.h"
 
 using namespace SPlat;
 
@@ -17,10 +16,7 @@ int main() {
         SPlat::Model::Character::TYPE  // type
     }).dispatch();
 
-    Events::Event::handlers[Events::KeyPressEvent::TYPE]
-        = Events::KeyPressEvent::handler;
-    Events::Event::handlers[Events::KeyReleaseEvent::TYPE]
-        = Events::KeyReleaseEvent::handler;
+    Utilities::set_default_handlers();
 
     Client client; client.start();
 }
