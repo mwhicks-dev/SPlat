@@ -5,7 +5,7 @@ using namespace SPlat;
 std::mutex Controller::events_lock;
 std::queue<Events::Event> Controller::events;
 
-void Controller::run(std::pair<bool&, std::mutex> runtime) {
+void Controller::run(std::pair<bool, std::mutex>& runtime) {
     while (true) {
         // check if client still running
         runtime.second.lock();
