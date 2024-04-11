@@ -26,10 +26,6 @@ namespace SPlat {
         /// @param runtime shared flag and mutex to check if client is running
         void run(std::pair<bool, std::mutex>&);
 
-        /// @brief push a new event to the event queue
-        /// @param event new event to push
-        static void push_event(Events::Event);
-
     };
 
 }

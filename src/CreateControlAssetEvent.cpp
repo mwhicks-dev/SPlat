@@ -10,5 +10,6 @@ void CreateControlAssetEvent::handler(std::string serialized) {
     SPlat::Model::Asset& asset = SPlat::Utilities::deserialize_asset(serialized);
     
     // set asset to be controleld
-    ControlAssetEvent(asset.id).dispatch();
+    ForegroundListener& lst = ForegroundListener::get_instance();
+    lst.push_event(ControlAssetEvent(asset.id));
 }

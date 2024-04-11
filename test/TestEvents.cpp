@@ -4,6 +4,7 @@
 #include "events/CreateAssetEvent.h"
 #include "events/ControlAssetEvent.h"
 #include "events/CreateControlAssetEvent.h"
+#include "events/Listener.h"
 #include "model/GameObjectModel.h"
 #include "model/Platform.h"
 
@@ -104,6 +105,8 @@ TEST(EventTest, CreateControlAssetEvent) {
         sf::Vector2f(50, 100),
         Model::Platform::TYPE
     ).dispatch();
+
+    Events::ForegroundListener::get_instance().run();
 
     // Assert controlled asset exists
     ASSERT_EQ(1, Model::GameObjectModel::get_instance().getIds().size());

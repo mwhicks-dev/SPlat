@@ -9,9 +9,9 @@ using namespace SPlat;
 
 void Client::handle_key_event(sf::Keyboard::Key key) {
     if (sf::Keyboard::isKeyPressed(key) && !Events::KeyEvent::is_key_held(key)) {
-        ctl.push_event(Events::KeyPressEvent(key));
+        Events::KeyPressEvent event(key);
     } else if (!sf::Keyboard::isKeyPressed(key) && Events::KeyEvent::is_key_held(key)) {
-        ctl.push_event(Events::KeyReleaseEvent(key));
+        Events::KeyReleaseEvent event(key);
     }
 }
 
@@ -33,6 +33,12 @@ void Client::start() {
         handle_key_event(sf::Keyboard::Key::Left);
         handle_key_event(sf::Keyboard::Key::Right);
         handle_key_event(sf::Keyboard::Key::Up);
+
+        // dispatch foreground events
+        Events::ForegroundListener &lst = Events::ForegroundListener
+            ::get_instance();
+        std::thread t(&Events::Listener::run, &lst);
+        t.detach();
 
         // draw all assets
         window.clear(sf::Color::Black);
