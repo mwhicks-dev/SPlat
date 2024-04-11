@@ -78,6 +78,13 @@ namespace SPlat {
                 return out;
             }
 
+            /// @brief unset controlled asset
+            static void reset() {
+                controlled_lock.lock();
+                controlled_set = false;
+                controlled_lock.unlock();
+            }
+
         };
 
     }
