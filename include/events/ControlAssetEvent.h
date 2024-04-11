@@ -6,6 +6,7 @@
 #include <cereal/archives/json.hpp>
 
 #include "events/Event.h"
+#include "events/Listener.h"
 #include "Serialization.h"
 
 namespace SPlat {
@@ -61,6 +62,10 @@ namespace SPlat {
 
                 this->type = TYPE;
                 this->args = ss.str();
+
+                // pass to foreground listener
+                ForegroundListener &lst = ForegroundListener::get_instance();
+                lst.push_event(*this);
             }
 
             /// @brief gets ID of controlled asset

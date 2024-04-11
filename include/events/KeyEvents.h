@@ -10,6 +10,7 @@
 #include "cereal/archives/json.hpp"
 
 #include "Event.h"
+#include "events/Listener.h"
 
 namespace SPlat {
 
@@ -76,6 +77,10 @@ namespace SPlat {
 
                 this->type = TYPE;
                 this->args = ss.str();
+
+                // pass to foreground listener
+                ForegroundListener &lst = ForegroundListener::get_instance();
+                lst.push_event(*this);
             }
 
         };
@@ -103,6 +108,10 @@ namespace SPlat {
 
                 this->type = TYPE;
                 this->args = ss.str();
+
+                // pass to foreground listener
+                ForegroundListener &lst = ForegroundListener::get_instance();
+                lst.push_event(*this);
             }
 
         };

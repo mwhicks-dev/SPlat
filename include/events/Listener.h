@@ -45,7 +45,7 @@ namespace SPlat {
 
             /// @brief singleton getter
             /// @return instance of ForegroundListener
-            ForegroundListener& get_instance() {
+            static ForegroundListener& get_instance() {
                 static ForegroundListener instance;
                 return instance;
             }
@@ -62,7 +62,7 @@ namespace SPlat {
 
             /// @brief singleton getter
             /// @return instance of BackgroundListener
-            BackgroundListener& get_instance() {
+            static BackgroundListener& get_instance() {
                 static BackgroundListener instance;
                 return instance;
             }

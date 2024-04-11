@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include <mutex>
 
 #include <SFML/Graphics.hpp>
 

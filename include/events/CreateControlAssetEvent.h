@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "events/CreateAssetEvent.h"
+#include "events/Listener.h"
 #include "Serialization.h"
 
 #include "cereal/archives/json.hpp"
@@ -40,6 +41,10 @@ namespace SPlat {
 
                 this->type = TYPE;
                 this->args = ss.str();
+
+                // pass to background listener
+                BackgroundListener &lst = BackgroundListener::get_instance();
+                lst.push_event(*this);
             }
 
         };
