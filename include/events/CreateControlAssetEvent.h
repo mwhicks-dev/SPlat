@@ -42,7 +42,7 @@ namespace SPlat {
                 this->args = ss.str();
             }
 
-        }
+        };
 
     }
 
