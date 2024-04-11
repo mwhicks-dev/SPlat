@@ -23,11 +23,11 @@ set(ALL_IMPLEMENTATIONS ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS} ${CLIE
 add_executable(gom_test test/TestGameObjectModel.cpp ${MODEL_IMPLEMENTATIONS})
 target_link_libraries(gom_test gtest gtest_main sfml-graphics)
 
-add_executable(serialization_test test/TestSerialization.cpp ${ALL_IMPLEMENTATIONS})
+add_executable(serialization_test test/TestSerialization.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
 target_link_libraries(serialization_test gtest gtest_main sfml-graphics)
 
-add_executable(event_test test/TestEvents.cpp ${ALL_IMPLEMENTATIONS})
+add_executable(event_test test/TestEvents.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
 target_link_libraries(event_test gtest gtest_main sfml-graphics sfml-window)
 
 add_executable(demo test/Demo.cpp ${ALL_IMPLEMENTATIONS})
-target_link_libraries(demo sfml-system sfml-graphics sfml-window)
+target_link_libraries(demo pthread sfml-system sfml-graphics sfml-window)

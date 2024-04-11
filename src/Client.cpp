@@ -1,9 +1,17 @@
 #include "Client.h"
+#include "Controller.h"
+
+#include <thread>
 
 using namespace SPlat;
 
 void Client::start() {
     window.create(sf::VideoMode(800, 600), "SPlat");
+    std::pair<bool, std::mutex> runtime;
+    runtime.first = true;
+
+    Controller ctl;  // single controller
+    std::thread t(&Controller::run, &ctl, std::ref(runtime));
 
     while (window.isOpen()) {
         sf::Event event;
@@ -23,4 +31,10 @@ void Client::start() {
 
         window.display();
     }
+
+    runtime.second.lock();
+    runtime.first = false;
+    runtime.second.unlock();
+
+    t.join();
 }
