@@ -3,6 +3,7 @@
 #include "events/KeyEvents.h"
 #include "events/CreateAssetEvent.h"
 #include "events/ControlAssetEvent.h"
+#include "events/CreateControlAssetEvent.h"
 #include "model/GameObjectModel.h"
 #include "model/Platform.h"
 
@@ -67,6 +68,10 @@ TEST(EventTest, CreateAssetEvent) {
 
     // Assert that now one asset
     ASSERT_EQ(Model::GameObjectModel::get_instance().getIds().size(), 1);
+
+    // Delete asset(s)
+    for (size_t id : Model::GameObjectModel::get_instance().getIds())
+        Model::GameObjectModel::get_instance().delete_asset(id);
 }
 
 TEST(EventTest, ControlAssetEvent) {
@@ -81,4 +86,30 @@ TEST(EventTest, ControlAssetEvent) {
 
     // Assert appropriate ID controlled
     ASSERT_EQ(173, Events::ControlAssetEvent::get_controlled_asset_id());
+
+    Events::ControlAssetEvent::reset();
+}
+
+TEST(EventTest, CreateControlAssetEvent) {
+    Events::Event::handlers[Events::CreateControlAssetEvent::TYPE]
+        = Events::CreateControlAssetEvent::handler;
+    
+    // Assert no (controlled) assets
+    ASSERT_THROW(Events::ControlAssetEvent::get_controlled_asset_id(), std::logic_error);
+    ASSERT_EQ(0, Model::GameObjectModel::get_instance().getIds().size());
+
+    // Dispatch new asset, create and control
+    Events::CreateControlAssetEvent(
+        sf::Vector2f(200, 200),
+        sf::Vector2f(50, 100),
+        Model::Platform::TYPE
+    ).dispatch();
+
+    // Assert controlled asset exists
+    ASSERT_EQ(1, Model::GameObjectModel::get_instance().getIds().size());
+    Model::Asset &ctl = Model::GameObjectModel::get_instance().read_asset(Events::ControlAssetEvent::get_controlled_asset_id());
+
+    // Delete asset(s)
+    for (size_t id : Model::GameObjectModel::get_instance().getIds())
+        Model::GameObjectModel::get_instance().delete_asset(id);
 }
