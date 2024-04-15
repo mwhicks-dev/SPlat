@@ -9,6 +9,7 @@
 #include "events/CreateAssetEvent.h"
 #include "events/CreateControlAssetEvent.h"
 #include "events/KeyEvents.h"
+#include "events/TickEvent.h"
 
 namespace SPlat {
 
@@ -57,6 +58,9 @@ namespace SPlat {
             
             SPlat::Events::Event::handlers[SPlat::Events::KeyReleaseEvent::TYPE] =
                 SPlat::Events::KeyReleaseEvent::handler;
+
+            SPlat::Events::Event::handlers[SPlat::Events::TickEvent::TYPE] = 
+                SPlat::Events::TickEvent::handler;
         }
 
     }
