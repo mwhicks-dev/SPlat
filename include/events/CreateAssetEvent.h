@@ -6,33 +6,13 @@
 #include "Serialization.h"
 #include "events/Event.h"
 #include "events/Listener.h"
+#include "model/Asset.h"
 
 #include "cereal/archives/json.hpp"
 
 namespace SPlat {
 
     namespace Events {
-
-        /// @brief struct containing position/size/type of asset to create
-        struct CreateAssetEventArgs {
-
-            /// @brief position of created asset
-            sf::Vector2f position;
-
-            /// @brief size of created asset
-            sf::Vector2f size;
-
-            /// @brief type of created asset; should come directly from concrete asset
-            std::string type;
-
-            /// @brief formulation for converting args to string
-            /// @param ar archive class used in serialization
-            template <class Archive>
-            void serialize(Archive &ar) {
-                ar(position, size, type);
-            }
-
-        };
 
         /// @brief creates asset on dispatch
         class CreateAssetEvent : public Event {
@@ -43,7 +23,7 @@ namespace SPlat {
             static std::string TYPE;
 
             /// @brief handler function that creates asset given args
-            /// @param args serialized CreateAssetEventArgs to use
+            /// @param args serialized AssetProperties to use
             static void handler(std::string);
 
             /// @brief converts asset params to serializable form
@@ -53,7 +33,11 @@ namespace SPlat {
             CreateAssetEvent(sf::Vector2f position, sf::Vector2f size, 
                     std::string type) {
                 // Serialize args to JSON string
-                CreateAssetEventArgs args = {position, size, type};
+                SPlat::Model::AssetProperties args = {
+                    .position=position, 
+                    .size=size, 
+                    .type=type
+                };
                 std::stringstream ss;
                 {
                     cereal::JSONOutputArchive oar(ss);

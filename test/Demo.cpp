@@ -66,11 +66,11 @@ static void keyrelease_override(std::string serialized) {
 
 int main() {
     // Create asset with dispatched event
-    SPlat::Events::CreateControlAssetEvent event({
+    SPlat::Events::CreateControlAssetEvent event(
         sf::Vector2f(100, 100), // position
         sf::Vector2f(50, 100),  // size
         SPlat::Model::Character::TYPE  // type
-    });
+    );
 
     Utilities::set_default_handlers();
 

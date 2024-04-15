@@ -22,7 +22,7 @@ namespace SPlat {
             static std::string TYPE;
 
             /// @brief handler function that creates + controls asset 
-            /// @param args serialized CreateAssetEventArgs to use
+            /// @param args serialized AssetProperties to use
             static void handler(std::string);
 
             /// @brief converts asset params to serializable form
@@ -32,7 +32,11 @@ namespace SPlat {
             CreateControlAssetEvent(sf::Vector2f position, sf::Vector2f size,
                     std::string type) {
                 // Serialize args to JSON string
-                CreateAssetEventArgs args = {position, size, type};
+                SPlat::Model::AssetProperties args = {
+                    .position=position, 
+                    .size=size, 
+                    .type=type
+                };
                 std::stringstream ss;
                 {
                     cereal::JSONOutputArchive oar(ss);

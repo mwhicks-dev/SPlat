@@ -15,11 +15,11 @@ namespace SPlat {
 
     namespace Utilities {
 
-        /// @brief deserializes CreateAssetEventArgs string
-        /// @param serialized serialized CreateAssetEventArgs
+        /// @brief deserializes AssetProperties string
+        /// @param serialized serialized AssetProperties
         static SPlat::Model::Asset& deserialize_asset(std::string serialized) {
             // deserialize args from string
-            SPlat::Events::CreateAssetEventArgs args;
+            SPlat::Model::AssetProperties args;
             std::stringstream ss; ss << serialized;
             {
                 cereal::JSONInputArchive iar(ss);
