@@ -61,11 +61,11 @@ TEST(EventTest, CreateAssetEvent) {
     ASSERT_EQ(Model::GameObjectModel::get_instance().getIds().size(), 0);
 
     // Dispatch create asset event
-    Events::CreateAssetEvent(
+    Events::CreateAssetEvent({
         sf::Vector2f(100, 100), // position
         sf::Vector2f(50, 100),  // size
         SPlat::Model::Platform::TYPE  // type
-    ).dispatch();
+    }).dispatch();
 
     // Assert that now one asset
     ASSERT_EQ(Model::GameObjectModel::get_instance().getIds().size(), 1);
@@ -100,11 +100,11 @@ TEST(EventTest, CreateControlAssetEvent) {
     ASSERT_EQ(0, Model::GameObjectModel::get_instance().getIds().size());
 
     // Dispatch new asset, create and control
-    Events::CreateControlAssetEvent(
+    Events::CreateControlAssetEvent({
         sf::Vector2f(200, 200),
         sf::Vector2f(50, 100),
         Model::Platform::TYPE
-    ).dispatch();
+    }).dispatch();
 
     Events::ForegroundListener::get_instance().run();
 

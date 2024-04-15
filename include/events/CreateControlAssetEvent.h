@@ -26,17 +26,9 @@ namespace SPlat {
             static void handler(std::string);
 
             /// @brief converts asset params to serializable form
-            /// @param position pos of new asset
-            /// @param size size of new asset
-            /// @param type new asset type -- should come from static asset ids
-            CreateControlAssetEvent(sf::Vector2f position, sf::Vector2f size,
-                    std::string type) {
+            /// @param args properties of new asset
+            CreateControlAssetEvent(SPlat::Model::AssetProperties args) {
                 // Serialize args to JSON string
-                SPlat::Model::AssetProperties args = {
-                    .position=position, 
-                    .size=size, 
-                    .type=type
-                };
                 std::stringstream ss;
                 {
                     cereal::JSONOutputArchive oar(ss);
