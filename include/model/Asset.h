@@ -12,21 +12,21 @@ namespace SPlat {
         /// @brief communicable properties to use for Asset events
         struct AssetProperties {
 
-            /// @brief string type of asset
-            std::string type;
+            /// @brief asset position vector
+            sf::Vector2f position;
 
             /// @brief asset size vector
             sf::Vector2f size;
 
-            /// @brief asset position vector
-            sf::Vector2f position;
+            /// @brief string type of asset
+            std::string type;
 
             /// @brief convert AssetProperties to serializable string
             /// @tparam Archive cereal archive class
             /// @param ar Archive to use for AssetProperties conversion
             template <class Archive>
             void serialize(Archive& ar) {
-                ar(type, size, position);
+                ar(position, size, type);
             }
         };
 
@@ -47,7 +47,7 @@ namespace SPlat {
             virtual std::string get_type() = 0;
 
             AssetProperties get_properties() {
-                return {get_type(), getSize(), getPosition()};
+                return {getPosition(), getSize(), get_type()};
             }
 
         };

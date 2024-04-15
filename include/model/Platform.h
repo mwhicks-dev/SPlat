@@ -17,6 +17,8 @@ namespace SPlat {
 
             int get_priority() override;
 
+            std::string get_type() override;
+
         };
 
     }
