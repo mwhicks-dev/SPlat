@@ -8,6 +8,7 @@
 #include "events/ControlAssetEvent.h"
 #include "events/CreateAssetEvent.h"
 #include "events/CreateControlAssetEvent.h"
+#include "events/UpdateAssetEvent.h"
 #include "events/KeyEvents.h"
 #include "events/TickEvent.h"
 
@@ -61,6 +62,9 @@ namespace SPlat {
 
             SPlat::Events::Event::handlers[SPlat::Events::TickEvent::TYPE] = 
                 SPlat::Events::TickEvent::handler;
+            
+            SPlat::Events::Event::handlers[SPlat::Events::UpdateAssetEvent::TYPE] =
+                SPlat::Events::UpdateAssetEvent::handler;
         }
 
     }
