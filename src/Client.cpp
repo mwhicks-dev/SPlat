@@ -2,6 +2,7 @@
 #include "Controller.h"
 
 #include "events/KeyEvents.h"
+#include "events/TickEvent.h"
 
 #include <thread>
 
@@ -17,6 +18,7 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
 
 void Client::start() {
     window.create(sf::VideoMode(800, 600), "SPlat");
+    window.setFramerateLimit(60);
     std::pair<bool, std::mutex>& runtime = *new std::pair<bool, std::mutex>();
     runtime.first = true;
 
@@ -39,6 +41,9 @@ void Client::start() {
             ::get_instance();
         std::thread t(&Events::Listener::run, &lst);
         t.detach();
+
+        // generate tick events
+        Events::TickEvent tick_event;
 
         // draw all assets
         window.clear(sf::Color::Black);
