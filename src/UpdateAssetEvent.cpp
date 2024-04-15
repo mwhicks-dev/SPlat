@@ -1,8 +1,5 @@
 #include "events/UpdateAssetEvent.h"
-#include "model/GameObjectModel.h"
-#include "model/Character.h"
-#include "model/Platform.h"
-#include "model/MovingPlatform.h"
+#include "utilities/Functions.h"
 
 using namespace SPlat::Events;
 
@@ -17,28 +14,24 @@ void UpdateAssetEvent::handler(std::string serialized) {
         iar(args);
     }
 
+    // reserialize asset properties
+    ss = std::stringstream();
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(args.properties);
+    }
+
     // create asset from args properties
-    SPlat::Model::Asset * asset = nullptr;
-    if (args.properties.type == SPlat::Model::Character::TYPE) {
-        asset = new SPlat::Model::Character(args.properties.size);
-    } else if (args.properties.type == SPlat::Model::Platform::TYPE) {
-        asset = new SPlat::Model::Platform(args.properties.size);
-    } else if (args.properties.type == SPlat::Model::MovingPlatform::TYPE) {
-        asset = new SPlat::Model::MovingPlatform(args.properties.size);
-    }
-    if (asset == nullptr) {
-        throw std::invalid_argument("No such asset type " 
-            + args.properties.type);
-    }
-    asset->setPosition(args.properties.position);
+    SPlat::Model::Asset& asset = 
+        SPlat::Utilities::deserialize_asset(ss.str());
 
     // update asset in GOM
     try {
         SPlat::Model::GameObjectModel::get_instance()
-            .update_asset(args.id, *asset);
+            .update_asset(args.id, asset);
+        delete &asset;
     } catch (std::invalid_argument& e) {
-        delete asset;
+        delete &asset;
         throw std::invalid_argument(e.what());
     }
-    delete asset;
 }
