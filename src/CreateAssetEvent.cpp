@@ -9,6 +9,11 @@ std::string CreateAssetEvent::TYPE = "create_asset";
 /// @param serialized arguments passed as serialized string
 /// @throws if args cannot be deserialized or asset type invalid
 void CreateAssetEvent::handler(std::string serialized) {
-    // create new asset using GOM
-    SPlat::Utilities::deserialize_asset(serialized);
+    // create new asset from properties
+    SPlat::Model::Asset& asset 
+        = SPlat::Utilities::deserialize_asset(serialized);
+    
+    // add new asset to GOM
+    SPlat::Model::GameObjectModel::get_instance()
+        .create_asset(asset);
 }

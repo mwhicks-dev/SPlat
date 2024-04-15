@@ -40,7 +40,7 @@ namespace SPlat {
             }
 
             created_asset->setPosition(args.position);
-            return SPlat::Model::GameObjectModel::get_instance().create_asset(*created_asset);
+            return *created_asset;
         }
 
         /// @brief sets all SPlat lib event handlers
