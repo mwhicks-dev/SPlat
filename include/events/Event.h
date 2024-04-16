@@ -72,7 +72,29 @@ namespace SPlat {
             /// @brief sends event to listener according to foreground flag
             void raise();
 
+            friend bool operator==(const Event& lhs, const Event& rhs) {
+                return lhs.priority == rhs.priority;
+            }
 
+            friend bool operator!=(const Event& lhs, const Event& rhs) {
+                return !(lhs == rhs);
+            }
+
+            friend bool operator<=(const Event& lhs, const Event& rhs) {
+                return !(lhs > rhs);
+            }
+
+            friend bool operator>=(const Event& lhs, const Event& rhs) {
+                return !(lhs < rhs);
+            }
+
+            friend bool operator<(const Event& lhs, const Event& rhs) {
+                return lhs.priority < rhs.priority;
+            }
+
+            friend bool operator>(const Event& lhs, const Event& rhs) {
+                return lhs.priority > rhs.priority;
+            }
 
             /// @brief serialization func for SPlat::Events::Event
             template <class Archive>
