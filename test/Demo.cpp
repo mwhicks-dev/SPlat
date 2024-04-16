@@ -15,6 +15,7 @@ static void keypress_override(std::string serialized) {
         size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
         Model::Asset& ctl = Model::GameObjectModel
             ::get_instance().read_asset(id);
+        Model::AssetProperties ctl_properties = ctl.get_properties();
         
         // deserialize KeyEventArgs from args
         Events::KeyEventArgs args;
@@ -25,10 +26,17 @@ static void keypress_override(std::string serialized) {
         }
 
         // update velocity based on key pressed
-        if (args.key == sf::Keyboard::Key::Left)
-            ctl.velocity.x += -15;
-        if (args.key == sf::Keyboard::Key::Right)
-            ctl.velocity.x += 15;
+        if (args.key == sf::Keyboard::Key::Left) {
+            Events::UpdateAssetEvent event(
+                ctl.id, ctl_properties, sf::Vector2f(-15, 0));
+            event.priority = -1;
+            event.raise();
+        } else if (args.key == sf::Keyboard::Key::Right) {
+            Events::UpdateAssetEvent event(
+                ctl.id, ctl_properties, sf::Vector2f(15, 0));
+            event.priority = -1;
+            event.raise();
+        }
 
     } catch (std::logic_error & e) {
         std::cout << e.what() << std::endl;
@@ -46,6 +54,7 @@ static void keyrelease_override(std::string serialized) {
         size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
         Model::Asset& ctl = Model::GameObjectModel
             ::get_instance().read_asset(id);
+        Model::AssetProperties ctl_properties = ctl.get_properties();
         
         // deserialize KeyEventArgs from args
         Events::KeyEventArgs args;
@@ -56,10 +65,17 @@ static void keyrelease_override(std::string serialized) {
         }
 
         // update velocity based on key pressed
-        if (args.key == sf::Keyboard::Key::Left)
-            ctl.velocity.x -= -15;
-        if (args.key == sf::Keyboard::Key::Right)
-            ctl.velocity.x -= 15;
+        if (args.key == sf::Keyboard::Key::Left) {
+            Events::UpdateAssetEvent event(
+                ctl.id, ctl_properties, sf::Vector2f(15, 0));
+            event.priority = -1;
+            event.raise();
+        } else if (args.key == sf::Keyboard::Key::Right) {
+            Events::UpdateAssetEvent event(
+                ctl.id, ctl_properties, sf::Vector2f(-15, 0));
+            event.priority = -1;
+            event.raise();
+        }
 
     } catch (std::logic_error & e) {/* OK */}
 }
