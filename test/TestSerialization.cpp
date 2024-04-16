@@ -28,7 +28,7 @@ TEST(SerializationTest, Vector2f) {
 /// @brief JSON serialization of Event 
 TEST(SerializationTest, Event) {
     std::stringstream ss;
-    SPlat::Events::Event event("event_type", "event_args"), deserialized;
+    SPlat::Events::Event event("event_type", "event_args", false), deserialized;
 
     {
         cereal::JSONOutputArchive oar(ss);

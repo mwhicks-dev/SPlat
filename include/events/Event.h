@@ -22,6 +22,9 @@ namespace SPlat {
             /// @brief event args
             std::string args;
 
+            /// @brief flag indicating whether or not event is fore/background
+            bool foreground;
+
             /// @brief safeguard for handlers
             static std::mutex handlers_lock;
 
@@ -31,13 +34,15 @@ namespace SPlat {
             /// @brief set type and args
             /// @param type event type id
             /// @param args specific event args
-            Event(std::string type, std::string args) {
+            /// @param foreground true if foreround event, false o/w (default)
+            Event(std::string type, std::string args, bool foreground) {
                 this->type = type;
                 this->args = args;
+                this->foreground = foreground;
             }
 
             /// @brief specific cases require setting type/args later
-            Event() = default;
+            Event() { this->foreground = false; };
 
             /// @brief runs handler with args
             /// @throws std::domain_error if type has not been specified 
@@ -53,6 +58,9 @@ namespace SPlat {
                 
                 handler(args);
             }
+
+            /// @brief sends event to listener according to foreground flag
+            void raise();
 
         };
 
