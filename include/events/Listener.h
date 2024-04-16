@@ -17,7 +17,7 @@ namespace SPlat {
             std::mutex events_lock;
 
             /// @brief queue of events to dispatch
-            std::queue<Event> events;
+            std::priority_queue<Event> events;
 
         protected:
 

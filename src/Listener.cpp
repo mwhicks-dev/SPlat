@@ -11,7 +11,7 @@ void Listener::run() {
             break;
         }
         // dequeue event if nonempty
-        Event event = events.front(); events.pop();
+        Event event = events.top(); events.pop();
         events_lock.unlock();
 
         // dispatch event
