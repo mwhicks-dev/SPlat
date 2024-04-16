@@ -6,9 +6,6 @@
 #include <mutex>
 
 #include <SFML/Graphics.hpp>
-#include <cereal/access.hpp>
-
-#include "Serialization.h"
 
 namespace SPlat {
 
@@ -17,14 +14,10 @@ namespace SPlat {
         /** Event interface */
         class Event {
 
-        protected:
+        public:
 
             /// @brief priority of event (default zero) for priority queueing
             int priority = 0;
-
-            friend class cereal::access;
-
-        public:
 
             /// @brief event type identifier
             std::string type;
@@ -94,12 +87,6 @@ namespace SPlat {
 
             friend bool operator>(const Event& lhs, const Event& rhs) {
                 return lhs.priority > rhs.priority;
-            }
-
-            /// @brief serialization func for SPlat::Events::Event
-            template <class Archive>
-            void serialize(Archive& ar) {
-                ar(type, args, foreground, priority);
             }
 
         };
