@@ -38,6 +38,8 @@ namespace SPlat {
 
             Asset& read_asset(size_t);
 
+            void validate(size_t);
+
             Asset& update_asset(size_t, Asset&);
 
             Asset& delete_asset(size_t);

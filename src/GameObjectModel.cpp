@@ -37,6 +37,26 @@ Asset& GameObjectModel::read_asset(size_t id) {
     return asset;
 }
 
+void GameObjectModel::validate(size_t id) {
+    Asset& asset = read_asset(id);
+
+    lock.lock();
+
+    if (asset.standing_on != nullptr) {
+        sf::Vector2f position = asset.getPosition();
+        position.y += 1;
+        asset.setPosition(position);
+        if (!asset.getGlobalBounds().intersects(
+                asset.standing_on->getGlobalBounds())) {
+            asset.standing_on = nullptr;
+        }
+        position.y -= 1;
+        asset.setPosition(position);
+    }
+
+    lock.unlock();
+}
+
 Asset& GameObjectModel::update_asset(size_t id, Asset& update) {
     lock.lock();
 
