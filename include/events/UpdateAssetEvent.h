@@ -21,16 +21,30 @@ namespace SPlat {
             /// @brief properties of asset to update
             SPlat::Model::AssetProperties properties;
 
+            /// @brief velocity to add to asset, if any
+            sf::Vector2f velocity_modifier;
+
             /// @brief serialization function for UpdateAssetEventArgs 
             template <class Archive>
             void serialize(Archive & ar) {
-                ar(id, properties);
+                ar(id, properties, velocity_modifier);
             }
 
         };
 
         /// @brief on dispatch updates asset by ID
         class UpdateAssetEvent : public Event {
+
+            void set_state(UpdateAssetEventArgs args) {
+                std::stringstream ss;
+                {
+                    cereal::JSONOutputArchive oar(ss);
+                    oar(args);
+                }
+                this->type = TYPE;
+                this->args = ss.str();
+                this->foreground = false;
+            }
 
         public:
 
@@ -47,15 +61,18 @@ namespace SPlat {
                     .id=id,
                     .properties=prop
                 };
-                std::stringstream ss;
-                {
-                    cereal::JSONOutputArchive oar(ss);
-                    oar(args);
-                }
+                set_state(args);
+            }
 
-                this->type = TYPE;
-                this->args = ss.str();
-                this->foreground = false;
+            UpdateAssetEvent(size_t id, SPlat::Model::AssetProperties prop, 
+                    sf::Vector2f velocity_modifier) {
+                // Serialize args to JSON string
+                UpdateAssetEventArgs args = {
+                    .id=id,
+                    .properties=prop,
+                    .velocity_modifier=velocity_modifier
+                };
+                set_state(args);
             }
 
         };

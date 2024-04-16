@@ -48,6 +48,9 @@ Asset& GameObjectModel::update_asset(size_t id, Asset& update) {
     asset.setTexture(update.getTexture());
     asset.setTextureRect(update.getTextureRect());
 
+    // NOTE: update velocity is ADDED to original
+    asset.velocity += update.velocity;
+
     lock.unlock();
 
     return asset;

@@ -24,6 +24,7 @@ void UpdateAssetEvent::handler(std::string serialized) {
     // create asset from args properties
     SPlat::Model::Asset& asset = 
         SPlat::Utilities::deserialize_asset(ss.str());
+    asset.velocity += args.velocity_modifier;
 
     // update asset in GOM
     try {
