@@ -10,9 +10,12 @@ using namespace SPlat;
 
 void Client::handle_key_event(sf::Keyboard::Key key) {
     if (sf::Keyboard::isKeyPressed(key) && !Events::KeyEvent::is_key_held(key)) {
-        Events::KeyPressEvent event(key);
-    } else if (!sf::Keyboard::isKeyPressed(key) && Events::KeyEvent::is_key_held(key)) {
-        Events::KeyReleaseEvent event(key);
+        Events::KeyPressEvent press(key);
+        press.raise();
+    }
+    else if (!sf::Keyboard::isKeyPressed(key) && Events::KeyEvent::is_key_held(key)) {
+        Events::KeyReleaseEvent release(key);
+        release.raise();
     }
 }
 
@@ -44,6 +47,7 @@ void Client::start() {
 
         // generate tick events
         Events::TickEvent tick_event;
+        tick_event.raise();
 
         // draw all assets
         window.clear(sf::Color::Black);

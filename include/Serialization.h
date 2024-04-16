@@ -18,7 +18,7 @@ namespace cereal {
     /// @brief external serialization func for SPlat::Events::Event
     template <class Archive>
     void serialize(Archive& ar, SPlat::Events::Event & ev) {
-        ar(ev.type, ev.args);
+        ar(ev.type, ev.args, ev.foreground);
     }
 
 }

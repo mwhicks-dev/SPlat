@@ -71,6 +71,7 @@ int main() {
         sf::Vector2f(50, 100),  // size
         SPlat::Model::Character::TYPE  // type
     });
+    event.raise();
 
     Utilities::set_default_handlers();
 

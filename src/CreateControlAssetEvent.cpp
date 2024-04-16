@@ -14,6 +14,5 @@ void CreateControlAssetEvent::handler(std::string serialized) {
         .create_asset(asset);
     
     // set asset to be controleld
-    ForegroundListener& lst = ForegroundListener::get_instance();
-    lst.push_event(ControlAssetEvent(asset.id));
+    ControlAssetEvent ctl(asset.id); ctl.raise();
 }
