@@ -60,6 +60,7 @@ namespace SPlat {
                 this->type = TYPE;
                 this->args = ss.str();
                 this->foreground = false;
+                this->priority = 1;
             }
 
         };
