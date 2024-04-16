@@ -27,7 +27,9 @@ void TickEvent::handler(std::string serialized) {
             // raise update asset event with velocity
             SPlat::Model::AssetProperties prop = curr.get_properties();
             prop.position += curr.velocity;
-            UpdateAssetEvent event(curr.id, prop);
+            UpdateAssetEvent event = curr.get_priority() >= 0
+                ? UpdateAssetEvent(curr.id, prop, sf::Vector2f(0, 1.5))
+                : UpdateAssetEvent(curr.id, prop);
             event.raise();
         } catch (std::exception& e) {/* OK */}
     }
