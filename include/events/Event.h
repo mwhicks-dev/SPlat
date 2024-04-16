@@ -14,6 +14,11 @@ namespace SPlat {
         /** Event interface */
         class Event {
 
+        protected:
+
+            /// @brief priority of event (default zero) for priority queueing
+            int priority = 0;
+
         public:
 
             /// @brief event type identifier
