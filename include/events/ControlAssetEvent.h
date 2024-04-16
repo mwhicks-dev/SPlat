@@ -63,6 +63,7 @@ namespace SPlat {
                 this->type = TYPE;
                 this->args = ss.str();
                 this->foreground = true;
+                this->priority = -2;
             }
 
             /// @brief gets ID of controlled asset

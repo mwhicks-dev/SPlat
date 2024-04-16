@@ -78,6 +78,7 @@ namespace SPlat {
                 this->type = TYPE;
                 this->args = ss.str();
                 this->foreground = true;
+                this->priority = -1;
             }
 
         };
@@ -106,6 +107,7 @@ namespace SPlat {
                 this->type = TYPE;
                 this->args = ss.str();
                 this->foreground = true;
+                this->priority = -1;
             }
 
         };
