@@ -62,10 +62,7 @@ namespace SPlat {
 
                 this->type = TYPE;
                 this->args = ss.str();
-
-                // pass to foreground listener
-                ForegroundListener &lst = ForegroundListener::get_instance();
-                lst.push_event(*this);
+                this->foreground = true;
             }
 
             /// @brief gets ID of controlled asset

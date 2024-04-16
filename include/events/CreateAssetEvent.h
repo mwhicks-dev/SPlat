@@ -38,10 +38,7 @@ namespace SPlat {
 
                 this->type = TYPE;
                 this->args = ss.str();
-
-                // pass to background listener
-                BackgroundListener &lst = BackgroundListener::get_instance();
-                lst.push_event(*this);
+                this->foreground = false;
             }
 
         };
