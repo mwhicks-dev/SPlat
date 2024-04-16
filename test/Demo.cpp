@@ -81,11 +81,19 @@ static void keyrelease_override(std::string serialized) {
 }
 
 int main() {
-    // Create asset with dispatched event
-    SPlat::Events::CreateControlAssetEvent event({
+    // Create assets with events
+    SPlat::Events::Event event;
+    event = SPlat::Events::CreateControlAssetEvent({
         sf::Vector2f(100, 100), // position
         sf::Vector2f(50, 100),  // size
         SPlat::Model::Character::TYPE  // type
+    });
+    event.raise();
+
+    event = SPlat::Events::CreateAssetEvent({
+        sf::Vector2f(0, 500),
+        sf::Vector2f(400, 200),
+        SPlat::Model::Platform::TYPE
     });
     event.raise();
 

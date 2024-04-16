@@ -28,6 +28,10 @@ namespace SPlat {
 
             GameObjectModel() = default;
 
+            void check_collision(size_t);
+
+            void resolve_collision(Asset&, Asset&);
+
         public:
 
             Asset& create_asset(Asset&);
