@@ -10,6 +10,6 @@ RUN wget -qO- "https://cmake.org/files/v3.28/cmake-3.28.3-linux-x86_64.tar.gz" |
 WORKDIR /home
 COPY . /home
 RUN cmake .
-RUN cmake --build .
+RUN make -j$(nproc)
 
-ENTRYPOINT ./gom_test && ./serialization_test && ./event_test
+ENTRYPOINT ./gom_test && ./serialization_test && ./event_test && ./asset_factory_test

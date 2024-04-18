@@ -30,5 +30,8 @@ target_link_libraries(serialization_test gtest gtest_main sfml-graphics)
 add_executable(event_test test/TestEvents.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
 target_link_libraries(event_test gtest gtest_main sfml-graphics sfml-window)
 
+add_executable(asset_factory_test test/TestAssetFactory.cpp ${ALL_IMPLEMENTATIONS})
+target_link_libraries(asset_factory_test gtest gtest_main sfml-system sfml-graphics sfml-window)
+
 add_executable(demo test/Demo.cpp ${ALL_IMPLEMENTATIONS})
 target_link_libraries(demo pthread sfml-system sfml-graphics sfml-window)
