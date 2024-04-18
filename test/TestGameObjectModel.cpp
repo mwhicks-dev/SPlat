@@ -60,7 +60,7 @@ TEST(GOMTest, TestGOM) {
 
     ASSERT_EQ(character.id, 0);
     ASSERT_EQ(character.getPosition(), sf::Vector2f(100, 100));
-    ASSERT_EQ(character.getSize(), sf::Vector2f(50, 100));
+    ASSERT_EQ(character.getSize(), sf::Vector2f(150, 200));
     ASSERT_EQ(character2.id, 1);
     ASSERT_EQ(character2.getPosition(), sf::Vector2f(0, 0));
     ASSERT_EQ(character2.getSize(), sf::Vector2f(50, 100));

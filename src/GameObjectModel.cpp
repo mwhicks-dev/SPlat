@@ -70,6 +70,7 @@ Asset& GameObjectModel::update_asset(size_t id, Asset& update) {
     sf::Vector2f position_i = asset.getPosition();
 
     asset.setPosition(update.getPosition());
+    asset.setSize(update.getSize());
     asset.setTexture(update.getTexture());
     asset.setTextureRect(update.getTextureRect());
 
