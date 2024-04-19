@@ -80,7 +80,7 @@ static void keyrelease_override(std::string serialized) {
 int main() {
     // Create assets with events
     SPlat::Events::Event event;
-    event = SPlat::Events::CreateControlAssetEvent({
+    event = SPlat::Events::CreateControlCharacterEvent({
         sf::Vector2f(100, 100), // position
         sf::Vector2f(50, 100),  // size
         SPlat::Model::Character::TYPE  // type
