@@ -17,7 +17,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 set(MODEL_IMPLEMENTATIONS src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp)
-set(EVENT_IMPLEMENTATIONS src/Event.cpp src/AssetEvents.cpp src/KeyEvents.cpp src/CreateAssetEvent.cpp src/ControlAssetEvent.cpp src/CreateControlAssetEvent.cpp src/UpdateAssetEvent.cpp src/TickEvent.cpp src/Listener.cpp)
+set(EVENT_IMPLEMENTATIONS src/Event.cpp src/AssetEvents.cpp src/KeyEvents.cpp src/CreateAssetEvent.cpp src/ControlAssetEvent.cpp src/CreateControlAssetEvent.cpp src/TickEvent.cpp src/Listener.cpp)
 set(CLIENT_IMPLEMENTATIONS src/Client.cpp src/Controller.cpp)
 set(ALL_IMPLEMENTATIONS ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS} ${CLIENT_IMPLEMENTATIONS})
 
