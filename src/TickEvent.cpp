@@ -1,5 +1,5 @@
 #include "events/TickEvent.h"
-#include "events/UpdateAssetEvent.h"
+#include "events/AssetEvents.h"
 
 #include <exception>
 #include <cmath>
@@ -27,13 +27,13 @@ void TickEvent::handler(std::string serialized) {
             SPlat::Model::Asset& curr = SPlat::Model::GameObjectModel
                 ::get_instance().read_asset(id);
 
-            // raise update asset event with velocity
-            SPlat::Model::AssetProperties prop = curr.get_properties();
-            prop.position += curr.velocity;
-            UpdateAssetEvent event = curr.get_priority() >= 0 && curr.standing_on == nullptr
-                ? UpdateAssetEvent(curr.id, prop, sf::Vector2f(0, 1.5))
-                : UpdateAssetEvent(curr.id, prop);
-            event.raise();
+            // raise relevant vec updates
+            {
+                AddPositionEvent pos(curr.id, curr.velocity); pos.raise();
+            }
+            if (curr.get_priority() >= 0 && curr.standing_on == nullptr) {
+                AddVelocityEvent vel(curr.id, sf::Vector2f(0, 1.5)); vel.raise();
+            }
         } catch (std::exception& e) {/* OK */}
     }
 }

@@ -73,9 +73,7 @@ Asset& GameObjectModel::update_asset(size_t id, Asset& update) {
     asset.setSize(update.getSize());
     asset.setTexture(update.getTexture());
     asset.setTextureRect(update.getTextureRect());
-
-    // NOTE: update velocity is ADDED to original
-    asset.velocity += update.velocity;
+    asset.velocity = update.velocity;
 
     sf::Vector2f position_f = asset.getPosition();
 
@@ -136,31 +134,42 @@ void GameObjectModel::check_collision(size_t id) {
 }
 
 void GameObjectModel::resolve_collision(Asset& move, Asset& fixed) {
-    std::cout << "Collision detected!!!" << std::endl;
-    std::cout << "Position: " << move.getPosition().x << ", " << move.getPosition().y << std::endl;
-
     // get moving asset velocity as unit
     sf::Vector2f unit_velocity = move.velocity;
     float magnitude = sqrt(pow(unit_velocity.x, 2) + pow(unit_velocity.y, 2));
     if (fabs(magnitude) < 0.0001) return;
     unit_velocity /= magnitude;
 
-    // subtract unit velocities until no more collision
-    sf::Vector2f position = move.getPosition();
-    do {
-        position -= unit_velocity;
-        move.setPosition(position);
-    } while (collision_checker(move, fixed));
-
-    std::cout << "Position: " << move.getPosition().x << ", " << move.getPosition().y << std::endl;
+    sf::Vector2f offset;
+    {
+        sf::RectangleShape cpy = move;
+        float x_unit = -fabs(move.velocity.x) / move.velocity.x;
+        do {
+            cpy.move(x_unit, 0);
+            offset.x += x_unit;
+        } while (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()));
+    }{
+        sf::RectangleShape cpy = move;
+        float y_unit = -fabs(move.velocity.y) / move.velocity.y;
+        do {
+            cpy.move(0, y_unit);
+            offset.y += y_unit;
+        } while (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()));
+    }
+    // check for nan
+    if (!std::isnan(offset.x) && (std::isnan(offset.y) || fabs(offset.x) < fabs(offset.y))) {
+        move.move(offset.x, 0);
+    } else if (!std::isnan(offset.y) && (std::isnan(offset.x) || fabs(offset.y) < fabs(offset.x))) {
+        move.move(0, offset.y);
+    }
 
     // check if move on fixed object now
-    position.y += 1;
-    move.setPosition(position);
-    if (collision_checker(move, fixed)) {
-        move.standing_on = &fixed;
-        move.velocity.y = 0;
+    {
+        sf::RectangleShape cpy = move;
+        cpy.move(0, 1);
+        if (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds())) {
+            move.standing_on = &fixed;
+            move.velocity.y = 0;
+        }
     }
-    position.y -= 1;
-    move.setPosition(position);
 }

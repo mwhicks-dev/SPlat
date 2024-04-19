@@ -28,6 +28,8 @@ void AddVelocityEvent::handler(std::string serialized) {
     SPlat::Model::Asset& ref = 
         SPlat::Model::GameObjectModel::get_instance().read_asset(args.id);
     
+    //std::cout << "Asset " << ref.id << " initial velocity: {x:" << ref.velocity.x << ", y:" << ref.velocity.y << "}" << std::endl;
+
     // depending on type of asset, get and update value
     if (ref.get_type() == SPlat::Model::Character::TYPE) {  // character
         SPlat::Model::Character val = SPlat::Model
@@ -48,6 +50,8 @@ void AddVelocityEvent::handler(std::string serialized) {
         SPlat::Model::AssetFactory<SPlat::Model::MovingPlatform>
             ::update_asset(args.id, val);
     }
+
+    //std::cout << "Asset " << ref.id << " final velocity: {x:" << ref.velocity.x << ", y:" << ref.velocity.y << "}" << std::endl;
 }
 
 void add_position_helper(SPlat::Model::Asset& asset, sf::Vector2f& update) {
@@ -68,6 +72,8 @@ void AddPositionEvent::handler(std::string serialized) {
     // get asset ref from GOM
     SPlat::Model::Asset& ref = 
         SPlat::Model::GameObjectModel::get_instance().read_asset(args.id);
+
+    //std::cout << "Asset " << ref.id << " initial position: {x:" << ref.getPosition().x << ", y:" << ref.getPosition().y << "}" << std::endl;
     
     // depending on type of asset, get and update value
     if (ref.get_type() == SPlat::Model::Character::TYPE) {  // character
@@ -89,4 +95,6 @@ void AddPositionEvent::handler(std::string serialized) {
         SPlat::Model::AssetFactory<SPlat::Model::MovingPlatform>
             ::update_asset(args.id, val);
     }
+
+    //std::cout << "Asset " << ref.id << " final position: {x:" << ref.getPosition().x << ", y:" << ref.getPosition().y << "}" << std::endl;
 }

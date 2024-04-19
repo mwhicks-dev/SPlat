@@ -5,6 +5,7 @@
 #include "model/Platform.h"
 #include "model/MovingPlatform.h"
 #include "model/GameObjectModel.h"
+#include "events/AssetEvents.h"
 #include "events/ControlAssetEvent.h"
 #include "events/CreateAssetEvent.h"
 #include "events/CreateControlAssetEvent.h"
@@ -45,6 +46,12 @@ namespace SPlat {
 
         /// @brief sets all SPlat lib event handlers
         static void set_default_handlers() {
+            SPlat::Events::Event::handlers[SPlat::Events::AddPositionEvent::TYPE] =
+                SPlat::Events::AddPositionEvent::handler;
+
+            SPlat::Events::Event::handlers[SPlat::Events::AddVelocityEvent::TYPE] =
+                SPlat::Events::AddVelocityEvent::handler;
+
             SPlat::Events::Event::handlers[SPlat::Events::ControlAssetEvent::TYPE] =
                 SPlat::Events::ControlAssetEvent::handler;
             

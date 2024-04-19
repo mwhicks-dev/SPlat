@@ -1,6 +1,7 @@
 #include "Client.h"
 #include "model/Character.h"
 #include "utilities/Functions.h"
+#include "events/AssetEvents.h"
 
 using namespace SPlat;
 
@@ -27,21 +28,15 @@ static void keypress_override(std::string serialized) {
 
         // update velocity based on key pressed
         if (args.key == sf::Keyboard::Key::Left) {
-            Events::UpdateAssetEvent event(
-                ctl.id, ctl_properties, sf::Vector2f(-15, 0));
-            event.priority = -1;
-            event.raise();
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-15, 0));
+            event.priority = -1; event.raise();
         } else if (args.key == sf::Keyboard::Key::Right) {
-            Events::UpdateAssetEvent event(
-                ctl.id, ctl_properties, sf::Vector2f(15, 0));
-            event.priority = -1;
-            event.raise();
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(15, 0));
+            event.priority = -1; event.raise();
         } else if (args.key == sf::Keyboard::Key::Up 
                 && ctl.standing_on != nullptr) {
-            Events::UpdateAssetEvent event(
-                ctl.id, ctl_properties, sf::Vector2f(0, -25));
-            event.priority = -1;
-            event.raise();
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(0, -25));
+            event.priority = -1; event.raise();
         }
 
     } catch (std::logic_error & e) {
@@ -72,15 +67,11 @@ static void keyrelease_override(std::string serialized) {
 
         // update velocity based on key pressed
         if (args.key == sf::Keyboard::Key::Left) {
-            Events::UpdateAssetEvent event(
-                ctl.id, ctl_properties, sf::Vector2f(15, 0));
-            event.priority = -1;
-            event.raise();
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(15, 0));
+            event.priority = -1; event.raise();
         } else if (args.key == sf::Keyboard::Key::Right) {
-            Events::UpdateAssetEvent event(
-                ctl.id, ctl_properties, sf::Vector2f(-15, 0));
-            event.priority = -1;
-            event.raise();
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-15, 0));
+            event.priority = -1; event.raise();
         }
 
     } catch (std::logic_error & e) {/* OK */}
