@@ -172,4 +172,12 @@ void GameObjectModel::resolve_collision(Asset& move, Asset& fixed) {
             move.velocity.y = 0;
         }
     }
+
+    // check if collision was with something above; if so, y vel becomes 0
+    {
+        sf::RectangleShape cpy = move;
+        cpy.move(0, -1);
+        if (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()))
+            move.velocity.y = 0;
+    }
 }
