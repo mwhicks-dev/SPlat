@@ -94,6 +94,23 @@ int main() {
     });
     event.raise();
 
+    event = SPlat::Events::CreateMovingPlatformEvent(
+        {  // AssetProperties
+            .position=sf::Vector2f(300, 100),
+            .size=sf::Vector2f(200, 25),
+            .type=SPlat::Model::MovingPlatform::TYPE
+        }, {  // std::vector<State>
+            {
+                .position=sf::Vector2f(200, 300),
+                .ticks_til_next=100
+            }, {
+                .position=sf::Vector2f(400, 300),
+                .ticks_til_next=100
+            }
+        }
+    );
+    event.raise();
+
     Utilities::set_default_handlers();
 
     Events::Event::handlers[Events::KeyPressEvent::TYPE] =

@@ -11,6 +11,7 @@
 #include "events/CharacterEvents.h"
 #include "events/CreateControlAssetEvent.h"
 #include "events/KeyEvents.h"
+#include "events/MovingPlatformEvents.h"
 #include "events/TickEvent.h"
 
 namespace SPlat {
@@ -66,6 +67,9 @@ namespace SPlat {
             
             SPlat::Events::Event::handlers[SPlat::Events::CreateControlCharacterEvent::TYPE] =
                 SPlat::Events::CreateControlCharacterEvent::handler;
+            
+            SPlat::Events::Event::handlers[SPlat::Events::CreateMovingPlatformEvent::TYPE] =
+                SPlat::Events::CreateMovingPlatformEvent::handler;
             
             SPlat::Events::Event::handlers[SPlat::Events::KeyPressEvent::TYPE] =
                 SPlat::Events::KeyPressEvent::handler;

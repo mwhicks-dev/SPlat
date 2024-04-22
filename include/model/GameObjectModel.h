@@ -6,6 +6,7 @@
 #include <mutex>
 
 #include "Asset.h"
+#include "events/MovingPlatformEvents.h"
 
 /// NOTE
 /// For now, new Assets will be created by the user; later, I may add some top 
@@ -57,6 +58,8 @@ namespace SPlat {
                 static GameObjectModel instance;
                 return instance;
             }
+
+            friend void SPlat::Events::CreateMovingPlatformEvent::handler(std::string);
 
         };
 
