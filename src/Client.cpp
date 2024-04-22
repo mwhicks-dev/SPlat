@@ -5,6 +5,7 @@
 #include "events/TickEvent.h"
 
 #include <thread>
+#include <chrono>
 
 using namespace SPlat;
 
@@ -20,12 +21,15 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
 }
 
 void Client::start() {
-    window.create(sf::VideoMode(800, 600), "SPlat");
-    window.setFramerateLimit(60);
     std::pair<bool, std::mutex>& runtime = *new std::pair<bool, std::mutex>();
     runtime.first = true;
 
     std::thread t(&Controller::run, &ctl, std::ref(runtime));
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(250));  // give controller time to get started
+    
+    window.create(sf::VideoMode(800, 600), "SPlat");
+    window.setFramerateLimit(60);
 
     while (window.isOpen()) {
         // poll for closed event

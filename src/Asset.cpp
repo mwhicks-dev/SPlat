@@ -14,7 +14,7 @@ void Asset::update() {
             = SPlat::Events::AddPositionEvent(id, velocity);
         event.raise();
     }
-    if (get_priority() >= 0) {  // gravity update
+    if (get_priority() >= 0 && standing_on == nullptr) {  // gravity update
         SPlat::Events::Event event 
             = SPlat::Events::AddVelocityEvent(id, sf::Vector2f(0, 1.5));
         event.raise();
