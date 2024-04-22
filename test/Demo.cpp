@@ -2,6 +2,9 @@
 #include "model/Character.h"
 #include "utilities/Functions.h"
 #include "events/AssetEvents.h"
+#include "model/AssetFactory.h"
+
+#include <iostream>
 
 using namespace SPlat;
 
@@ -14,9 +17,7 @@ static void keypress_override(std::string serialized) {
     try {
         // get asset
         size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
-        Model::Asset& ctl = Model::GameObjectModel
-            ::get_instance().read_asset(id);
-        Model::AssetProperties ctl_properties = ctl.get_properties();
+        Model::Character ctl = Model::AssetFactory<Model::Character>::read_asset(id);
         
         // deserialize KeyEventArgs from args
         Events::KeyEventArgs args;
@@ -53,9 +54,7 @@ static void keyrelease_override(std::string serialized) {
     try {
         // get asset
         size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
-        Model::Asset& ctl = Model::GameObjectModel
-            ::get_instance().read_asset(id);
-        Model::AssetProperties ctl_properties = ctl.get_properties();
+        Model::Character ctl = Model::AssetFactory<Model::Character>::read_asset(id);
         
         // deserialize KeyEventArgs from args
         Events::KeyEventArgs args;
@@ -74,7 +73,9 @@ static void keyrelease_override(std::string serialized) {
             event.priority = -1; event.raise();
         }
 
-    } catch (std::logic_error & e) {/* OK */}
+    } catch (std::logic_error & e) {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 int main() {
