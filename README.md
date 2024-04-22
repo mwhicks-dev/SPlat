@@ -12,7 +12,7 @@ docker build -t SPlat/test . && docker run -it --rm SPlat/test
 
 ## Build
 
-Build (via Docker):
+Build (Makefile generated with CMake):
 
 1. Go to the `build/` directory.
 2. Execute `make -j$(nproc) demo` to build the demo.
