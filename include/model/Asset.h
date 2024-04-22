@@ -38,6 +38,8 @@ namespace SPlat {
 
             Asset * standing_on;
 
+            std::unordered_set<size_t> standers;
+
             sf::Vector2f velocity;
 
             Asset(sf::Vector2f&);

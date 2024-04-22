@@ -48,6 +48,7 @@ void GameObjectModel::validate(size_t id) {
         asset.setPosition(position);
         if (!asset.getGlobalBounds().intersects(
                 asset.standing_on->getGlobalBounds())) {
+            asset.standing_on->standers.erase(asset.id);
             asset.standing_on = nullptr;
         }
         position.y -= 1;
@@ -169,6 +170,7 @@ void GameObjectModel::resolve_collision(Asset& move, Asset& fixed) {
         cpy.move(0, 1);
         if (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds())) {
             move.standing_on = &fixed;
+            fixed.standers.insert(move.id);
             move.velocity.y = 0;
         }
     }

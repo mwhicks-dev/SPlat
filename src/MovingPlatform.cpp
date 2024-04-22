@@ -50,5 +50,9 @@ void MovingPlatform::update() {
     // move platform by vector
     SPlat::Events::Event event = SPlat::Events::AddPositionEvent(id, move);
     event.raise();
+    for (size_t stander_id : standers) {
+        event = SPlat::Events::AddPositionEvent(stander_id, move);
+        event.raise();
+    }
     platform_ticks += 1;
 }

@@ -13,6 +13,10 @@ void Asset::update() {
         SPlat::Events::Event event 
             = SPlat::Events::AddPositionEvent(id, velocity);
         event.raise();
+        for (size_t stander_id : standers) {
+            event = SPlat::Events::AddPositionEvent(stander_id, velocity);
+            event.raise();
+        }
     }
     if (get_priority() >= 0 && standing_on == nullptr) {  // gravity update
         SPlat::Events::Event event 
