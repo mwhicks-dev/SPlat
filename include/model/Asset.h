@@ -46,6 +46,8 @@ namespace SPlat {
 
             virtual std::string get_type() = 0;
 
+            virtual void update();
+
             AssetProperties get_properties() {
                 return {getPosition(), getSize(), get_type()};
             }

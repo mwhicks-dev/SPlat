@@ -21,7 +21,7 @@ set(EVENT_IMPLEMENTATIONS src/Event.cpp src/AssetEvents.cpp src/KeyEvents.cpp sr
 set(CLIENT_IMPLEMENTATIONS src/Client.cpp src/Controller.cpp)
 set(ALL_IMPLEMENTATIONS ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS} ${CLIENT_IMPLEMENTATIONS})
 
-add_executable(gom_test test/TestGameObjectModel.cpp ${MODEL_IMPLEMENTATIONS})
+add_executable(gom_test test/TestGameObjectModel.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
 target_link_libraries(gom_test gtest gtest_main sfml-graphics)
 
 add_executable(serialization_test test/TestSerialization.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
