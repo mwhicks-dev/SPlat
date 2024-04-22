@@ -10,6 +10,14 @@ Tests (via Docker):
 docker build -t SPlat/test . && docker run -it --rm SPlat/test
 ```
 
+## Build
+
+Build (via Docker):
+
+1. Go to the `build/` directory.
+2. Execute `make -j$(nproc) demo` to build the demo.
+3. Execute `./demo` to run the demo.
+
 ## Libraries
 
 I use the following libraries in this implementation:
