@@ -3,8 +3,9 @@
 
 #include <mutex>
 #include <queue>
+#include <map>
 
-#include "events/Event.h"
+#include "events/Command.h"
 
 namespace SPlat {
 
@@ -13,29 +14,44 @@ namespace SPlat {
         /// @brief shared structure for listeners
         class Listener {
 
-            /// @brief mutex to safeguard events access
-            std::mutex events_lock;
+            /// @brief mutex to safeguard commands access
+            std::mutex commands_lock;
 
-            /// @brief queue of events to dispatch
-            std::priority_queue<Event> events;
+            /// @brief queue of commands to dispatch
+            std::priority_queue<Command> commands;
+
+            /// @brief mutex to safeguard handlers access
+            std::mutex handlers_lock;
+
+            /// @brief non-default handlers mapping
+            std::map<std::string, void (*)(std::string)> handlers;
 
         protected:
 
             /// @brief protected listener constructor
             Listener() = default;
 
+            /// @brief dispatch command using methods specified by their events
+            /// @param cmd command to dispatch
+            void dispatch(Command);
+
         public:
 
-            /// @brief dequeue and dispatch events on call
+            /// @brief dequeue and dispatch commands on call
             void run();
 
-            /// @brief externally enqueue a new event
-            /// @param event event to enqueue
-            void push_event(Event);
+            /// @brief externally enqueue a new command
+            /// @param command command to enqueue
+            void push_command(Command);
+
+            /// @brief set handler by string command type
+            /// @param type string command type
+            /// @param handler handler function template
+            void set_handler(std::string, void (*)(std::string));
 
         };
 
-        /// @brief listener for hardware interface device events
+        /// @brief listener for hardware interface device commands
         class ForegroundListener : public Listener {
 
             /// @brief singleton constructor
@@ -52,7 +68,7 @@ namespace SPlat {
 
         };
 
-        /// @brief listener for general update/physics events
+        /// @brief listener for general update/physics commands
         class BackgroundListener : public Listener {
 
             /// @brief singleton constructor
