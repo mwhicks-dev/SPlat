@@ -9,13 +9,12 @@ namespace SPlat {
 
         class MovingPlatform : public Platform {
 
-            /// @brief "queue" of states to cycle between
-            std::vector<SPlat::Model::MovingPlatform::State> queue;
+            size_t platform_ticks = 0;
 
         public:
 
             /// @brief MovingPlatform state; position, time and repeat
-            class State {
+            struct State {
 
                 /// @brief state position
                 sf::Vector2f position;
@@ -26,7 +25,19 @@ namespace SPlat {
                 /// @brief flag to add this state back to queue (true default) 
                 bool repeat = true;
 
+                template <class Archive>
+                void serialize(Archive& ar) {
+                    ar(position, ticks_til_next, repeat);
+                }
+
             };
+
+        private:
+
+            /// @brief "queue" of states to cycle between
+            std::vector<State> queue;
+
+        public:
 
             static std::string TYPE;
 
@@ -36,7 +47,7 @@ namespace SPlat {
 
             std::string get_type() override;
 
-            void add_state(State&);
+            void add_state(State& s) { queue.push_back(s); }
 
             void update() override;
 
