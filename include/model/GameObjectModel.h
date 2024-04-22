@@ -61,6 +61,10 @@ namespace SPlat {
 
             friend void SPlat::Events::CreateMovingPlatformEvent::handler(std::string);
 
+            friend void SPlat::Events::AddPositionEvent::handler(std::string);
+
+            friend void SPlat::Events::AddVelocityEvent::handler(std::string);
+
         };
 
     }
