@@ -2,7 +2,6 @@
 #define SPLAT_ASSETEVENTS_H
 
 #include "events/Event.h"
-#include "model/Asset.h"
 #include "Serialization.h"
 
 #include "cereal/archives/json.hpp"
