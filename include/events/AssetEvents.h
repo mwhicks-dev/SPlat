@@ -79,6 +79,41 @@ namespace SPlat {
 
         };
 
+        /// @brief event used to set controlled asset
+        class ControlAssetEvent : public Event {
+
+            /// @brief ID of asset to control
+            size_t id;
+
+        public:
+
+            /// @brief ControlAssetEvent arguments
+            struct Args {
+
+                /// @brief ID of asset to control
+                size_t id;
+
+                template <class Archive>
+                void serialize(Archive& ar) {
+                    ar(id);
+                }
+
+            };
+
+            /// @brief create a new ControlAssetEvent with an asset ID
+            /// @param id ID of asset to update
+            ControlAssetEvent(size_t);
+            
+            void raise() override;
+
+            static std::string get_type() { return "control_asset_event"; }
+
+            static void handler(std::string);
+
+            static size_t get_controlled_asset_id();
+
+        };
+
     }
 
 }

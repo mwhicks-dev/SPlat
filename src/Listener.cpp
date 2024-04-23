@@ -7,6 +7,7 @@ using namespace SPlat::Events;
 Listener::Listener() {
     set_handler(AddPositionEvent::get_type(), AddPositionEvent::handler);
     set_handler(AddVelocityEvent::get_type(), AddVelocityEvent::handler);
+    set_handler(ControlAssetEvent::get_type(), ControlAssetEvent::handler);
 }
 
 void Listener::dispatch(Command cmd) {
