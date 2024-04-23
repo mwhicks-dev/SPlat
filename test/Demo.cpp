@@ -10,14 +10,11 @@
 
 #include <cereal/archives/json.hpp>
 
-#include <iostream>
-
 using namespace SPlat;
 
 /// @brief overriden keypress event handler with movement
 /// @param serialized serialized KeyEventArgs
 static void keypress_override(std::string serialized) {
-    std::cout << "Hit!" << std::endl;
     // set key held
     Events::KeyPressEvent::handler(serialized);
 
