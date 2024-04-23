@@ -78,7 +78,7 @@ namespace SPlat {
             /// @param key released keyboard key
             KeyReleaseEvent(sf::Keyboard::Key key) : KeyEvent(key) {}
 
-            static std::string get_type() { return "key_press_event"; }
+            static std::string get_type() { return "key_release_event"; }
 
             void raise() override;
 
