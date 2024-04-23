@@ -15,6 +15,11 @@ namespace cereal {
         ar(vec.x, vec.y);
     }
 
+    template <class Archive>
+    void serialize(Archive& ar, sf::Color& color) {
+        ar(color.r, color.g, color.b, color.a);
+    }
+
 }
 
 #endif

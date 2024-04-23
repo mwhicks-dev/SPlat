@@ -21,16 +21,21 @@ namespace SPlat {
             /// @brief string type of asset
             std::string type;
 
+            /// @brief asset fill color, white default
+            sf::Color fill_color = sf::Color::White;
+
             /// @brief convert AssetProperties to serializable string
             /// @tparam Archive cereal archive class
             /// @param ar Archive to use for AssetProperties conversion
             template <class Archive>
             void serialize(Archive& ar) {
-                ar(position, size, type);
+                ar(position, size, type, fill_color);
             }
         };
 
         class Asset : public sf::RectangleShape {
+
+            sf::Color fill_color;
 
         public:
 
@@ -43,6 +48,8 @@ namespace SPlat {
             sf::Vector2f velocity;
 
             Asset(sf::Vector2f&);
+
+            Asset(sf::Vector2f&, sf::Color&);
 
             virtual int get_priority() = 0;
 
