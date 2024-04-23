@@ -25,33 +25,33 @@ namespace SPlat {
             }
             
             /// @brief overload < operator 
-            bool operator<(const Command& other) {
-                return priority < other.priority;
+            friend bool operator<(const Command& lhs, const Command& rhs) {
+                return lhs.priority < rhs.priority;
             }
 
             /// @brief overload > operator 
-            bool operator>(const Command& other) {
-                return priority > other.priority;
+            friend bool operator>(const Command& lhs, const Command& rhs) {
+                return lhs.priority > rhs.priority;
             }
 
             /// @brief overload == operator 
-            bool operator==(const Command& other) {
-                return priority == other.priority;
+            friend bool operator==(const Command& lhs, const Command& rhs) {
+                return lhs.priority == rhs.priority;
             }
 
             /// @brief overload != operator 
-            bool operator!=(const Command& other) {
-                return !(*this == other);
+            friend bool operator!=(const Command& lhs, const Command& rhs) {
+                return !(lhs == rhs);
             }
 
             /// @brief overload <= operator 
-            bool operator<=(const Command& other) {
-                return !(*this > other);
+            friend bool operator<=(const Command& lhs, const Command& rhs) {
+                return !(lhs > rhs);
             }
 
             /// @brief overload >= operator 
-            bool operator>=(const Command& other) {
-                return !(*this < other);
+            friend bool operator>=(const Command& lhs, const Command& rhs) {
+                return !(lhs < rhs);
             }
 
         };

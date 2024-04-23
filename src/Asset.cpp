@@ -10,8 +10,7 @@ Asset::Asset(sf::Vector2f& size) {
 void Asset::update() {
     // raise relevant update events
     {  // velocity update
-        SPlat::Events::Event event 
-            = SPlat::Events::AddPositionEvent(id, velocity);
+        SPlat::Events::AddPositionEvent event(id, velocity);
         event.raise();
         for (size_t stander_id : standers) {
             event = SPlat::Events::AddPositionEvent(stander_id, velocity);
@@ -19,8 +18,7 @@ void Asset::update() {
         }
     }
     if (get_priority() >= 0 && standing_on == nullptr) {  // gravity update
-        SPlat::Events::Event event 
-            = SPlat::Events::AddVelocityEvent(id, sf::Vector2f(0, 1.5));
+        SPlat::Events::AddVelocityEvent event(id, sf::Vector2f(0, 1.5));
         event.raise();
     }
 }

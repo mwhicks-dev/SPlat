@@ -50,6 +50,8 @@ namespace SPlat {
 
             void raise() override;
 
+            static bool is_key_pressed(sf::Keyboard::Key);
+
         };
 
         /// @brief event raised when a key is pressed

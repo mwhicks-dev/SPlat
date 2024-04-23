@@ -5,8 +5,9 @@
 #include <unordered_set>
 #include <mutex>
 
-#include "Asset.h"
+#include "model/Asset.h"
 #include "events/MovingPlatformEvents.h"
+#include "events/AssetEvents.h"
 
 /// NOTE
 /// For now, new Assets will be created by the user; later, I may add some top 

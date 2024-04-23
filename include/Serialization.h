@@ -15,12 +15,6 @@ namespace cereal {
         ar(vec.x, vec.y);
     }
 
-    /// @brief serialization func for SPlat::Events::Event
-    template <class Archive>
-    void serialize(Archive& ar, SPlat::Events::Event& ev) {
-        ar(ev.type, ev.args, ev.foreground, ev.priority);
-    }
-
 }
 
 #endif

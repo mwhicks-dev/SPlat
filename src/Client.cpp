@@ -2,6 +2,7 @@
 #include "Controller.h"
 
 #include "events/KeyEvents.h"
+#include "events/Listener.h"
 #include "events/TickEvent.h"
 
 #include <thread>
@@ -10,11 +11,11 @@
 using namespace SPlat;
 
 void Client::handle_key_event(sf::Keyboard::Key key) {
-    if (sf::Keyboard::isKeyPressed(key) && !Events::KeyEvent::is_key_held(key)) {
+    if (sf::Keyboard::isKeyPressed(key)) {
         Events::KeyPressEvent press(key);
         press.raise();
     }
-    else if (!sf::Keyboard::isKeyPressed(key) && Events::KeyEvent::is_key_held(key)) {
+    else if (!sf::Keyboard::isKeyPressed(key)) {
         Events::KeyReleaseEvent release(key);
         release.raise();
     }
