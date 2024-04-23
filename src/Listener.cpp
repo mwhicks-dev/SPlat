@@ -1,6 +1,7 @@
 #include "events/Listener.h"
 
 #include "events/AssetEvents.h"
+#include "events/CharacterEvents.h"
 
 using namespace SPlat::Events;
 
@@ -8,6 +9,8 @@ Listener::Listener() {
     set_handler(AddPositionEvent::get_type(), AddPositionEvent::handler);
     set_handler(AddVelocityEvent::get_type(), AddVelocityEvent::handler);
     set_handler(ControlAssetEvent::get_type(), ControlAssetEvent::handler);
+    set_handler(CreateCharacterEvent::get_type(), CreateCharacterEvent::handler);
+    set_handler(CreateControlCharacterEvent::get_type(), CreateControlCharacterEvent::handler);
 }
 
 void Listener::dispatch(Command cmd) {
