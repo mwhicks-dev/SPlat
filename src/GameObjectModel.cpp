@@ -137,7 +137,6 @@ void GameObjectModel::check_collision(size_t id) {
             bool collision = collision_checker(*lhs, *rhs);
             
             if (!collision) continue;
-            std::cout << "Collision detected!" << std::endl;
 
             resolve_collision(*lhs, *rhs);
             lhs->get_priority() >= rhs->get_priority()
