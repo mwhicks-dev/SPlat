@@ -3,10 +3,9 @@
 using namespace SPlat::Model;
 
 sf::Color rand_platform_color() {
-    std::srand(time(0));
-    int r = 136 + rand() % 32;
-    int g = 136 + rand() % 32;
-    int b = 136 + rand() % 32;
+    int r = 48 + rand() % 80;
+    int g = 48 + rand() % 80;
+    int b = 48 + rand() % 80;
     return sf::Color(r, g, b);
 }
 

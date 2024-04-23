@@ -3,10 +3,10 @@
 using namespace SPlat::Model;
 
 sf::Color rand_character_color() {
-    std::srand(time(0));
-    int r = 168 + rand() % 44;
-    int g = 168 + rand() % 44;
-    int b = 168 + rand() % 44;
+    srand(time(0));
+    int r = 128 + rand() % 128;
+    int g = 128 + rand() % 128;
+    int b = 128 + rand() % 128;
     return sf::Color(r, g, b);
 }
 
