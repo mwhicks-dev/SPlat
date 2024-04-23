@@ -3,6 +3,7 @@
 #include "events/AssetEvents.h"
 #include "events/CharacterEvents.h"
 #include "events/KeyEvents.h"
+#include "events/MovingPlatformEvents.h"
 
 using namespace SPlat::Events;
 
@@ -12,6 +13,7 @@ Listener::Listener() {
     set_handler(ControlAssetEvent::get_type(), ControlAssetEvent::handler);
     set_handler(CreateCharacterEvent::get_type(), CreateCharacterEvent::handler);
     set_handler(CreateControlCharacterEvent::get_type(), CreateControlCharacterEvent::handler);
+    set_handler(CreateMovingPlatformEvent::get_type(), CreateMovingPlatformEvent::handler);
     set_handler(KeyPressEvent::get_type(), KeyPressEvent::handler);
     set_handler(KeyReleaseEvent::get_type(), KeyReleaseEvent::handler);
 }

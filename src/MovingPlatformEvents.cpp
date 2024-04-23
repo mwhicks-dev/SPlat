@@ -1,10 +1,40 @@
 #include "events/MovingPlatformEvents.h"
-
+#include "events/Command.h"
+#include "events/Listener.h"
 #include "model/AssetFactory.h"
+
+#include <cereal/archives/json.hpp>
+
+#include <sstream>
 
 using namespace SPlat::Events;
 
-std::string CreateMovingPlatformEvent::TYPE = "create_moving_platform_event";
+CreateMovingPlatformEvent::CreateMovingPlatformEvent(
+    SPlat::Model::AssetProperties properties,
+    std::vector<SPlat::Model::MovingPlatform::State> states
+) {
+    this->properties = properties;
+    this->states = states;
+}
+
+void CreateMovingPlatformEvent::raise() {
+    // serialize args to JSON string
+    Args args = {.properties=properties, .states=states};
+    std::stringstream ss;
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(args);
+    }
+
+    // create new command
+    Command cmd = {
+        .type=get_type(),
+        .args=ss.str()
+    };
+
+    // send to background listener
+    BackgroundListener::get_instance().push_command(cmd);
+}
 
 void CreateMovingPlatformEvent::handler(std::string serialized) {
     CreateMovingPlatformEvent::Args args;
