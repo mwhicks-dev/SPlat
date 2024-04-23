@@ -25,7 +25,7 @@ void TickEvent::raise() {
     // create new command
     Command cmd = {
         .priority=1,
-        .type=get_type(),
+        .type=TickEvent::get_type(),
         .args=ss.str()
     };
 

@@ -21,10 +21,10 @@ namespace SPlat {
             std::priority_queue<Command> commands;
 
             /// @brief mutex to safeguard handlers access
-            std::mutex handlers_lock;
+            static std::mutex handlers_lock;
 
             /// @brief non-default handlers mapping
-            std::map<std::string, void (*)(std::string)> handlers;
+            static std::map<std::string, void (*)(std::string)> handlers;
 
         protected:
 

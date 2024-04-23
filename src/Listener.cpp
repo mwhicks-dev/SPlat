@@ -7,19 +7,45 @@
 #include "events/PlatformEvents.h"
 #include "events/TickEvent.h"
 
+#include <iostream>
+
 using namespace SPlat::Events;
 
+std::mutex Listener::handlers_lock;
+std::map<std::string, void (*)(std::string)> Listener::handlers;
+
 Listener::Listener() {
-    set_handler(AddPositionEvent::get_type(), AddPositionEvent::handler);
-    set_handler(AddVelocityEvent::get_type(), AddVelocityEvent::handler);
-    set_handler(ControlAssetEvent::get_type(), ControlAssetEvent::handler);
-    set_handler(CreateCharacterEvent::get_type(), CreateCharacterEvent::handler);
-    set_handler(CreateControlCharacterEvent::get_type(), CreateControlCharacterEvent::handler);
-    set_handler(CreateMovingPlatformEvent::get_type(), CreateMovingPlatformEvent::handler);
-    set_handler(CreatePlatformEvent::get_type(), CreatePlatformEvent::handler);
-    set_handler(KeyPressEvent::get_type(), KeyPressEvent::handler);
-    set_handler(KeyReleaseEvent::get_type(), KeyReleaseEvent::handler);
-    set_handler(TickEvent::get_type(), TickEvent::handler);
+    handlers_lock.lock();
+    if (handlers.count(AddPositionEvent::get_type()) == 0)
+        handlers[AddPositionEvent::get_type()] = AddPositionEvent::handler;
+
+    if (handlers.count(AddVelocityEvent::get_type()) == 0)
+        handlers[AddVelocityEvent::get_type()] = AddVelocityEvent::handler;
+
+    if (handlers.count(ControlAssetEvent::get_type()) == 0)
+        handlers[ControlAssetEvent::get_type()] = ControlAssetEvent::handler;
+
+    if (handlers.count(CreateCharacterEvent::get_type()) == 0)
+        handlers[CreateCharacterEvent::get_type()] = CreateCharacterEvent::handler;
+
+    if (handlers.count(CreateControlCharacterEvent::get_type()) == 0)
+        handlers[CreateControlCharacterEvent::get_type()] = CreateControlCharacterEvent::handler;
+
+    if (handlers.count(CreateMovingPlatformEvent::get_type()) == 0)
+        handlers[CreateMovingPlatformEvent::get_type()] = CreateMovingPlatformEvent::handler;
+
+    if (handlers.count(CreatePlatformEvent::get_type()) == 0)
+        handlers[CreatePlatformEvent::get_type()] = CreatePlatformEvent::handler;
+
+    if (handlers.count(KeyPressEvent::get_type()) == 0)
+        handlers[KeyPressEvent::get_type()] = KeyPressEvent::handler;
+
+    if (handlers.count(KeyReleaseEvent::get_type()) == 0)
+        handlers[KeyReleaseEvent::get_type()] = KeyReleaseEvent::handler;
+
+    if (handlers.count(TickEvent::get_type()) == 0)
+        handlers[TickEvent::get_type()] = TickEvent::handler;
+    handlers_lock.unlock();
 }
 
 void Listener::dispatch(Command cmd) {

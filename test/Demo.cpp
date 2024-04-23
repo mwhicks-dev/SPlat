@@ -17,6 +17,7 @@ using namespace SPlat;
 /// @brief overriden keypress event handler with movement
 /// @param serialized serialized KeyEventArgs
 static void keypress_override(std::string serialized) {
+    std::cout << "Hit!" << std::endl;
     // set key held
     Events::KeyPressEvent::handler(serialized);
 
@@ -116,6 +117,6 @@ int main() {
 
     Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);
     Events::ForegroundListener::get_instance().set_handler(Events::KeyReleaseEvent::get_type(), keyrelease_override);
-
+    
     Client client; client.start();
 }

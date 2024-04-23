@@ -15,26 +15,6 @@ KeyEvent::KeyEvent(sf::Keyboard::Key key) {
     this->key = key;
 }
 
-void KeyEvent::raise() {
-    // serialize args to JSON string
-    Args args = {.key=key};
-    std::stringstream ss;
-    {
-        cereal::JSONOutputArchive oar(ss);
-        oar(args);
-    }
-
-    // create new command
-    Command cmd = {
-        .priority=-1,
-        .type=get_type(),
-        .args=ss.str()
-    };
-
-    // send to foreground listener
-    ForegroundListener::get_instance().push_command(cmd);
-}
-
 bool KeyEvent::is_key_pressed(sf::Keyboard::Key key) {
     bool local = false;
     keys_held_lock.lock();
@@ -60,6 +40,26 @@ void KeyPressEvent::handler(std::string serialized) {
     keys_held_lock.unlock();
 }
 
+void KeyPressEvent::raise() {
+    // serialize args to JSON string
+    Args args = {.key=key};
+    std::stringstream ss;
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(args);
+    }
+
+    // create new command
+    Command cmd = {
+        .priority=-1,
+        .type=KeyPressEvent::get_type(),
+        .args=ss.str()
+    };
+
+    // send to foreground listener
+    ForegroundListener::get_instance().push_command(cmd);
+}
+
 void KeyReleaseEvent::handler(std::string serialized) {
     // deserialize args from JSON string
     Args args;
@@ -73,4 +73,24 @@ void KeyReleaseEvent::handler(std::string serialized) {
     keys_held_lock.lock();
     keys_held.erase(args.key);
     keys_held_lock.unlock();
+}
+
+void KeyReleaseEvent::raise() {
+    // serialize args to JSON string
+    Args args = {.key=key};
+    std::stringstream ss;
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(args);
+    }
+
+    // create new command
+    Command cmd = {
+        .priority=-1,
+        .type=KeyReleaseEvent::get_type(),
+        .args=ss.str()
+    };
+
+    // send to foreground listener
+    ForegroundListener::get_instance().push_command(cmd);
 }

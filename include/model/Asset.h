@@ -36,7 +36,7 @@ namespace SPlat {
 
             size_t id;
 
-            Asset * standing_on;
+            Asset * standing_on = nullptr;
 
             std::unordered_set<size_t> standers;
 

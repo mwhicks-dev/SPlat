@@ -48,8 +48,6 @@ namespace SPlat {
             static std::string get_type() 
                 { throw std::domain_error("Not implemented"); }
 
-            void raise() override;
-
             static bool is_key_pressed(sf::Keyboard::Key);
 
         };
@@ -65,6 +63,8 @@ namespace SPlat {
 
             static std::string get_type() { return "key_press_event"; }
 
+            void raise() override;
+
             static void handler(std::string);
 
         };
@@ -79,6 +79,8 @@ namespace SPlat {
             KeyReleaseEvent(sf::Keyboard::Key key) : KeyEvent(key) {}
 
             static std::string get_type() { return "key_press_event"; }
+
+            void raise() override;
 
             static void handler(std::string);
 

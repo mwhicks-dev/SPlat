@@ -24,7 +24,7 @@ void CreateCharacterEvent::raise() {
 
     // create new command
     Command cmd = {
-        .type=get_type(),
+        .type=CreateCharacterEvent::get_type(),
         .args=ss.str()
     };
 
@@ -57,6 +57,25 @@ void CreateCharacterEvent::handler(std::string serialized) {
 
     // create new character from passed properties
     from_properties(args.properties);
+}
+
+void CreateControlCharacterEvent::raise() {
+    // serialize args to JSON string
+    Args args = {.properties=properties};
+    std::stringstream ss;
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(args);
+    }
+
+    // create new command
+    Command cmd = {
+        .type=CreateControlCharacterEvent::get_type(),
+        .args=ss.str()
+    };
+
+    // send to background listener
+    BackgroundListener::get_instance().push_command(cmd);
 }
 
 void CreateControlCharacterEvent::handler(std::string serialized) {

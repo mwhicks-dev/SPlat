@@ -4,6 +4,8 @@
 #include "events/Event.h"
 #include "Serialization.h"
 
+#include <mutex>
+
 namespace SPlat {
 
     namespace Events {
@@ -81,6 +83,12 @@ namespace SPlat {
 
         /// @brief event used to set controlled asset
         class ControlAssetEvent : public Event {
+
+            static std::mutex control_lock;
+            
+            static bool control_set;
+
+            static size_t control;
 
             /// @brief ID of asset to control
             size_t id;

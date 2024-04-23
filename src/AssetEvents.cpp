@@ -10,6 +10,10 @@
 
 using namespace SPlat::Events;
 
+std::mutex ControlAssetEvent::control_lock;
+bool ControlAssetEvent::control_set;
+size_t ControlAssetEvent::control;
+
 AddVelocityEvent::AddVelocityEvent(size_t id, sf::Vector2f velocity) {
     this->id = id;
     this->velocity = velocity;
@@ -26,7 +30,7 @@ void AddVelocityEvent::raise() {
 
     // create new command 
     Command cmd= {
-        .type=get_type(),
+        .type=AddVelocityEvent::get_type(),
         .args=ss.str()
     };
 
@@ -71,7 +75,7 @@ void AddPositionEvent::raise() {
 
     // create new command 
     Command cmd = {
-        .type=get_type(),
+        .type=AddPositionEvent::get_type(),
         .args=ss.str()
     };
 
@@ -95,7 +99,10 @@ void AddPositionEvent::handler(std::string serialized) {
     // safely add position to asset
     SPlat::Model::GameObjectModel::get_instance().lock.lock();
     asset.move(args.modifier);
+    size_t id = asset.id;
     SPlat::Model::GameObjectModel::get_instance().lock.unlock();
+
+    SPlat::Model::GameObjectModel::get_instance().check_collision(id);
 }
 
 ControlAssetEvent::ControlAssetEvent(size_t id) { this->id = id; }
@@ -112,7 +119,7 @@ void ControlAssetEvent::raise() {
     // create new command
     Command cmd = {
         .priority=-2,
-        .type=get_type(),
+        .type=ControlAssetEvent::get_type(),
         .args=ss.str()
     };
 
@@ -134,30 +141,25 @@ void ControlAssetEvent::handler(std::string serialized) {
         SPlat::Model::GameObjectModel::get_instance().read_asset(args.id);
     
     // set asset as controlled by ID
-    static std::mutex controlled_asset_lock;
-    controlled_asset_lock.lock();
-    static bool is_set = true;
-    static size_t controlled_asset = args.id;
-    controlled_asset_lock.unlock();
+    control_lock.lock();
+    control_set = true;
+    control = args.id;
+    control_lock.unlock();
 }
 
 size_t ControlAssetEvent::get_controlled_asset_id() {
     // get static values
-    bool local_is_set;
-    size_t local_controlled_asset;
-    static std::mutex controlled_asset_lock;
-    controlled_asset_lock.lock();
-    static bool is_set;  // false default
-    local_is_set = is_set;
-    if (local_is_set) {
-        static size_t controlled_asset;
-        local_controlled_asset = controlled_asset;
-    }
-    controlled_asset_lock.unlock();
+    size_t local_control;
+    bool local_control_set = false;
+    control_lock.lock();
+    local_control_set = control_set;
+    if (local_control_set)
+        local_control = control;
+    control_lock.unlock();
 
     // return by local values
-    if (!local_is_set)
+    if (!local_control_set)
         throw std::domain_error("No asset set as controlled");
     
-    return local_controlled_asset;
+    return local_control;
 }

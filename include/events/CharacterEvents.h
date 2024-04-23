@@ -13,6 +13,8 @@ namespace SPlat {
         /// @brief creates a character from properties
         class CreateCharacterEvent : public Event {
 
+        protected:
+
             /// @brief properties to create from
             SPlat::Model::AssetProperties properties;
 
@@ -52,6 +54,8 @@ namespace SPlat {
             /// @param properties AssetProperties to create from
             CreateControlCharacterEvent(SPlat::Model::AssetProperties properties)
             : CreateCharacterEvent(properties) {}
+
+            void raise() override;
 
             static std::string get_type() { return "create_control_character_event"; }
 

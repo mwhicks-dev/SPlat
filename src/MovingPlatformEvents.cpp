@@ -28,7 +28,7 @@ void CreateMovingPlatformEvent::raise() {
 
     // create new command
     Command cmd = {
-        .type=get_type(),
+        .type=CreateMovingPlatformEvent::get_type(),
         .args=ss.str()
     };
 
