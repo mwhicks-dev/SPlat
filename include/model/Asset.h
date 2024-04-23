@@ -22,7 +22,7 @@ namespace SPlat {
             std::string type;
 
             /// @brief asset fill color, white default
-            sf::Color fill_color = sf::Color::White;
+            sf::Color fill_color;
 
             /// @brief convert AssetProperties to serializable string
             /// @tparam Archive cereal archive class
@@ -34,9 +34,6 @@ namespace SPlat {
         };
 
         class Asset : public sf::RectangleShape {
-
-            sf::Color fill_color;
-
         public:
 
             size_t id;
@@ -58,7 +55,7 @@ namespace SPlat {
             virtual void update();
 
             AssetProperties get_properties() {
-                return {getPosition(), getSize(), get_type(), fill_color};
+                return {getPosition(), getSize(), get_type(), getFillColor()};
             }
 
         };
