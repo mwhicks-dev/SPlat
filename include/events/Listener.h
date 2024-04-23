@@ -29,7 +29,7 @@ namespace SPlat {
         protected:
 
             /// @brief protected listener constructor
-            Listener() = default;
+            Listener();
 
             /// @brief dispatch command using methods specified by their events
             /// @param cmd command to dispatch
