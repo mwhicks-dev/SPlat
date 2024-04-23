@@ -13,7 +13,7 @@ Asset::Asset(sf::Vector2f& size) {
     setFillColor(fill_color);
 }
 
-Asset::Asset(sf::Vector2f& size, sf::Color& fill_color) {
+Asset::Asset(sf::Vector2f& size, sf::Color fill_color) {
     this->fill_color = fill_color;
     setSize(size);
     setFillColor(fill_color);

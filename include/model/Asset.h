@@ -49,7 +49,7 @@ namespace SPlat {
 
             Asset(sf::Vector2f&);
 
-            Asset(sf::Vector2f&, sf::Color&);
+            Asset(sf::Vector2f&, sf::Color);
 
             virtual int get_priority() = 0;
 
@@ -58,7 +58,7 @@ namespace SPlat {
             virtual void update();
 
             AssetProperties get_properties() {
-                return {getPosition(), getSize(), get_type()};
+                return {getPosition(), getSize(), get_type(), fill_color};
             }
 
         };
