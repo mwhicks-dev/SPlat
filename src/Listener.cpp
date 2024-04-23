@@ -4,6 +4,7 @@
 #include "events/CharacterEvents.h"
 #include "events/KeyEvents.h"
 #include "events/MovingPlatformEvents.h"
+#include "events/TickEvent.h"
 
 using namespace SPlat::Events;
 
@@ -16,6 +17,7 @@ Listener::Listener() {
     set_handler(CreateMovingPlatformEvent::get_type(), CreateMovingPlatformEvent::handler);
     set_handler(KeyPressEvent::get_type(), KeyPressEvent::handler);
     set_handler(KeyReleaseEvent::get_type(), KeyReleaseEvent::handler);
+    set_handler(TickEvent::get_type(), TickEvent::handler);
 }
 
 void Listener::dispatch(Command cmd) {
