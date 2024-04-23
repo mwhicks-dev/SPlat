@@ -1,7 +1,10 @@
 #include "model/GameObjectModel.h"
 
 #include <cmath>
+
+#ifdef DEBUG
 #include <iostream>
+#endif
 
 using namespace SPlat::Model;
 
@@ -38,6 +41,9 @@ Asset& GameObjectModel::read_asset(size_t id) {
 }
 
 void GameObjectModel::validate(size_t id) {
+#ifdef DEBUG
+    std::cout << "-> GameObjectModel::validate(" << id << ")" << std::endl;
+#endif
     Asset& asset = read_asset(id);
 
     lock.lock();
@@ -56,6 +62,9 @@ void GameObjectModel::validate(size_t id) {
     }
 
     lock.unlock();
+#ifdef DEBUG
+    std::cout << "<- GameObjectModel::validate" << std::endl;
+#endif
 }
 
 Asset& GameObjectModel::update_asset(size_t id, Asset& update) {
@@ -113,74 +122,87 @@ bool collision_checker(Asset& lhs, Asset& rhs) {
 }
 
 void GameObjectModel::check_collision(size_t id) {
+#ifdef DEBUG
+    std::cout << "-> GameObjectModel::check_collision(" << id << ")" << std::endl;
+#endif
     Asset * lhs = assets[id];
 
-    if (lhs == nullptr) return;
-    
-    for (size_t other_id : ids) {
-        if (id == other_id) continue;
+    if (lhs != nullptr) {
+        for (size_t other_id : ids) {
+            if (id == other_id) continue;
 
-        Asset * rhs = assets[other_id];
-        if (rhs == nullptr) continue;
+            Asset * rhs = assets[other_id];
+            if (rhs == nullptr) continue;
 
-        bool collision = collision_checker(*lhs, *rhs);
-        
-        if (!collision) continue;
-        std::cout << "Collision detected!" << std::endl;
+            bool collision = collision_checker(*lhs, *rhs);
+            
+            if (!collision) continue;
+            std::cout << "Collision detected!" << std::endl;
 
-        resolve_collision(*lhs, *rhs);
-        lhs->get_priority() >= rhs->get_priority()
-            ? resolve_collision(*lhs, *rhs)
-            : resolve_collision(*rhs, *lhs);
+            resolve_collision(*lhs, *rhs);
+            lhs->get_priority() >= rhs->get_priority()
+                ? resolve_collision(*lhs, *rhs)
+                : resolve_collision(*rhs, *lhs);
+        }
     }
+#ifdef DEBUG
+    std::cout << "<- GameObjectModel::check_collision" << std::endl;
+#endif
 }
 
 void GameObjectModel::resolve_collision(Asset& move, Asset& fixed) {
+#ifdef DEBUG
+    std::cout << "-> GameObjectModel::resolve_collision(" << move.id << ", " <<  fixed.id << ")" << std::endl;
+#endif
     // get moving asset velocity as unit
     sf::Vector2f unit_velocity = move.velocity;
     float magnitude = sqrt(pow(unit_velocity.x, 2) + pow(unit_velocity.y, 2));
-    if (fabs(magnitude) < 0.0001) return;
-    unit_velocity /= magnitude;
+    if (fabs(magnitude) >= 0.0001) {
+        unit_velocity /= magnitude;
 
-    sf::Vector2f offset;
-    {
-        sf::RectangleShape cpy = move;
-        float x_unit = -fabs(move.velocity.x) / move.velocity.x;
-        do {
-            cpy.move(x_unit, 0);
-            offset.x += x_unit;
-        } while (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()));
-    }{
-        sf::RectangleShape cpy = move;
-        float y_unit = -fabs(move.velocity.y) / move.velocity.y;
-        do {
-            cpy.move(0, y_unit);
-            offset.y += y_unit;
-        } while (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()));
-    }
-    // check for nan
-    if (!std::isnan(offset.x) && (std::isnan(offset.y) || fabs(offset.x) < fabs(offset.y))) {
-        move.move(offset.x, 0);
-    } else if (!std::isnan(offset.y) && (std::isnan(offset.x) || fabs(offset.y) < fabs(offset.x))) {
-        move.move(0, offset.y);
-    }
+        sf::Vector2f offset;
+        {
+            sf::RectangleShape cpy = move;
+            float x_unit = -fabs(move.velocity.x) / move.velocity.x;
+            do {
+                cpy.move(x_unit, 0);
+                offset.x += x_unit;
+            } while (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()));
+        }{
+            sf::RectangleShape cpy = move;
+            float y_unit = -fabs(move.velocity.y) / move.velocity.y;
+            do {
+                cpy.move(0, y_unit);
+                offset.y += y_unit;
+            } while (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()));
+        }
+        // check for nan
+        if (!std::isnan(offset.x) && (std::isnan(offset.y) || fabs(offset.x) < fabs(offset.y))) {
+            move.move(offset.x, 0);
+        } else if (!std::isnan(offset.y) && (std::isnan(offset.x) || fabs(offset.y) < fabs(offset.x))) {
+            move.move(0, offset.y);
+        }
 
-    // check if move on fixed object now
-    {
-        sf::RectangleShape cpy = move;
-        cpy.move(0, 1);
-        if (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds())) {
-            move.standing_on = &fixed;
-            fixed.standers.insert(move.id);
-            move.velocity.y = 0;
+        // check if move on fixed object now
+        {
+            sf::RectangleShape cpy = move;
+            cpy.move(0, 1);
+            if (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds())) {
+                move.standing_on = &fixed;
+                fixed.standers.insert(move.id);
+                move.velocity.y = 0;
+            }
+        }
+
+        // check if collision was with something above; if so, y vel becomes 0
+        {
+            sf::RectangleShape cpy = move;
+            cpy.move(0, -1);
+            if (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()))
+                move.velocity.y = 0;
         }
     }
-
-    // check if collision was with something above; if so, y vel becomes 0
-    {
-        sf::RectangleShape cpy = move;
-        cpy.move(0, -1);
-        if (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()))
-            move.velocity.y = 0;
-    }
+#ifdef DEBUG
+    std::cout << "<- GameObjectModel::resolve_collision" << std::endl;
+#endif
 }

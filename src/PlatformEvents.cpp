@@ -16,6 +16,9 @@ CreatePlatformEvent::CreatePlatformEvent
 }
 
 void CreatePlatformEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> CreatePlatformEvent::raise()" << std::endl;
+#endif
     // serialize args to JSON string
     Args args = {.properties=properties};
     std::stringstream ss;
@@ -32,9 +35,15 @@ void CreatePlatformEvent::raise() {
 
     // send to background listener
     BackgroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- CreatePlatformEvent::raise" << std::endl;
+#endif
 }
 
 void CreatePlatformEvent::handler(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> CreatePlatformEvent::raise(" << serialized << ")" << std::endl;
+#endif
     // deserialize args from JSON string
     Args args;
     {
@@ -50,4 +59,7 @@ void CreatePlatformEvent::handler(std::string serialized) {
     // create persistent platform using AssetFactory
     SPlat::Model::Platform p = SPlat::Model::AssetFactory
         <SPlat::Model::Platform>::create_asset(tmp);
+#ifdef DEBUG
+    std::cout << "<- CreatePlatformEvent::handler" << std::endl;
+#endif
 }

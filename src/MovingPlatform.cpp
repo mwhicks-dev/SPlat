@@ -1,7 +1,10 @@
 #include "model/MovingPlatform.h"
 #include "events/AssetEvents.h"
 #include <cmath>
+
+#ifdef DEBUG
 #include <iostream>
+#endif
 
 using namespace SPlat::Model;
 
@@ -15,6 +18,9 @@ std::string MovingPlatform::TYPE = "moving_platform";
 std::string MovingPlatform::get_type() { return MovingPlatform::TYPE; }
 
 void MovingPlatform::update() {
+#ifdef DEBUG
+    std::cout << "-. MovingPlatform::update()" << std::endl;
+#endif
     // if queue length is zero, do nothing
     if (queue.size() == 0) return;
 
@@ -55,4 +61,7 @@ void MovingPlatform::update() {
         event.raise();
     }
     platform_ticks += 1;
+#ifdef DEBUG
+    std::cout << "<- MovingPlatform::update" << std::endl;
+#endif
 }

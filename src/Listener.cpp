@@ -7,7 +7,11 @@
 #include "events/PlatformEvents.h"
 #include "events/TickEvent.h"
 
+#ifdef DEBUG
 #include <iostream>
+#include <sstream>
+#include <cereal/archives/json.hpp>
+#endif
 
 using namespace SPlat::Events;
 
@@ -49,6 +53,14 @@ Listener::Listener() {
 }
 
 void Listener::dispatch(Command cmd) {
+#ifdef DEBUG
+    std::stringstream ss;
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(cmd);
+    }
+    std::cout << "-> Listener::dispatch(" << ss.str() << ")" << std::endl;
+#endif
     // get handler string
     bool set = false; 
     void (*handler)(std::string);
@@ -63,9 +75,15 @@ void Listener::dispatch(Command cmd) {
     if (set) { handler(cmd.args); return; }
 
     throw std::invalid_argument("No such event class " + cmd.type);
+#ifdef DEBUG
+    std::cout << "<- Listener::dispatch" << std::endl;
+#endif
 }
 
 void Listener::run() {
+#ifdef DEBUG
+    std::cout << "-> Listener::run()" << std::endl;
+#endif
     while (true) {
         // break if no events to process
         commands_lock.lock();
@@ -80,16 +98,36 @@ void Listener::run() {
         // dispatch event
         dispatch(cmd);
     }
+#ifdef DEBUG
+    std::cout << "<- Listener::run" << std::endl;
+#endif
 }
 
 void Listener::push_command(Command cmd) {
+#ifdef DEBUG
+    std::stringstream ss;
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(cmd);
+    }
+    std::cout << "-> Listener::push_command(" << ss.str() << ")" << std::endl;
+#endif
     commands_lock.lock();
     commands.push(cmd);
     commands_lock.unlock();
+#ifdef DEBUG
+    std::cout << "<- Listener::push_command" << std::endl;
+#endif
 }
 
 void Listener::set_handler(std::string type, void (*handler)(std::string)) {
+#ifdef DEBUG
+    std::cout << "-> Listener::set_handler(" << type << ", void (*)(std::string))" << std::endl;
+#endif
     handlers_lock.lock();
     handlers[type] = handler;
     handlers_lock.unlock();
+#ifdef DEBUG
+    std::cout << "<- Listener::set_handler" << std::endl;
+#endif
 }

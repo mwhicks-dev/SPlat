@@ -8,7 +8,9 @@
 #include <thread>
 #include <chrono>
 
+#ifdef DEBUG
 #include <iostream>
+#endif
 
 using namespace SPlat;
 
@@ -24,7 +26,9 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
 }
 
 void Client::start() {
-
+#ifdef DEBUG
+    std::cout << "-> Client::start()" << std::endl;
+#endif
     std::pair<bool, std::mutex>& runtime = *new std::pair<bool, std::mutex>();
     runtime.first = true;
 
@@ -73,4 +77,7 @@ void Client::start() {
     runtime.second.unlock();
 
     t.join();
+#ifdef DEBUG
+    std::cout << "<- Client::start" << std::endl;
+#endif
 }

@@ -5,7 +5,9 @@
 
 #include <cereal/archives/json.hpp>
 
+#ifdef DEBUG
 #include <iostream>
+#endif
 
 using namespace SPlat::Events;
 
@@ -14,6 +16,9 @@ TickEvent::TickEvent() {
 }
 
 void TickEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> TickEvent::raise()" << std::endl;
+#endif
     // serialize args to JSON string
     Args args = {.ids=ids};
     std::stringstream ss;
@@ -31,9 +36,15 @@ void TickEvent::raise() {
 
     // send to background listener
     BackgroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- TickEvent::raise" << std::endl;
+#endif
 }
 
 void TickEvent::handler(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> TickEvent::handler(" << serialized << ")" << std::endl;
+#endif
     // deserialize args
     Args args;
     std::stringstream ss; ss << serialized;
@@ -54,4 +65,7 @@ void TickEvent::handler(std::string serialized) {
             curr.update();
         } catch (std::exception& e) {/* OK */}
     }
+#ifdef DEBUG
+    std::cout << "<- TickEvent::handler" << std::endl;
+#endif
 }

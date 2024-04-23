@@ -6,6 +6,10 @@
 
 #include <sstream>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Events;
 
 std::mutex KeyEvent::keys_held_lock;
@@ -26,6 +30,9 @@ bool KeyEvent::is_key_pressed(sf::Keyboard::Key key) {
 }
 
 void KeyPressEvent::handler(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> KeyPressEvent::handler(" << serialized << ")" << std::endl;
+#endif
     // deserialize args from JSON string
     Args args;
     {
@@ -38,9 +45,15 @@ void KeyPressEvent::handler(std::string serialized) {
     keys_held_lock.lock();
     keys_held.insert(args.key);
     keys_held_lock.unlock();
+#ifdef DEBUG
+    std::cout << "<- KeyPressEvent::handler" << std::endl;
+#endif
 }
 
 void KeyPressEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> KeyPressEvent::raise()" << std::endl;
+#endif
     // serialize args to JSON string
     Args args = {.key=key};
     std::stringstream ss;
@@ -58,9 +71,15 @@ void KeyPressEvent::raise() {
 
     // send to foreground listener
     ForegroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- KeyPressEvent::raise" << std::endl;
+#endif
 }
 
 void KeyReleaseEvent::handler(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> KeyReleaseEvent::handler(" << serialized << ")" << std::endl;
+#endif
     // deserialize args from JSON string
     Args args;
     {
@@ -73,9 +92,15 @@ void KeyReleaseEvent::handler(std::string serialized) {
     keys_held_lock.lock();
     keys_held.erase(args.key);
     keys_held_lock.unlock();
+#ifdef DEBUG
+    std::cout << "<- KeyReleaseEvent::handler" << std::endl;
+#endif
 }
 
 void KeyReleaseEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> KeyReleaseEvent::raise()" << std::endl;
+#endif
     // serialize args to JSON string
     Args args = {.key=key};
     std::stringstream ss;
@@ -93,4 +118,7 @@ void KeyReleaseEvent::raise() {
 
     // send to foreground listener
     ForegroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- KeyReleaseEvent::raise" << std::endl;
+#endif
 }

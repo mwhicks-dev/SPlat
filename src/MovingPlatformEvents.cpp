@@ -7,6 +7,10 @@
 
 #include <sstream>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Events;
 
 CreateMovingPlatformEvent::CreateMovingPlatformEvent(
@@ -18,6 +22,9 @@ CreateMovingPlatformEvent::CreateMovingPlatformEvent(
 }
 
 void CreateMovingPlatformEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> CreateMovingPlatformEvent::raise()" << std::endl;
+#endif
     // serialize args to JSON string
     Args args = {.properties=properties, .states=states};
     std::stringstream ss;
@@ -34,9 +41,15 @@ void CreateMovingPlatformEvent::raise() {
 
     // send to background listener
     BackgroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- CreateMovingPlatformEvent::raise" << std::endl;
+#endif
 }
 
 void CreateMovingPlatformEvent::handler(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> CreateMovingPlatformEvent::handler(" << serialized << ")" << std::endl;
+#endif
     CreateMovingPlatformEvent::Args args;
     {
         std::stringstream ss; ss << serialized;
@@ -58,4 +71,7 @@ void CreateMovingPlatformEvent::handler(std::string serialized) {
         persistent.add_state(s);
         SPlat::Model::GameObjectModel::get_instance().lock.unlock();
     }
+#ifdef DEBUG
+    std::cout << "<- CreateMovingPlatformEvent::handler" << std::endl;
+#endif
 }

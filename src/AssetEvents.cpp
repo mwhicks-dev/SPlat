@@ -8,6 +8,10 @@
 
 #include <sstream>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Events;
 
 std::mutex ControlAssetEvent::control_lock;
@@ -20,6 +24,9 @@ AddVelocityEvent::AddVelocityEvent(size_t id, sf::Vector2f velocity) {
 }
 
 void AddVelocityEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> AddVelocityEvent::raise()" << std::endl;
+#endif
     // serialize args to JSON string
     Args args = {.id=id, .modifier=velocity};
     std::stringstream ss;
@@ -36,9 +43,15 @@ void AddVelocityEvent::raise() {
 
     // send command to background listener
     BackgroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- AddVelocityEvent::raise" << std::endl;
+#endif
 }
 
 void AddVelocityEvent::handler(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> AddVelocityEvent::handler(" << serialized << ")" << std::endl;
+#endif
     // deserialize args from JSON string
     Args args;
     {
@@ -57,6 +70,9 @@ void AddVelocityEvent::handler(std::string serialized) {
     SPlat::Model::GameObjectModel::get_instance().lock.lock();
     asset.velocity += args.modifier;
     SPlat::Model::GameObjectModel::get_instance().lock.unlock();
+#ifdef DEBUG
+    std::cout << "<- AddVelocityEvent::handler" << std::endl;
+#endif
 }
 
 AddPositionEvent::AddPositionEvent(size_t id, sf::Vector2f position) {
@@ -65,6 +81,9 @@ AddPositionEvent::AddPositionEvent(size_t id, sf::Vector2f position) {
 }
 
 void AddPositionEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> AddVelocityEvent::raise()" << std::endl;
+#endif
     // serialize args to JSON string
     Args args = {.id=id, .modifier=position};
     std::stringstream ss;
@@ -81,9 +100,15 @@ void AddPositionEvent::raise() {
 
     // send command to background listener
     BackgroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- AddVelocityEvent::raise" << std::endl;
+#endif
 }
 
 void AddPositionEvent::handler(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> AddPositionEvent::handler(" << serialized << ")" << std::endl;
+#endif
     // deserialize args from JSON string
     Args args;
     {
@@ -103,11 +128,17 @@ void AddPositionEvent::handler(std::string serialized) {
     SPlat::Model::GameObjectModel::get_instance().lock.unlock();
 
     SPlat::Model::GameObjectModel::get_instance().check_collision(id);
+#ifdef DEBUG
+    std::cout << "<- AddPositionEvent::handler" << std::endl;
+#endif
 }
 
 ControlAssetEvent::ControlAssetEvent(size_t id) { this->id = id; }
 
 void ControlAssetEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> ControlAssetEvent::raise()" << std::endl;
+#endif
     // serialize args to JSON string
     Args args = {.id=id};
     std::stringstream ss;
@@ -125,9 +156,15 @@ void ControlAssetEvent::raise() {
 
     // send to foreground listener
     ForegroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- ControlAssetEvent::raise" << std::endl;
+#endif
 }
 
 void ControlAssetEvent::handler(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> ControlAssetEvent::handler(" << serialized << ")" << std::endl;
+#endif
     // deserialize args from JSON string
     Args args;
     {
@@ -145,6 +182,9 @@ void ControlAssetEvent::handler(std::string serialized) {
     control_set = true;
     control = args.id;
     control_lock.unlock();
+#ifdef DEBUG
+    std::cout << "<- ControlAssetEvent::handler" << std::endl;
+#endif
 }
 
 size_t ControlAssetEvent::get_controlled_asset_id() {
