@@ -1,114 +1,84 @@
 #ifndef SPLAT_KEYEVENTS_H
 #define SPLAT_KEYEVENTS_H
 
+#include "events/Event.h"
+
+#include <SFML/Graphics.hpp>
+
 #include <set>
 #include <mutex>
-
-#include <SFML/Window/Keyboard.hpp>
-
-#include "cereal/cereal.hpp"
-#include "cereal/archives/json.hpp"
-
-#include "Event.h"
-#include "events/Listener.h"
 
 namespace SPlat {
 
     namespace Events {
 
-        /// @brief struct just containing pressed/released key
-        struct KeyEventArgs {
-            
-            /// @brief pressed or released key
-            sf::Keyboard::Key key;
-
-            /// @brief formulation for converting these args to serializable form
-            /// @param ar archive class used to serialize args
-            template <class Archive>
-            void serialize(Archive &ar) {
-                ar(key);
-            }
-        };
-
-        /// @brief class holding shared (static) data for key-related events
+        /// @brief event that makes changes to what keys are stored as held
         class KeyEvent : public Event {
+
+        protected:
+
+            /// @brief mutex guarding access to keys_held
+            static std::mutex keys_held_lock;
+
+            /// @brief set of currently held keyboard keys
+            static std::set<sf::Keyboard::Key> keys_held;
+
+            /// @brief key modified by event
+            sf::Keyboard::Key key;
 
         public:
 
-            /// @brief set of keys that are currently held
-            static std::set<sf::Keyboard::Key> held;
+            /// @brief arguments for key events
+            struct Args {
 
-            /// @brief mutex required to access held
-            static std::mutex held_lock;
+                /// @brief key modified by event
+                sf::Keyboard::Key key;
 
-            /// @brief static function checking if key is held
-            /// @param key keyboard key to check
-            static bool is_key_held(sf::Keyboard::Key key) {
-                // check if keyboard is in held set
-                held_lock.lock();
-                bool out = held.count(key) > 0;
-                held_lock.unlock();
+                template <class Archive>
+                void serialize(Archive& ar) {
+                    ar(key);
+                }
 
-                return out;
-            }
+            };
+
+            /// @brief constructs new KeyEvent from key
+            /// @param key key modified by event
+            KeyEvent(sf::Keyboard::Key);
+
+            static std::string get_type() 
+                { throw std::domain_error("Not implemented"); }
+
+            void raise() override;
 
         };
 
-        /// @brief event of pressing a keyboard key
+        /// @brief event raised when a key is pressed
         class KeyPressEvent : public KeyEvent {
 
         public:
 
-            /// @brief unique identifier for key press events
-            static std::string TYPE;
+            /// @brief constructs a new KeyPressEvent from key
+            /// @param key pressed keyboard key
+            KeyPressEvent(sf::Keyboard::Key key) : KeyEvent(key) {}
+
+            static std::string get_type() { return "key_press_event"; }
 
             static void handler(std::string);
 
-            /// @brief convert keypress to serializable event
-            /// @param key keyboard key pressed
-            KeyPressEvent(sf::Keyboard::Key key) {
-                // Serialize key to JSON string
-                KeyEventArgs args = {key};
-                std::stringstream ss;
-                {
-                    cereal::JSONOutputArchive oar(ss);
-                    oar(args);
-                }
-
-                this->type = TYPE;
-                this->args = ss.str();
-                this->foreground = true;
-                this->priority = -1;
-            }
-
         };
 
-        /// @brief event of releasing a keyboard key
+        /// @brief event raised when a key is released
         class KeyReleaseEvent : public KeyEvent {
 
         public:
 
-            /// @brief unique identifier for key release events
-            static std::string TYPE;
+            /// @brief constructs a new KeyReleaseEvent from key
+            /// @param key released keyboard key
+            KeyReleaseEvent(sf::Keyboard::Key key) : KeyEvent(key) {}
+
+            static std::string get_type() { return "key_press_event"; }
 
             static void handler(std::string);
-
-            /// @brief convert keyrelease to serializable event
-            /// @param key keyboard key released
-            KeyReleaseEvent(sf::Keyboard::Key key) {
-                // Serialize key to JSON string
-                KeyEventArgs args = {key};
-                std::stringstream ss;
-                {
-                    cereal::JSONOutputArchive oar(ss);
-                    oar(args);
-                }
-
-                this->type = TYPE;
-                this->args = ss.str();
-                this->foreground = true;
-                this->priority = -1;
-            }
 
         };
 
