@@ -15,7 +15,7 @@ std::queue<Events::Event> Controller::events;
 
 void Controller::run() {
 #ifdef DEBUG
-    std::cout << "-> Controller::run(std::pair<bool, std::mutex>&)" << std::endl;
+    std::cout << "-> Controller::run()" << std::endl;
 #endif
     while (true) {
         // check if still running

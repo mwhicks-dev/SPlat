@@ -86,9 +86,15 @@ void Client::start() {
 }
 
 void Client::set_framerate_limit(long framerate_limit) {
+#ifdef DEBUG
+    std::cout << "-> Client::set_framerate_limit(" << framerate_limit << ")" << std::endl;
+#endif
     time_t t0 = Runtime::get_instance().get_anchor_timeline().get_time();
     std::this_thread::sleep_for(std::chrono::seconds(1));
     time_t tf = Runtime::get_instance().get_anchor_timeline().get_time();
     time_t tic = (tf - t0) / framerate_limit;
     Runtime::get_instance().get_display_timeline().set_tic(tic);
+#ifdef DEBUG
+    std::cout << "<- Client::set_framerate_limit" << std::endl;
+#endif
 }

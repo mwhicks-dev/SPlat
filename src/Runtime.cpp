@@ -1,5 +1,9 @@
 #include "Runtime.h"
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat;
 
 Runtime * Runtime::instance = nullptr;
@@ -27,9 +31,15 @@ bool Runtime::get_running() {
 }
 
 void Runtime::set_running(bool running) {
+#ifdef DEBUG
+    std::cout << "-> Runtime::set_running(" << running << ")" << std::endl;
+#endif
     m.lock();
     this->running = running;
     m.unlock();
+#ifdef DEBUG
+    std::cout << "<- Runtime::set_running" << std::endl;
+#endif
 }
 
 Timeline& Runtime::get_anchor_timeline() {
@@ -41,9 +51,15 @@ Timeline& Runtime::get_anchor_timeline() {
 }
 
 void Runtime::set_anchor_timeline(Timeline& anchor) {
+#ifdef DEBUG
+    std::cout << "-> Runtime::set_anchor_timeline(Timeline&)" << std::endl;
+#endif
     m.lock();
     this->anchor = anchor;
     m.unlock();
+#ifdef DEBUG
+    std::cout << "<- Runtime::set_anchor_timeline" << std::endl;
+#endif
 }
 
 LocalTimeline& Runtime::get_display_timeline() {
