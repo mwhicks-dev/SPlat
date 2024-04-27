@@ -96,7 +96,7 @@ void CreateControlCharacterEvent::raise() {
     // send to background listener
     BackgroundListener::get_instance().push_command(cmd);
 #ifdef DEBUG
-    std::cout << "<- CreateControlCharacterEvent::raise()" << std::endl;
+    std::cout << "<- CreateControlCharacterEvent::raise" << std::endl;
 #endif
 }
 

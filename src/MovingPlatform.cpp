@@ -19,7 +19,7 @@ std::string MovingPlatform::get_type() { return MovingPlatform::TYPE; }
 
 void MovingPlatform::update() {
 #ifdef DEBUG
-    std::cout << "-. MovingPlatform::update()" << std::endl;
+    std::cout << "-> MovingPlatform::update()" << std::endl;
 #endif
     // if queue length is zero, do nothing
     if (queue.size() == 0) return;
