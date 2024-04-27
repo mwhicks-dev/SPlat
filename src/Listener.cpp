@@ -72,18 +72,14 @@ void Listener::dispatch(Command cmd) {
     handlers_lock.unlock();
 
     // use set if exists
-    if (set) { handler(cmd.args); return; }
-
-    throw std::invalid_argument("No such event class " + cmd.type);
+    if (set) { handler(cmd.args); }
+    else throw std::invalid_argument("No such event class " + cmd.type);
 #ifdef DEBUG
     std::cout << "<- Listener::dispatch" << std::endl;
 #endif
 }
 
 void Listener::run() {
-#ifdef DEBUG
-    std::cout << "-> Listener::run()" << std::endl;
-#endif
     while (true) {
         // break if no events to process
         commands_lock.lock();
@@ -98,9 +94,6 @@ void Listener::run() {
         // dispatch event
         dispatch(cmd);
     }
-#ifdef DEBUG
-    std::cout << "<- Listener::run" << std::endl;
-#endif
 }
 
 void Listener::push_command(Command cmd) {
