@@ -1,5 +1,5 @@
 #include "Client.h"
-#include "Controller.h"
+#include "Runtime.h"
 
 #include "events/KeyEvents.h"
 #include "events/Listener.h"
@@ -29,16 +29,14 @@ void Client::start() {
 #ifdef DEBUG
     std::cout << "-> Client::start()" << std::endl;
 #endif
-    std::pair<bool, std::mutex>& runtime = *new std::pair<bool, std::mutex>();
-    runtime.first = true;
 
-    std::thread t(&Controller::run, &ctl, std::ref(runtime));
+    std::thread t(&Controller::run, &ctl);
 
     window.create(sf::VideoMode(800, 600), "SPlat");
-    window.setFramerateLimit(60);
     
     std::this_thread::sleep_for(std::chrono::milliseconds(250));  // give controller time to get started
 
+    time_t last_updated = Runtime::get_instance().get_display_timeline().get_time();
     while (window.isOpen()) {
         // dispatch foreground events
         Events::ForegroundListener::get_instance().run();
@@ -70,14 +68,23 @@ void Client::start() {
         }
 
         window.display();
+        while (Runtime::get_instance().get_display_timeline().get_time()
+                 < last_updated + 1)
+            std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 
-    runtime.second.lock();
-    runtime.first = false;
-    runtime.second.unlock();
+    Runtime::get_instance().set_running(false);
 
     t.join();
 #ifdef DEBUG
     std::cout << "<- Client::start" << std::endl;
 #endif
+}
+
+void Client::set_framerate_limit(long framerate_limit) {
+    time_t t0 = Runtime::get_instance().get_anchor_timeline().get_time();
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    time_t tf = Runtime::get_instance().get_anchor_timeline().get_time();
+    time_t tic = (tf - t0) / framerate_limit;
+    Runtime::get_instance().get_display_timeline().set_tic(tic);
 }
