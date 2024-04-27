@@ -8,7 +8,7 @@
 namespace SPlat {
 
     /// @brief timeline used for loops, display, and so on
-    class LocalTimeline {
+    class LocalTimeline : public Timeline {
 
         /// @brief safeguards for potential shared access
         std::mutex m;
@@ -49,7 +49,7 @@ namespace SPlat {
 
         /// @brief retrieve time based on anchor timeline value
         /// @return timeline time
-        time_t get_time();
+        time_t get_time() override;
 
         /// @brief set paused to true and update last_paused_time
         void pause();
