@@ -18,7 +18,7 @@ FetchContent_MakeAvailable(googletest)
 
 set(MODEL_IMPLEMENTATIONS src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp)
 set(EVENT_IMPLEMENTATIONS src/AssetEvents.cpp src/CharacterEvents.cpp src/KeyEvents.cpp src/MovingPlatformEvents.cpp src/PlatformEvents.cpp src/TickEvent.cpp src/Listener.cpp)
-set(CLIENT_IMPLEMENTATIONS src/Client.cpp src/Controller.cpp)
+set(CLIENT_IMPLEMENTATIONS src/Client.cpp src/Controller.cpp src/LocalTimeline.cpp src/Runtime.cpp)
 set(ALL_IMPLEMENTATIONS ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS} ${CLIENT_IMPLEMENTATIONS})
 
 add_executable(gom_test test/TestGameObjectModel.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})

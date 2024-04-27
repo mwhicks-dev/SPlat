@@ -2,12 +2,13 @@
 
 using namespace SPlat;
 
+Runtime * Runtime::instance = nullptr;
+std::mutex Runtime::m_static;
+
 class SystemTimeline : public Timeline {
 
     time_t get_time() override {
-        return std::chrono::system_clock::to_time_t(
-            std::chrono::system_clock::now()
-        );
+        return std::chrono::system_clock::now().time_since_epoch().count();
     }
 
 };

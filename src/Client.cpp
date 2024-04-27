@@ -25,6 +25,12 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
     }
 }
 
+void wait_for_timeline(Timeline& t, time_t target) {
+    if (t.get_time() >= target) return;
+
+    return wait_for_timeline(t, target);
+}
+
 void Client::start() {
 #ifdef DEBUG
     std::cout << "-> Client::start()" << std::endl;
@@ -68,9 +74,7 @@ void Client::start() {
         }
 
         window.display();
-        while (Runtime::get_instance().get_display_timeline().get_time()
-                 < last_updated + 1)
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        wait_for_timeline(Runtime::get_instance().get_display_timeline(), ++last_updated);
     }
 
     Runtime::get_instance().set_running(false);

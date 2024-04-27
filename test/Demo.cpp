@@ -115,5 +115,7 @@ int main() {
     Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);
     Events::ForegroundListener::get_instance().set_handler(Events::KeyReleaseEvent::get_type(), keyrelease_override);
     
-    Client client; client.start();
+    Client client;
+    client.set_framerate_limit(60);
+    client.start();
 }

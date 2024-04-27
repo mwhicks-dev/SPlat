@@ -14,7 +14,7 @@ void SPlat::LocalTimeline::set_last_paused_time(time_t last_paused_time) {
     m.unlock();
 }
 
-time_t SPlat::LocalTimeline::get_elapsed_paused_time() {
+time_t SPlat::LocalTimeline::get_last_paused_time() {
     m.lock();
     time_t local = last_paused_time;
     m.unlock();
@@ -65,7 +65,7 @@ time_t SPlat::LocalTimeline::get_start_time() {
 
 time_t SPlat::LocalTimeline::get_tic() {
     m.lock();
-    time_t local = start_time;
+    time_t local = tic;
     m.unlock();
 
     return local;
