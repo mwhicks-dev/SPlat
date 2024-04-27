@@ -1,3 +1,6 @@
+#ifndef SPLAT_TIMELINE_H
+#define SPLAT_TIMELINE_H
+
 #include <chrono>
 
 namespace SPlat {
@@ -14,3 +17,5 @@ namespace SPlat {
     };
 
 }
+
+#endif

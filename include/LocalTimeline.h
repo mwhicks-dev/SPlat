@@ -1,3 +1,6 @@
+#ifndef SPLAT_LOCALTIMELINE_H
+#define SPLAT_LOCALTIMELINE_H
+
 #include "Timeline.h"
 
 #include <mutex>
@@ -77,3 +80,5 @@ namespace SPlat {
     };
 
 }
+
+#endif
