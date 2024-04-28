@@ -63,7 +63,11 @@ void TickEvent::handler(std::string serialized) {
             SPlat::Model::Moving& asset = (SPlat::Model::Moving&) SPlat::Model
                 ::GameObjectModel::get_instance().read_asset(id);
             asset.update(curr);
-        } catch (std::exception& e) {/* OK */}
+        } catch (std::exception& e) {
+#ifdef DEBUG
+            std::cout << e.what() << std::endl;
+#endif
+        }
     }
 #ifdef DEBUG
     std::cout << "<- TickEvent::handler" << std::endl;
