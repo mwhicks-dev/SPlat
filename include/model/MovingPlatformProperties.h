@@ -27,6 +27,8 @@ namespace SPlat {
 
             std::vector<State> states;
 
+            MovingPlatformProperties() = default;
+
             MovingPlatformProperties(size_t id, sf::Vector2f position, 
                     sf::Vector2f size, sf::Color fill_color, sf::Vector2f 
                     velocity, time_t last_updated, time_t last_state_change, 

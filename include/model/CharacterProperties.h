@@ -13,6 +13,8 @@ namespace SPlat {
 
             AssetProperties * standing_on = nullptr;
 
+            CharacterProperties() = default;
+
             CharacterProperties(size_t id, sf::Vector2f position, 
                     sf::Vector2f size, sf::Color fill_color, sf::Vector2f
                     velocity, time_t last_updated, AssetProperties* 

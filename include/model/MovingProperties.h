@@ -15,6 +15,8 @@ namespace SPlat {
 
             time_t last_updated;
 
+            MovingProperties() = default;
+
             MovingProperties(size_t id, sf::Vector2f position, 
                     sf::Vector2f size, sf::Color fill_color, int
                     collision_priority, sf::Vector2f velocity, time_t
