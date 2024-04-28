@@ -1,7 +1,7 @@
 #ifndef SPLAT_PLATFORM
 #define SPLAT_PLATFORM
 
-#include "Asset.h"
+#include "model/Asset.h"
 
 namespace SPlat {
 
@@ -9,15 +9,15 @@ namespace SPlat {
 
         class Platform : public Asset {
 
+            AssetProperties properties;
+
         public:
 
-            static std::string TYPE;
-
-            Platform(sf::Vector2f&);
-
-            int get_priority() override;
-
-            std::string get_type() override;
+            Platform(AssetProperties properties, 
+                    CollisionHandler& collision_handler) : Asset(properties, 
+                    collision_handler), properties(properties) {};
+            
+            AssetProperties& get_asset_properties() override { return properties; }
 
         };
 

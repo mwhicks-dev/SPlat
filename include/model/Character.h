@@ -1,23 +1,27 @@
 #ifndef SPLAT_CHARACTER
 #define SPLAT_CHARACTER
 
-#include "Asset.h"
+#include "model/Moving.h"
 
 namespace SPlat {
 
     namespace Model {
 
-        class Character : public Asset {
+        class Character : public Moving {
+
+            MovingProperties properties;
 
         public:
 
-            static std::string TYPE;
-
-            Character(sf::Vector2f&);
-
-            int get_priority() override;
-
-            std::string get_type() override;
+            Character(MovingProperties properties, 
+                    CollisionHandler& collision_handler,
+                    UpdateHandler& update_handler) : Moving(properties, 
+                    collision_handler, update_handler), 
+                    properties(properties) {};
+            
+            AssetProperties& get_asset_properties() override { return properties; }
+            
+            MovingProperties& get_moving_properties() override { return properties; }
 
         };
 
