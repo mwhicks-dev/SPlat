@@ -9,12 +9,14 @@ namespace SPlat {
 
         class UpdateHandler {
 
-            MovingProperties& properties;
+            MovingProperties * properties = nullptr;
 
         public:
 
-            UpdateHandler(MovingProperties& properties)
-            : properties(properties) {}
+            UpdateHandler() = default;
+
+            void set_properties(MovingProperties* properties) 
+                { this->properties = properties; }
 
             virtual void update(time_t) = 0;
 

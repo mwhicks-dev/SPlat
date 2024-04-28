@@ -9,12 +9,17 @@ namespace SPlat {
 
         class CollisionHandler {
 
-            AssetProperties& properties;
+            AssetProperties * properties = nullptr;
 
         public:
 
-            CollisionHandler(AssetProperties& properties)
-            : properties(properties) {}
+            CollisionHandler() = default;
+
+            void set_properties(AssetProperties* properties) {
+                properties->m.lock();
+                this->properties = properties;
+                properties->m.unlock();
+            }
 
             virtual void resolve_collision(AssetProperties& other) = 0;
 
