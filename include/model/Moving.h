@@ -14,11 +14,11 @@ namespace SPlat {
 
         public:
 
-            Moving(MovingProperties properties, 
+            Moving(MovingProperties& properties, 
                     CollisionHandler& collision_handler,
                     UpdateHandler& update_handler) : Asset(properties, 
                     collision_handler) {
-                update_handler.set_properties(&get_moving_properties());
+                update_handler.set_properties(&properties);
                 set_update_handler(update_handler);
             }
 

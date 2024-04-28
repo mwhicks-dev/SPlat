@@ -39,9 +39,8 @@ void CreateCharacterEvent::raise() {
 #endif
 }
 
-SPlat::Model::Character from_properties
+SPlat::Model::Character& from_properties
         (SPlat::Model::AssetProperties properties) {
-
     // pass to asset factory and update
     return (SPlat::Model::Character&) SPlat::Runtime::get_instance()
         .get_character_factory().create_asset(properties);

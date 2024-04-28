@@ -1,7 +1,7 @@
 #ifndef SPLAT_MODEL_ASSETPROPERTIES_H
 #define SPLAT_MODEL_ASSETPROPERTIES_H
 
-#include <SFML/Graphics.hpp>
+#include "Serialization.h"
 
 #include <mutex>
 
@@ -121,6 +121,11 @@ namespace SPlat {
                 sf::RectangleShape r(get_size());
                 r.setPosition(get_position());
                 return r;
+            }
+
+            template <class Archive>
+            void serialize(Archive& ar) {
+                ar(id, position, size, fill_color, collision_priority);
             }
 
         };

@@ -1,6 +1,7 @@
 #ifndef SPLAT_MODEL_MOVINGPLATFORMPROPERTIES_H
 #define SPLAT_MODEL_MOVINGPLATFORMPROPERTIES_H
 
+#include "Serialization.h"
 #include "model/MovingProperties.h"
 
 namespace SPlat {
@@ -16,6 +17,19 @@ namespace SPlat {
             time_t anchor_steps;
 
             bool repeat;
+
+            State() = default;
+
+            State(sf::Vector2f velocity, time_t anchor_steps, bool repeat) {
+                this->velocity = velocity;
+                this->anchor_steps = anchor_steps;
+                this->repeat = repeat;
+            }
+
+            template <class Archive>
+            void serialize(Archive& ar) {
+                ar(velocity, anchor_steps, repeat);
+            }
 
         };
 

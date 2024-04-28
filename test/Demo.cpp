@@ -1,6 +1,5 @@
 #include "Client.h"
 #include "Runtime.h"
-#include "model/AssetFactory.h"
 #include "model/Character.h"
 #include "events/AssetEvents.h"
 #include "events/CharacterEvents.h"
@@ -22,7 +21,7 @@ static void keypress_override(std::string serialized) {
     try {
         // get asset
         size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
-        Model::Character ctl = Model::AssetFactory<Model::Character>::read_asset(id);
+        Model::Character& ctl = (Model::Character&) Runtime::get_instance().get_character_factory().read_asset(id);
         
         // deserialize KeyEventArgs from args
         Events::KeyEvent::Args args;
@@ -34,15 +33,16 @@ static void keypress_override(std::string serialized) {
 
         // update velocity based on key pressed
         if (args.key == sf::Keyboard::Key::Left) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-300, 0));
-            event.raise();
+            ctl.get_moving_properties().set_velocity(ctl
+                .get_moving_properties().get_velocity() + sf::Vector2f(-300, 0));
         } else if (args.key == sf::Keyboard::Key::Right) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(300, 0));
-            event.raise();
+            ctl.get_moving_properties().set_velocity(ctl
+                .get_moving_properties().get_velocity() + sf::Vector2f(300, 0));
         } else if (args.key == sf::Keyboard::Key::Up 
-                && ctl.standing_on != nullptr) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(0, -490));
-            event.raise();
+                && ((Model::CharacterProperties&) ctl.get_moving_properties())
+                .get_standing_on() != nullptr) {
+            ctl.get_moving_properties().set_velocity(ctl
+                .get_moving_properties().get_velocity() + sf::Vector2f(-490, 0));
         } else if (args.key == sf::Keyboard::Escape) {
             if (Runtime::get_instance().get_display_timeline().get_paused())
                 Runtime::get_instance().get_display_timeline().unpause();
@@ -63,7 +63,7 @@ static void keyrelease_override(std::string serialized) {
     try {
         // get asset
         size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
-        Model::Character ctl = Model::AssetFactory<Model::Character>::read_asset(id);
+        Model::Character& ctl = (Model::Character&) Runtime::get_instance().get_character_factory().read_asset(id);
         
         // deserialize KeyEventArgs from args
         Events::KeyEvent::Args args;
@@ -75,11 +75,11 @@ static void keyrelease_override(std::string serialized) {
 
         // update velocity based on key pressed
         if (args.key == sf::Keyboard::Key::Left) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(300, 0));
-            event.raise();
+            ctl.get_moving_properties().set_velocity(ctl
+                .get_moving_properties().get_velocity() + sf::Vector2f(300, 0));
         } else if (args.key == sf::Keyboard::Key::Right) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-300, 0));
-            event.raise();
+            ctl.get_moving_properties().set_velocity(ctl
+                .get_moving_properties().get_velocity() + sf::Vector2f(-300, 0));
         }
 
     } catch (std::logic_error & e) {
@@ -89,33 +89,19 @@ static void keyrelease_override(std::string serialized) {
 
 int main() {
     // Create assets with events
-    SPlat::Events::CreateControlCharacterEvent({
-        sf::Vector2f(100, 100), // position
-        sf::Vector2f(50, 100),  // size
-        SPlat::Model::Character::TYPE  // type
-    }).raise();
+    Model::CharacterProperties character_properties(0, sf::Vector2f(100, 100), sf::Vector2f(50, 100), sf::Color(0, 0, 0), sf::Vector2f(0, 0), Runtime::get_instance().get_display_timeline().get_time(), nullptr);
+    SPlat::Events::CreateControlCharacterEvent(character_properties).raise();
 
-    SPlat::Events::CreatePlatformEvent({
-        sf::Vector2f(0, 500),
-        sf::Vector2f(400, 200),
-        SPlat::Model::Platform::TYPE
-    }).raise();
+    Model::AssetProperties platform_properties(0, sf::Vector2f(0, 500), sf::Vector2f(400, 200), sf::Color(0, 0, 0), -2);
+    SPlat::Events::CreatePlatformEvent(platform_properties).raise();
 
-    SPlat::Events::CreateMovingPlatformEvent(
-        {  // AssetProperties
-            .position=sf::Vector2f(300, 100),
-            .size=sf::Vector2f(200, 25),
-            .type=SPlat::Model::MovingPlatform::TYPE
-        }, {  // std::vector<State>
-            {
-                .position=sf::Vector2f(200, 300),
-                .ticks_til_next=100
-            }, {
-                .position=sf::Vector2f(400, 300),
-                .ticks_til_next=100
-            }
+    Model::MovingPlatformProperties moving_platform_properties(0, sf::Vector2f(500, 100), sf::Vector2f(200, 25), sf::Color(0, 0, 0), sf::Vector2f(0, 0), Runtime::get_instance().get_display_timeline().get_time(), Runtime::get_instance().get_display_timeline().get_time(), {
+        {
+            Model::State(sf::Vector2f(50, 0), 300, true),
+            Model::State(sf::Vector2f(-50, 0), 300, true)
         }
-    ).raise();
+    });
+    SPlat::Events::CreateMovingPlatformEvent(moving_platform_properties, moving_platform_properties.get_states()).raise();
 
     Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);
     Events::ForegroundListener::get_instance().set_handler(Events::KeyReleaseEvent::get_type(), keyrelease_override);

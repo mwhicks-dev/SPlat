@@ -16,7 +16,7 @@ namespace SPlat {
         protected:
 
             /// @brief properties to create from
-            SPlat::Model::MovingProperties& properties;
+            SPlat::Model::MovingProperties properties;
 
         public:
 

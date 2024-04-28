@@ -2,6 +2,7 @@
 #define SPLAT_MODEL_MOVINGPROPERTIES_H
 
 #include "model/AssetProperties.h"
+#include "Serialization.h"
 
 namespace SPlat {
 
@@ -58,6 +59,11 @@ namespace SPlat {
                 m.lock();
                 this->last_updated = last_updated;
                 m.unlock();
+            }
+
+            template <class Archive>
+            void serialize(Archive& ar) {
+                ar(velocity, last_updated);
             }
 
         };

@@ -71,7 +71,7 @@ void Client::start() {
         for (size_t id : asset_ids) {
             Model::Asset& asset = Model::GameObjectModel::get_instance()
                 .read_asset(id);
-            window.draw(asset);
+            window.draw(asset.get_asset_properties().get_rectangle_shape());
         }
 
         window.display();

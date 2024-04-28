@@ -13,8 +13,8 @@ namespace SPlat {
 
         public:
 
-            Asset(AssetProperties properties, CollisionHandler& handler) {
-                handler.set_properties(&get_asset_properties());
+            Asset(AssetProperties& properties, CollisionHandler& handler) {
+                handler.set_properties(&properties);
                 set_collision_handler(handler);
             }
 

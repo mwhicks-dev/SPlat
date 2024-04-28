@@ -15,13 +15,13 @@ namespace SPlat {
 
             Asset& update_asset(size_t, AssetProperties&) override;
 
-        };
+            class DefaultUpdateHandler : public UpdateHandler {
 
-        class DefaultUpdateHandler : public UpdateHandler {
+            public:
 
-        public:
+                void update(time_t) override;
 
-            void update(time_t) override;
+            };
 
         };
 
