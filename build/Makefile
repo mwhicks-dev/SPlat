@@ -188,19 +188,6 @@ serialization_test/fast:
 .PHONY : serialization_test/fast
 
 #=============================================================================
-# Target rules for targets named event_test
-
-# Build rule for target.
-event_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 event_test
-.PHONY : event_test
-
-# fast build rule for target.
-event_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/build
-.PHONY : event_test/fast
-
-#=============================================================================
 # Target rules for targets named asset_factory_test
 
 # Build rule for target.
@@ -285,7 +272,6 @@ src/Asset.o: src/Asset.cpp.o
 src/Asset.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Asset.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Asset.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Asset.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Asset.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Asset.cpp.o
 .PHONY : src/Asset.cpp.o
@@ -297,7 +283,6 @@ src/Asset.i: src/Asset.cpp.i
 src/Asset.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Asset.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Asset.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Asset.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Asset.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Asset.cpp.i
 .PHONY : src/Asset.cpp.i
@@ -309,7 +294,6 @@ src/Asset.s: src/Asset.cpp.s
 src/Asset.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Asset.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Asset.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Asset.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Asset.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Asset.cpp.s
 .PHONY : src/Asset.cpp.s
@@ -321,7 +305,6 @@ src/AssetEvents.o: src/AssetEvents.cpp.o
 src/AssetEvents.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AssetEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AssetEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/AssetEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AssetEvents.cpp.o
 .PHONY : src/AssetEvents.cpp.o
@@ -333,7 +316,6 @@ src/AssetEvents.i: src/AssetEvents.cpp.i
 src/AssetEvents.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AssetEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AssetEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/AssetEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AssetEvents.cpp.i
 .PHONY : src/AssetEvents.cpp.i
@@ -345,7 +327,6 @@ src/AssetEvents.s: src/AssetEvents.cpp.s
 src/AssetEvents.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AssetEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AssetEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/AssetEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AssetEvents.cpp.s
 .PHONY : src/AssetEvents.cpp.s
@@ -357,7 +338,6 @@ src/Character.o: src/Character.cpp.o
 src/Character.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Character.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Character.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Character.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Character.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Character.cpp.o
 .PHONY : src/Character.cpp.o
@@ -369,7 +349,6 @@ src/Character.i: src/Character.cpp.i
 src/Character.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Character.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Character.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Character.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Character.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Character.cpp.i
 .PHONY : src/Character.cpp.i
@@ -381,7 +360,6 @@ src/Character.s: src/Character.cpp.s
 src/Character.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Character.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Character.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Character.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Character.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Character.cpp.s
 .PHONY : src/Character.cpp.s
@@ -393,7 +371,6 @@ src/CharacterEvents.o: src/CharacterEvents.cpp.o
 src/CharacterEvents.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/CharacterEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterEvents.cpp.o
 .PHONY : src/CharacterEvents.cpp.o
@@ -405,7 +382,6 @@ src/CharacterEvents.i: src/CharacterEvents.cpp.i
 src/CharacterEvents.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/CharacterEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterEvents.cpp.i
 .PHONY : src/CharacterEvents.cpp.i
@@ -417,7 +393,6 @@ src/CharacterEvents.s: src/CharacterEvents.cpp.s
 src/CharacterEvents.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/CharacterEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterEvents.cpp.s
 .PHONY : src/CharacterEvents.cpp.s
@@ -449,42 +424,6 @@ src/Client.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Client.cpp.s
 .PHONY : src/Client.cpp.s
 
-src/ControlAssetEvent.o: src/ControlAssetEvent.cpp.o
-.PHONY : src/ControlAssetEvent.o
-
-# target to build an object file
-src/ControlAssetEvent.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ControlAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ControlAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/ControlAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ControlAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ControlAssetEvent.cpp.o
-.PHONY : src/ControlAssetEvent.cpp.o
-
-src/ControlAssetEvent.i: src/ControlAssetEvent.cpp.i
-.PHONY : src/ControlAssetEvent.i
-
-# target to preprocess a source file
-src/ControlAssetEvent.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ControlAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ControlAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/ControlAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ControlAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ControlAssetEvent.cpp.i
-.PHONY : src/ControlAssetEvent.cpp.i
-
-src/ControlAssetEvent.s: src/ControlAssetEvent.cpp.s
-.PHONY : src/ControlAssetEvent.s
-
-# target to generate assembly for a file
-src/ControlAssetEvent.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ControlAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ControlAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/ControlAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ControlAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ControlAssetEvent.cpp.s
-.PHONY : src/ControlAssetEvent.cpp.s
-
 src/Controller.o: src/Controller.cpp.o
 .PHONY : src/Controller.o
 
@@ -512,114 +451,6 @@ src/Controller.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Controller.cpp.s
 .PHONY : src/Controller.cpp.s
 
-src/CreateAssetEvent.o: src/CreateAssetEvent.cpp.o
-.PHONY : src/CreateAssetEvent.o
-
-# target to build an object file
-src/CreateAssetEvent.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CreateAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CreateAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/CreateAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CreateAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CreateAssetEvent.cpp.o
-.PHONY : src/CreateAssetEvent.cpp.o
-
-src/CreateAssetEvent.i: src/CreateAssetEvent.cpp.i
-.PHONY : src/CreateAssetEvent.i
-
-# target to preprocess a source file
-src/CreateAssetEvent.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CreateAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CreateAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/CreateAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CreateAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CreateAssetEvent.cpp.i
-.PHONY : src/CreateAssetEvent.cpp.i
-
-src/CreateAssetEvent.s: src/CreateAssetEvent.cpp.s
-.PHONY : src/CreateAssetEvent.s
-
-# target to generate assembly for a file
-src/CreateAssetEvent.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CreateAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CreateAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/CreateAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CreateAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CreateAssetEvent.cpp.s
-.PHONY : src/CreateAssetEvent.cpp.s
-
-src/CreateControlAssetEvent.o: src/CreateControlAssetEvent.cpp.o
-.PHONY : src/CreateControlAssetEvent.o
-
-# target to build an object file
-src/CreateControlAssetEvent.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CreateControlAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CreateControlAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/CreateControlAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CreateControlAssetEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CreateControlAssetEvent.cpp.o
-.PHONY : src/CreateControlAssetEvent.cpp.o
-
-src/CreateControlAssetEvent.i: src/CreateControlAssetEvent.cpp.i
-.PHONY : src/CreateControlAssetEvent.i
-
-# target to preprocess a source file
-src/CreateControlAssetEvent.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CreateControlAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CreateControlAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/CreateControlAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CreateControlAssetEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CreateControlAssetEvent.cpp.i
-.PHONY : src/CreateControlAssetEvent.cpp.i
-
-src/CreateControlAssetEvent.s: src/CreateControlAssetEvent.cpp.s
-.PHONY : src/CreateControlAssetEvent.s
-
-# target to generate assembly for a file
-src/CreateControlAssetEvent.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CreateControlAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CreateControlAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/CreateControlAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CreateControlAssetEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CreateControlAssetEvent.cpp.s
-.PHONY : src/CreateControlAssetEvent.cpp.s
-
-src/Event.o: src/Event.cpp.o
-.PHONY : src/Event.o
-
-# target to build an object file
-src/Event.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Event.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Event.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Event.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Event.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Event.cpp.o
-.PHONY : src/Event.cpp.o
-
-src/Event.i: src/Event.cpp.i
-.PHONY : src/Event.i
-
-# target to preprocess a source file
-src/Event.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Event.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Event.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Event.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Event.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Event.cpp.i
-.PHONY : src/Event.cpp.i
-
-src/Event.s: src/Event.cpp.s
-.PHONY : src/Event.s
-
-# target to generate assembly for a file
-src/Event.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Event.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Event.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Event.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Event.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Event.cpp.s
-.PHONY : src/Event.cpp.s
-
 src/GameObjectModel.o: src/GameObjectModel.cpp.o
 .PHONY : src/GameObjectModel.o
 
@@ -627,7 +458,6 @@ src/GameObjectModel.o: src/GameObjectModel.cpp.o
 src/GameObjectModel.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/GameObjectModel.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/GameObjectModel.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/GameObjectModel.cpp.o
 .PHONY : src/GameObjectModel.cpp.o
@@ -639,7 +469,6 @@ src/GameObjectModel.i: src/GameObjectModel.cpp.i
 src/GameObjectModel.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/GameObjectModel.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/GameObjectModel.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/GameObjectModel.cpp.i
 .PHONY : src/GameObjectModel.cpp.i
@@ -651,7 +480,6 @@ src/GameObjectModel.s: src/GameObjectModel.cpp.s
 src/GameObjectModel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/GameObjectModel.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/GameObjectModel.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/GameObjectModel.cpp.s
 .PHONY : src/GameObjectModel.cpp.s
@@ -663,7 +491,6 @@ src/KeyEvents.o: src/KeyEvents.cpp.o
 src/KeyEvents.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/KeyEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyEvents.cpp.o
 .PHONY : src/KeyEvents.cpp.o
@@ -675,7 +502,6 @@ src/KeyEvents.i: src/KeyEvents.cpp.i
 src/KeyEvents.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/KeyEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyEvents.cpp.i
 .PHONY : src/KeyEvents.cpp.i
@@ -687,7 +513,6 @@ src/KeyEvents.s: src/KeyEvents.cpp.s
 src/KeyEvents.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/KeyEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyEvents.cpp.s
 .PHONY : src/KeyEvents.cpp.s
@@ -699,7 +524,6 @@ src/Listener.o: src/Listener.cpp.o
 src/Listener.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Listener.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Listener.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Listener.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Listener.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Listener.cpp.o
 .PHONY : src/Listener.cpp.o
@@ -711,7 +535,6 @@ src/Listener.i: src/Listener.cpp.i
 src/Listener.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Listener.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Listener.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Listener.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Listener.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Listener.cpp.i
 .PHONY : src/Listener.cpp.i
@@ -723,10 +546,42 @@ src/Listener.s: src/Listener.cpp.s
 src/Listener.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Listener.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Listener.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Listener.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Listener.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Listener.cpp.s
 .PHONY : src/Listener.cpp.s
+
+src/LocalTimeline.o: src/LocalTimeline.cpp.o
+.PHONY : src/LocalTimeline.o
+
+# target to build an object file
+src/LocalTimeline.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/LocalTimeline.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/LocalTimeline.cpp.o
+.PHONY : src/LocalTimeline.cpp.o
+
+src/LocalTimeline.i: src/LocalTimeline.cpp.i
+.PHONY : src/LocalTimeline.i
+
+# target to preprocess a source file
+src/LocalTimeline.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/LocalTimeline.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/LocalTimeline.cpp.i
+.PHONY : src/LocalTimeline.cpp.i
+
+src/LocalTimeline.s: src/LocalTimeline.cpp.s
+.PHONY : src/LocalTimeline.s
+
+# target to generate assembly for a file
+src/LocalTimeline.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/LocalTimeline.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/LocalTimeline.cpp.s
+.PHONY : src/LocalTimeline.cpp.s
 
 src/MovingPlatform.o: src/MovingPlatform.cpp.o
 .PHONY : src/MovingPlatform.o
@@ -735,7 +590,6 @@ src/MovingPlatform.o: src/MovingPlatform.cpp.o
 src/MovingPlatform.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatform.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/MovingPlatform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatform.cpp.o
 .PHONY : src/MovingPlatform.cpp.o
@@ -747,7 +601,6 @@ src/MovingPlatform.i: src/MovingPlatform.cpp.i
 src/MovingPlatform.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatform.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/MovingPlatform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatform.cpp.i
 .PHONY : src/MovingPlatform.cpp.i
@@ -759,7 +612,6 @@ src/MovingPlatform.s: src/MovingPlatform.cpp.s
 src/MovingPlatform.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatform.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/MovingPlatform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatform.cpp.s
 .PHONY : src/MovingPlatform.cpp.s
@@ -771,7 +623,6 @@ src/MovingPlatformEvents.o: src/MovingPlatformEvents.cpp.o
 src/MovingPlatformEvents.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/MovingPlatformEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformEvents.cpp.o
 .PHONY : src/MovingPlatformEvents.cpp.o
@@ -783,7 +634,6 @@ src/MovingPlatformEvents.i: src/MovingPlatformEvents.cpp.i
 src/MovingPlatformEvents.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/MovingPlatformEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformEvents.cpp.i
 .PHONY : src/MovingPlatformEvents.cpp.i
@@ -795,7 +645,6 @@ src/MovingPlatformEvents.s: src/MovingPlatformEvents.cpp.s
 src/MovingPlatformEvents.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/MovingPlatformEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformEvents.cpp.s
 .PHONY : src/MovingPlatformEvents.cpp.s
@@ -807,7 +656,6 @@ src/Platform.o: src/Platform.cpp.o
 src/Platform.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Platform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Platform.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Platform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Platform.cpp.o
 .PHONY : src/Platform.cpp.o
@@ -819,7 +667,6 @@ src/Platform.i: src/Platform.cpp.i
 src/Platform.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Platform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Platform.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Platform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Platform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Platform.cpp.i
 .PHONY : src/Platform.cpp.i
@@ -831,10 +678,75 @@ src/Platform.s: src/Platform.cpp.s
 src/Platform.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Platform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Platform.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/Platform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Platform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Platform.cpp.s
 .PHONY : src/Platform.cpp.s
+
+src/PlatformEvents.o: src/PlatformEvents.cpp.o
+.PHONY : src/PlatformEvents.o
+
+# target to build an object file
+src/PlatformEvents.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformEvents.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformEvents.cpp.o
+.PHONY : src/PlatformEvents.cpp.o
+
+src/PlatformEvents.i: src/PlatformEvents.cpp.i
+.PHONY : src/PlatformEvents.i
+
+# target to preprocess a source file
+src/PlatformEvents.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformEvents.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformEvents.cpp.i
+.PHONY : src/PlatformEvents.cpp.i
+
+src/PlatformEvents.s: src/PlatformEvents.cpp.s
+.PHONY : src/PlatformEvents.s
+
+# target to generate assembly for a file
+src/PlatformEvents.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformEvents.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformEvents.cpp.s
+.PHONY : src/PlatformEvents.cpp.s
+
+src/Runtime.o: src/Runtime.cpp.o
+.PHONY : src/Runtime.o
+
+# target to build an object file
+src/Runtime.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Runtime.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Runtime.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Runtime.cpp.o
+.PHONY : src/Runtime.cpp.o
+
+src/Runtime.i: src/Runtime.cpp.i
+.PHONY : src/Runtime.i
+
+# target to preprocess a source file
+src/Runtime.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Runtime.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Runtime.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Runtime.cpp.i
+.PHONY : src/Runtime.cpp.i
+
+src/Runtime.s: src/Runtime.cpp.s
+.PHONY : src/Runtime.s
+
+# target to generate assembly for a file
+src/Runtime.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Runtime.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Runtime.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Runtime.cpp.s
+.PHONY : src/Runtime.cpp.s
 
 src/TickEvent.o: src/TickEvent.cpp.o
 .PHONY : src/TickEvent.o
@@ -843,7 +755,6 @@ src/TickEvent.o: src/TickEvent.cpp.o
 src/TickEvent.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/TickEvent.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/TickEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/TickEvent.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/TickEvent.cpp.o
 .PHONY : src/TickEvent.cpp.o
@@ -855,7 +766,6 @@ src/TickEvent.i: src/TickEvent.cpp.i
 src/TickEvent.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/TickEvent.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/TickEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/TickEvent.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/TickEvent.cpp.i
 .PHONY : src/TickEvent.cpp.i
@@ -867,7 +777,6 @@ src/TickEvent.s: src/TickEvent.cpp.s
 src/TickEvent.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/TickEvent.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/TickEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/src/TickEvent.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/TickEvent.cpp.s
 .PHONY : src/TickEvent.cpp.s
@@ -919,30 +828,6 @@ test/TestAssetFactory.s: test/TestAssetFactory.cpp.s
 test/TestAssetFactory.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/test/TestAssetFactory.cpp.s
 .PHONY : test/TestAssetFactory.cpp.s
-
-test/TestEvents.o: test/TestEvents.cpp.o
-.PHONY : test/TestEvents.o
-
-# target to build an object file
-test/TestEvents.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/test/TestEvents.cpp.o
-.PHONY : test/TestEvents.cpp.o
-
-test/TestEvents.i: test/TestEvents.cpp.i
-.PHONY : test/TestEvents.i
-
-# target to preprocess a source file
-test/TestEvents.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/test/TestEvents.cpp.i
-.PHONY : test/TestEvents.cpp.i
-
-test/TestEvents.s: test/TestEvents.cpp.s
-.PHONY : test/TestEvents.s
-
-# target to generate assembly for a file
-test/TestEvents.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/event_test.dir/build.make CMakeFiles/event_test.dir/test/TestEvents.cpp.s
-.PHONY : test/TestEvents.cpp.s
 
 test/TestGameObjectModel.o: test/TestGameObjectModel.cpp.o
 .PHONY : test/TestGameObjectModel.o
@@ -1006,7 +891,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... asset_factory_test"
 	@echo "... demo"
-	@echo "... event_test"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gom_test"
@@ -1028,21 +912,9 @@ help:
 	@echo "... src/Client.o"
 	@echo "... src/Client.i"
 	@echo "... src/Client.s"
-	@echo "... src/ControlAssetEvent.o"
-	@echo "... src/ControlAssetEvent.i"
-	@echo "... src/ControlAssetEvent.s"
 	@echo "... src/Controller.o"
 	@echo "... src/Controller.i"
 	@echo "... src/Controller.s"
-	@echo "... src/CreateAssetEvent.o"
-	@echo "... src/CreateAssetEvent.i"
-	@echo "... src/CreateAssetEvent.s"
-	@echo "... src/CreateControlAssetEvent.o"
-	@echo "... src/CreateControlAssetEvent.i"
-	@echo "... src/CreateControlAssetEvent.s"
-	@echo "... src/Event.o"
-	@echo "... src/Event.i"
-	@echo "... src/Event.s"
 	@echo "... src/GameObjectModel.o"
 	@echo "... src/GameObjectModel.i"
 	@echo "... src/GameObjectModel.s"
@@ -1052,6 +924,9 @@ help:
 	@echo "... src/Listener.o"
 	@echo "... src/Listener.i"
 	@echo "... src/Listener.s"
+	@echo "... src/LocalTimeline.o"
+	@echo "... src/LocalTimeline.i"
+	@echo "... src/LocalTimeline.s"
 	@echo "... src/MovingPlatform.o"
 	@echo "... src/MovingPlatform.i"
 	@echo "... src/MovingPlatform.s"
@@ -1061,6 +936,12 @@ help:
 	@echo "... src/Platform.o"
 	@echo "... src/Platform.i"
 	@echo "... src/Platform.s"
+	@echo "... src/PlatformEvents.o"
+	@echo "... src/PlatformEvents.i"
+	@echo "... src/PlatformEvents.s"
+	@echo "... src/Runtime.o"
+	@echo "... src/Runtime.i"
+	@echo "... src/Runtime.s"
 	@echo "... src/TickEvent.o"
 	@echo "... src/TickEvent.i"
 	@echo "... src/TickEvent.s"
@@ -1070,9 +951,6 @@ help:
 	@echo "... test/TestAssetFactory.o"
 	@echo "... test/TestAssetFactory.i"
 	@echo "... test/TestAssetFactory.s"
-	@echo "... test/TestEvents.o"
-	@echo "... test/TestEvents.i"
-	@echo "... test/TestEvents.s"
 	@echo "... test/TestGameObjectModel.o"
 	@echo "... test/TestGameObjectModel.i"
 	@echo "... test/TestGameObjectModel.s"

@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/demo.dir/src/Asset.cpp.o"
+  "CMakeFiles/demo.dir/src/Asset.cpp.o.d"
+  "CMakeFiles/demo.dir/src/AssetEvents.cpp.o"
+  "CMakeFiles/demo.dir/src/AssetEvents.cpp.o.d"
+  "CMakeFiles/demo.dir/src/Character.cpp.o"
+  "CMakeFiles/demo.dir/src/Character.cpp.o.d"
+  "CMakeFiles/demo.dir/src/CharacterEvents.cpp.o"
+  "CMakeFiles/demo.dir/src/CharacterEvents.cpp.o.d"
+  "CMakeFiles/demo.dir/src/Client.cpp.o"
+  "CMakeFiles/demo.dir/src/Client.cpp.o.d"
+  "CMakeFiles/demo.dir/src/Controller.cpp.o"
+  "CMakeFiles/demo.dir/src/Controller.cpp.o.d"
+  "CMakeFiles/demo.dir/src/GameObjectModel.cpp.o"
+  "CMakeFiles/demo.dir/src/GameObjectModel.cpp.o.d"
+  "CMakeFiles/demo.dir/src/KeyEvents.cpp.o"
+  "CMakeFiles/demo.dir/src/KeyEvents.cpp.o.d"
+  "CMakeFiles/demo.dir/src/Listener.cpp.o"
+  "CMakeFiles/demo.dir/src/Listener.cpp.o.d"
+  "CMakeFiles/demo.dir/src/LocalTimeline.cpp.o"
+  "CMakeFiles/demo.dir/src/LocalTimeline.cpp.o.d"
+  "CMakeFiles/demo.dir/src/MovingPlatform.cpp.o"
+  "CMakeFiles/demo.dir/src/MovingPlatform.cpp.o.d"
+  "CMakeFiles/demo.dir/src/MovingPlatformEvents.cpp.o"
+  "CMakeFiles/demo.dir/src/MovingPlatformEvents.cpp.o.d"
+  "CMakeFiles/demo.dir/src/Platform.cpp.o"
+  "CMakeFiles/demo.dir/src/Platform.cpp.o.d"
+  "CMakeFiles/demo.dir/src/PlatformEvents.cpp.o"
+  "CMakeFiles/demo.dir/src/PlatformEvents.cpp.o.d"
+  "CMakeFiles/demo.dir/src/Runtime.cpp.o"
+  "CMakeFiles/demo.dir/src/Runtime.cpp.o.d"
+  "CMakeFiles/demo.dir/src/TickEvent.cpp.o"
+  "CMakeFiles/demo.dir/src/TickEvent.cpp.o.d"
+  "CMakeFiles/demo.dir/test/Demo.cpp.o"
+  "CMakeFiles/demo.dir/test/Demo.cpp.o.d"
+  "demo"
+  "demo.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/demo.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

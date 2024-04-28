@@ -1,6 +1,5 @@
 /home/mason/git/SPlat/build/CMakeFiles/gom_test.dir
 /home/mason/git/SPlat/build/CMakeFiles/serialization_test.dir
-/home/mason/git/SPlat/build/CMakeFiles/event_test.dir
 /home/mason/git/SPlat/build/CMakeFiles/asset_factory_test.dir
 /home/mason/git/SPlat/build/CMakeFiles/demo.dir
 /home/mason/git/SPlat/build/CMakeFiles/edit_cache.dir
