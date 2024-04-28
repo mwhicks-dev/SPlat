@@ -3,6 +3,7 @@
 #include "events/Listener.h"
 #include "model/GameObjectModel.h"
 #include "Client.h"
+#include "Runtime.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -67,9 +68,8 @@ void AddVelocityEvent::handler(std::string serialized) {
         .read_asset(args.id);
     
     // add velocity to reference safely
-    SPlat::Model::GameObjectModel::get_instance().lock.lock();
     asset.velocity += args.modifier;
-    SPlat::Model::GameObjectModel::get_instance().lock.unlock();
+    asset.last_updated = Runtime::get_instance().get_anchor_timeline().get_time();
 #ifdef DEBUG
     std::cout << "<- AddVelocityEvent::handler" << std::endl;
 #endif
@@ -122,10 +122,9 @@ void AddPositionEvent::handler(std::string serialized) {
         SPlat::Model::GameObjectModel::get_instance().read_asset(args.id);
     
     // safely add position to asset
-    SPlat::Model::GameObjectModel::get_instance().lock.lock();
     asset.move(args.modifier);
+    asset.last_updated = Runtime::get_instance().get_anchor_timeline().get_time();
     size_t id = asset.id;
-    SPlat::Model::GameObjectModel::get_instance().lock.unlock();
 
     SPlat::Model::GameObjectModel::get_instance().check_collision(id);
 #ifdef DEBUG

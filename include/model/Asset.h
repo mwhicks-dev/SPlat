@@ -38,6 +38,8 @@ namespace SPlat {
 
             size_t id;
 
+            time_t last_updated;
+
             Asset * standing_on = nullptr;
 
             std::unordered_set<size_t> standers;

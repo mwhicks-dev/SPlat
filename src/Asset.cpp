@@ -1,5 +1,6 @@
 #include "model/Asset.h"
 #include "events/AssetEvents.h"
+#include "Runtime.h"
 
 #ifdef DEBUG
 #include <iostream>
@@ -9,11 +10,13 @@ using namespace SPlat::Model;
 
 Asset::Asset(sf::Vector2f& size) {
     this->setSize(size);
+    this->last_updated = Runtime::get_instance().get_anchor_timeline().get_time();
 }
 
 Asset::Asset(sf::Vector2f& size, sf::Color fill_color) {
     setSize(size);
     setFillColor(fill_color);
+    this->last_updated = Runtime::get_instance().get_anchor_timeline().get_time();
 }
 
 void Asset::update() {
@@ -22,15 +25,23 @@ void Asset::update() {
 #endif
     // raise relevant update events
     {  // velocity update
-        SPlat::Events::AddPositionEvent event(id, velocity);
+        sf::Vector2f update_velocity = velocity * static_cast<float>(
+            Runtime::get_instance().get_anchor_timeline().get_time() - 
+            last_updated) / static_cast<float>(Runtime::get_instance()
+            .get_anchor_steps_per_second());
+        SPlat::Events::AddPositionEvent event(id, update_velocity);
         event.raise();
         for (size_t stander_id : standers) {
-            event = SPlat::Events::AddPositionEvent(stander_id, velocity);
+            event = SPlat::Events::AddPositionEvent(stander_id, update_velocity);
             event.raise();
         }
     }
     if (get_priority() >= 0 && standing_on == nullptr) {  // gravity update
-        SPlat::Events::AddVelocityEvent event(id, sf::Vector2f(0, 1.5));
+        sf::Vector2f update_velocity = sf::Vector2f(0, 1.5) 
+            * static_cast<float>(Runtime::get_instance().get_anchor_timeline()
+            .get_time() - last_updated) / static_cast<float>(Runtime::get_instance()
+            .get_anchor_steps_per_second());
+        SPlat::Events::AddVelocityEvent event(id, update_velocity);
         event.raise();
     }
 #ifdef DEBUG
