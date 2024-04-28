@@ -21,7 +21,15 @@ namespace SPlat {
 
         LocalTimeline display_timeline;
 
+        time_t anchor_steps_per_second;
+
         Runtime(Timeline&);
+
+        void set_anchor_timeline(Timeline&);
+
+        void set_anchor_steps_per_second(time_t);
+
+        void update_anchor_steps_per_second();
 
     public:
 
@@ -31,9 +39,11 @@ namespace SPlat {
 
         Timeline& get_anchor_timeline();
 
-        void set_anchor_timeline(Timeline&);
+        void update_anchor_timeline(Timeline&);
 
         LocalTimeline& get_display_timeline();
+
+        time_t get_anchor_steps_per_second();
 
         static Runtime& get_instance();
 

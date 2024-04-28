@@ -1,5 +1,7 @@
 #include "Runtime.h"
 
+#include <thread>
+
 #ifdef DEBUG
 #include <iostream>
 #endif
@@ -19,6 +21,7 @@ class SystemTimeline : public Timeline {
 
 Runtime::Runtime(Timeline& anchor)
 : anchor(anchor), display_timeline(anchor, 1) {
+    update_anchor_steps_per_second(); 
     set_running(true);
 }
 
@@ -62,6 +65,32 @@ void Runtime::set_anchor_timeline(Timeline& anchor) {
 #endif
 }
 
+void Runtime::set_anchor_steps_per_second(time_t anchor_steps_per_second) {
+#ifdef DEBUG
+    std::cout << "-> Runtime::set_anchor_steps_per_second(" << anchor_steps_per_second << ")" << std::endl;
+#endif
+    m.lock();
+    this->anchor_steps_per_second = anchor_steps_per_second;
+    m.unlock();
+#ifdef DEBUG
+    std::cout << "<- Runtime::set_anchor_steps_per_second" << std::endl;
+#endif
+}
+
+void Runtime::update_anchor_steps_per_second() {
+#ifdef DEBUG
+    std::cout << "-> Runtime::update_anchor_steps_per_second()" << std::endl;
+#endif
+    time_t t0 = get_anchor_timeline().get_time();
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    time_t tf = get_anchor_timeline().get_time();
+
+    set_anchor_steps_per_second(tf - t0);
+#ifdef DEBUG
+    std::cout << "<- Runtime::update_anchor_steps_per_second" << std::endl;
+#endif
+}
+
 LocalTimeline& Runtime::get_display_timeline() {
     m.lock();
     LocalTimeline& local = display_timeline;
@@ -76,4 +105,27 @@ Runtime& Runtime::get_instance() {
         instance = new Runtime(*new SystemTimeline());
     m_static.unlock();
     return *instance;
+}
+
+void Runtime::update_anchor_timeline(Timeline& anchor) {
+#ifdef DEBUG
+    std::cout << "-> Runtime::update_anchor_timeline(Timeline&)" << std::endl;
+#endif
+    bool running = get_running();
+    if (running)
+        throw std::invalid_argument("Cannot update anchor timeline during run");
+    
+    set_anchor_timeline(anchor);
+    update_anchor_steps_per_second();
+#ifdef DEBUG
+    std::cout << "<- Runtime::update_anchor_timeline" << std::endl;
+#endif
+}
+
+time_t Runtime::get_anchor_steps_per_second() {
+    m.lock();
+    time_t local = anchor_steps_per_second;
+    m.unlock();
+
+    return local;
 }
