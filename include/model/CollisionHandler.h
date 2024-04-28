@@ -23,6 +23,14 @@ namespace SPlat {
                 m.unlock();
             }
 
+            AssetProperties * get_properties() {
+                m.lock();
+                AssetProperties * local = properties;
+                m.unlock();
+
+                return local;
+            }
+
             virtual void resolve_collision(AssetProperties& other) = 0;
 
         };

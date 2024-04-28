@@ -106,6 +106,12 @@ namespace SPlat {
                 m.unlock();
             }
 
+            sf::RectangleShape get_rectangle_shape() {
+                sf::RectangleShape r(get_size());
+                r.setPosition(get_position());
+                return r;
+            }
+
         };
 
     }

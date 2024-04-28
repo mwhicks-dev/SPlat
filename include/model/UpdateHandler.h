@@ -23,6 +23,14 @@ namespace SPlat {
                 m.unlock();
             }
 
+            MovingProperties * get_properties() {
+                m.lock();
+                MovingProperties * local = properties;
+                m.unlock();
+
+                return local;
+            }
+
             virtual void update(time_t) = 0;
 
         };
