@@ -23,7 +23,7 @@ namespace SPlat {
 
             public:
 
-                void resolve_collision(AssetProperties& other) override;
+                void resolve_collision(AssetProperties&) override;
 
             };
 

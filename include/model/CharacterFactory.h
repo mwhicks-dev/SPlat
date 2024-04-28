@@ -1,14 +1,14 @@
 #ifndef SPLAT_MODEL_CHARACTERFACTORY_H
 #define SPLAT_MODEL_CHARACTERFACTORY_H
 
-#include "model/AbstractAssetFactory.h"
+#include "model/AbstractMovingFactory.h"
 #include "model/UpdateHandler.h"
 
 namespace SPlat {
 
     namespace Model {
 
-        class CharacterFactory : public AbstractAssetFactory {
+        class CharacterFactory : public AbstractMovingFactory {
 
             Asset& create_asset(AssetProperties&) override;
 

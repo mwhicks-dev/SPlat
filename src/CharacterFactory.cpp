@@ -27,14 +27,11 @@ Asset& CharacterFactory::update_asset(size_t id, AssetProperties& properties) {
 }
 
 void CharacterFactory::DefaultUpdateHandler::update(time_t curr) {
-    if (this->get_properties() == nullptr)
-        throw std::logic_error("Update handler has no defined properties");
-    
-    CharacterProperties& properties = (CharacterProperties&) *get_properties();
+    AbstractMovingFactory::DefaultUpdateHandler initial;
+    initial.update(curr);
 
+    CharacterProperties& properties = (CharacterProperties&) *get_properties();
     float dt = static_cast<float>(curr - properties.get_last_updated());
-    sf::Vector2f position_modifier = properties.get_velocity() * dt;
-    properties.set_position(properties.get_position() + position_modifier);
 
     if (properties.get_standing_on() == nullptr) {
         sf::Vector2f velocity_modifier(0, 490 * dt);  /// TODO: Replace 490 with constant from Runtime
