@@ -24,10 +24,11 @@ void Asset::update() {
     std::cout << "-> Asset::update()" << std::endl;
 #endif
     // raise relevant update events
+    time_t local = last_updated;
     {  // velocity update
         sf::Vector2f update_velocity = velocity * static_cast<float>(
             Runtime::get_instance().get_anchor_timeline().get_time() - 
-            last_updated) / static_cast<float>(Runtime::get_instance()
+            local) / static_cast<float>(Runtime::get_instance()
             .get_anchor_steps_per_second());
         SPlat::Events::AddPositionEvent event(id, update_velocity);
         event.raise();
@@ -39,7 +40,7 @@ void Asset::update() {
     if (get_priority() >= 0 && standing_on == nullptr) {  // gravity update
         sf::Vector2f update_velocity = sf::Vector2f(0, 490) 
             * static_cast<float>(Runtime::get_instance().get_anchor_timeline()
-            .get_time() - last_updated) / static_cast<float>(Runtime::get_instance()
+            .get_time() - local) / static_cast<float>(Runtime::get_instance()
             .get_anchor_steps_per_second());
         SPlat::Events::AddVelocityEvent event(id, update_velocity);
         event.raise();

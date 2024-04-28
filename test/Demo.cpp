@@ -40,7 +40,7 @@ static void keypress_override(std::string serialized) {
             event.raise();
         } else if (args.key == sf::Keyboard::Key::Up 
                 && ctl.standing_on != nullptr) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(0, -500));
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(0, -490));
             event.raise();
         }
 
