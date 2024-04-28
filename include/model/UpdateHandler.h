@@ -9,14 +9,19 @@ namespace SPlat {
 
         class UpdateHandler {
 
+            std::mutex m;
+
             MovingProperties * properties = nullptr;
 
         public:
 
             UpdateHandler() = default;
 
-            void set_properties(MovingProperties* properties) 
-                { this->properties = properties; }
+            void set_properties(MovingProperties* properties) { 
+                m.lock();
+                this->properties = properties;
+                m.unlock();
+            }
 
             virtual void update(time_t) = 0;
 

@@ -9,6 +9,8 @@ namespace SPlat {
 
         class CollisionHandler {
 
+            std::mutex m;
+
             AssetProperties * properties = nullptr;
 
         public:
@@ -16,9 +18,9 @@ namespace SPlat {
             CollisionHandler() = default;
 
             void set_properties(AssetProperties* properties) {
-                properties->m.lock();
+                m.lock();
                 this->properties = properties;
-                properties->m.unlock();
+                m.unlock();
             }
 
             virtual void resolve_collision(AssetProperties& other) = 0;
