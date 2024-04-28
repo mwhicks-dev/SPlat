@@ -1,7 +1,7 @@
 #ifndef SPLAT_MODEL_UPDATEHANDLER_H
 #define SPLAT_MODEL_UPDATEHANDLER_H
 
-#include "model/Moving.h"
+#include "model/Properties.h"
 
 namespace SPlat {
 
@@ -9,11 +9,11 @@ namespace SPlat {
 
         class UpdateHandler {
 
-            Moving::Properties& properties;
+            MovingProperties& properties;
 
         public:
 
-            UpdateHandler(Moving::Properties& properties)
+            UpdateHandler(MovingProperties& properties)
             : properties(properties) {}
 
             virtual void update(time_t) = 0;
