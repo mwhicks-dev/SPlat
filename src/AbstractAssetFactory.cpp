@@ -1,6 +1,10 @@
 #include "model/AbstractAssetFactory.h"
 #include "model/GameObjectModel.h"
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Model;
 
 Asset& AbstractAssetFactory::read_asset(size_t id) {
@@ -13,6 +17,9 @@ Asset& AbstractAssetFactory::delete_asset(size_t id) {
 
 void AbstractAssetFactory::DefaultCollisionHandler
         ::resolve_collision(AssetProperties& other) {
+#ifdef DEBUG
+    std::cout << "-> AbstractAssetFactory::DefaultCollisionHandler::resolve_collision(AssetProperties&)" << std::endl; 
+#endif
     if (this->get_properties() == nullptr)
         throw std::logic_error("Collision handler has no defined properties");
     
@@ -54,4 +61,7 @@ void AbstractAssetFactory::DefaultCollisionHandler
         }
         resolutions[3] = tmp.getPosition() - other_rectangle.getPosition();
     }
+#ifdef DEBUG
+    std::cout << "<- AbstractAssetFactory::DefaultCollisionHandler::resolve_collision(AssetProperties&)" << std::endl; 
+#endif
 }

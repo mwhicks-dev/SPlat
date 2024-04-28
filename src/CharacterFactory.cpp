@@ -2,6 +2,10 @@
 #include "model/Character.h"
 #include "model/GameObjectModel.h"
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Model;
 
 Asset& CharacterFactory::create_asset(AssetProperties& properties) {
@@ -31,6 +35,9 @@ Asset& CharacterFactory::update_asset(size_t id, AssetProperties& properties) {
 }
 
 void CharacterFactory::DefaultUpdateHandler::update(time_t curr) {
+#ifdef DEBUG
+    std::cout << "-> CharacterFactory::DefaultUpdateHandler::update(" << curr << ")" << std::endl;
+#endif
     AbstractMovingFactory::DefaultUpdateHandler initial;
     initial.update(curr);
 
@@ -56,9 +63,15 @@ void CharacterFactory::DefaultUpdateHandler::update(time_t curr) {
             }
         }
     }
+#ifdef DEBUG
+    std::cout << "<- CharacterFactory::DefaultUpdateHandler::update" << std::endl;
+#endif
 }
 
 void CharacterFactory::DefaultCollisionHandler::resolve_collision(AssetProperties& other) {
+#ifdef DEBUG
+    std::cout << "-> CharacterFactory::DefaultCollisionHandler::resolve_collision(AssetProperties&)" << std::endl;
+#endif
     CharacterProperties* properties = (CharacterProperties*) get_properties();
 
     AbstractAssetFactory::DefaultCollisionHandler initial;
@@ -79,4 +92,7 @@ void CharacterFactory::DefaultCollisionHandler::resolve_collision(AssetPropertie
                 .getGlobalBounds())) properties->set_standing_on(&other);
         properties->set_velocity(sf::Vector2f(properties->get_velocity().x, 0));
     }
+#ifdef DEBUG
+    std::cout << "<- CharacterFactory::DefaultCollisionHandler::resolve_collision(AssetProperties&)" << std::endl;
+#endif
 }

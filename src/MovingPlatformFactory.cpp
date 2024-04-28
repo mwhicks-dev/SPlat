@@ -3,6 +3,10 @@
 #include "model/MovingPlatformFactory.h"
 #include "model/MovingPlatform.h"
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Model;
 
 Asset& MovingPlatformFactory::create_asset(AssetProperties& properties) {
@@ -43,6 +47,9 @@ Asset& MovingPlatformFactory::update_asset(size_t id,
 }
 
 void MovingPlatformFactory::DefaultUpdateHandler::update(time_t curr) {
+#ifdef DEBUG
+    std::cout << "-> MovingPlatformFactory::DefaultUpdateHandler::update(" << curr << ")" << std::endl;
+#endif
     MovingPlatformProperties& properties 
         = (MovingPlatformProperties&) *get_properties();
 
@@ -66,4 +73,7 @@ void MovingPlatformFactory::DefaultUpdateHandler::update(time_t curr) {
             states.push_back(curr_state);
         properties.set_states(states);
     }
+#ifdef DEBUG
+    std::cout << "<- MovingPlatformFactory::DefaultUpdateHandler::update" << std::endl;
+#endif
 }
