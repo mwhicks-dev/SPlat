@@ -13,6 +13,14 @@ namespace SPlat {
 
             AssetProperties * standing_on = nullptr;
 
+            CharacterProperties(size_t id, sf::Vector2f position, 
+                    sf::Vector2f size, sf::Color fill_color, sf::Vector2f
+                    velocity, time_t last_updated, AssetProperties* 
+                    standing_on) : MovingProperties(id, position, size, 
+                    fill_color, 0, velocity, last_updated) {
+                set_standing_on(standing_on);
+            }
+
             CharacterProperties(CharacterProperties& other) 
             : MovingProperties(other) {
                 set_standing_on(other.get_standing_on());
