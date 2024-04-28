@@ -57,10 +57,13 @@ void Client::start() {
         handle_key_event(sf::Keyboard::Key::Left);
         handle_key_event(sf::Keyboard::Key::Right);
         handle_key_event(sf::Keyboard::Key::Up);
+        handle_key_event(sf::Keyboard::Key::Escape);
 
-        // generate tick events
-        Events::TickEvent tick_event;
-        tick_event.raise();
+        // generate tick events (if unpaused)
+        if (!Runtime::get_instance().get_display_timeline().get_paused()) {
+            Events::TickEvent tick_event;
+            tick_event.raise();
+        }
 
         // draw all assets
         window.clear(sf::Color::Black);

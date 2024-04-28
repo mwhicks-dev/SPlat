@@ -1,4 +1,5 @@
 #include "Client.h"
+#include "Runtime.h"
 #include "model/AssetFactory.h"
 #include "model/Character.h"
 #include "events/AssetEvents.h"
@@ -42,6 +43,10 @@ static void keypress_override(std::string serialized) {
                 && ctl.standing_on != nullptr) {
             Events::AddVelocityEvent event(ctl.id, sf::Vector2f(0, -490));
             event.raise();
+        } else if (args.key == sf::Keyboard::Escape) {
+            if (Runtime::get_instance().get_display_timeline().get_paused())
+                Runtime::get_instance().get_display_timeline().unpause();
+            else Runtime::get_instance().get_display_timeline().pause();
         }
 
     } catch (std::logic_error & e) {
