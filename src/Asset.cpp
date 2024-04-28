@@ -29,7 +29,8 @@ void Asset::update() {
         sf::Vector2f update_velocity = velocity * static_cast<float>(
             Runtime::get_instance().get_anchor_timeline().get_time() - 
             local) / static_cast<float>(Runtime::get_instance()
-            .get_anchor_steps_per_second());
+            .get_anchor_steps_per_second()) * (float)(!Runtime::get_instance()
+            .get_display_timeline().get_paused());
         SPlat::Events::AddPositionEvent event(id, update_velocity);
         event.raise();
         for (size_t stander_id : standers) {
@@ -41,7 +42,8 @@ void Asset::update() {
         sf::Vector2f update_velocity = sf::Vector2f(0, 490) 
             * static_cast<float>(Runtime::get_instance().get_anchor_timeline()
             .get_time() - local) / static_cast<float>(Runtime::get_instance()
-            .get_anchor_steps_per_second());
+            .get_anchor_steps_per_second()) * (float)(!Runtime::get_instance()
+            .get_display_timeline().get_paused());
         SPlat::Events::AddVelocityEvent event(id, update_velocity);
         event.raise();
     }
