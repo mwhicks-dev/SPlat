@@ -2,7 +2,7 @@
 #define SPLAT_EVENTS_CHARACTEREVENTS_H
 
 #include "events/Event.h"
-#include "model/Asset.h"
+#include "model/CharacterProperties.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -16,7 +16,7 @@ namespace SPlat {
         protected:
 
             /// @brief properties to create from
-            SPlat::Model::AssetProperties properties;
+            SPlat::Model::MovingProperties& properties;
 
         public:
 
@@ -24,7 +24,7 @@ namespace SPlat {
             struct Args {
 
                 /// @brief AssetProperties to create character from
-                SPlat::Model::AssetProperties properties;
+                SPlat::Model::MovingProperties properties;
 
                 template <class Archive>
                 void serialize(Archive& ar) {
@@ -35,7 +35,7 @@ namespace SPlat {
 
             /// @brief create new CreateCharacterEvent from properties
             /// @param properties AssetProperties to create asset from
-            CreateCharacterEvent(SPlat::Model::AssetProperties);
+            CreateCharacterEvent(SPlat::Model::MovingProperties);
 
             void raise() override;
 
@@ -52,7 +52,7 @@ namespace SPlat {
 
             /// @brief create new CreateControlCharacterEvent from properties
             /// @param properties AssetProperties to create from
-            CreateControlCharacterEvent(SPlat::Model::AssetProperties properties)
+            CreateControlCharacterEvent(SPlat::Model::MovingProperties properties)
             : CreateCharacterEvent(properties) {}
 
             void raise() override;

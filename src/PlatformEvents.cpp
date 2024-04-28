@@ -1,8 +1,8 @@
 #include "events/PlatformEvents.h"
 #include "events/Command.h"
 #include "events/Listener.h"
-#include "model/AssetFactory.h"
 #include "model/Platform.h"
+#include "Runtime.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -11,9 +11,8 @@
 using namespace SPlat::Events;
 
 CreatePlatformEvent::CreatePlatformEvent
-        (SPlat::Model::AssetProperties properties) {
-    this->properties = properties;
-}
+        (SPlat::Model::AssetProperties properties) 
+        : properties(properties) {}
 
 void CreatePlatformEvent::raise() {
 #ifdef DEBUG
@@ -53,12 +52,7 @@ void CreatePlatformEvent::handler(std::string serialized) {
     }
 
     // create platfrom from args
-    SPlat::Model::Platform tmp(args.properties.size);
-    tmp.setPosition(args.properties.position);
-
-    // create persistent platform using AssetFactory
-    SPlat::Model::Platform p = SPlat::Model::AssetFactory
-        <SPlat::Model::Platform>::create_asset(tmp);
+    Runtime::get_instance().get_platform_factory().create_asset(args.properties);
 #ifdef DEBUG
     std::cout << "<- CreatePlatformEvent::handler" << std::endl;
 #endif

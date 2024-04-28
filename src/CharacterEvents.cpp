@@ -2,9 +2,8 @@
 #include "events/AssetEvents.h"
 #include "events/Command.h"
 #include "events/Listener.h"
-
-#include "model/AssetFactory.h"
 #include "model/Character.h"
+#include "Runtime.h"
 
 #ifdef DEBUG
 #include <iostream>
@@ -13,9 +12,7 @@
 using namespace SPlat::Events;
 
 CreateCharacterEvent::CreateCharacterEvent
-        (SPlat::Model::AssetProperties properties) {
-    this->properties = properties;
-}
+    (SPlat::Model::MovingProperties properties) : properties(properties) {}
 
 void CreateCharacterEvent::raise() {
 #ifdef DEBUG
@@ -44,16 +41,10 @@ void CreateCharacterEvent::raise() {
 
 SPlat::Model::Character from_properties
         (SPlat::Model::AssetProperties properties) {
-    // create character template
-    SPlat::Model::Character tmp(properties.size);
-    tmp.setPosition(properties.position);
 
     // pass to asset factory and update
-    SPlat::Model::Character c 
-        = SPlat::Model::AssetFactory<SPlat::Model::Character>
-          ::create_asset(tmp);
-    
-    return c;
+    return (SPlat::Model::Character&) SPlat::Runtime::get_instance()
+        .get_character_factory().create_asset(properties);
 }
 
 void CreateCharacterEvent::handler(std::string serialized) {
@@ -116,7 +107,7 @@ void CreateControlCharacterEvent::handler(std::string serialized) {
     SPlat::Model::Character c = from_properties(args.properties);
 
     // create, raise new ControlAssetEvent
-    ControlAssetEvent e(c.id); e.raise();
+    ControlAssetEvent e(c.get_asset_properties().get_id()); e.raise();
 #ifdef DEBUG
     std::cout << "<- CreateControlCharacterEvent::handler" << std::endl;
 #endif

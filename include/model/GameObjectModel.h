@@ -32,17 +32,11 @@ namespace SPlat {
 
             void check_collision(size_t);
 
-            void resolve_collision(Asset&, Asset&);
-
         public:
 
             Asset& create_asset(Asset&);
 
             Asset& read_asset(size_t);
-
-            void validate(size_t);
-
-            Asset& update_asset(size_t, Asset&);
 
             Asset& delete_asset(size_t);
 

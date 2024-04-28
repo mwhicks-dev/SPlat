@@ -2,6 +2,7 @@
 #include "events/Command.h"
 #include "events/Listener.h"
 #include "model/GameObjectModel.h"
+#include "model/Moving.h"
 #include "Client.h"
 #include "Runtime.h"
 
@@ -63,13 +64,14 @@ void AddVelocityEvent::handler(std::string serialized) {
     }
 
     // get asset by ID
-    SPlat::Model::Asset& asset = 
+    SPlat::Model::Moving& asset = (SPlat::Model::Moving&)
         SPlat::Model::GameObjectModel::get_instance()
         .read_asset(args.id);
     
     // add velocity to reference safely
-    asset.velocity += args.modifier;
-    asset.last_updated = Runtime::get_instance().get_anchor_timeline().get_time();
+    SPlat::Model::MovingProperties& properties = asset.get_moving_properties();
+    properties.set_velocity(asset.get_moving_properties().get_velocity() + args.modifier);
+    properties.set_last_update(Runtime::get_instance().get_display_timeline().get_time());
 #ifdef DEBUG
     std::cout << "<- AddVelocityEvent::handler" << std::endl;
 #endif
@@ -118,13 +120,14 @@ void AddPositionEvent::handler(std::string serialized) {
     }
 
     // get asset by ID
-    SPlat::Model::Asset& asset = 
+    SPlat::Model::Moving& asset = (SPlat::Model::Moving&)
         SPlat::Model::GameObjectModel::get_instance().read_asset(args.id);
     
     // safely add position to asset
-    asset.move(args.modifier);
-    asset.last_updated = Runtime::get_instance().get_anchor_timeline().get_time();
-    size_t id = asset.id;
+    SPlat::Model::MovingProperties& properties = asset.get_moving_properties();
+    properties.set_position(properties.get_position() + args.modifier);
+    properties.set_last_update(Runtime::get_instance().get_display_timeline().get_time());
+    size_t id = properties.get_id();
 
     SPlat::Model::GameObjectModel::get_instance().check_collision(id);
 #ifdef DEBUG

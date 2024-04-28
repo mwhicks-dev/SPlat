@@ -2,7 +2,7 @@
 #define SPLAT_EVENTS_MPLATEVENTS_H
 
 #include "events/Event.h"
-#include "model/MovingPlatform.h"
+#include "model/MovingPlatformProperties.h"
 
 #include <cereal/types/vector.hpp>
 
@@ -17,7 +17,7 @@ namespace SPlat {
             SPlat::Model::AssetProperties properties;
 
             /// @brief initial moving platform states list
-            std::vector<SPlat::Model::MovingPlatform::State> states;
+            std::vector<SPlat::Model::State> states;
 
         public:
 
@@ -28,7 +28,7 @@ namespace SPlat {
                 SPlat::Model::AssetProperties properties;
 
                 /// @brief initial moving platform states list
-                std::vector<SPlat::Model::MovingPlatform::State> states;
+                std::vector<SPlat::Model::State> states;
 
                 template <class Archive>
                 void serialize(Archive& ar) {
@@ -42,7 +42,7 @@ namespace SPlat {
             /// @param properties initial moving platform AssetProperties
             /// @param states initial moving platform states
             CreateMovingPlatformEvent(SPlat::Model::AssetProperties,
-                    std::vector<SPlat::Model::MovingPlatform::State>);
+                    std::vector<SPlat::Model::State>);
             
             static std::string get_type() { return "create_moving_platform_event"; }
 

@@ -1,4 +1,5 @@
 #include "model/GameObjectModel.h"
+#include "model/Moving.h"
 
 #include <cmath>
 
@@ -17,7 +18,7 @@ Asset& GameObjectModel::create_asset(Asset& asset) {
     ids.insert(id);
 
     // Assign ID and store
-    asset.id = id;
+    asset.get_asset_properties().set_id(id);
     assets[id] = &asset;
 
     lock.unlock();
@@ -34,64 +35,6 @@ Asset& GameObjectModel::read_asset(size_t id) {
     }
     
     Asset& asset = *assets[id];
-
-    lock.unlock();
-
-    return asset;
-}
-
-void GameObjectModel::validate(size_t id) {
-#ifdef DEBUG
-    std::cout << "-> GameObjectModel::validate(" << id << ")" << std::endl;
-#endif
-    Asset& asset = read_asset(id);
-
-    lock.lock();
-
-    if (asset.standing_on != nullptr) {
-        sf::Vector2f position = asset.getPosition();
-        position.y += 1;
-        asset.setPosition(position);
-        if (!asset.getGlobalBounds().intersects(
-                asset.standing_on->getGlobalBounds())) {
-            asset.standing_on->standers.erase(asset.id);
-            asset.standing_on = nullptr;
-        }
-        position.y -= 1;
-        asset.setPosition(position);
-    }
-
-    lock.unlock();
-#ifdef DEBUG
-    std::cout << "<- GameObjectModel::validate" << std::endl;
-#endif
-}
-
-Asset& GameObjectModel::update_asset(size_t id, Asset& update) {
-    lock.lock();
-
-    if (assets.count(id) == 0) {
-        lock.unlock();
-        throw std::invalid_argument("No asset with id " + id);
-    }
-
-    Asset& asset = *assets[id];
-
-    sf::Vector2f position_i = asset.getPosition();
-
-    asset.setPosition(update.getPosition());
-    asset.setSize(update.getSize());
-    asset.setTexture(update.getTexture());
-    asset.setTextureRect(update.getTextureRect());
-    asset.velocity = update.velocity;
-
-    sf::Vector2f position_f = asset.getPosition();
-
-    // if position has changed, check for collision
-    sf::Vector2f position_diff = position_f - position_i;
-    if (fabs(position_diff.x) + fabs(position_diff.y) > 0.5) {
-        check_collision(id);
-    }
 
     lock.unlock();
 
@@ -117,8 +60,9 @@ Asset& GameObjectModel::delete_asset(size_t id) {
 }
 
 bool collision_checker(Asset& lhs, Asset& rhs) {
-    return lhs.getGlobalBounds()
-        .intersects(rhs.getGlobalBounds());
+    return lhs.get_asset_properties().get_rectangle_shape().getGlobalBounds()
+        .intersects(rhs.get_asset_properties().get_rectangle_shape()
+        .getGlobalBounds());
 }
 
 void GameObjectModel::check_collision(size_t id) {
@@ -138,70 +82,17 @@ void GameObjectModel::check_collision(size_t id) {
             
             if (!collision) continue;
 
-            resolve_collision(*lhs, *rhs);
-            lhs->get_priority() >= rhs->get_priority()
-                ? resolve_collision(*lhs, *rhs)
-                : resolve_collision(*rhs, *lhs);
+            try {
+                Moving& lhs_ref = (Moving&) *lhs;
+                lhs_ref.resolve_collision(*rhs);
+            } catch (std::exception&) {}
+            try {
+                Moving& rhs_ref = (Moving&) *rhs;
+                rhs_ref.resolve_collision(*lhs);
+            } catch (std::exception&) {}
         }
     }
 #ifdef DEBUG
     std::cout << "<- GameObjectModel::check_collision" << std::endl;
-#endif
-}
-
-void GameObjectModel::resolve_collision(Asset& move, Asset& fixed) {
-#ifdef DEBUG
-    std::cout << "-> GameObjectModel::resolve_collision(" << move.id << ", " <<  fixed.id << ")" << std::endl;
-#endif
-    // get moving asset velocity as unit
-    sf::Vector2f unit_velocity = move.velocity;
-    float magnitude = sqrt(pow(unit_velocity.x, 2) + pow(unit_velocity.y, 2));
-    if (fabs(magnitude) >= 0.0001) {
-        unit_velocity /= magnitude;
-
-        sf::Vector2f offset;
-        {
-            sf::RectangleShape cpy = move;
-            float x_unit = -fabs(move.velocity.x) / move.velocity.x;
-            do {
-                cpy.move(x_unit, 0);
-                offset.x += x_unit;
-            } while (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()));
-        }{
-            sf::RectangleShape cpy = move;
-            float y_unit = -fabs(move.velocity.y) / move.velocity.y;
-            do {
-                cpy.move(0, y_unit);
-                offset.y += y_unit;
-            } while (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()));
-        }
-        // check for nan
-        if (!std::isnan(offset.x) && (std::isnan(offset.y) || fabs(offset.x) < fabs(offset.y))) {
-            move.move(offset.x, 0);
-        } else if (!std::isnan(offset.y) && (std::isnan(offset.x) || fabs(offset.y) < fabs(offset.x))) {
-            move.move(0, offset.y);
-        }
-
-        // check if move on fixed object now
-        {
-            sf::RectangleShape cpy = move;
-            cpy.move(0, 1);
-            if (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds())) {
-                move.standing_on = &fixed;
-                fixed.standers.insert(move.id);
-                move.velocity.y = 0;
-            }
-        }
-
-        // check if collision was with something above; if so, y vel becomes 0
-        {
-            sf::RectangleShape cpy = move;
-            cpy.move(0, -1);
-            if (cpy.getGlobalBounds().intersects(fixed.getGlobalBounds()))
-                move.velocity.y = 0;
-        }
-    }
-#ifdef DEBUG
-    std::cout << "<- GameObjectModel::resolve_collision" << std::endl;
 #endif
 }

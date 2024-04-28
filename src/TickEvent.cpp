@@ -2,6 +2,8 @@
 #include "events/Command.h"
 #include "events/Listener.h"
 #include "model/GameObjectModel.h"
+#include "model/Moving.h"
+#include "Runtime.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -54,15 +56,13 @@ void TickEvent::handler(std::string serialized) {
     }
 
     // for each asset...
+    time_t curr = Runtime::get_instance().get_display_timeline().get_time();
     for (size_t id : args.ids) {
         try {
-            // validate asset
-            SPlat::Model::GameObjectModel::get_instance().validate(id);
-
-            // get and update asset by ID
-            SPlat::Model::Asset& curr = SPlat::Model::GameObjectModel
-                ::get_instance().read_asset(id);
-            curr.update();
+            // get and update
+            SPlat::Model::Moving& asset = (SPlat::Model::Moving&) SPlat::Model
+                ::GameObjectModel::get_instance().read_asset(id);
+            asset.update(curr);
         } catch (std::exception& e) {/* OK */}
     }
 #ifdef DEBUG

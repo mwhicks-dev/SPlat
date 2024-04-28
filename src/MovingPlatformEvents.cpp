@@ -1,7 +1,7 @@
 #include "events/MovingPlatformEvents.h"
 #include "events/Command.h"
 #include "events/Listener.h"
-#include "model/AssetFactory.h"
+#include "Runtime.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -15,9 +15,8 @@ using namespace SPlat::Events;
 
 CreateMovingPlatformEvent::CreateMovingPlatformEvent(
     SPlat::Model::AssetProperties properties,
-    std::vector<SPlat::Model::MovingPlatform::State> states
-) {
-    this->properties = properties;
+    std::vector<SPlat::Model::State> states
+) : properties(properties) {
     this->states = states;
 }
 
@@ -57,20 +56,7 @@ void CreateMovingPlatformEvent::handler(std::string serialized) {
         iar(args);
     }
 
-    SPlat::Model::MovingPlatform mplat(args.properties.size);
-    mplat.setPosition(args.properties.position);
-
-    mplat = SPlat::Model::AssetFactory<SPlat::Model::MovingPlatform>
-        ::create_asset(mplat);
-    
-    SPlat::Model::MovingPlatform& persistent = (SPlat::Model::MovingPlatform&)
-        SPlat::Model::GameObjectModel::get_instance().read_asset(mplat.id);
-
-    for (SPlat::Model::MovingPlatform::State s : args.states) {
-        SPlat::Model::GameObjectModel::get_instance().lock.lock();
-        persistent.add_state(s);
-        SPlat::Model::GameObjectModel::get_instance().lock.unlock();
-    }
+    Runtime::get_instance().get_moving_platform_factory().create_asset(args.properties);
 #ifdef DEBUG
     std::cout << "<- CreateMovingPlatformEvent::handler" << std::endl;
 #endif
