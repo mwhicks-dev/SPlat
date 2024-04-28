@@ -6,7 +6,7 @@ using namespace SPlat::Model;
 
 Asset& CharacterFactory::create_asset(AssetProperties& properties) {
     Character * character = new Character(
-        (MovingProperties&) properties,
+        (CharacterProperties&) properties,
         *new CharacterFactory::DefaultCollisionHandler(),
         *new CharacterFactory::DefaultUpdateHandler()
     );
@@ -30,10 +30,52 @@ void CharacterFactory::DefaultUpdateHandler::update(time_t curr) {
     if (this->get_properties() == nullptr)
         throw std::logic_error("Update handler has no defined properties");
     
-    MovingProperties& properties = *get_properties();
+    CharacterProperties& properties = (CharacterProperties&) *get_properties();
 
-    time_t dt = curr - properties.get_last_updated();
-    sf::Vector2f update_velocity = properties.get_velocity() * static_cast<float>(dt);
+    float dt = static_cast<float>(curr - properties.get_last_updated());
+    sf::Vector2f position_modifier = properties.get_velocity() * dt;
+    properties.set_position(properties.get_position() + position_modifier);
 
-    properties.set_position(properties.get_position() + update_velocity);
+    if (properties.get_standing_on() == nullptr) {
+        sf::Vector2f velocity_modifier(0, 490 * dt);  /// TODO: Replace 490 with constant from Runtime
+        properties.set_velocity(properties.get_velocity() + velocity_modifier);
+    } else {
+        try {
+            MovingProperties& other = (MovingProperties&) *properties
+                .get_standing_on();
+            properties.set_position(properties.get_position() 
+                + other.get_velocity());
+        } catch (std::exception&) {/* OK */}
+
+        {
+            sf::RectangleShape tmp = properties.get_rectangle_shape();
+            tmp.move(0, 1);
+            if (!tmp.getGlobalBounds().intersects(properties.get_standing_on()->get_rectangle_shape().getGlobalBounds())) {
+                properties.set_standing_on(nullptr);
+            }
+        }
+    }
+}
+
+void CharacterFactory::DefaultCollisionHandler::resolve_collision(AssetProperties& other) {
+    CharacterProperties* properties = (CharacterProperties*) get_properties();
+
+    AbstractAssetFactory::DefaultCollisionHandler initial;
+    initial.set_properties(properties);
+    initial.resolve_collision(other);
+
+    {
+        sf::RectangleShape tmp = properties->get_rectangle_shape();
+        tmp.move(0, 1);
+        if (tmp.getGlobalBounds().intersects(other.get_rectangle_shape()
+                .getGlobalBounds())) properties->set_standing_on(&other);
+        properties->set_velocity(sf::Vector2f(properties->get_velocity().x, 0));
+    }
+    {
+        sf::RectangleShape tmp = properties->get_rectangle_shape();
+        tmp.move(0, -1);
+        if (tmp.getGlobalBounds().intersects(other.get_rectangle_shape()
+                .getGlobalBounds())) properties->set_standing_on(&other);
+        properties->set_velocity(sf::Vector2f(properties->get_velocity().x, 0));
+    }
 }

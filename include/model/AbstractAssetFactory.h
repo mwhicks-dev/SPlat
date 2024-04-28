@@ -21,6 +21,8 @@ namespace SPlat {
 
             class DefaultCollisionHandler : public CollisionHandler {
 
+            public:
+
                 void resolve_collision(AssetProperties& other) override;
 
             };

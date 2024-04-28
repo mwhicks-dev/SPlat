@@ -2,6 +2,7 @@
 #define SPLAT_CHARACTER
 
 #include "model/Moving.h"
+#include "model/CharacterProperties.h"
 
 namespace SPlat {
 
@@ -9,11 +10,11 @@ namespace SPlat {
 
         class Character : public Moving {
 
-            MovingProperties properties;
+            CharacterProperties properties;
 
         public:
 
-            Character(MovingProperties properties, 
+            Character(CharacterProperties properties, 
                     CollisionHandler& collision_handler,
                     UpdateHandler& update_handler) : Moving(properties, 
                     collision_handler, update_handler), 
