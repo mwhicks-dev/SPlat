@@ -26,6 +26,8 @@ namespace SPlat {
 
     public:
 
+        void set_framerate_limit(long);
+
         void start();
 
     };

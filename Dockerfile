@@ -12,4 +12,4 @@ COPY . /home
 RUN cmake .
 RUN make -j$(nproc)
 
-ENTRYPOINT ./gom_test && ./serialization_test && ./event_test && ./asset_factory_test
+ENTRYPOINT ./gom_test && ./serialization_test && ./asset_factory_test

@@ -1,12 +1,55 @@
 #include "events/MovingPlatformEvents.h"
-
+#include "events/Command.h"
+#include "events/Listener.h"
 #include "model/AssetFactory.h"
+
+#include <cereal/archives/json.hpp>
+
+#include <sstream>
+
+#ifdef DEBUG
+#include <iostream>
+#endif
 
 using namespace SPlat::Events;
 
-std::string CreateMovingPlatformEvent::TYPE = "create_moving_platform_event";
+CreateMovingPlatformEvent::CreateMovingPlatformEvent(
+    SPlat::Model::AssetProperties properties,
+    std::vector<SPlat::Model::MovingPlatform::State> states
+) {
+    this->properties = properties;
+    this->states = states;
+}
+
+void CreateMovingPlatformEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> CreateMovingPlatformEvent::raise()" << std::endl;
+#endif
+    // serialize args to JSON string
+    Args args = {.properties=properties, .states=states};
+    std::stringstream ss;
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(args);
+    }
+
+    // create new command
+    Command cmd = {
+        .type=CreateMovingPlatformEvent::get_type(),
+        .args=ss.str()
+    };
+
+    // send to background listener
+    BackgroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- CreateMovingPlatformEvent::raise" << std::endl;
+#endif
+}
 
 void CreateMovingPlatformEvent::handler(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> CreateMovingPlatformEvent::handler(" << serialized << ")" << std::endl;
+#endif
     CreateMovingPlatformEvent::Args args;
     {
         std::stringstream ss; ss << serialized;
@@ -28,4 +71,7 @@ void CreateMovingPlatformEvent::handler(std::string serialized) {
         persistent.add_state(s);
         SPlat::Model::GameObjectModel::get_instance().lock.unlock();
     }
+#ifdef DEBUG
+    std::cout << "<- CreateMovingPlatformEvent::handler" << std::endl;
+#endif
 }

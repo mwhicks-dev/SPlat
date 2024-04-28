@@ -13,10 +13,17 @@ namespace SPlat {
         /// @brief creates a character from properties
         class CreateCharacterEvent : public Event {
 
+        protected:
+
+            /// @brief properties to create from
+            SPlat::Model::AssetProperties properties;
+
         public:
 
+            /// @brief create character args
             struct Args {
 
+                /// @brief AssetProperties to create character from
                 SPlat::Model::AssetProperties properties;
 
                 template <class Archive>
@@ -26,64 +33,33 @@ namespace SPlat {
 
             };
 
-            /// @brief unique identifier for create asset event
-            static std::string TYPE;
+            /// @brief create new CreateCharacterEvent from properties
+            /// @param properties AssetProperties to create asset from
+            CreateCharacterEvent(SPlat::Model::AssetProperties);
 
-            /// @brief given properties, create new character
-            /// @param  
+            void raise() override;
+
+            static std::string get_type() { return "create_character_event"; }
+
             static void handler(std::string);
-
-            CreateCharacterEvent(SPlat::Model::AssetProperties properties) {
-                // serialize properties to JSON
-                Args args = {.properties=properties};
-                std::stringstream ss;
-                {
-                    cereal::JSONOutputArchive oar(ss);
-                    oar(args);
-                }
-
-                this->type = TYPE;
-                this->args = ss.str();
-                this->foreground = false;
-            }
 
         };
 
-        class CreateControlCharacterEvent : public Event {
+        /// @brief create asset, and set it as controlled as well
+        class CreateControlCharacterEvent : public CreateCharacterEvent {
 
         public:
 
-            struct Args {
+            /// @brief create new CreateControlCharacterEvent from properties
+            /// @param properties AssetProperties to create from
+            CreateControlCharacterEvent(SPlat::Model::AssetProperties properties)
+            : CreateCharacterEvent(properties) {}
 
-                SPlat::Model::AssetProperties properties;
+            void raise() override;
 
-                template <class Archive>
-                void serialize(Archive& ar) {
-                    ar(properties);
-                }
+            static std::string get_type() { return "create_control_character_event"; }
 
-            };
-
-            /// @brief unique identifier for create asset event
-            static std::string TYPE;
-
-            /// @brief given properties, create new character
-            /// @param  
             static void handler(std::string);
-
-            CreateControlCharacterEvent(SPlat::Model::AssetProperties properties) {
-                // serialize properties to JSON
-                Args args = {.properties=properties};
-                std::stringstream ss;
-                {
-                    cereal::JSONOutputArchive oar(ss);
-                    oar(args);
-                }
-
-                this->type = TYPE;
-                this->args = ss.str();
-                this->foreground = false;
-            }
 
         };
 
