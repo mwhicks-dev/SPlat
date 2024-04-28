@@ -1,7 +1,7 @@
 #ifndef SPLAT_MODEL_COLLISIONHANDLER_H
 #define SPLAT_MODEL_COLLISIONHANDLER_H
 
-#include "model/Properties.h"
+#include "model/AssetProperties.h"
 
 namespace SPlat {
 

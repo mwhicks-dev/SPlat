@@ -1,5 +1,5 @@
-#ifndef SPLAT_MODEL_ASSET_H
-#define SPLAT_MODEL_ASSET_H
+#ifndef SPLAT_MODEL_ASSETPROPERTIES_H
+#define SPLAT_MODEL_ASSETPROPERTIES_H
 
 #include <SFML/Graphics.hpp>
 
@@ -24,16 +24,6 @@ namespace SPlat {
             sf::Color fill_color;
 
             int collision_priority;
-
-        };
-
-        class MovingProperties : public AssetProperties {
-
-        public:
-
-            sf::Vector2f velocity;
-
-            time_t last_updated;
 
         };
 

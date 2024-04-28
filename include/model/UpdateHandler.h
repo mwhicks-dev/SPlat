@@ -1,7 +1,7 @@
 #ifndef SPLAT_MODEL_UPDATEHANDLER_H
 #define SPLAT_MODEL_UPDATEHANDLER_H
 
-#include "model/Properties.h"
+#include "model/MovingProperties.h"
 
 namespace SPlat {
 
