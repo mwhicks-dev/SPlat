@@ -11,7 +11,7 @@ namespace SPlat {
 
         public:
 
-            sf::Vector2f position;
+            sf::Vector2f velocity;
 
             time_t anchor_steps;
 
@@ -23,11 +23,21 @@ namespace SPlat {
 
         public:
 
+            time_t last_state_change;
+
             std::vector<State> states;
 
             MovingPlatformProperties(MovingPlatformProperties& other)
             : MovingProperties(other) {
                 set_states(other.get_states());
+            }
+
+            time_t get_last_state_change() {
+                m.lock();
+                time_t local = last_state_change;
+                m.unlock();
+
+                return local;
             }
 
             std::vector<State> get_states() {
@@ -41,6 +51,12 @@ namespace SPlat {
             void set_states(std::vector<State> states) {
                 m.lock();
                 this->states = states;
+                m.unlock();
+            }
+
+            void set_last_state_change(time_t last_state_change) {
+                m.lock();
+                this->last_state_change = last_state_change;
                 m.unlock();
             }
 
