@@ -18,11 +18,10 @@ namespace SPlat {
 
             MovingProperties() = default;
 
-            MovingProperties(size_t id, sf::Vector2f position, 
-                    sf::Vector2f size, sf::Color fill_color, int
-                    collision_priority, sf::Vector2f velocity, time_t
-                    last_updated) : AssetProperties(id, position, size, 
-                    fill_color, collision_priority) {
+            MovingProperties(sf::Vector2f position, sf::Vector2f size, 
+                    sf::Color fill_color, int collision_priority, sf::Vector2f 
+                    velocity, time_t last_updated) : AssetProperties(position, 
+                    size, fill_color, collision_priority) {
                 set_velocity(velocity);
                 set_last_update(last_updated);
             }

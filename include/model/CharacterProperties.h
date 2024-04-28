@@ -15,11 +15,11 @@ namespace SPlat {
 
             CharacterProperties() = default;
 
-            CharacterProperties(size_t id, sf::Vector2f position, 
-                    sf::Vector2f size, sf::Color fill_color, sf::Vector2f
-                    velocity, time_t last_updated, AssetProperties* 
-                    standing_on) : MovingProperties(id, position, size, 
-                    fill_color, 0, velocity, last_updated) {
+            CharacterProperties(sf::Vector2f position, sf::Vector2f size, 
+                    sf::Color fill_color, sf::Vector2f velocity, time_t 
+                    last_updated, AssetProperties* standing_on) : 
+                    MovingProperties(position, size, fill_color, 0, velocity, 
+                    last_updated) {
                 set_standing_on(standing_on);
             }
 

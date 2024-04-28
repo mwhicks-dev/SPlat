@@ -29,10 +29,8 @@ namespace SPlat {
 
             AssetProperties() = default;
 
-            AssetProperties(size_t id, sf::Vector2f position, 
-                    sf::Vector2f size, sf::Color fill_color, 
-                    int collision_priority) {
-                set_id(id);
+            AssetProperties(sf::Vector2f position, sf::Vector2f size, 
+                    sf::Color fill_color, int collision_priority) {
                 set_position(position);
                 set_size(size);
                 set_fill_color(fill_color);
