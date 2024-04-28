@@ -38,6 +38,8 @@ Asset& MovingPlatformFactory::update_asset(size_t id,
             curr.set_last_state_change(other.get_last_state_change());
         }
     } catch (std::exception&) {/* OK */}
+
+    return mplat;
 }
 
 void MovingPlatformFactory::DefaultUpdateHandler::update(time_t curr) {

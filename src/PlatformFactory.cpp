@@ -19,4 +19,6 @@ Asset& PlatformFactory::update_asset(size_t id, AssetProperties& properties) {
     curr.set_fill_color(properties.get_fill_color());
     curr.set_position(properties.get_position());
     curr.set_size(properties.get_size());
+
+    return plt;
 }

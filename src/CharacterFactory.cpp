@@ -10,6 +10,8 @@ Asset& CharacterFactory::create_asset(AssetProperties& properties) {
         *new CharacterFactory::DefaultCollisionHandler(),
         *new CharacterFactory::DefaultUpdateHandler()
     );
+
+    return GameObjectModel::get_instance().create_asset(*character);
 }
 
 Asset& CharacterFactory::update_asset(size_t id, AssetProperties& properties) {
@@ -24,6 +26,8 @@ Asset& CharacterFactory::update_asset(size_t id, AssetProperties& properties) {
         curr.set_velocity(other.get_velocity());
         curr.set_last_update(other.get_last_updated());
     } catch (std::exception&) {/* OK */}
+
+    return character;
 }
 
 void CharacterFactory::DefaultUpdateHandler::update(time_t curr) {
