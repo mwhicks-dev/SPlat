@@ -37,7 +37,7 @@ void Asset::update() {
         }
     }
     if (get_priority() >= 0 && standing_on == nullptr) {  // gravity update
-        sf::Vector2f update_velocity = sf::Vector2f(0, 1.5) 
+        sf::Vector2f update_velocity = sf::Vector2f(0, 490) 
             * static_cast<float>(Runtime::get_instance().get_anchor_timeline()
             .get_time() - last_updated) / static_cast<float>(Runtime::get_instance()
             .get_anchor_steps_per_second());

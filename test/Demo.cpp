@@ -33,14 +33,14 @@ static void keypress_override(std::string serialized) {
 
         // update velocity based on key pressed
         if (args.key == sf::Keyboard::Key::Left) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-15, 0));
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-300, 0));
             event.raise();
         } else if (args.key == sf::Keyboard::Key::Right) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(15, 0));
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(300, 0));
             event.raise();
         } else if (args.key == sf::Keyboard::Key::Up 
                 && ctl.standing_on != nullptr) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(0, -25));
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(0, -500));
             event.raise();
         }
 
@@ -70,10 +70,10 @@ static void keyrelease_override(std::string serialized) {
 
         // update velocity based on key pressed
         if (args.key == sf::Keyboard::Key::Left) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(15, 0));
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(300, 0));
             event.raise();
         } else if (args.key == sf::Keyboard::Key::Right) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-15, 0));
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-300, 0));
             event.raise();
         }
 
