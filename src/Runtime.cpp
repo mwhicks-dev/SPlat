@@ -1,4 +1,7 @@
 #include "Runtime.h"
+#include "model/CharacterFactory.h"
+#include "model/PlatformFactory.h"
+#include "model/MovingPlatformFactory.h"
 
 #include <thread>
 
@@ -20,7 +23,10 @@ class SystemTimeline : public Timeline {
 };
 
 Runtime::Runtime(Timeline& anchor)
-: anchor(anchor), display_timeline(anchor, 1) {
+: anchor(anchor), display_timeline(anchor, 1), 
+  character_factory(*new Model::CharacterFactory()),
+  platform_factory(*new Model::PlatformFactory()),
+  moving_platform_factory(*new Model::MovingPlatformFactory()) {
     update_anchor_steps_per_second(); 
     set_running(true);
 }
@@ -120,6 +126,30 @@ void Runtime::update_anchor_timeline(Timeline& anchor) {
 #ifdef DEBUG
     std::cout << "<- Runtime::update_anchor_timeline" << std::endl;
 #endif
+}
+
+Model::AbstractAssetFactory& Runtime::get_character_factory() {
+    m.lock();
+    Model::AbstractAssetFactory& local = character_factory;
+    m.unlock();
+
+    return local;
+}
+
+Model::AbstractAssetFactory& Runtime::get_platform_factory() {
+    m.lock();
+    Model::AbstractAssetFactory& local = platform_factory;
+    m.unlock();
+    
+    return local;
+}
+
+Model::AbstractAssetFactory& Runtime::get_moving_platform_factory() {
+    m.lock();
+    Model::AbstractAssetFactory& local = moving_platform_factory;
+    m.unlock();
+    
+    return local;
 }
 
 time_t Runtime::get_anchor_steps_per_second() {
