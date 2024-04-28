@@ -24,7 +24,7 @@ namespace SPlat {
 
         /// @brief continually dequeues and handles events
         /// @param runtime shared flag and mutex to check if client is running
-        void run(std::pair<bool, std::mutex>&);
+        void run();
 
     };
 

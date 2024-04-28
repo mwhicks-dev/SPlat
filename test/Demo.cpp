@@ -1,10 +1,15 @@
 #include "Client.h"
-#include "model/Character.h"
-#include "utilities/Functions.h"
-#include "events/AssetEvents.h"
+#include "Runtime.h"
 #include "model/AssetFactory.h"
+#include "model/Character.h"
+#include "events/AssetEvents.h"
+#include "events/CharacterEvents.h"
+#include "events/MovingPlatformEvents.h"
+#include "events/PlatformEvents.h"
+#include "events/KeyEvents.h"
+#include "events/Listener.h"
 
-#include <iostream>
+#include <cereal/archives/json.hpp>
 
 using namespace SPlat;
 
@@ -20,7 +25,7 @@ static void keypress_override(std::string serialized) {
         Model::Character ctl = Model::AssetFactory<Model::Character>::read_asset(id);
         
         // deserialize KeyEventArgs from args
-        Events::KeyEventArgs args;
+        Events::KeyEvent::Args args;
         std::stringstream ss; ss << serialized;
         {
             cereal::JSONInputArchive iar(ss);
@@ -29,15 +34,19 @@ static void keypress_override(std::string serialized) {
 
         // update velocity based on key pressed
         if (args.key == sf::Keyboard::Key::Left) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-15, 0));
-            event.priority = -1; event.raise();
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-300, 0));
+            event.raise();
         } else if (args.key == sf::Keyboard::Key::Right) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(15, 0));
-            event.priority = -1; event.raise();
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(300, 0));
+            event.raise();
         } else if (args.key == sf::Keyboard::Key::Up 
                 && ctl.standing_on != nullptr) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(0, -25));
-            event.priority = -1; event.raise();
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(0, -490));
+            event.raise();
+        } else if (args.key == sf::Keyboard::Escape) {
+            if (Runtime::get_instance().get_display_timeline().get_paused())
+                Runtime::get_instance().get_display_timeline().unpause();
+            else Runtime::get_instance().get_display_timeline().pause();
         }
 
     } catch (std::logic_error & e) {
@@ -57,7 +66,7 @@ static void keyrelease_override(std::string serialized) {
         Model::Character ctl = Model::AssetFactory<Model::Character>::read_asset(id);
         
         // deserialize KeyEventArgs from args
-        Events::KeyEventArgs args;
+        Events::KeyEvent::Args args;
         std::stringstream ss; ss << serialized;
         {
             cereal::JSONInputArchive iar(ss);
@@ -66,11 +75,11 @@ static void keyrelease_override(std::string serialized) {
 
         // update velocity based on key pressed
         if (args.key == sf::Keyboard::Key::Left) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(15, 0));
-            event.priority = -1; event.raise();
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(300, 0));
+            event.raise();
         } else if (args.key == sf::Keyboard::Key::Right) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-15, 0));
-            event.priority = -1; event.raise();
+            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-300, 0));
+            event.raise();
         }
 
     } catch (std::logic_error & e) {
@@ -80,22 +89,19 @@ static void keyrelease_override(std::string serialized) {
 
 int main() {
     // Create assets with events
-    SPlat::Events::Event event;
-    event = SPlat::Events::CreateControlCharacterEvent({
+    SPlat::Events::CreateControlCharacterEvent({
         sf::Vector2f(100, 100), // position
         sf::Vector2f(50, 100),  // size
         SPlat::Model::Character::TYPE  // type
-    });
-    event.raise();
+    }).raise();
 
-    event = SPlat::Events::CreateAssetEvent({
+    SPlat::Events::CreatePlatformEvent({
         sf::Vector2f(0, 500),
         sf::Vector2f(400, 200),
         SPlat::Model::Platform::TYPE
-    });
-    event.raise();
+    }).raise();
 
-    event = SPlat::Events::CreateMovingPlatformEvent(
+    SPlat::Events::CreateMovingPlatformEvent(
         {  // AssetProperties
             .position=sf::Vector2f(300, 100),
             .size=sf::Vector2f(200, 25),
@@ -109,15 +115,12 @@ int main() {
                 .ticks_til_next=100
             }
         }
-    );
-    event.raise();
+    ).raise();
 
-    Utilities::set_default_handlers();
-
-    Events::Event::handlers[Events::KeyPressEvent::TYPE] =
-        keypress_override;
-    Events::Event::handlers[Events::KeyReleaseEvent::TYPE] =
-        keyrelease_override;
-
-    Client client; client.start();
+    Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);
+    Events::ForegroundListener::get_instance().set_handler(Events::KeyReleaseEvent::get_type(), keyrelease_override);
+    
+    Client client;
+    client.set_framerate_limit(60);
+    client.start();
 }

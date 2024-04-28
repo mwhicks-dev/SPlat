@@ -1,100 +1,204 @@
 #include "events/AssetEvents.h"
+#include "events/Command.h"
+#include "events/Listener.h"
 #include "model/GameObjectModel.h"
-#include "model/AssetFactory.h"
-#include "model/Character.h"
-#include "model/Platform.h"
-#include "model/MovingPlatform.h"
+#include "Client.h"
+#include "Runtime.h"
+
+#include <cereal/archives/json.hpp>
+
+#include <sstream>
+
+#ifdef DEBUG
+#include <iostream>
+#endif
 
 using namespace SPlat::Events;
 
-std::string AddVelocityEvent::TYPE = "add_asset_velocity";
+std::mutex ControlAssetEvent::control_lock;
+bool ControlAssetEvent::control_set;
+size_t ControlAssetEvent::control;
 
-std::string AddPositionEvent::TYPE = "add_position_event";
+AddVelocityEvent::AddVelocityEvent(size_t id, sf::Vector2f velocity) {
+    this->id = id;
+    this->velocity = velocity;
+}
 
-void add_velocity_helper(SPlat::Model::Asset& asset, sf::Vector2f& velocity) {
-    asset.velocity += velocity;
+void AddVelocityEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> AddVelocityEvent::raise()" << std::endl;
+#endif
+    // serialize args to JSON string
+    Args args = {.id=id, .modifier=velocity};
+    std::stringstream ss;
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(args);
+    }
+
+    // create new command 
+    Command cmd= {
+        .type=AddVelocityEvent::get_type(),
+        .args=ss.str()
+    };
+
+    // send command to background listener
+    BackgroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- AddVelocityEvent::raise" << std::endl;
+#endif
 }
 
 void AddVelocityEvent::handler(std::string serialized) {
-    // get args back from string
-    AddVelocityEvent::Args args;
+#ifdef DEBUG
+    std::cout << "-> AddVelocityEvent::handler(" << serialized << ")" << std::endl;
+#endif
+    // deserialize args from JSON string
+    Args args;
     {
-        std::stringstream ss; ss << serialized;
+        std::stringstream ss;
+        ss << serialized;
         cereal::JSONInputArchive iar(ss);
         iar(args);
     }
 
-    // get asset ref from GOM
-    SPlat::Model::Asset& ref = 
-        SPlat::Model::GameObjectModel::get_instance().read_asset(args.id);
+    // get asset by ID
+    SPlat::Model::Asset& asset = 
+        SPlat::Model::GameObjectModel::get_instance()
+        .read_asset(args.id);
     
-    //std::cout << "Asset " << ref.id << " initial velocity: {x:" << ref.velocity.x << ", y:" << ref.velocity.y << "}" << std::endl;
-
-    // depending on type of asset, get and update value
-    if (ref.get_type() == SPlat::Model::Character::TYPE) {  // character
-        SPlat::Model::Character val = SPlat::Model
-            ::AssetFactory<SPlat::Model::Character>::read_asset(args.id);
-        add_velocity_helper(val, args.modifier);
-        SPlat::Model::AssetFactory<SPlat::Model::Character>::update_asset(args
-            .id, val);
-    } else if (ref.get_type() == SPlat::Model::Platform::TYPE) {  // platform
-        SPlat::Model::Platform val = SPlat::Model
-            ::AssetFactory<SPlat::Model::Platform>::read_asset(args.id);
-        add_velocity_helper(val, args.modifier);
-        SPlat::Model::AssetFactory<SPlat::Model::Platform>::update_asset(args
-            .id, val);
-    } else if (ref.get_type() == SPlat::Model::MovingPlatform::TYPE) {  // moving platform
-        SPlat::Model::MovingPlatform val = SPlat::Model
-            ::AssetFactory<SPlat::Model::MovingPlatform>::read_asset(args.id);
-        add_velocity_helper(val, args.modifier);
-        SPlat::Model::AssetFactory<SPlat::Model::MovingPlatform>
-            ::update_asset(args.id, val);
-    }
-
-    //std::cout << "Asset " << ref.id << " final velocity: {x:" << ref.velocity.x << ", y:" << ref.velocity.y << "}" << std::endl;
+    // add velocity to reference safely
+    asset.velocity += args.modifier;
+    asset.last_updated = Runtime::get_instance().get_anchor_timeline().get_time();
+#ifdef DEBUG
+    std::cout << "<- AddVelocityEvent::handler" << std::endl;
+#endif
 }
 
-void add_position_helper(SPlat::Model::Asset& asset, sf::Vector2f& update) {
-    sf::Vector2f position = asset.getPosition();
-    position += update;
-    asset.setPosition(position);
+AddPositionEvent::AddPositionEvent(size_t id, sf::Vector2f position) {
+    this->id = id;
+    this->position = position;
+}
+
+void AddPositionEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> AddVelocityEvent::raise()" << std::endl;
+#endif
+    // serialize args to JSON string
+    Args args = {.id=id, .modifier=position};
+    std::stringstream ss;
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(args);
+    }
+
+    // create new command 
+    Command cmd = {
+        .type=AddPositionEvent::get_type(),
+        .args=ss.str()
+    };
+
+    // send command to background listener
+    BackgroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- AddVelocityEvent::raise" << std::endl;
+#endif
 }
 
 void AddPositionEvent::handler(std::string serialized) {
-    // get args back from string
-    AddPositionEvent::Args args;
+#ifdef DEBUG
+    std::cout << "-> AddPositionEvent::handler(" << serialized << ")" << std::endl;
+#endif
+    // deserialize args from JSON string
+    Args args;
     {
         std::stringstream ss; ss << serialized;
         cereal::JSONInputArchive iar(ss);
         iar(args);
     }
 
-    // get asset ref from GOM
-    SPlat::Model::Asset& ref = 
+    // get asset by ID
+    SPlat::Model::Asset& asset = 
         SPlat::Model::GameObjectModel::get_instance().read_asset(args.id);
-
-    //std::cout << "Asset " << ref.id << " initial position: {x:" << ref.getPosition().x << ", y:" << ref.getPosition().y << "}" << std::endl;
     
-    // depending on type of asset, get and update value
-    if (ref.get_type() == SPlat::Model::Character::TYPE) {  // character
-        SPlat::Model::Character val = SPlat::Model
-            ::AssetFactory<SPlat::Model::Character>::read_asset(args.id);
-        add_position_helper(val, args.modifier);
-        SPlat::Model::AssetFactory<SPlat::Model::Character>::update_asset(args
-            .id, val);
-    } else if (ref.get_type() == SPlat::Model::Platform::TYPE) {  // platform
-        SPlat::Model::Platform val = SPlat::Model
-            ::AssetFactory<SPlat::Model::Platform>::read_asset(args.id);
-        add_position_helper(val, args.modifier);
-        SPlat::Model::AssetFactory<SPlat::Model::Platform>::update_asset(args
-            .id, val);
-    } else if (ref.get_type() == SPlat::Model::MovingPlatform::TYPE) {  // moving platform
-        SPlat::Model::MovingPlatform val = SPlat::Model
-            ::AssetFactory<SPlat::Model::MovingPlatform>::read_asset(args.id);
-        add_position_helper(val, args.modifier);
-        SPlat::Model::AssetFactory<SPlat::Model::MovingPlatform>
-            ::update_asset(args.id, val);
+    // safely add position to asset
+    asset.move(args.modifier);
+    asset.last_updated = Runtime::get_instance().get_anchor_timeline().get_time();
+    size_t id = asset.id;
+
+    SPlat::Model::GameObjectModel::get_instance().check_collision(id);
+#ifdef DEBUG
+    std::cout << "<- AddPositionEvent::handler" << std::endl;
+#endif
+}
+
+ControlAssetEvent::ControlAssetEvent(size_t id) { this->id = id; }
+
+void ControlAssetEvent::raise() {
+#ifdef DEBUG
+    std::cout << "-> ControlAssetEvent::raise()" << std::endl;
+#endif
+    // serialize args to JSON string
+    Args args = {.id=id};
+    std::stringstream ss;
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(args);
     }
 
-    //std::cout << "Asset " << ref.id << " final position: {x:" << ref.getPosition().x << ", y:" << ref.getPosition().y << "}" << std::endl;
+    // create new command
+    Command cmd = {
+        .priority=-2,
+        .type=ControlAssetEvent::get_type(),
+        .args=ss.str()
+    };
+
+    // send to foreground listener
+    ForegroundListener::get_instance().push_command(cmd);
+#ifdef DEBUG
+    std::cout << "<- ControlAssetEvent::raise" << std::endl;
+#endif
+}
+
+void ControlAssetEvent::handler(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> ControlAssetEvent::handler(" << serialized << ")" << std::endl;
+#endif
+    // deserialize args from JSON string
+    Args args;
+    {
+        std::stringstream ss; ss << serialized;
+        cereal::JSONInputArchive iar(ss);
+        iar(args);
+    }
+
+    // verify asset matching ID exists
+    SPlat::Model::Asset& controlled =
+        SPlat::Model::GameObjectModel::get_instance().read_asset(args.id);
+    
+    // set asset as controlled by ID
+    control_lock.lock();
+    control_set = true;
+    control = args.id;
+    control_lock.unlock();
+#ifdef DEBUG
+    std::cout << "<- ControlAssetEvent::handler" << std::endl;
+#endif
+}
+
+size_t ControlAssetEvent::get_controlled_asset_id() {
+    // get static values
+    size_t local_control;
+    bool local_control_set = false;
+    control_lock.lock();
+    local_control_set = control_set;
+    if (local_control_set)
+        local_control = control;
+    control_lock.unlock();
+
+    // return by local values
+    if (!local_control_set)
+        throw std::domain_error("No asset set as controlled");
+    
+    return local_control;
 }

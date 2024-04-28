@@ -2,7 +2,7 @@
 
 #include "cereal/archives/json.hpp"
 
-#include "events/Event.h"
+#include "events/Command.h"
 #include "Serialization.h"
 
 /// @brief JSON serialization of Vector2f 
@@ -28,11 +28,11 @@ TEST(SerializationTest, Vector2f) {
 /// @brief JSON serialization of Event 
 TEST(SerializationTest, Event) {
     std::stringstream ss;
-    SPlat::Events::Event event("event_type", "event_args", false), deserialized;
+    SPlat::Events::Command cmd = {.priority=-2, .type="event_type", .args="event_args"}, deserialized;
 
     {
         cereal::JSONOutputArchive oar(ss);
-        oar(event);
+        oar(cmd);
     }
 
     {
@@ -40,6 +40,7 @@ TEST(SerializationTest, Event) {
         iar(deserialized);
     }
 
+    ASSERT_EQ(deserialized.priority, -2);
     ASSERT_EQ(deserialized.type, "event_type");
     ASSERT_EQ(deserialized.args, "event_args");
 }
