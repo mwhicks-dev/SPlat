@@ -26,7 +26,8 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
 }
 
 void wait_for_timeline(Timeline& t, time_t target) {
-    if (t.get_time() >= target) return;
+    if (Config::get_instance().get_timing_config().get_display_timeline().get_paused()
+         || t.get_time() >= target) return;
 
     return wait_for_timeline(t, target);
 }

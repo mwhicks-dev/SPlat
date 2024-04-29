@@ -22,6 +22,9 @@ namespace SPlat {
         /// @brief last time paused was set to true
         time_t last_paused_time;
 
+        /// @brief total time that timeline has been paused
+        time_t elapsed_paused_time;
+
         /// @brief long number of anchor dt per this dt 
         time_t tic;
 
@@ -35,6 +38,8 @@ namespace SPlat {
         /// @brief setter for last_paused_time field
         /// @param last_paused_time new value of last_paused_time
         void set_last_paused_time(time_t);
+
+        void set_elapsed_paused_time(time_t);
 
         /// @brief getter for last_paused_time field
         /// @return last_paused_time value

@@ -30,6 +30,12 @@ void SPlat::LocalTimeline::set_last_paused_time(time_t last_paused_time) {
 #endif
 }
 
+void SPlat::LocalTimeline::set_elapsed_paused_time(time_t elapsed_paused_time) {
+    m.lock();
+    this->elapsed_paused_time = elapsed_paused_time;
+    m.unlock();
+}
+
 time_t SPlat::LocalTimeline::get_last_paused_time() {
     m.lock();
     time_t local = last_paused_time;
@@ -41,11 +47,13 @@ time_t SPlat::LocalTimeline::get_last_paused_time() {
 SPlat::LocalTimeline::LocalTimeline(Timeline& anchor, time_t tic)
 : anchor(anchor), start_time(anchor.get_time()) {
     set_tic(tic);
-    paused = false;
+    pause();
 }
 
 time_t SPlat::LocalTimeline::get_time() {
-    return (anchor.get_time() - get_start_time()) / get_tic();
+    return get_paused()
+        ? get_last_paused_time() 
+        : (anchor.get_time() - get_start_time() - get_elapsed_paused_time()) / get_tic();
 }
 
 void SPlat::LocalTimeline::pause() {
@@ -64,6 +72,8 @@ void SPlat::LocalTimeline::unpause() {
     std::cout << "-> LocalTimeline::unpause()" << std::endl;
 #endif
     set_paused(false);
+    set_elapsed_paused_time(get_elapsed_paused_time() 
+        + get_time() - get_last_paused_time());
 #ifdef DEBUG
     std::cout << "<- LocalTimeline::unpause" << std::endl;
 #endif
@@ -106,7 +116,9 @@ time_t SPlat::LocalTimeline::get_tic() {
 }
 
 time_t SPlat::LocalTimeline::get_elapsed_paused_time() {
-    return get_paused()
-        ? get_time() - get_last_paused_time()
-        : 0;
+    m.lock();
+    time_t local = elapsed_paused_time;
+    m.unlock();
+
+    return local;
 }
