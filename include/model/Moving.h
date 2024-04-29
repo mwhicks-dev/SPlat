@@ -1,8 +1,9 @@
 #ifndef SPLAT_MODEL_MOVING_H
 #define SPLAT_MODEL_MOVING_H
 
-#include "Asset.h"
+#include "model/Asset.h"
 #include "model/MovingProperties.h"
+#include "model/UpdateHandler.h"
 
 namespace SPlat {
 
@@ -13,6 +14,24 @@ namespace SPlat {
             std::mutex m;
 
             MovingProperties& properties;
+
+            UpdateHandler * update_handler = nullptr;
+        
+        protected:
+
+            void set_update_handler(UpdateHandler * update_handler) {
+                m.lock();
+                this->update_handler = update_handler;
+                m.unlock();
+            }
+
+            UpdateHandler * get_update_handler() {
+                m.lock();
+                UpdateHandler * local = update_handler;
+                m.unlock();
+
+                return local;
+            }
 
         public:
 
