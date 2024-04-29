@@ -12,11 +12,19 @@ namespace SPlat {
 
         class CharacterUpdateHandler : public UpdateHandler {
 
+            std::mutex m;
+
             AssetProperties& asset;
 
             MovingProperties& moving;
 
             CharacterProperties& character;
+
+            AssetProperties& get_asset_properties();
+
+            MovingProperties& get_moving_properties();
+
+            CharacterProperties& get_character_properties();
 
         public:
 

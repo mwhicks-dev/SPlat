@@ -12,11 +12,19 @@ namespace SPlat {
 
         class MovingPlatformUpdateHandler : public UpdateHandler {
 
+            std::mutex m;
+
             AssetProperties& asset;
 
             MovingProperties& moving;
 
             MovingPlatformProperties& moving_platform;
+
+            AssetProperties& get_asset_properties();
+
+            MovingProperties& get_moving_properties();
+
+            MovingPlatformProperties& get_moving_platform_properties();
 
         public:
 
