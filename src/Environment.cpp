@@ -5,6 +5,7 @@ using namespace SPlat;
 Environment::Environment() {
     set_running(true);
     set_framerate_limit(60);
+    set_unit(50);
 }
 
 long Environment::get_framerate_limit() {

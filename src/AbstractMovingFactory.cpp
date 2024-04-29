@@ -1,4 +1,5 @@
 #include "model/AbstractMovingFactory.h"
+#include "Config.h"
 
 #ifdef DEBUG
 #include <iostream>
@@ -21,7 +22,8 @@ void AbstractMovingFactory::DefaultUpdateHandler::update(time_t curr) {
 
     float dt = static_cast<float>(curr - properties.get_last_updated());
 
-    sf::Vector2f position_modifier = properties.get_velocity() * dt;
+    sf::Vector2f position_modifier = properties.get_velocity() * dt
+        / static_cast<float>(Config::get_instance().get_environment().get_framerate_limit());
     properties.set_position(properties.get_position() + position_modifier);
 #ifdef DEBUG
     std::cout << "<- AbstractMovingFactory::DefaultUpdateHandler::update" << std::endl;

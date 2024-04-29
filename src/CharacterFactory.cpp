@@ -1,6 +1,7 @@
 #include "model/CharacterFactory.h"
 #include "model/Character.h"
 #include "model/GameObjectModel.h"
+#include "Config.h"
 
 #ifdef DEBUG
 #include <iostream>
@@ -46,7 +47,8 @@ void CharacterFactory::DefaultUpdateHandler::update(time_t curr) {
     float dt = static_cast<float>(curr - properties.get_last_updated());
 
     if (properties.get_standing_on() == nullptr) {
-        sf::Vector2f velocity_modifier(0, 490 * dt);  /// TODO: Replace 490 with constant from Runtime
+        SPlat::EnvironmentInterface& env = SPlat::Config::get_instance().get_environment();
+        sf::Vector2f velocity_modifier(0, env.get_unit() * 9.8 * dt);
         properties.set_velocity(properties.get_velocity() + velocity_modifier);
     } else {
         try {
