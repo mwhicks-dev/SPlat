@@ -13,8 +13,6 @@ namespace SPlat {
 
             Asset& create_asset(AssetProperties&) override;
 
-            Asset& update_asset(size_t, AssetProperties&) override;
-
         };
 
     }
