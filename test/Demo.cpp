@@ -117,12 +117,21 @@ int main() {
         Model::AssetProperties properties(
             sf::Vector2f(100, 100),  // position
             sf::Vector2f(50, 100),  // size
-            sf::Color(255, 255, 255, 255),  // fill_color
+            sf::Color::Magenta,  // fill_color
             0  // collision priority (TODO should be auto)
         );
         Model::Asset& asset = conf.get_asset_factory_config().get_character_factory().create_asset(properties);
         Model::Character& character = dynamic_cast<Model::Character&>(asset);
         Config::get_instance().get_environment().set_controlled_asset(&character);
+    }
+    {
+        Model::AssetProperties properties(
+            sf::Vector2f(0, 500),  // position
+            sf::Vector2f(400, 100),  // size
+            sf::Color::Green,  // fill_color
+            -2  // collision priority
+        );
+        conf.get_asset_factory_config().get_platform_factory().create_asset(properties);
     }
 
     Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);
