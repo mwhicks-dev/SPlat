@@ -3,6 +3,8 @@
 
 #include "Serialization.h"
 
+#include <mutex>
+
 namespace SPlat {
 
     namespace Model {

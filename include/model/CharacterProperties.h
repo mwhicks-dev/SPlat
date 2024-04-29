@@ -1,6 +1,8 @@
 #ifndef SPLAT_MODEL_CHARACTERPROPERTIES_H
 #define SPLAT_MODEL_CHARACTERPROPERTIES_H
 
+#include "model/AssetProperties.h"
+
 namespace SPlat {
 
     namespace Model {

@@ -3,6 +3,7 @@
 
 #include "events/Event.h"
 #include "model/CharacterProperties.h"
+#include "model/MovingProperties.h"
 
 #include <cereal/archives/json.hpp>
 

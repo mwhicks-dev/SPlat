@@ -2,6 +2,7 @@
 #define SPLAT_EVENTS_MPLATEVENTS_H
 
 #include "events/Event.h"
+#include "model/AssetProperties.h"
 #include "model/MovingPlatformProperties.h"
 
 #include <cereal/types/vector.hpp>

@@ -111,27 +111,19 @@ static void keyrelease_override(std::string serialized) {
 }
 
 int main() {
-    // Create assets with events
-    Model::CharacterProperties character_properties(
-        sf::Vector2f(100, 100),  // position
-        sf::Vector2f(50, 100),  // size
-        sf::Color(255, 255, 255, 255),  // fill_color
-        sf::Vector2f(0, 0),  // velocity
-        Config::get_instance().get_timing_config().get_display_timeline().get_time(),  // last_updated
-        nullptr  // standing_on
-    );
-    Model::Character& character = (Model::Character&) Config::get_instance()
-        .get_asset_factory_config().get_character_factory().create_asset(character_properties);
-    Config::get_instance().get_environment().set_controlled_asset(&character);
-
-    Model::AssetProperties platform_properties(
-        sf::Vector2f(0, 500),  // position
-        sf::Vector2f(400, 100),  // size
-        sf::Color(255, 255, 255, 255),  // fill color
-        -2
-    );
-    Model::Platform& platform = (Model::Platform&) Config::get_instance()
-        .get_asset_factory_config().get_platform_factory().create_asset(platform_properties);
+    Config& conf = Config::get_instance();
+    // Create assets
+    {
+        Model::AssetProperties properties(
+            sf::Vector2f(100, 100),  // position
+            sf::Vector2f(50, 100),  // size
+            sf::Color(255, 255, 255, 255),  // fill_color
+            0  // collision priority (TODO should be auto)
+        );
+        Model::Asset& asset = conf.get_asset_factory_config().get_character_factory().create_asset(properties);
+        Model::Character& character = dynamic_cast<Model::Character&>(asset);
+        Config::get_instance().get_environment().set_controlled_asset(&character);
+    }
 
     Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);
     Events::ForegroundListener::get_instance().set_handler(Events::KeyReleaseEvent::get_type(), keyrelease_override);
