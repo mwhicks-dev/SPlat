@@ -80,7 +80,7 @@ void Client::start() {
             .get_display_timeline(), ++last_updated);
     }
 
-    Config::get_instance().set_running(false);
+    Config::get_instance().get_environment().set_running(false);
 
     t.join();
 #ifdef DEBUG

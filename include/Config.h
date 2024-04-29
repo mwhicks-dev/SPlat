@@ -2,6 +2,7 @@
 #define SPLAT_RUNTIME_H
 
 #include "AssetFactoryConfigInterface.h"
+#include "EnvironmentInterface.h"
 #include "TimingConfigInterface.h"
 
 #include <mutex>
@@ -12,21 +13,19 @@ namespace SPlat {
 
         std::mutex m;
 
-        bool running;
+        AssetFactoryConfigInterface& asset_factory_config;
+
+        EnvironmentInterface& environment;
 
         TimingConfigInterface& timing_config;
-
-        AssetFactoryConfigInterface& asset_factory_config;
 
         Config();
 
     public:
 
-        bool get_running();
-
-        void set_running(bool);
-
         AssetFactoryConfigInterface& get_asset_factory_config();
+
+        EnvironmentInterface& get_environment();
 
         TimingConfigInterface& get_timing_config();
 

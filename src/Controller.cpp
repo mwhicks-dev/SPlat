@@ -19,7 +19,7 @@ void Controller::run() {
 #endif
     while (true) {
         // check if still running
-        if (!Config::get_instance().get_running()) break;
+        if (!Config::get_instance().get_environment().get_running()) break;
 
         // dispatch background events
         Events::BackgroundListener &lst = Events::BackgroundListener
