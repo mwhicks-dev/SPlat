@@ -39,6 +39,7 @@ void CharacterFactory::DefaultUpdateHandler::update(time_t curr) {
     std::cout << "-> CharacterFactory::DefaultUpdateHandler::update(" << curr << ")" << std::endl;
 #endif
     AbstractMovingFactory::DefaultUpdateHandler initial;
+    initial.set_properties(get_properties());
     initial.update(curr);
 
     CharacterProperties& properties = (CharacterProperties&) *get_properties();

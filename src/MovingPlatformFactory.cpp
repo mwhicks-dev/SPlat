@@ -60,6 +60,7 @@ void MovingPlatformFactory::DefaultUpdateHandler::update(time_t curr) {
     }
 
     AbstractMovingFactory::DefaultUpdateHandler initial;
+    initial.set_properties(get_properties());
     initial.update(curr);
     
     if (states.size() > 0) {
