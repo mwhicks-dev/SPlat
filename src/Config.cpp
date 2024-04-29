@@ -49,9 +49,9 @@ Config& Config::get_instance() {
     return *instance;
 }
 
-AbstractAssetFactoryConfig& Config::get_asset_factory_config() {
+AssetFactoryConfigInterface& Config::get_asset_factory_config() {
     m.lock();
-    AbstractAssetFactoryConfig& local = asset_factory_config;
+    AssetFactoryConfigInterface& local = asset_factory_config;
     m.unlock();
 
     return local;

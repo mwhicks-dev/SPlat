@@ -1,11 +1,11 @@
-#ifndef SPlat_AbstractAssetFactoryConfig_h
-#define SPlat_AbstractAssetFactoryConfig_h
+#ifndef SPlat_AssetFactoryConfigInterface_h
+#define SPlat_AssetFactoryConfigInterface_h
 
 #include "model/AbstractAssetFactory.h"
 
 namespace SPlat {
 
-    class AbstractAssetFactoryConfig {
+    class AssetFactoryConfigInterface {
 
     public:
 

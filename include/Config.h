@@ -1,7 +1,7 @@
 #ifndef SPLAT_RUNTIME_H
 #define SPLAT_RUNTIME_H
 
-#include "AbstractAssetFactoryConfig.h"
+#include "AssetFactoryConfigInterface.h"
 #include "TimingConfigInterface.h"
 
 #include <mutex>
@@ -20,7 +20,7 @@ namespace SPlat {
 
         TimingConfigInterface& timing_config;
 
-        AbstractAssetFactoryConfig& asset_factory_config;
+        AssetFactoryConfigInterface& asset_factory_config;
 
         Config();
 
@@ -30,7 +30,7 @@ namespace SPlat {
 
         void set_running(bool);
 
-        AbstractAssetFactoryConfig& get_asset_factory_config();
+        AssetFactoryConfigInterface& get_asset_factory_config();
 
         TimingConfigInterface& get_timing_config();
 

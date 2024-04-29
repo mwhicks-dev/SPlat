@@ -1,11 +1,11 @@
 #ifndef SPlat_AssetFactoryConfig_h
 #define SPlat_AssetFactoryConfig_h
 
-#include "AbstractAssetFactoryConfig.h"
+#include "AssetFactoryConfigInterface.h"
 
 namespace SPlat {
 
-    class AssetFactoryConfig : public AbstractAssetFactoryConfig {
+    class AssetFactoryConfig : public AssetFactoryConfigInterface {
 
         std::mutex m;
 
