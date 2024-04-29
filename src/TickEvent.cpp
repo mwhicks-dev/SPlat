@@ -56,7 +56,8 @@ void TickEvent::handler(std::string serialized) {
     }
 
     // for each asset...
-    time_t curr = Config::get_instance().get_display_timeline().get_time();
+    time_t curr = Config::get_instance().get_timing_config()
+        .get_display_timeline().get_time();
     for (size_t id : args.ids) {
         try {
             // get and update

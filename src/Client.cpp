@@ -42,7 +42,8 @@ void Client::start() {
     
     std::this_thread::sleep_for(std::chrono::milliseconds(250));  // give controller time to get started
 
-    time_t last_updated = Config::get_instance().get_display_timeline().get_time();
+    time_t last_updated = Config::get_instance().get_timing_config()
+        .get_display_timeline().get_time();
     while (window.isOpen()) {
         // dispatch foreground events
         Events::ForegroundListener::get_instance().run();
@@ -75,7 +76,8 @@ void Client::start() {
         }
 
         window.display();
-        wait_for_timeline(Config::get_instance().get_display_timeline(), ++last_updated);
+        wait_for_timeline(Config::get_instance().get_timing_config()
+            .get_display_timeline(), ++last_updated);
     }
 
     Config::get_instance().set_running(false);
@@ -90,11 +92,10 @@ void Client::set_framerate_limit(long framerate_limit) {
 #ifdef DEBUG
     std::cout << "-> Client::set_framerate_limit(" << framerate_limit << ")" << std::endl;
 #endif
-    time_t t0 = Config::get_instance().get_anchor_timeline().get_time();
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    time_t tf = Config::get_instance().get_anchor_timeline().get_time();
-    time_t tic = (tf - t0) / framerate_limit;
-    Config::get_instance().get_display_timeline().set_tic(tic);
+    time_t tic = Config::get_instance().get_timing_config()
+        .get_anchor_steps_per_second() / framerate_limit;
+    Config::get_instance().get_timing_config()
+        .get_display_timeline().set_tic(tic);
 #ifdef DEBUG
     std::cout << "<- Client::set_framerate_limit" << std::endl;
 #endif
