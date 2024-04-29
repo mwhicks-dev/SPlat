@@ -92,7 +92,6 @@ static void keyrelease_override(std::string serialized) {
 int main() {
     // This should be done first -- framerate limit sleeps for 1s
     Client client;
-    client.set_framerate_limit(60);
     
     // Create assets with events
     Model::CharacterProperties character_properties(

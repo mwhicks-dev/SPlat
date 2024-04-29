@@ -31,6 +31,10 @@ void wait_for_timeline(Timeline& t, time_t target) {
     return wait_for_timeline(t, target);
 }
 
+Client::Client() {
+    update_framerate_limit(Config::get_instance().get_environment().get_framerate_limit());
+}
+
 void Client::start() {
 #ifdef DEBUG
     std::cout << "-> Client::start()" << std::endl;
@@ -88,14 +92,14 @@ void Client::start() {
 #endif
 }
 
-void Client::set_framerate_limit(long framerate_limit) {
+void Client::update_framerate_limit(long framerate_limit) {
 #ifdef DEBUG
     std::cout << "-> Client::set_framerate_limit(" << framerate_limit << ")" << std::endl;
 #endif
-    time_t tic = Config::get_instance().get_timing_config()
-        .get_anchor_steps_per_second() / framerate_limit;
-    Config::get_instance().get_timing_config()
-        .get_display_timeline().set_tic(tic);
+    Config::get_instance().get_environment().set_framerate_limit(framerate_limit);
+    Config::get_instance().get_timing_config().get_display_timeline().set_tic(
+        Config::get_instance().get_timing_config().get_anchor_steps_per_second() / framerate_limit
+    );
 #ifdef DEBUG
     std::cout << "<- Client::set_framerate_limit" << std::endl;
 #endif
