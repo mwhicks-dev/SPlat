@@ -88,25 +88,25 @@ static void keyrelease_override(std::string serialized) {
 }
 
 int main() {
+    // This should be done first -- framerate limit sleeps for 1s
+    Client client;
+    client.set_framerate_limit(60);
+    
+    time_t test = Runtime::get_instance().get_display_timeline().get_time();
+    std::cout << "Display timeline value: " << test << std::endl;
+    
     // Create assets with events
-    Model::CharacterProperties character_properties(0, sf::Vector2f(100, 100), sf::Vector2f(50, 100), sf::Color(0, 0, 0), sf::Vector2f(0, 0), Runtime::get_instance().get_display_timeline().get_time(), nullptr);
-    SPlat::Events::CreateControlCharacterEvent(character_properties).raise();
-
-    Model::AssetProperties platform_properties(0, sf::Vector2f(0, 500), sf::Vector2f(400, 200), sf::Color(0, 0, 0), -2);
-    SPlat::Events::CreatePlatformEvent(platform_properties).raise();
-
-    Model::MovingPlatformProperties moving_platform_properties(0, sf::Vector2f(500, 100), sf::Vector2f(200, 25), sf::Color(0, 0, 0), sf::Vector2f(0, 0), Runtime::get_instance().get_display_timeline().get_time(), Runtime::get_instance().get_display_timeline().get_time(), {
-        {
-            Model::State(sf::Vector2f(50, 0), 300, true),
-            Model::State(sf::Vector2f(-50, 0), 300, true)
-        }
-    });
-    SPlat::Events::CreateMovingPlatformEvent(moving_platform_properties, moving_platform_properties.get_states()).raise();
+    Model::CharacterProperties character_properties(
+        sf::Vector2f(100, 100),  // position
+        sf::Vector2f(50, 100),  // size
+        sf::Color(0, 0, 0, 255),  // fill_color
+        sf::Vector2f(0, 0),  // velocity
+        Runtime::get_instance().get_display_timeline().get_time(),  // last_updated
+        nullptr  // standing_on
+    );
+    Model::Character& character = (Model::Character&) Runtime::get_instance().get_character_factory().create_asset(character_properties);
 
     Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);
     Events::ForegroundListener::get_instance().set_handler(Events::KeyReleaseEvent::get_type(), keyrelease_override);
-    
-    Client client;
-    client.set_framerate_limit(60);
     client.start();
 }
