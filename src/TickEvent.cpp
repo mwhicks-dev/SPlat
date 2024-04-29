@@ -63,7 +63,7 @@ void TickEvent::handler(std::string serialized) {
             // get and update
             SPlat::Model::Moving& asset = dynamic_cast<SPlat::Model::Moving&>(
                 SPlat::Model::GameObjectModel::get_instance().read_asset(id));
-            asset.update(curr);
+            asset.update();
             asset.get_moving_properties().set_last_update(curr);
 
             for (size_t other : args.ids) {
@@ -71,7 +71,6 @@ void TickEvent::handler(std::string serialized) {
 
                 SPlat::Model::Asset& other_asset = Model::GameObjectModel::get_instance().read_asset(other);
                 asset.resolve_collision(other_asset);
-                other_asset.resolve_collision(asset);
             }
         } catch (std::exception& e) {
 #ifdef DEBUG
