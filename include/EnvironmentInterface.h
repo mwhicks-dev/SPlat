@@ -7,7 +7,11 @@ namespace SPlat {
 
     public:
 
+        virtual long get_framerate_limit() = 0;
+
         virtual bool get_running() = 0;
+
+        virtual void set_framerate_limit(long) = 0;
 
         virtual void set_running(bool) = 0;
 
