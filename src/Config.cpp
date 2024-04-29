@@ -10,9 +10,6 @@
 
 using namespace SPlat;
 
-Config * Config::instance = nullptr;
-std::mutex Config::m_static;
-
 Config::Config()
 : asset_factory_config(*new AssetFactoryConfig()),
 timing_config(*new TimingConfig()) {
@@ -42,11 +39,8 @@ void Config::set_running(bool running) {
 }
 
 Config& Config::get_instance() {
-    m_static.lock();
-    if (instance == nullptr)
-        instance = new Config();
-    m_static.unlock();
-    return *instance;
+    static Config instance;
+    return instance;
 }
 
 AssetFactoryConfigInterface& Config::get_asset_factory_config() {

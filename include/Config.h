@@ -10,10 +10,6 @@ namespace SPlat {
 
     class Config {
 
-        static Config * instance;
-
-        static std::mutex m_static;
-
         std::mutex m;
 
         bool running;
