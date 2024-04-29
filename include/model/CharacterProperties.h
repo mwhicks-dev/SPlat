@@ -1,13 +1,13 @@
 #ifndef SPLAT_MODEL_CHARACTERPROPERTIES_H
 #define SPLAT_MODEL_CHARACTERPROPERTIES_H
 
-#include "MovingProperties.h"
-
 namespace SPlat {
 
     namespace Model {
 
-        class CharacterProperties : public MovingProperties {
+        class CharacterProperties {
+
+            std::mutex m;
 
         public:
 
@@ -15,16 +15,11 @@ namespace SPlat {
 
             CharacterProperties() = default;
 
-            CharacterProperties(sf::Vector2f position, sf::Vector2f size, 
-                    sf::Color fill_color, sf::Vector2f velocity, time_t 
-                    last_updated, AssetProperties* standing_on) : 
-                    MovingProperties(position, size, fill_color, 0, velocity, 
-                    last_updated) {
+            CharacterProperties(AssetProperties* standing_on) {
                 set_standing_on(standing_on);
             }
 
-            CharacterProperties(CharacterProperties& other) 
-            : MovingProperties(other) {
+            CharacterProperties(CharacterProperties& other)  {
                 set_standing_on(other.get_standing_on());
             }
 

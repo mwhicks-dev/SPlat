@@ -2,7 +2,6 @@
 #define SPLAT_MODEL_MOVINGPLATFORMPROPERTIES_H
 
 #include "Serialization.h"
-#include "model/MovingProperties.h"
 
 namespace SPlat {
 
@@ -33,27 +32,25 @@ namespace SPlat {
 
         };
 
-        class MovingPlatformProperties : public MovingProperties {
+        class MovingPlatformProperties {
 
-        public:
+            std::mutex m;
 
             time_t last_state_change;
 
             std::vector<State> states;
 
+        public:
+
             MovingPlatformProperties() = default;
 
-            MovingPlatformProperties(sf::Vector2f position, sf::Vector2f size, 
-                    sf::Color fill_color, sf::Vector2f velocity, time_t 
-                    last_updated, time_t last_state_change, std::vector<State> 
-                    states) : MovingProperties(position, size, fill_color, -1, 
-                    velocity, last_updated) {
+            MovingPlatformProperties(time_t last_state_change, std::vector<State> states) {
                 set_last_state_change(last_state_change);
                 set_states(states);
             }
 
-            MovingPlatformProperties(MovingPlatformProperties& other)
-            : MovingProperties(other) {
+            MovingPlatformProperties(MovingPlatformProperties& other) {
+                set_last_state_change(other.get_last_state_change());
                 set_states(other.get_states());
             }
 

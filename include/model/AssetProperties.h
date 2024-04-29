@@ -11,8 +11,6 @@ namespace SPlat {
 
         class AssetProperties {
 
-        protected:
-
             std::mutex m;
 
         public:

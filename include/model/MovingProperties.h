@@ -1,33 +1,32 @@
 #ifndef SPLAT_MODEL_MOVINGPROPERTIES_H
 #define SPLAT_MODEL_MOVINGPROPERTIES_H
 
-#include "model/AssetProperties.h"
 #include "Serialization.h"
+
+#include <mutex>
 
 namespace SPlat {
 
     namespace Model {
 
-        class MovingProperties : public AssetProperties {
+        class MovingProperties {
+
+            std::mutex m;
 
         public:
 
-            sf::Vector2f velocity;
+            sf::Vector2f velocity = sf::Vector2f(0, 0);
 
-            time_t last_updated;
+            time_t last_updated = 0;
 
             MovingProperties() = default;
 
-            MovingProperties(sf::Vector2f position, sf::Vector2f size, 
-                    sf::Color fill_color, int collision_priority, sf::Vector2f 
-                    velocity, time_t last_updated) : AssetProperties(position, 
-                    size, fill_color, collision_priority) {
+            MovingProperties(sf::Vector2f velocity, time_t last_updated) {
                 set_velocity(velocity);
                 set_last_update(last_updated);
             }
 
-            MovingProperties(MovingProperties& other)
-            : AssetProperties(other) {
+            MovingProperties(MovingProperties& other) {
                 set_velocity(other.get_velocity());
                 set_last_update(other.get_last_updated());
             }
