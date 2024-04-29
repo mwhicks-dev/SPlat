@@ -19,12 +19,6 @@ namespace SPlat {
         
         protected:
 
-            void set_update_handler(UpdateHandler * update_handler) {
-                m.lock();
-                this->update_handler = update_handler;
-                m.unlock();
-            }
-
             UpdateHandler * get_update_handler() {
                 m.lock();
                 UpdateHandler * local = update_handler;
@@ -37,6 +31,12 @@ namespace SPlat {
 
             Moving(AssetProperties& asset_properties, MovingProperties& moving_properties) 
                     : Asset(asset_properties), properties(moving_properties) {}
+
+            void set_update_handler(UpdateHandler * update_handler) {
+                m.lock();
+                this->update_handler = update_handler;
+                m.unlock();
+            }
 
             MovingProperties& get_moving_properties() {
                 m.lock();

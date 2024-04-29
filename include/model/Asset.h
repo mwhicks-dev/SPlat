@@ -18,12 +18,6 @@ namespace SPlat {
 
         protected:
 
-            void set_collision_handler(CollisionHandler * collision_handler) {
-                m.lock();
-                this->collision_handler = collision_handler;
-                m.unlock();
-            }
-
             CollisionHandler * get_collision_handler() {
                 m.lock();
                 CollisionHandler * local = collision_handler;
@@ -35,6 +29,12 @@ namespace SPlat {
         public:
 
             Asset(AssetProperties& properties) : properties(properties) {}
+
+            void set_collision_handler(CollisionHandler * collision_handler) {
+                m.lock();
+                this->collision_handler = collision_handler;
+                m.unlock();
+            }
 
             AssetProperties& get_asset_properties() {
                 m.lock();
