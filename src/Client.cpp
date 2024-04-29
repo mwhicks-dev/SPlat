@@ -44,9 +44,10 @@ void Client::start() {
     std::thread t(&Controller::run, &ctl);
 
     window.create(sf::VideoMode(800, 600), "SPlat");
-    
-    std::this_thread::sleep_for(std::chrono::milliseconds(250));  // give controller time to get started
 
+    std::this_thread::sleep_for(std::chrono::milliseconds(250));  // give window time to open
+    
+    Config::get_instance().get_timing_config().get_display_timeline().unpause();  // paused by default
     time_t last_updated = Config::get_instance().get_timing_config()
         .get_display_timeline().get_time();
     while (window.isOpen()) {
@@ -77,12 +78,15 @@ void Client::start() {
         for (size_t id : asset_ids) {
             Model::Asset& asset = Model::GameObjectModel::get_instance()
                 .read_asset(id);
-            window.draw(asset.get_asset_properties().get_rectangle_shape());
+            Model::AssetProperties& properties = asset.get_asset_properties();
+            sf::RectangleShape rect = properties.get_rectangle_shape();
+            window.draw(rect);
         }
 
         window.display();
         wait_for_timeline(Config::get_instance().get_timing_config()
-            .get_display_timeline(), ++last_updated);
+            .get_display_timeline(), last_updated + 1);
+        last_updated = Config::get_instance().get_timing_config().get_display_timeline().get_time();
     }
 
     Config::get_instance().get_environment().set_running(false);

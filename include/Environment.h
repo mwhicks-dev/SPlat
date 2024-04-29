@@ -11,6 +11,8 @@ namespace SPlat {
 
         std::mutex m;
 
+        Model::Character * controlled_asset;
+
         long framerate_limit;
 
         bool running;
@@ -21,11 +23,15 @@ namespace SPlat {
 
         Environment();
 
+        Model::Character * get_controlled_asset() override;
+
         long get_framerate_limit() override;
 
         bool get_running() override;
 
         float get_unit() override;
+
+        void set_controlled_asset(Model::Character *) override;
 
         void set_framerate_limit(long) override;
 

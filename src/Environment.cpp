@@ -3,9 +3,18 @@
 using namespace SPlat;
 
 Environment::Environment() {
+    set_controlled_asset(nullptr);
     set_running(true);
     set_framerate_limit(60);
     set_unit(50);
+}
+
+Model::Character * Environment::get_controlled_asset() {
+    m.lock();
+    Model::Character * local = controlled_asset;
+    m.unlock();
+
+    return local;
 }
 
 long Environment::get_framerate_limit() {
@@ -30,6 +39,12 @@ float Environment::get_unit() {
     m.unlock();
 
     return local;
+}
+
+void Environment::set_controlled_asset(Model::Character * controlled_asset) {
+    m.lock();
+    this->controlled_asset = controlled_asset;
+    m.unlock();
 }
 
 void Environment::set_framerate_limit(long framerate_limit) {

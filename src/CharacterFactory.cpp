@@ -3,6 +3,10 @@
 #include "model/GameObjectModel.h"
 #include "Config.h"
 
+#include <exception>
+#include <limits>
+#include <cmath>
+
 #ifdef DEBUG
 #include <iostream>
 #endif
@@ -12,7 +16,7 @@ using namespace SPlat::Model;
 Asset& CharacterFactory::create_asset(AssetProperties& properties) {
     Character * character = new Character(
         (CharacterProperties&) properties,
-        *new CharacterFactory::DefaultCollisionHandler(),
+        *new CharacterFactory::DefaultCollisionHandler((CharacterProperties*) &properties),
         *new CharacterFactory::DefaultUpdateHandler()
     );
 
@@ -39,9 +43,6 @@ void CharacterFactory::DefaultUpdateHandler::update(time_t curr) {
 #ifdef DEBUG
     std::cout << "-> CharacterFactory::DefaultUpdateHandler::update(" << curr << ")" << std::endl;
 #endif
-    AbstractMovingFactory::DefaultUpdateHandler initial;
-    initial.set_properties(get_properties());
-    initial.update(curr);
 
     CharacterProperties& properties = (CharacterProperties&) *get_properties();
     float dt = static_cast<float>(curr - properties.get_last_updated());
@@ -66,6 +67,10 @@ void CharacterFactory::DefaultUpdateHandler::update(time_t curr) {
             }
         }
     }
+
+    AbstractMovingFactory::DefaultUpdateHandler initial;
+    initial.set_properties(get_properties());
+    initial.update(curr);
 #ifdef DEBUG
     std::cout << "<- CharacterFactory::DefaultUpdateHandler::update" << std::endl;
 #endif
@@ -75,11 +80,47 @@ void CharacterFactory::DefaultCollisionHandler::resolve_collision(AssetPropertie
 #ifdef DEBUG
     std::cout << "-> CharacterFactory::DefaultCollisionHandler::resolve_collision(AssetProperties&)" << std::endl;
 #endif
-    CharacterProperties* properties = (CharacterProperties*) get_properties();
+    if (!get_properties()->get_rectangle_shape().getGlobalBounds().intersects(other.get_rectangle_shape().getGlobalBounds())) return;
 
-    AbstractAssetFactory::DefaultCollisionHandler initial;
-    initial.set_properties(properties);
-    initial.resolve_collision(other);
+    CharacterProperties* properties = get_character_properties();
+    
+    if (other.get_collision_priority() <= properties->get_collision_priority()) {
+        sf::Vector2f resolutions[2] = {};
+        {
+            sf::RectangleShape tmp = properties->get_rectangle_shape();
+            if (fabs(properties->get_velocity().x) < 0.001) {
+                resolutions[0].x = std::numeric_limits<float>::max();
+            } else {
+                sf::Vector2f unit(-properties->get_velocity().x, 0);
+                while (tmp.getGlobalBounds().intersects(other.get_rectangle_shape().getGlobalBounds()))
+                    tmp.move(unit);
+                resolutions[0].x = tmp.getPosition().x - properties->get_rectangle_shape().getPosition().x;
+            }
+        }
+        {
+            sf::RectangleShape tmp = properties->get_rectangle_shape();
+            if (fabs(properties->get_velocity().y) < 0.001) {
+                resolutions[1].y = std::numeric_limits<float>::max();
+            } else {
+                sf::Vector2f unit(-properties->get_velocity().y, 0);
+                while (tmp.getGlobalBounds().intersects(other.get_rectangle_shape().getGlobalBounds()))
+                    tmp.move(unit);
+                resolutions[1].y = tmp.getPosition().y - properties->get_rectangle_shape().getPosition().y;
+            }
+        }
+        sf::Vector2f resolution;
+        if (fabs(resolutions[0].x) + fabs(resolutions[0].y) 
+                <= fabs(resolutions[1].x) + fabs(resolutions[1].y)) {
+            resolution = resolutions[0];
+        } else {
+            resolution = resolutions[1];
+        }
+        properties->set_position(properties->get_position() + resolution);
+    } else {
+        other.set_position(other.get_position() + properties->get_velocity() 
+            / static_cast<float>(Config::get_instance().get_environment()
+            .get_framerate_limit()));
+    }
 
     {
         sf::RectangleShape tmp = properties->get_rectangle_shape();

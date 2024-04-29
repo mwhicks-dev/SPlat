@@ -46,14 +46,16 @@ time_t SPlat::LocalTimeline::get_last_paused_time() {
 
 SPlat::LocalTimeline::LocalTimeline(Timeline& anchor, time_t tic)
 : anchor(anchor), start_time(anchor.get_time()) {
+    set_last_paused_time(0);
+    set_elapsed_paused_time(0);
     set_tic(tic);
-    pause();
+    set_paused(true);
 }
 
 time_t SPlat::LocalTimeline::get_time() {
     return get_paused()
         ? get_last_paused_time() 
-        : (anchor.get_time() - get_start_time() - get_elapsed_paused_time()) / get_tic();
+        : (anchor.get_time() - get_start_time()) / get_tic() - get_elapsed_paused_time();
 }
 
 void SPlat::LocalTimeline::pause() {

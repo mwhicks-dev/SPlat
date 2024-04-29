@@ -118,6 +118,7 @@ namespace SPlat {
             sf::RectangleShape get_rectangle_shape() {
                 sf::RectangleShape r(get_size());
                 r.setPosition(get_position());
+                r.setFillColor(get_fill_color());
                 return r;
             }
 

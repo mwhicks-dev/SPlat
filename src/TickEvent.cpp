@@ -61,10 +61,18 @@ void TickEvent::handler(std::string serialized) {
     for (size_t id : args.ids) {
         try {
             // get and update
-            SPlat::Model::Moving& asset = (SPlat::Model::Moving&) SPlat::Model
-                ::GameObjectModel::get_instance().read_asset(id);
+            SPlat::Model::Moving& asset = dynamic_cast<SPlat::Model::Moving&>(
+                SPlat::Model::GameObjectModel::get_instance().read_asset(id));
             asset.update(curr);
             asset.get_moving_properties().set_last_update(curr);
+
+            for (size_t other : args.ids) {
+                if (id == other) continue;
+
+                SPlat::Model::Asset& other_asset = Model::GameObjectModel::get_instance().read_asset(other);
+                asset.resolve_collision(other_asset);
+                other_asset.resolve_collision(asset);
+            }
         } catch (std::exception& e) {
 #ifdef DEBUG
             std::cout << e.what() << std::endl;

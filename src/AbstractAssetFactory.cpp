@@ -1,6 +1,8 @@
 #include "model/AbstractAssetFactory.h"
 #include "model/GameObjectModel.h"
 
+#include <cmath>
+
 #ifdef DEBUG
 #include <iostream>
 #endif
@@ -24,9 +26,11 @@ void AbstractAssetFactory::DefaultCollisionHandler
         throw std::logic_error("Collision handler has no defined properties");
     
     AssetProperties& curr = *this->get_properties();
+    if (other.get_collision_priority() <= get_properties()->get_collision_priority()) return;
 
     sf::RectangleShape curr_rectangle = curr.get_rectangle_shape(),
                        other_rectangle = other.get_rectangle_shape();
+    if (!curr_rectangle.getGlobalBounds().intersects(other_rectangle.getGlobalBounds())) return;
     // find shortest resolution for other s.t. collision resolved
     sf::Vector2f resolutions[4] = {};
     {
@@ -61,6 +65,15 @@ void AbstractAssetFactory::DefaultCollisionHandler
         }
         resolutions[3] = tmp.getPosition() - other_rectangle.getPosition();
     }
+
+    size_t min_index = 0;
+    for (size_t i = 1; i < sizeof(resolutions) / sizeof(sf::Vector2f); i++) {
+        if (fabs(resolutions[i].x) + fabs(resolutions[i].y) 
+                < fabs(resolutions[min_index].x) + fabs(resolutions[min_index].y))
+            min_index = i;
+    }
+
+    other.set_position(other.get_position() + resolutions[min_index]);
 #ifdef DEBUG
     std::cout << "<- AbstractAssetFactory::DefaultCollisionHandler::resolve_collision(AssetProperties&)" << std::endl; 
 #endif
