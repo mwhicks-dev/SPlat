@@ -16,15 +16,15 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-set(MODEL_IMPLEMENTATIONS src/LocalTimeline.cpp src/TimingConfig.cpp src/Environment.cpp src/Config.cpp src/GameObjectModel.cpp)
-set(EVENT_IMPLEMENTATIONS src/AssetEvents.cpp src/CharacterEvents.cpp src/KeyEvents.cpp src/MovingPlatformEvents.cpp src/PlatformEvents.cpp src/TickEvent.cpp src/Listener.cpp)
-set(CLIENT_IMPLEMENTATIONS src/AbstractAssetFactory.cpp src/AbstractMovingFactory.cpp src/CharacterFactory.cpp src/PlatformFactory.cpp src/AssetFactoryConfig.cpp src/MovingPlatformFactory.cpp src/Client.cpp src/Controller.cpp)
-set(ALL_IMPLEMENTATIONS ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS} ${CLIENT_IMPLEMENTATIONS})
+set(LA src/CharacterCollisionHandler.cpp src/TickEvent.cpp src/Config.cpp src/Listener.cpp src/Controller.cpp src/MovingPlatformCollisionHandler.cpp src/AssetEvents.cpp src/PlatformEvents.cpp src/PlatformCollisionHandler.cpp src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp src/Environment.cpp src/Platform.cpp src/AssetFactoryConfig.cpp src/Character.cpp src/CharacterEvents.cpp src/MovingPlatformUpdateHandler.cpp src/KeyEvents.cpp src/TimingConfig.cpp src/MovingPlatformEvents.cpp src/MovingPlatform.cpp src/AbstractAssetFactory.cpp)
+set(LB src/GameObjectModel.cpp src/CharacterFactory.cpp src/PlatformFactory.cpp src/MovingPlatformFactory.cpp)
+set(LC src/Client.cpp)
+set(ALL_IMPLEMENTATIONS ${LA} ${LB} ${LC})
 
-add_executable(gom_test test/TestGameObjectModel.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
+add_executable(gom_test test/TestGameObjectModel.cpp ${ALL_IMPLEMENTATIONS})
 target_link_libraries(gom_test gtest gtest_main sfml-graphics)
 
-add_executable(serialization_test test/TestSerialization.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
+add_executable(serialization_test test/TestSerialization.cpp ${ALL_IMPLEMENTATIONS})
 target_link_libraries(serialization_test gtest gtest_main sfml-graphics)
 
 add_executable(asset_factory_test test/TestAssetFactory.cpp ${ALL_IMPLEMENTATIONS})
