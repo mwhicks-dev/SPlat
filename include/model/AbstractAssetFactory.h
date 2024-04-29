@@ -19,14 +19,6 @@ namespace SPlat {
 
             Asset& delete_asset(size_t);
 
-            class DefaultCollisionHandler : public CollisionHandler {
-
-            public:
-
-                void resolve_collision(AssetProperties&) override;
-
-            };
-
         };
 
     }
