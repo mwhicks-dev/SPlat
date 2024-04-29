@@ -59,7 +59,7 @@ void CreateCharacterEvent::handler(std::string serialized) {
     }
 
     // create new character from passed properties
-    from_properties(args.properties);
+    // from_properties(args.properties);
 #ifdef DEBUG
     std::cout << "<- CreateCharacterEvent::handler" << std::endl;
 #endif
@@ -103,10 +103,10 @@ void CreateControlCharacterEvent::handler(std::string serialized) {
     }
 
     // create new character from passed properties
-    SPlat::Model::Character c = from_properties(args.properties);
+    // SPlat::Model::Character c = from_properties(args.properties);
 
     // create, raise new ControlAssetEvent
-    ControlAssetEvent e(c.get_asset_properties().get_id()); e.raise();
+    // ControlAssetEvent e(c.get_asset_properties().get_id()); e.raise();
 #ifdef DEBUG
     std::cout << "<- CreateControlCharacterEvent::handler" << std::endl;
 #endif

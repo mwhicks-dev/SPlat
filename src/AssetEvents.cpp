@@ -121,15 +121,13 @@ void AddPositionEvent::handler(std::string serialized) {
     }
 
     // get asset by ID
-    SPlat::Model::Moving& asset = (SPlat::Model::Moving&)
+    SPlat::Model::Asset& asset =
         SPlat::Model::GameObjectModel::get_instance().read_asset(args.id);
     
     // safely add position to asset
-    SPlat::Model::MovingProperties& properties = asset.get_moving_properties();
-    properties.set_position(properties.get_position() + args.modifier);
-    properties.set_last_update(Config::get_instance().get_timing_config()
-        .get_display_timeline().get_time());
-    size_t id = properties.get_id();
+    SPlat::Model::AssetProperties& asset_properties = asset.get_asset_properties();
+    asset_properties.set_position(asset_properties.get_position() + args.modifier);
+    size_t id = asset_properties.get_id();
 
     SPlat::Model::GameObjectModel::get_instance().check_collision(id);
 #ifdef DEBUG
