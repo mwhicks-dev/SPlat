@@ -12,11 +12,19 @@ namespace SPlat {
 
         class CharacterCollisionHandler : public CollisionHandler {
 
+            std::mutex m;
+
             AssetProperties& asset;
 
             MovingProperties& moving;
 
             CharacterProperties& character;
+
+            AssetProperties& get_asset_properties();
+
+            MovingProperties& get_moving_properties();
+
+            CharacterProperties& get_character_properties();
 
         public:
 
@@ -25,7 +33,7 @@ namespace SPlat {
                     character) : asset(asset), moving(moving), 
                     character(character) {}
             
-            void resolve_collision(AssetProperties& other) override;
+            void resolve_collision(AssetProperties&) override;
 
         };
 
