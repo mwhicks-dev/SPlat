@@ -2,7 +2,7 @@
 #define SPLAT_MODEL_MOVING_H
 
 #include "Asset.h"
-#include "model/UpdateHandler.h"
+#include "model/MovingProperties.h"
 
 namespace SPlat {
 
@@ -10,27 +10,24 @@ namespace SPlat {
 
         class Moving : public Asset {
 
-            UpdateHandler * update_handler = nullptr;
+            std::mutex m;
+
+            MovingProperties& properties;
 
         public:
 
-            Moving(MovingProperties& properties, 
-                    CollisionHandler& collision_handler,
-                    UpdateHandler& update_handler) : Asset(properties, 
-                    collision_handler) {
-                update_handler.set_properties(&properties);
-                set_update_handler(update_handler);
+            Moving(AssetProperties& asset_properties, MovingProperties& moving_properties) 
+                    : Asset(asset_properties), properties(moving_properties) {}
+
+            MovingProperties& get_moving_properties() {
+                m.lock();
+                MovingProperties& local = properties;
+                m.unlock();
+
+                return local;
             }
 
-            void set_update_handler(UpdateHandler& handler) {
-                update_handler = &handler;
-            }
-
-            void update(time_t t) {
-                update_handler->update(t);
-            }
-
-            virtual MovingProperties& get_moving_properties() = 0;
+            virtual void update() = 0;
 
         };
 

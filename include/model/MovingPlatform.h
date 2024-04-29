@@ -10,19 +10,29 @@ namespace SPlat {
 
         class MovingPlatform : public Moving {
 
+            std::mutex m;
+
             MovingPlatformProperties& properties;
 
         public:
 
-            MovingPlatform(MovingPlatformProperties& properties, 
-                    CollisionHandler& collision_handler,
-                    UpdateHandler& update_handler) : Moving(properties, 
-                    collision_handler, update_handler), 
-                    properties(properties) {};
-            
-            AssetProperties& get_asset_properties() override { return properties; }
-            
-            MovingProperties& get_moving_properties() override { return properties; }
+            MovingPlatform(AssetProperties& asset_properties, MovingProperties&
+                    moving_properties, MovingPlatformProperties& 
+                    moving_platform_properties) : Moving(asset_properties,
+                    moving_properties), properties(moving_platform_properties) 
+                    {};
+
+            MovingPlatformProperties& get_moving_platform_properties() {
+                m.lock();
+                MovingPlatformProperties& local = properties;
+                m.unlock();
+
+                return local;
+            }
+
+            void resolve_collision(Asset& other) override;
+
+            void update() override;
 
         };
 

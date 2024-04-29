@@ -1,7 +1,7 @@
 #ifndef SPLAT_MODEL_ASSET_H
 #define SPLAT_MODEL_ASSET_H
 
-#include "model/CollisionHandler.h"
+#include "AssetProperties.h"
 
 namespace SPlat {
 
@@ -9,24 +9,23 @@ namespace SPlat {
 
         class Asset {
 
-            CollisionHandler * collision_handler = nullptr;
+            std::mutex m;
+
+            AssetProperties& properties;
 
         public:
 
-            Asset(AssetProperties& properties, CollisionHandler& handler) {
-                handler.set_properties(&properties);
-                set_collision_handler(handler);
+            Asset(AssetProperties& properties) : properties(properties) {}
+
+            AssetProperties& get_asset_properties() {
+                m.lock();
+                AssetProperties& local = properties;
+                m.unlock();
+
+                return local;
             }
 
-            void set_collision_handler(CollisionHandler& handler) {
-                collision_handler = &handler;
-            }
-
-            void resolve_collision(Asset& other) {
-                collision_handler->resolve_collision(other.get_asset_properties());
-            }
-
-            virtual AssetProperties& get_asset_properties() = 0;
+            virtual void resolve_collision(Asset& other) = 0;
 
         };
 

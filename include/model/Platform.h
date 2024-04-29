@@ -9,15 +9,17 @@ namespace SPlat {
 
         class Platform : public Asset {
 
+            std::mutex m;
+
+            CollisionHandler * collision_handler = nullptr;
+
             AssetProperties& properties;
 
         public:
 
-            Platform(AssetProperties& properties, 
-                    CollisionHandler& collision_handler) : Asset(properties, 
-                    collision_handler), properties(properties) {};
+            Platform(AssetProperties& properties) : Asset(properties), properties(properties) {};
             
-            AssetProperties& get_asset_properties() override { return properties; }
+            void resolve_collision(Asset& other);
 
         };
 

@@ -3,6 +3,8 @@
 
 #include "model/Moving.h"
 #include "model/CharacterProperties.h"
+#include "model/CollisionHandler.h"
+#include "model/UpdateHandler.h"
 
 namespace SPlat {
 
@@ -10,19 +12,32 @@ namespace SPlat {
 
         class Character : public Moving {
 
+            std::mutex m;
+
+            CollisionHandler * collision_handler = nullptr;
+
+            UpdateHandler * update_handler = nullptr;
+
             CharacterProperties& properties;
 
         public:
 
-            Character(CharacterProperties& properties, 
-                    CollisionHandler& collision_handler,
-                    UpdateHandler& update_handler) : Moving(properties, 
-                    collision_handler, update_handler), 
-                    properties(properties) {};
+            Character(AssetProperties& asset_properties, MovingProperties& 
+                    moving_properties, CharacterProperties& 
+                    character_properties) : Moving(asset_properties, 
+                    moving_properties), properties(character_properties) {}
             
-            AssetProperties& get_asset_properties() override { return properties; }
-            
-            MovingProperties& get_moving_properties() override { return properties; }
+            CharacterProperties& get_character_properties() {
+                m.lock();
+                CharacterProperties& local = properties;
+                m.unlock();
+
+                return local;
+            }
+
+            void resolve_collision(Asset& other) override;
+
+            void update() override;
 
         };
 
