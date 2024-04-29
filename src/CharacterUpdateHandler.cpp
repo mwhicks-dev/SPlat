@@ -34,15 +34,15 @@ void CharacterUpdateHandler::update() {
     AssetProperties& asset_properties = get_asset_properties();
     MovingProperties& moving_properties = get_moving_properties();
     sf::Vector2f velocity = moving_properties.get_velocity();
-    asset_properties.set_position(asset_properties.get_position() + velocity * 
-        static_cast<float>(conf.get_timing_config().get_display_timeline()
+    float dt = static_cast<float>(conf.get_timing_config().get_display_timeline()
         .get_time() - moving_properties.get_last_updated()) / 
-        static_cast<float>(conf.get_environment().get_framerate_limit()));
+        static_cast<float>(conf.get_environment().get_framerate_limit());
+    asset_properties.set_position(asset_properties.get_position() + velocity * dt);
     
     // if not standing on anything, increment y velocity
     if (get_character_properties().get_standing_on() == nullptr) {
         EnvironmentInterface& env = conf.get_environment();
-        velocity.y += 10. * env.get_unit() 
-            / static_cast<float>(env.get_framerate_limit());
+        velocity.y += 10. * env.get_unit() * dt;
+        moving_properties.set_velocity(velocity);
     }
 }
