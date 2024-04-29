@@ -43,7 +43,7 @@ SPlat::Model::Character& from_properties
         (SPlat::Model::AssetProperties properties) {
     // pass to asset factory and update
     return (SPlat::Model::Character&) SPlat::Config::get_instance()
-        .get_character_factory().create_asset(properties);
+        .get_asset_factory_config().get_character_factory().create_asset(properties);
 }
 
 void CreateCharacterEvent::handler(std::string serialized) {

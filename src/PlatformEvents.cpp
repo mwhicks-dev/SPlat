@@ -52,7 +52,8 @@ void CreatePlatformEvent::handler(std::string serialized) {
     }
 
     // create platfrom from args
-    Config::get_instance().get_platform_factory().create_asset(args.properties);
+    Config::get_instance().get_asset_factory_config()
+        .get_platform_factory().create_asset(args.properties);
 #ifdef DEBUG
     std::cout << "<- CreatePlatformEvent::handler" << std::endl;
 #endif

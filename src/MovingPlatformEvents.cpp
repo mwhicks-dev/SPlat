@@ -56,7 +56,8 @@ void CreateMovingPlatformEvent::handler(std::string serialized) {
         iar(args);
     }
 
-    Config::get_instance().get_moving_platform_factory().create_asset(args.properties);
+    Config::get_instance().get_asset_factory_config()
+        .get_moving_platform_factory().create_asset(args.properties);
 #ifdef DEBUG
     std::cout << "<- CreateMovingPlatformEvent::handler" << std::endl;
 #endif

@@ -2,7 +2,7 @@
 #define SPLAT_RUNTIME_H
 
 #include "LocalTimeline.h"
-#include "model/AbstractAssetFactory.h"
+#include "AbstractAssetFactoryConfig.h"
 
 #include <mutex>
 
@@ -24,11 +24,7 @@ namespace SPlat {
 
         time_t anchor_steps_per_second;
 
-        Model::AbstractAssetFactory& character_factory;
-
-        Model::AbstractAssetFactory& platform_factory;
-
-        Model::AbstractAssetFactory& moving_platform_factory;
+        AbstractAssetFactoryConfig& asset_factory_config;
 
         Config(Timeline&);
 
@@ -52,11 +48,7 @@ namespace SPlat {
 
         time_t get_anchor_steps_per_second();
 
-        Model::AbstractAssetFactory& get_character_factory();
-
-        Model::AbstractAssetFactory& get_platform_factory();
-
-        Model::AbstractAssetFactory& get_moving_platform_factory();
+        AbstractAssetFactoryConfig& get_asset_factory_config();
 
         static Config& get_instance();
 

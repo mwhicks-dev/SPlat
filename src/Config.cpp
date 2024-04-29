@@ -1,7 +1,5 @@
 #include "Config.h"
-#include "model/CharacterFactory.h"
-#include "model/PlatformFactory.h"
-#include "model/MovingPlatformFactory.h"
+#include "AssetFactoryConfig.h"
 
 #include <thread>
 
@@ -24,9 +22,7 @@ class SystemTimeline : public Timeline {
 
 Config::Config(Timeline& anchor)
 : anchor(anchor), display_timeline(anchor, 1), 
-  character_factory(*new Model::CharacterFactory()),
-  platform_factory(*new Model::PlatformFactory()),
-  moving_platform_factory(*new Model::MovingPlatformFactory()) {
+  asset_factory_config(*new AssetFactoryConfig()) {
     update_anchor_steps_per_second();
     display_timeline.set_tic(get_anchor_steps_per_second());
     set_running(true);
@@ -129,27 +125,11 @@ void Config::update_anchor_timeline(Timeline& anchor) {
 #endif
 }
 
-Model::AbstractAssetFactory& Config::get_character_factory() {
+AbstractAssetFactoryConfig& Config::get_asset_factory_config() {
     m.lock();
-    Model::AbstractAssetFactory& local = character_factory;
+    AbstractAssetFactoryConfig& local = asset_factory_config;
     m.unlock();
 
-    return local;
-}
-
-Model::AbstractAssetFactory& Config::get_platform_factory() {
-    m.lock();
-    Model::AbstractAssetFactory& local = platform_factory;
-    m.unlock();
-    
-    return local;
-}
-
-Model::AbstractAssetFactory& Config::get_moving_platform_factory() {
-    m.lock();
-    Model::AbstractAssetFactory& local = moving_platform_factory;
-    m.unlock();
-    
     return local;
 }
 

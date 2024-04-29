@@ -21,7 +21,8 @@ static void keypress_override(std::string serialized) {
     try {
         // get asset
         size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
-        Model::Character& ctl = (Model::Character&) Config::get_instance().get_character_factory().read_asset(id);
+        Model::Character& ctl = (Model::Character&) Config::get_instance()
+            .get_asset_factory_config().get_character_factory().read_asset(id);
         
         // deserialize KeyEventArgs from args
         Events::KeyEvent::Args args;
@@ -63,7 +64,8 @@ static void keyrelease_override(std::string serialized) {
     try {
         // get asset
         size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
-        Model::Character& ctl = (Model::Character&) Config::get_instance().get_character_factory().read_asset(id);
+        Model::Character& ctl = (Model::Character&) Config::get_instance()
+            .get_asset_factory_config().get_character_factory().read_asset(id);
         
         // deserialize KeyEventArgs from args
         Events::KeyEvent::Args args;
@@ -101,7 +103,8 @@ int main() {
         Config::get_instance().get_display_timeline().get_time(),  // last_updated
         nullptr  // standing_on
     );
-    Model::Character& character = (Model::Character&) Config::get_instance().get_character_factory().create_asset(character_properties);
+    Model::Character& character = (Model::Character&) Config::get_instance()
+        .get_asset_factory_config().get_character_factory().create_asset(character_properties);
 
     Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);
     Events::ForegroundListener::get_instance().set_handler(Events::KeyReleaseEvent::get_type(), keyrelease_override);
