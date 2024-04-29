@@ -15,6 +15,8 @@ namespace SPlat {
 
         bool running;
 
+        float unit;
+
     public:
 
         Environment();
@@ -23,9 +25,13 @@ namespace SPlat {
 
         bool get_running() override;
 
+        float get_unit() override;
+
         void set_framerate_limit(long) override;
 
         void set_running(bool) override;
+
+        void set_unit(float) override;
 
     };
 

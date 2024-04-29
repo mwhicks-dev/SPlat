@@ -11,9 +11,13 @@ namespace SPlat {
 
         virtual bool get_running() = 0;
 
+        virtual float get_unit() = 0;
+
         virtual void set_framerate_limit(long) = 0;
 
         virtual void set_running(bool) = 0;
+
+        virtual void set_unit(float) = 0;
 
     };
 

@@ -20,7 +20,15 @@ bool Environment::get_running() {
     bool local = running;
     m.unlock();
 
-    return running;
+    return local;
+}
+
+float Environment::get_unit() {
+    m.lock();
+    float local = unit;
+    m.unlock();
+
+    return local;
 }
 
 void Environment::set_framerate_limit(long framerate_limit) {
@@ -32,5 +40,11 @@ void Environment::set_framerate_limit(long framerate_limit) {
 void Environment::set_running(bool running) {
     m.lock();
     this->running = running;
+    m.unlock();
+}
+
+void Environment::set_unit(float unit) {
+    m.lock();
+    this->unit = unit;
     m.unlock();
 }
