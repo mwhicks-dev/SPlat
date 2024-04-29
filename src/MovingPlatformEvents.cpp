@@ -1,7 +1,7 @@
 #include "events/MovingPlatformEvents.h"
 #include "events/Command.h"
 #include "events/Listener.h"
-#include "Runtime.h"
+#include "Config.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -56,7 +56,7 @@ void CreateMovingPlatformEvent::handler(std::string serialized) {
         iar(args);
     }
 
-    Runtime::get_instance().get_moving_platform_factory().create_asset(args.properties);
+    Config::get_instance().get_moving_platform_factory().create_asset(args.properties);
 #ifdef DEBUG
     std::cout << "<- CreateMovingPlatformEvent::handler" << std::endl;
 #endif

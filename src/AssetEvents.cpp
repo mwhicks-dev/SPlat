@@ -4,7 +4,7 @@
 #include "model/GameObjectModel.h"
 #include "model/Moving.h"
 #include "Client.h"
-#include "Runtime.h"
+#include "Config.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -71,7 +71,7 @@ void AddVelocityEvent::handler(std::string serialized) {
     // add velocity to reference safely
     SPlat::Model::MovingProperties& properties = asset.get_moving_properties();
     properties.set_velocity(asset.get_moving_properties().get_velocity() + args.modifier);
-    properties.set_last_update(Runtime::get_instance().get_display_timeline().get_time());
+    properties.set_last_update(Config::get_instance().get_display_timeline().get_time());
 #ifdef DEBUG
     std::cout << "<- AddVelocityEvent::handler" << std::endl;
 #endif
@@ -126,7 +126,7 @@ void AddPositionEvent::handler(std::string serialized) {
     // safely add position to asset
     SPlat::Model::MovingProperties& properties = asset.get_moving_properties();
     properties.set_position(properties.get_position() + args.modifier);
-    properties.set_last_update(Runtime::get_instance().get_display_timeline().get_time());
+    properties.set_last_update(Config::get_instance().get_display_timeline().get_time());
     size_t id = properties.get_id();
 
     SPlat::Model::GameObjectModel::get_instance().check_collision(id);

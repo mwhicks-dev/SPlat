@@ -1,5 +1,5 @@
 #include "Client.h"
-#include "Runtime.h"
+#include "Config.h"
 #include "model/Character.h"
 #include "events/AssetEvents.h"
 #include "events/CharacterEvents.h"
@@ -21,7 +21,7 @@ static void keypress_override(std::string serialized) {
     try {
         // get asset
         size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
-        Model::Character& ctl = (Model::Character&) Runtime::get_instance().get_character_factory().read_asset(id);
+        Model::Character& ctl = (Model::Character&) Config::get_instance().get_character_factory().read_asset(id);
         
         // deserialize KeyEventArgs from args
         Events::KeyEvent::Args args;
@@ -44,9 +44,9 @@ static void keypress_override(std::string serialized) {
             ctl.get_moving_properties().set_velocity(ctl
                 .get_moving_properties().get_velocity() + sf::Vector2f(-490, 0));
         } else if (args.key == sf::Keyboard::Escape) {
-            if (Runtime::get_instance().get_display_timeline().get_paused())
-                Runtime::get_instance().get_display_timeline().unpause();
-            else Runtime::get_instance().get_display_timeline().pause();
+            if (Config::get_instance().get_display_timeline().get_paused())
+                Config::get_instance().get_display_timeline().unpause();
+            else Config::get_instance().get_display_timeline().pause();
         }
 
     } catch (std::logic_error & e) {
@@ -63,7 +63,7 @@ static void keyrelease_override(std::string serialized) {
     try {
         // get asset
         size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
-        Model::Character& ctl = (Model::Character&) Runtime::get_instance().get_character_factory().read_asset(id);
+        Model::Character& ctl = (Model::Character&) Config::get_instance().get_character_factory().read_asset(id);
         
         // deserialize KeyEventArgs from args
         Events::KeyEvent::Args args;
@@ -92,19 +92,16 @@ int main() {
     Client client;
     client.set_framerate_limit(60);
     
-    time_t test = Runtime::get_instance().get_display_timeline().get_time();
-    std::cout << "Display timeline value: " << test << std::endl;
-    
     // Create assets with events
     Model::CharacterProperties character_properties(
         sf::Vector2f(100, 100),  // position
         sf::Vector2f(50, 100),  // size
         sf::Color(0, 0, 0, 255),  // fill_color
         sf::Vector2f(0, 0),  // velocity
-        Runtime::get_instance().get_display_timeline().get_time(),  // last_updated
+        Config::get_instance().get_display_timeline().get_time(),  // last_updated
         nullptr  // standing_on
     );
-    Model::Character& character = (Model::Character&) Runtime::get_instance().get_character_factory().create_asset(character_properties);
+    Model::Character& character = (Model::Character&) Config::get_instance().get_character_factory().create_asset(character_properties);
 
     Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);
     Events::ForegroundListener::get_instance().set_handler(Events::KeyReleaseEvent::get_type(), keyrelease_override);

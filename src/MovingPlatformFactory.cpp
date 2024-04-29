@@ -1,4 +1,4 @@
-#include "Runtime.h"
+#include "Config.h"
 #include "model/GameObjectModel.h"
 #include "model/MovingPlatformFactory.h"
 #include "model/MovingPlatform.h"
@@ -65,7 +65,7 @@ void MovingPlatformFactory::DefaultUpdateHandler::update(time_t curr) {
     
     if (states.size() > 0) {
         State curr_state = states[0];
-        if (Runtime::get_instance().get_anchor_steps_per_second() * (curr 
+        if (Config::get_instance().get_anchor_steps_per_second() * (curr 
                 - properties.get_last_state_change()) < curr_state
                 .anchor_steps) return;
         

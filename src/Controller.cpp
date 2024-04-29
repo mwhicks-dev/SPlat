@@ -1,7 +1,7 @@
 #include <thread>
 
 #include "Controller.h"
-#include "Runtime.h"
+#include "Config.h"
 #include "events/Listener.h"
 
 #ifdef DEBUG
@@ -19,7 +19,7 @@ void Controller::run() {
 #endif
     while (true) {
         // check if still running
-        if (!Runtime::get_instance().get_running()) break;
+        if (!Config::get_instance().get_running()) break;
 
         // dispatch background events
         Events::BackgroundListener &lst = Events::BackgroundListener

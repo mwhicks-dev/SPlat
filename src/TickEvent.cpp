@@ -3,7 +3,7 @@
 #include "events/Listener.h"
 #include "model/GameObjectModel.h"
 #include "model/Moving.h"
-#include "Runtime.h"
+#include "Config.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -56,7 +56,7 @@ void TickEvent::handler(std::string serialized) {
     }
 
     // for each asset...
-    time_t curr = Runtime::get_instance().get_display_timeline().get_time();
+    time_t curr = Config::get_instance().get_display_timeline().get_time();
     for (size_t id : args.ids) {
         try {
             // get and update

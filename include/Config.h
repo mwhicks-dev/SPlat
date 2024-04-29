@@ -8,9 +8,9 @@
 
 namespace SPlat {
 
-    class Runtime {
+    class Config {
 
-        static Runtime * instance;
+        static Config * instance;
 
         static std::mutex m_static;
 
@@ -30,7 +30,7 @@ namespace SPlat {
 
         Model::AbstractAssetFactory& moving_platform_factory;
 
-        Runtime(Timeline&);
+        Config(Timeline&);
 
         void set_anchor_timeline(Timeline&);
 
@@ -58,7 +58,7 @@ namespace SPlat {
 
         Model::AbstractAssetFactory& get_moving_platform_factory();
 
-        static Runtime& get_instance();
+        static Config& get_instance();
 
     };
 

@@ -1,5 +1,5 @@
 #include "Client.h"
-#include "Runtime.h"
+#include "Config.h"
 
 #include "events/KeyEvents.h"
 #include "events/Listener.h"
@@ -42,7 +42,7 @@ void Client::start() {
     
     std::this_thread::sleep_for(std::chrono::milliseconds(250));  // give controller time to get started
 
-    time_t last_updated = Runtime::get_instance().get_display_timeline().get_time();
+    time_t last_updated = Config::get_instance().get_display_timeline().get_time();
     while (window.isOpen()) {
         // dispatch foreground events
         Events::ForegroundListener::get_instance().run();
@@ -75,10 +75,10 @@ void Client::start() {
         }
 
         window.display();
-        wait_for_timeline(Runtime::get_instance().get_display_timeline(), ++last_updated);
+        wait_for_timeline(Config::get_instance().get_display_timeline(), ++last_updated);
     }
 
-    Runtime::get_instance().set_running(false);
+    Config::get_instance().set_running(false);
 
     t.join();
 #ifdef DEBUG
@@ -90,11 +90,11 @@ void Client::set_framerate_limit(long framerate_limit) {
 #ifdef DEBUG
     std::cout << "-> Client::set_framerate_limit(" << framerate_limit << ")" << std::endl;
 #endif
-    time_t t0 = Runtime::get_instance().get_anchor_timeline().get_time();
+    time_t t0 = Config::get_instance().get_anchor_timeline().get_time();
     std::this_thread::sleep_for(std::chrono::seconds(1));
-    time_t tf = Runtime::get_instance().get_anchor_timeline().get_time();
+    time_t tf = Config::get_instance().get_anchor_timeline().get_time();
     time_t tic = (tf - t0) / framerate_limit;
-    Runtime::get_instance().get_display_timeline().set_tic(tic);
+    Config::get_instance().get_display_timeline().set_tic(tic);
 #ifdef DEBUG
     std::cout << "<- Client::set_framerate_limit" << std::endl;
 #endif

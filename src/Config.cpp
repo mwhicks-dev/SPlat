@@ -1,4 +1,4 @@
-#include "Runtime.h"
+#include "Config.h"
 #include "model/CharacterFactory.h"
 #include "model/PlatformFactory.h"
 #include "model/MovingPlatformFactory.h"
@@ -11,8 +11,8 @@
 
 using namespace SPlat;
 
-Runtime * Runtime::instance = nullptr;
-std::mutex Runtime::m_static;
+Config * Config::instance = nullptr;
+std::mutex Config::m_static;
 
 class SystemTimeline : public Timeline {
 
@@ -22,7 +22,7 @@ class SystemTimeline : public Timeline {
 
 };
 
-Runtime::Runtime(Timeline& anchor)
+Config::Config(Timeline& anchor)
 : anchor(anchor), display_timeline(anchor, 1), 
   character_factory(*new Model::CharacterFactory()),
   platform_factory(*new Model::PlatformFactory()),
@@ -32,7 +32,7 @@ Runtime::Runtime(Timeline& anchor)
     set_running(true);
 }
 
-bool Runtime::get_running() {
+bool Config::get_running() {
     m.lock();
     bool local = running;
     m.unlock();
@@ -40,19 +40,19 @@ bool Runtime::get_running() {
      return local;
 }
 
-void Runtime::set_running(bool running) {
+void Config::set_running(bool running) {
 #ifdef DEBUG
-    std::cout << "-> Runtime::set_running(" << running << ")" << std::endl;
+    std::cout << "-> Config::set_running(" << running << ")" << std::endl;
 #endif
     m.lock();
     this->running = running;
     m.unlock();
 #ifdef DEBUG
-    std::cout << "<- Runtime::set_running" << std::endl;
+    std::cout << "<- Config::set_running" << std::endl;
 #endif
 }
 
-Timeline& Runtime::get_anchor_timeline() {
+Timeline& Config::get_anchor_timeline() {
     m.lock();
     Timeline& local = anchor;
     m.unlock();
@@ -60,33 +60,33 @@ Timeline& Runtime::get_anchor_timeline() {
     return local;
 }
 
-void Runtime::set_anchor_timeline(Timeline& anchor) {
+void Config::set_anchor_timeline(Timeline& anchor) {
 #ifdef DEBUG
-    std::cout << "-> Runtime::set_anchor_timeline(Timeline&)" << std::endl;
+    std::cout << "-> Config::set_anchor_timeline(Timeline&)" << std::endl;
 #endif
     m.lock();
     this->anchor = anchor;
     m.unlock();
 #ifdef DEBUG
-    std::cout << "<- Runtime::set_anchor_timeline" << std::endl;
+    std::cout << "<- Config::set_anchor_timeline" << std::endl;
 #endif
 }
 
-void Runtime::set_anchor_steps_per_second(time_t anchor_steps_per_second) {
+void Config::set_anchor_steps_per_second(time_t anchor_steps_per_second) {
 #ifdef DEBUG
-    std::cout << "-> Runtime::set_anchor_steps_per_second(" << anchor_steps_per_second << ")" << std::endl;
+    std::cout << "-> Config::set_anchor_steps_per_second(" << anchor_steps_per_second << ")" << std::endl;
 #endif
     m.lock();
     this->anchor_steps_per_second = anchor_steps_per_second;
     m.unlock();
 #ifdef DEBUG
-    std::cout << "<- Runtime::set_anchor_steps_per_second" << std::endl;
+    std::cout << "<- Config::set_anchor_steps_per_second" << std::endl;
 #endif
 }
 
-void Runtime::update_anchor_steps_per_second() {
+void Config::update_anchor_steps_per_second() {
 #ifdef DEBUG
-    std::cout << "-> Runtime::update_anchor_steps_per_second()" << std::endl;
+    std::cout << "-> Config::update_anchor_steps_per_second()" << std::endl;
 #endif
     time_t t0 = get_anchor_timeline().get_time();
     std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -94,11 +94,11 @@ void Runtime::update_anchor_steps_per_second() {
 
     set_anchor_steps_per_second(tf - t0);
 #ifdef DEBUG
-    std::cout << "<- Runtime::update_anchor_steps_per_second" << std::endl;
+    std::cout << "<- Config::update_anchor_steps_per_second" << std::endl;
 #endif
 }
 
-LocalTimeline& Runtime::get_display_timeline() {
+LocalTimeline& Config::get_display_timeline() {
     m.lock();
     LocalTimeline& local = display_timeline;
     m.unlock();
@@ -106,17 +106,17 @@ LocalTimeline& Runtime::get_display_timeline() {
     return local;
 }
 
-Runtime& Runtime::get_instance() {
+Config& Config::get_instance() {
     m_static.lock();
     if (instance == nullptr)
-        instance = new Runtime(*new SystemTimeline());
+        instance = new Config(*new SystemTimeline());
     m_static.unlock();
     return *instance;
 }
 
-void Runtime::update_anchor_timeline(Timeline& anchor) {
+void Config::update_anchor_timeline(Timeline& anchor) {
 #ifdef DEBUG
-    std::cout << "-> Runtime::update_anchor_timeline(Timeline&)" << std::endl;
+    std::cout << "-> Config::update_anchor_timeline(Timeline&)" << std::endl;
 #endif
     bool running = get_running();
     if (running)
@@ -125,11 +125,11 @@ void Runtime::update_anchor_timeline(Timeline& anchor) {
     set_anchor_timeline(anchor);
     update_anchor_steps_per_second();
 #ifdef DEBUG
-    std::cout << "<- Runtime::update_anchor_timeline" << std::endl;
+    std::cout << "<- Config::update_anchor_timeline" << std::endl;
 #endif
 }
 
-Model::AbstractAssetFactory& Runtime::get_character_factory() {
+Model::AbstractAssetFactory& Config::get_character_factory() {
     m.lock();
     Model::AbstractAssetFactory& local = character_factory;
     m.unlock();
@@ -137,7 +137,7 @@ Model::AbstractAssetFactory& Runtime::get_character_factory() {
     return local;
 }
 
-Model::AbstractAssetFactory& Runtime::get_platform_factory() {
+Model::AbstractAssetFactory& Config::get_platform_factory() {
     m.lock();
     Model::AbstractAssetFactory& local = platform_factory;
     m.unlock();
@@ -145,7 +145,7 @@ Model::AbstractAssetFactory& Runtime::get_platform_factory() {
     return local;
 }
 
-Model::AbstractAssetFactory& Runtime::get_moving_platform_factory() {
+Model::AbstractAssetFactory& Config::get_moving_platform_factory() {
     m.lock();
     Model::AbstractAssetFactory& local = moving_platform_factory;
     m.unlock();
@@ -153,7 +153,7 @@ Model::AbstractAssetFactory& Runtime::get_moving_platform_factory() {
     return local;
 }
 
-time_t Runtime::get_anchor_steps_per_second() {
+time_t Config::get_anchor_steps_per_second() {
     m.lock();
     time_t local = anchor_steps_per_second;
     m.unlock();
