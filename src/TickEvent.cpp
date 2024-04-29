@@ -63,6 +63,7 @@ void TickEvent::handler(std::string serialized) {
             SPlat::Model::Moving& asset = (SPlat::Model::Moving&) SPlat::Model
                 ::GameObjectModel::get_instance().read_asset(id);
             asset.update(curr);
+            asset.get_moving_properties().set_last_update(curr);
         } catch (std::exception& e) {
 #ifdef DEBUG
             std::cout << e.what() << std::endl;

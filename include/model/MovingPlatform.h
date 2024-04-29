@@ -10,7 +10,7 @@ namespace SPlat {
 
         class MovingPlatform : public Moving {
 
-            MovingPlatformProperties properties;
+            MovingPlatformProperties& properties;
 
         public:
 

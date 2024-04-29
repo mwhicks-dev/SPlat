@@ -10,7 +10,7 @@ namespace SPlat {
 
         class Character : public Moving {
 
-            CharacterProperties properties;
+            CharacterProperties& properties;
 
         public:
 

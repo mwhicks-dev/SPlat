@@ -9,7 +9,7 @@ namespace SPlat {
 
         class Platform : public Asset {
 
-            AssetProperties properties;
+            AssetProperties& properties;
 
         public:
 

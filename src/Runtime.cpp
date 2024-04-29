@@ -27,7 +27,8 @@ Runtime::Runtime(Timeline& anchor)
   character_factory(*new Model::CharacterFactory()),
   platform_factory(*new Model::PlatformFactory()),
   moving_platform_factory(*new Model::MovingPlatformFactory()) {
-    update_anchor_steps_per_second(); 
+    update_anchor_steps_per_second();
+    display_timeline.set_tic(get_anchor_steps_per_second());
     set_running(true);
 }
 
