@@ -15,7 +15,7 @@ namespace SPlat {
 
             Asset& read_asset(size_t);
 
-            virtual Asset& update_asset(size_t, AssetProperties&) = 0;
+            Asset& update_asset(size_t, AssetProperties&);
 
             Asset& delete_asset(size_t);
 
