@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "cereal/cereal.hpp"
+#include <cereal/cereal.hpp>
 
 #include "events/Event.h"
 
