@@ -14,7 +14,7 @@ namespace SPlat {
 
         public:
 
-            MovingPlatform(MovingPlatformProperties properties, 
+            MovingPlatform(MovingPlatformProperties& properties, 
                     CollisionHandler& collision_handler,
                     UpdateHandler& update_handler) : Moving(properties, 
                     collision_handler, update_handler), 

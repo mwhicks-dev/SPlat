@@ -13,7 +13,7 @@ namespace SPlat {
 
         public:
 
-            Platform(AssetProperties properties, 
+            Platform(AssetProperties& properties, 
                     CollisionHandler& collision_handler) : Asset(properties, 
                     collision_handler), properties(properties) {};
             

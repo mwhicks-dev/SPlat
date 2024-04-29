@@ -14,7 +14,7 @@ namespace SPlat {
 
         public:
 
-            Character(CharacterProperties properties, 
+            Character(CharacterProperties& properties, 
                     CollisionHandler& collision_handler,
                     UpdateHandler& update_handler) : Moving(properties, 
                     collision_handler, update_handler), 
