@@ -8,7 +8,7 @@
 #include <SFML/Window.hpp>
 
 #include "model/GameObjectModel.h"
-#include "Config.h"
+#include "ConfigInterface.h"
 #include "Controller.h"
 
 namespace SPlat {
@@ -23,7 +23,7 @@ namespace SPlat {
         /// @brief single controller for event handling
         Controller ctl;
 
-        Config& config;
+        ConfigInterface& config;
 
         /// @brief performs keyboard press/release event checking
         /// @param key actual key to check
@@ -37,7 +37,7 @@ namespace SPlat {
 
         void update_framerate_limit(long); 
 
-        Config& get_config();
+        ConfigInterface& get_config();
 
         static Client& get_instance();
 

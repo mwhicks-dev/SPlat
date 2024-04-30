@@ -1,5 +1,5 @@
 #include "Client.h"
-#include "Config.h"
+#include "ClientConfig.h"
 
 #include "events/KeyEvents.h"
 #include "events/Listener.h"
@@ -32,7 +32,7 @@ void wait_for_timeline(Timeline& t, time_t target) {
     return wait_for_timeline(t, target);
 }
 
-Client::Client() : config(*new Config()) {
+Client::Client() : config(*new ClientConfig()) {
     update_framerate_limit(get_config().get_environment().get_framerate_limit());
 }
 
@@ -110,9 +110,9 @@ void Client::update_framerate_limit(long framerate_limit) {
 #endif
 }
 
-Config& Client::get_config() {
+ConfigInterface& Client::get_config() {
     m.lock();
-    Config& local = config;
+    ConfigInterface& local = config;
     m.unlock();
 
     return local;

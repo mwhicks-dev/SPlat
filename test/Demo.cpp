@@ -1,5 +1,5 @@
 #include "Client.h"
-#include "Config.h"
+#include "ConfigInterface.h"
 #include "model/Character.h"
 #include "model/Platform.h"
 #include "model/MovingPlatform.h"
@@ -115,7 +115,7 @@ static void keyrelease_override(std::string serialized) {
 }
 
 int main() {
-    Config& conf = Client::get_instance().get_config();
+    ConfigInterface& conf = Client::get_instance().get_config();
     // Create assets
     {
         Model::AssetProperties properties(

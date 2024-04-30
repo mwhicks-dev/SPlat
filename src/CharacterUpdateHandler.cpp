@@ -28,7 +28,7 @@ CharacterProperties& CharacterUpdateHandler::get_character_properties() {
 }
 
 void CharacterUpdateHandler::update() {
-    Config& conf = Client::get_instance().get_config();
+    ConfigInterface& conf = Client::get_instance().get_config();
     AssetProperties& asset_properties = get_asset_properties();
     MovingProperties& moving_properties = get_moving_properties();
     CharacterProperties& character_properties = get_character_properties();
