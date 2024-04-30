@@ -66,7 +66,7 @@ void MovingPlatformUpdateHandler::update() {
     {
         float dt = static_cast<float>(conf.get_timing_config()
             .get_display_timeline().get_time() - moving_properties
-            .get_last_updated()) / static_cast<float>(conf.get_environment()
+            .get_last_updated()) / static_cast<float>(conf.get_timing_config()
             .get_framerate_limit());
         update_velocity = moving_properties.get_velocity() * dt;
     }

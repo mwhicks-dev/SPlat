@@ -37,7 +37,7 @@ void CharacterUpdateHandler::update() {
     sf::Vector2f velocity = moving_properties.get_velocity();
     float dt = static_cast<float>(conf.get_timing_config().get_display_timeline()
         .get_time() - moving_properties.get_last_updated()) / 
-        static_cast<float>(conf.get_environment().get_framerate_limit());
+        static_cast<float>(conf.get_timing_config().get_framerate_limit());
     asset_properties.set_position(asset_properties.get_position() + velocity * dt);
 
     AssetProperties * standing_on = character_properties.get_standing_on();    

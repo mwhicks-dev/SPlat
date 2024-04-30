@@ -148,10 +148,10 @@ int main() {
         moving_platform_properties.set_states(states);
     }
     
-    conf.get_environment().set_framerate_limit(90);
-
     cli.get_foreground_listener().set_handler(Events::KeyPressCommandHandler::get_event_type(), *new KeyPressOverride());
     cli.get_foreground_listener().set_handler(Events::KeyReleaseCommandHandler::get_event_type(), *new KeyReleaseOverride());
+
+    cli.update_framerate_limit(90);
 
     cli.start();
 }
