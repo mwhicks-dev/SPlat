@@ -16,10 +16,9 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-set(LA src/CharacterCollisionHandler.cpp src/TickEvent.cpp src/Listener.cpp src/Controller.cpp src/MovingPlatformCollisionHandler.cpp src/AssetEvents.cpp src/PlatformEvents.cpp src/UnorderedStandingConfig.cpp src/PlatformCollisionHandler.cpp src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp src/Environment.cpp src/Platform.cpp src/AssetFactoryConfig.cpp src/Character.cpp src/CharacterEvents.cpp src/MovingPlatformUpdateHandler.cpp src/KeyEvents.cpp src/TimingConfig.cpp src/MovingPlatformEvents.cpp src/ClientConfig.cpp src/MovingPlatform.cpp src/AbstractAssetFactory.cpp)
-set(LB src/GameObjectModel.cpp src/CharacterFactory.cpp src/PlatformFactory.cpp src/MovingPlatformFactory.cpp)
-set(LC src/Client.cpp)
-set(ALL_IMPLEMENTATIONS ${LA} ${LB} ${LC})
+set(LA src/CharacterCollisionHandler.cpp src/GameObjectModel.cpp src/MovingPlatformCollisionHandler.cpp src/UnorderedStandingConfig.cpp src/OrderedPriorityListener.cpp src/PlatformCollisionHandler.cpp src/KeyPressCommandHandler.cpp src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp src/Environment.cpp src/Platform.cpp src/AssetFactoryConfig.cpp src/Character.cpp src/MovingPlatformUpdateHandler.cpp src/TimingConfig.cpp src/KeyReleaseCommandHandler.cpp src/ClientConfig.cpp src/MovingPlatform.cpp src/AbstractAssetFactory.cpp)
+set(LB src/CharacterFactory.cpp src/Client.cpp src/PlatformFactory.cpp src/MovingPlatformFactory.cpp)
+set(ALL_IMPLEMENTATIONS ${LA} ${LB})
 
 add_executable(gom_test test/TestGameObjectModel.cpp ${ALL_IMPLEMENTATIONS})
 target_link_libraries(gom_test gtest gtest_main sfml-graphics)
