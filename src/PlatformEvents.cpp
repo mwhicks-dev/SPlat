@@ -2,7 +2,7 @@
 #include "events/Command.h"
 #include "events/Listener.h"
 #include "model/Platform.h"
-#include "Config.h"
+#include "Client.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -52,7 +52,7 @@ void CreatePlatformEvent::handler(std::string serialized) {
     }
 
     // create platfrom from args
-    Config::get_instance().get_asset_factory_config()
+    Client::get_instance().get_config().get_asset_factory_config()
         .get_platform_factory().create_asset(args.properties);
 #ifdef DEBUG
     std::cout << "<- CreatePlatformEvent::handler" << std::endl;

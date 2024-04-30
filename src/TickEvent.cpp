@@ -3,7 +3,7 @@
 #include "events/Listener.h"
 #include "model/GameObjectModel.h"
 #include "model/Moving.h"
-#include "Config.h"
+#include "Client.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -73,7 +73,7 @@ void TickEvent::handler(std::string serialized) {
         } catch (std::bad_cast&) {}
     }
     sort(moving.begin(), moving.end(), compare);
-    time_t curr = Config::get_instance().get_timing_config()
+    time_t curr = Client::get_instance().get_config().get_timing_config()
         .get_display_timeline().get_time();
     for (SPlat::Model::Moving* asset_ptr : moving) {
         try {

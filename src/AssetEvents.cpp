@@ -4,7 +4,6 @@
 #include "model/GameObjectModel.h"
 #include "model/Moving.h"
 #include "Client.h"
-#include "Config.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -71,7 +70,7 @@ void AddVelocityEvent::handler(std::string serialized) {
     // add velocity to reference safely
     SPlat::Model::MovingProperties& properties = asset.get_moving_properties();
     properties.set_velocity(asset.get_moving_properties().get_velocity() + args.modifier);
-    properties.set_last_update(Config::get_instance().get_timing_config()
+    properties.set_last_update(Client::get_instance().get_config().get_timing_config()
         .get_display_timeline().get_time());
 #ifdef DEBUG
     std::cout << "<- AddVelocityEvent::handler" << std::endl;

@@ -3,7 +3,7 @@
 #include "events/Command.h"
 #include "events/Listener.h"
 #include "model/Character.h"
-#include "Config.h"
+#include "Client.h"
 
 #ifdef DEBUG
 #include <iostream>
@@ -42,7 +42,7 @@ void CreateCharacterEvent::raise() {
 SPlat::Model::Character& from_properties
         (SPlat::Model::AssetProperties properties) {
     // pass to asset factory and update
-    return (SPlat::Model::Character&) SPlat::Config::get_instance()
+    return (SPlat::Model::Character&) SPlat::Client::get_instance().get_config()
         .get_asset_factory_config().get_character_factory().create_asset(properties);
 }
 

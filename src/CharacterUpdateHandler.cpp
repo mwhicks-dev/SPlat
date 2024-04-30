@@ -1,5 +1,5 @@
 #include "model/handler/CharacterUpdateHandler.h"
-#include "Config.h"
+#include "Client.h"
 
 using namespace SPlat::Model;
 
@@ -28,7 +28,7 @@ CharacterProperties& CharacterUpdateHandler::get_character_properties() {
 }
 
 void CharacterUpdateHandler::update() {
-    Config& conf = Config::get_instance();
+    Config& conf = Client::get_instance().get_config();
     AssetProperties& asset_properties = get_asset_properties();
     MovingProperties& moving_properties = get_moving_properties();
     CharacterProperties& character_properties = get_character_properties();

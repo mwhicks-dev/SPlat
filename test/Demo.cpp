@@ -29,7 +29,7 @@ static void keypress_override(std::string serialized) {
     }
 
     if (args.key == sf::Keyboard::Key::Escape) {
-        LocalTimeline& dtl = Config::get_instance().get_timing_config().get_display_timeline();
+        LocalTimeline& dtl = Client::get_instance().get_config().get_timing_config().get_display_timeline();
         if (dtl.get_paused()) {
             dtl.unpause();
         } else {
@@ -39,7 +39,7 @@ static void keypress_override(std::string serialized) {
 
     try {
         // get asset
-        Model::Character* ctl = Config::get_instance()
+        Model::Character* ctl = Client::get_instance().get_config()
             .get_environment().get_controlled_asset();
         if (ctl == nullptr) {
 #ifdef DEBUG
@@ -52,16 +52,16 @@ static void keypress_override(std::string serialized) {
         if (args.key == sf::Keyboard::Key::Left) {
             ctl->get_moving_properties().set_velocity(ctl
                 ->get_moving_properties().get_velocity() + sf::Vector2f(
-                    Config::get_instance().get_environment().get_unit() * -10, 0));
+                    Client::get_instance().get_config().get_environment().get_unit() * -10, 0));
         } else if (args.key == sf::Keyboard::Key::Right) {
             ctl->get_moving_properties().set_velocity(ctl
                 ->get_moving_properties().get_velocity() + sf::Vector2f(
-                    Config::get_instance().get_environment().get_unit() * 10, 0));
+                    Client::get_instance().get_config().get_environment().get_unit() * 10, 0));
         } else if (args.key == sf::Keyboard::Key::Up 
                 && ctl->get_character_properties().get_standing_on() != nullptr) {
             ctl->get_moving_properties().set_velocity(ctl
                 ->get_moving_properties().get_velocity() + sf::Vector2f(
-                    0, Config::get_instance().get_environment().get_unit() * -11.5));
+                    0, Client::get_instance().get_config().get_environment().get_unit() * -11.5));
 #ifdef DEBUG
             sf::Vector2f updated_debug_velocity = ctl->get_moving_properties().get_velocity();
             std::cout << "new velocity: <" << updated_debug_velocity.x << ", " << updated_debug_velocity.y << ">" << std::endl;
@@ -89,7 +89,7 @@ static void keyrelease_override(std::string serialized) {
 
     try {
         // get asset
-        Model::Character* ctl = Config::get_instance()
+        Model::Character* ctl = Client::get_instance().get_config()
             .get_environment().get_controlled_asset();
         if (ctl == nullptr) {
 #ifdef DEBUG
@@ -102,11 +102,11 @@ static void keyrelease_override(std::string serialized) {
         if (args.key == sf::Keyboard::Key::Left) {
             ctl->get_moving_properties().set_velocity(ctl
                 ->get_moving_properties().get_velocity() - sf::Vector2f(
-                    Config::get_instance().get_environment().get_unit() * -10, 0));
+                    Client::get_instance().get_config().get_environment().get_unit() * -10, 0));
         } else if (args.key == sf::Keyboard::Key::Right) {
             ctl->get_moving_properties().set_velocity(ctl
                 ->get_moving_properties().get_velocity() - sf::Vector2f(
-                    Config::get_instance().get_environment().get_unit() * 10, 0));
+                    Client::get_instance().get_config().get_environment().get_unit() * 10, 0));
         }
 
     } catch (std::logic_error & e) {
@@ -115,7 +115,7 @@ static void keyrelease_override(std::string serialized) {
 }
 
 int main() {
-    Config& conf = Config::get_instance();
+    Config& conf = Client::get_instance().get_config();
     // Create assets
     {
         Model::AssetProperties properties(
@@ -125,7 +125,7 @@ int main() {
         );
         Model::Asset& asset = conf.get_asset_factory_config().get_character_factory().create_asset(properties);
         Model::Character& character = dynamic_cast<Model::Character&>(asset);
-        Config::get_instance().get_environment().set_controlled_asset(&character);
+        Client::get_instance().get_config().get_environment().set_controlled_asset(&character);
     }
     {
         Model::AssetProperties properties(
@@ -170,6 +170,5 @@ int main() {
     
     conf.get_environment().set_framerate_limit(90);
 
-    Client client;
-    client.start();
+    Client::get_instance().start();
 }
