@@ -47,10 +47,13 @@ void CharacterCollisionHandler::resolve_collision(AssetProperties& other) {
         unit_velocity = -unit_velocity;
         sf::Vector2f shortest;
         sf::RectangleShape tmp;
-        if (unit_velocity.x > unit_velocity.y) {
+        if (fabs(unit_velocity.x) > fabs(unit_velocity.y)) {
             // set unit velocity to component units
             unit_velocity.x = unit_velocity.x / fabs(unit_velocity.x);
             unit_velocity.y = unit_velocity.y / fabs(unit_velocity.y);
+
+            if (std::isnan(unit_velocity.x)) unit_velocity.x = 0;
+            if (std::isnan(unit_velocity.y)) unit_velocity.y = 0;
 
             // try x first
             tmp = self_rect;
@@ -70,6 +73,9 @@ void CharacterCollisionHandler::resolve_collision(AssetProperties& other) {
             // set unit velocity to component units
             unit_velocity.x = unit_velocity.x / fabs(unit_velocity.x);
             unit_velocity.y = unit_velocity.y / fabs(unit_velocity.y);
+
+            if (std::isnan(unit_velocity.x)) unit_velocity.x = 0;
+            if (std::isnan(unit_velocity.y)) unit_velocity.y = 0;
 
             // try y first
             tmp = self_rect;
