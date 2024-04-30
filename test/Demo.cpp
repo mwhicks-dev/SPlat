@@ -2,6 +2,7 @@
 #include "Config.h"
 #include "model/Character.h"
 #include "model/Platform.h"
+#include "model/MovingPlatform.h"
 #include "events/AssetEvents.h"
 #include "events/CharacterEvents.h"
 #include "events/MovingPlatformEvents.h"
@@ -135,6 +136,36 @@ int main() {
             -2  // collision priority
         );
         conf.get_asset_factory_config().get_platform_factory().create_asset(properties);
+    }
+    {
+        Model::AssetProperties properties(
+            sf::Vector2f(200, 300),  // position
+            sf::Vector2f(150, 25),  // size
+            sf::Color::White,  // fill_color,
+            -1  // collision_priority
+        );
+        Model::Asset& asset = conf.get_asset_factory_config().get_moving_platform_factory().create_asset(properties);
+        Model::MovingPlatform& moving_platform = dynamic_cast<Model::MovingPlatform&>(asset);
+
+        // add states
+        Model::MovingPlatformProperties& moving_platform_properties = moving_platform.get_moving_platform_properties();
+        std::vector<Model::State> states = moving_platform_properties.get_states();
+        states.push_back(
+            Model::State(
+                sf::Vector2f(5, 0) * conf.get_environment().get_unit(),  // velocity
+                1.5 * conf.get_timing_config().get_anchor_steps_per_second(),  // anchor_steps
+                true  // repeat
+            )
+        );
+        states.push_back(
+            Model::State(
+                sf::Vector2f(-15, 0) * conf.get_environment().get_unit(),  // velocity
+                0.5 * conf.get_timing_config().get_anchor_steps_per_second(),  // anchor_steps
+                true  // repeat
+            )
+        );
+        moving_platform_properties.set_last_state_change(conf.get_timing_config().get_anchor_timeline().get_time());
+        moving_platform_properties.set_states(states);
     }
 
     Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);

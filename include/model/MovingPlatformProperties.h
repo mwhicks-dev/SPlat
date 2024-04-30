@@ -38,9 +38,9 @@ namespace SPlat {
 
             std::mutex m;
 
-            time_t last_state_change;
+            time_t last_state_change = -1;
 
-            std::vector<State> states;
+            std::vector<State> states = {};
 
         public:
 
