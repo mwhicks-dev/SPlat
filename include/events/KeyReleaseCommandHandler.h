@@ -11,7 +11,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class KeyReleaseEventHandler : public CommandHandlerInterface {
+        class KeyReleaseCommandHandler : public CommandHandlerInterface {
 
         public:
 
