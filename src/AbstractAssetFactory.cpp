@@ -1,5 +1,5 @@
 #include "model/AbstractAssetFactory.h"
-#include "model/GameObjectModel.h"
+#include "Entrypoint.h"
 
 #include <cmath>
 
@@ -10,7 +10,7 @@
 using namespace SPlat::Model;
 
 Asset& AbstractAssetFactory::read_asset(size_t id) {
-    return GameObjectModel::get_instance().read_asset(id);
+    return Entrypoint::get_instance().get_object_model().read_asset(id);
 }
 
 Asset& AbstractAssetFactory::update_asset(size_t id, AssetProperties& properties) {
@@ -26,5 +26,5 @@ Asset& AbstractAssetFactory::update_asset(size_t id, AssetProperties& properties
 }
 
 Asset& AbstractAssetFactory::delete_asset(size_t id) {
-    return GameObjectModel::get_instance().delete_asset(id);
+    return Entrypoint::get_instance().get_object_model().delete_asset(id);
 }

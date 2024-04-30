@@ -1,6 +1,5 @@
 #include "model/CharacterFactory.h"
 #include "model/Character.h"
-#include "model/GameObjectModel.h"
 #include "Entrypoint.h"
 
 #ifdef DEBUG
@@ -22,5 +21,5 @@ Asset& CharacterFactory::create_asset(AssetProperties& properties) {
         *new CharacterProperties(character_properties)
     );
 
-    return GameObjectModel::get_instance().create_asset(*character);
+    return Entrypoint::get_instance().get_object_model().create_asset(*character);
 }

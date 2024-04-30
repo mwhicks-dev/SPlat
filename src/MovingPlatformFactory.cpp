@@ -1,4 +1,3 @@
-#include "model/GameObjectModel.h"
 #include "model/MovingPlatformFactory.h"
 #include "model/MovingPlatform.h"
 #include "Entrypoint.h"
@@ -21,5 +20,5 @@ Asset& MovingPlatformFactory::create_asset(AssetProperties& properties) {
         *new MovingProperties (moving_properties), 
         *new MovingPlatformProperties(moving_platform_properties));
 
-    return GameObjectModel::get_instance().create_asset(*mplat);
+    return Entrypoint::get_instance().get_object_model().create_asset(*mplat);
 }

@@ -1,5 +1,5 @@
 #include "model/handler/UnorderedStandingConfig.h"
-#include "model/GameObjectModel.h"
+#include "Entrypoint.h"
 
 using namespace SPlat::Model;
 
@@ -47,8 +47,7 @@ void UnorderedStandingConfig::push_update_to_children(size_t parent,
     for (size_t child : children) {
         try {
             // get asset by ID
-            Asset& child_asset = GameObjectModel::get_instance()
-                .read_asset(child);
+            Asset& child_asset = Entrypoint::get_instance().get_object_model().read_asset(child);
 
             // add update to child position
             AssetProperties& child_asset_properties = child_asset
