@@ -1,5 +1,5 @@
 #include "events/KeyReleaseCommandHandler.h"
-#include "Client.h"
+#include "Entrypoint.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -16,5 +16,5 @@ void KeyReleaseCommandHandler::handle(std::string serialized) {
         iar(args);
     }
 
-    Client::get_instance().get_config().get_environment().remove_held_key(args.key);
+    Entrypoint::get_instance().get_config().get_environment().remove_held_key(args.key);
 }

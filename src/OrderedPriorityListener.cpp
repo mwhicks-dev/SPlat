@@ -1,5 +1,5 @@
 #include "events/OrderedPriorityListener.h"
-#include "Client.h"
+#include "Entrypoint.h"
 
 #include <thread>
 
@@ -36,7 +36,7 @@ bool OrderedPriorityListener::command_available() {
 }
 
 void OrderedPriorityListener::listener_loop() {
-    EnvironmentInterface& env = Client::get_instance().get_config().get_environment();
+    EnvironmentInterface& env = Entrypoint::get_instance().get_config().get_environment();
 
     while (env.get_running()) {
         if (command_available()) {

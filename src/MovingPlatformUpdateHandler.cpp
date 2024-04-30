@@ -1,5 +1,5 @@
 #include "model/handler/MovingPlatformUpdateHandler.h"
-#include "Client.h"
+#include "Entrypoint.h"
 
 #ifdef DEBUG
 #include <iostream>
@@ -32,7 +32,7 @@ MovingPlatformProperties& MovingPlatformUpdateHandler::get_moving_platform_prope
 }
 
 void MovingPlatformUpdateHandler::update() {
-    ConfigInterface& conf = Client::get_instance().get_config();
+    ConfigInterface& conf = Entrypoint::get_instance().get_config();
     AssetProperties& asset_properties = get_asset_properties();
     MovingProperties& moving_properties = get_moving_properties();
     MovingPlatformProperties& moving_platform_properties = get_moving_platform_properties();
