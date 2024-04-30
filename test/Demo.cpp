@@ -3,13 +3,101 @@
 #include "model/Character.h"
 #include "model/Platform.h"
 #include "model/MovingPlatform.h"
+#include "events/KeyPressCommandHandler.h"
+#include "events/KeyReleaseCommandHandler.h"
 
 #include <cereal/archives/json.hpp>
 
 using namespace SPlat;
 
+class KeyPressOverride : public SPlat::Events::KeyPressCommandHandler {
+
+public:
+
+    void handle(std::string serialized) override {
+        Args args;
+        {
+            std::stringstream ss; ss << serialized;
+            cereal::JSONInputArchive iar(ss);
+            iar(args);
+        }
+
+        if (!args.key == sf::Keyboard::Key::Left 
+                && !args.key == sf::Keyboard::Key::Right
+                && !args.key == sf::Keyboard::Key::Up
+                && !args.key == sf::Keyboard::Key::Escape) return;
+        
+        ConfigInterface& conf = Client::get_instance().get_config();
+
+        if (conf.get_environment().get_held_keys().count(args.key) > 0) return;
+        conf.get_environment().add_held_key(args.key);
+
+        if (args.key == sf::Keyboard::Escape)
+            return conf.get_timing_config().get_display_timeline().pause();
+
+        Model::Character* controlled = conf.get_environment().get_controlled_asset();
+        if (controlled == nullptr) return;
+
+        Model::MovingProperties& moving_properties = controlled->get_moving_properties();
+
+        if (args.key == sf::Keyboard::Left) {
+            // move left
+            moving_properties.set_velocity(moving_properties.get_velocity() 
+                + sf::Vector2f(conf.get_environment().get_unit() * -10, 0));
+        } else if (args.key == sf::Keyboard::Right) {
+            // move right
+            moving_properties.set_velocity(moving_properties.get_velocity() 
+                + sf::Vector2f(conf.get_environment().get_unit() * 10, 0));
+        } else if (args.key == sf::Keyboard::Up) {
+            // jump
+            moving_properties.set_velocity(moving_properties.get_velocity() 
+                + sf::Vector2f(0, conf.get_environment().get_unit() * -11.5));
+        }
+    }
+
+};
+
+class KeyReleaseOverride : public Events::KeyReleaseCommandHandler {
+
+public:
+
+    void handle(std::string serialized) override {
+        Args args;
+        {
+            std::stringstream ss; ss << serialized;
+            cereal::JSONInputArchive iar(ss);
+            iar(args);
+        }
+
+        if (!args.key == sf::Keyboard::Key::Left 
+                && !args.key == sf::Keyboard::Key::Right) return;
+        
+        ConfigInterface& conf = Client::get_instance().get_config();
+
+        if (conf.get_environment().get_held_keys().count(args.key) == 0) return;
+        conf.get_environment().remove_held_key(args.key);
+
+        Model::Character* controlled = conf.get_environment().get_controlled_asset();
+        if (controlled == nullptr) return;
+        
+        Model::MovingProperties& moving_properties = controlled->get_moving_properties();
+
+        if (args.key == sf::Keyboard::Left) {
+            // move left
+            moving_properties.set_velocity(moving_properties.get_velocity() 
+                - sf::Vector2f(conf.get_environment().get_unit() * -10, 0));
+        } else if (args.key == sf::Keyboard::Right) {
+            // move right
+            moving_properties.set_velocity(moving_properties.get_velocity() 
+                - sf::Vector2f(conf.get_environment().get_unit() * 10, 0));
+        }
+    }
+
+};
+
 int main() {
-    ConfigInterface& conf = Client::get_instance().get_config();
+    Client& cli = Client::get_instance();
+    ConfigInterface& conf = cli.get_config();
     // Create assets
     {
         Model::AssetProperties properties(
@@ -61,5 +149,8 @@ int main() {
     
     conf.get_environment().set_framerate_limit(90);
 
-    Client::get_instance().start();
+    cli.get_foreground_listener().set_handler(Events::KeyPressCommandHandler::get_event_type(), *new KeyPressOverride());
+    cli.get_foreground_listener().set_handler(Events::KeyReleaseCommandHandler::get_event_type(), *new KeyReleaseOverride());
+
+    cli.start();
 }
