@@ -10,6 +10,7 @@
 using namespace SPlat::Model;
 
 Asset& MovingPlatformFactory::create_asset(AssetProperties& properties) {
+    properties.set_collision_priority(-1);
     // create new moving and movingplatform properties
     MovingProperties moving_properties(sf::Vector2f(0, 0), 
         Config::get_instance().get_timing_config().get_display_timeline().get_time());

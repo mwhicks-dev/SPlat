@@ -5,6 +5,7 @@
 using namespace SPlat::Model;
 
 Asset& PlatformFactory::create_asset(AssetProperties& properties) {
+    properties.set_collision_priority(-2);
     Platform * platform = new Platform(*new AssetProperties(properties));
     return GameObjectModel::get_instance().create_asset(*platform);
 }

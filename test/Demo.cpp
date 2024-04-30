@@ -121,8 +121,7 @@ int main() {
         Model::AssetProperties properties(
             sf::Vector2f(100, 100),  // position
             sf::Vector2f(50, 100),  // size
-            sf::Color::Magenta,  // fill_color
-            0  // collision priority (TODO should be auto)
+            sf::Color::Magenta  // fill_color
         );
         Model::Asset& asset = conf.get_asset_factory_config().get_character_factory().create_asset(properties);
         Model::Character& character = dynamic_cast<Model::Character&>(asset);
@@ -132,8 +131,7 @@ int main() {
         Model::AssetProperties properties(
             sf::Vector2f(0, 500),  // position
             sf::Vector2f(400, 100),  // size
-            sf::Color::Green,  // fill_color
-            -2  // collision priority
+            sf::Color::Green  // fill_color
         );
         conf.get_asset_factory_config().get_platform_factory().create_asset(properties);
     }
@@ -141,8 +139,7 @@ int main() {
         Model::AssetProperties properties(
             sf::Vector2f(200, 300),  // position
             sf::Vector2f(150, 25),  // size
-            sf::Color::White,  // fill_color,
-            -1  // collision_priority
+            sf::Color::White  // fill_color
         );
         Model::Asset& asset = conf.get_asset_factory_config().get_moving_platform_factory().create_asset(properties);
         Model::MovingPlatform& moving_platform = dynamic_cast<Model::MovingPlatform&>(asset);

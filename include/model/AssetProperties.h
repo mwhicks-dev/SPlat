@@ -17,22 +17,21 @@ namespace SPlat {
 
             size_t id;
 
-            sf::Vector2f position;
+            sf::Vector2f position = sf::Vector2f(0, 0);
 
-            sf::Vector2f size;
+            sf::Vector2f size = sf::Vector2f(50, 50);
 
-            sf::Color fill_color;
+            sf::Color fill_color = sf::Color::White;
 
             int collision_priority;
 
             AssetProperties() = default;
 
             AssetProperties(sf::Vector2f position, sf::Vector2f size, 
-                    sf::Color fill_color, int collision_priority) {
+                    sf::Color fill_color) {
                 set_position(position);
                 set_size(size);
                 set_fill_color(fill_color);
-                set_collision_priority(collision_priority);
             }
 
             AssetProperties(AssetProperties& other) {

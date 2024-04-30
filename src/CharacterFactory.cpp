@@ -11,6 +11,7 @@ using namespace SPlat::Model;
 
 Asset& CharacterFactory::create_asset(AssetProperties& properties) {
     // create new moving and character properties
+    properties.set_collision_priority(0);
     MovingProperties moving_properties(sf::Vector2f(0, 0), Config::get_instance().get_timing_config().get_display_timeline().get_time());
     CharacterProperties character_properties;
 
