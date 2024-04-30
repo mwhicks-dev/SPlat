@@ -5,7 +5,7 @@
 
 #include <SFML/Window.hpp>
 
-#include "model/GameObjectModel.h"
+#include "model/ObjectModelInterface.h"
 #include "events/ListenerInterface.h"
 #include "Entrypoint.h"
 
@@ -17,6 +17,8 @@ namespace SPlat {
         sf::RenderWindow window;
 
         ConfigInterface& config;
+
+        Model::ObjectModelInterface& object_model;
 
         Events::ListenerInterface& foreground_listener;
 
@@ -31,6 +33,8 @@ namespace SPlat {
         void start() override;
 
         ConfigInterface& get_config() override;
+
+        Model::ObjectModelInterface& get_object_model() override;
 
         Events::ListenerInterface& get_foreground_listener();
 

@@ -1,6 +1,7 @@
 #include "Client.h"
 #include "ClientConfig.h"
 #include "events/OrderedPriorityListener.h"
+#include "model/UnorderedMapObjectModel.h"
 #include "events/KeyPressCommandHandler.h"
 #include "events/KeyReleaseCommandHandler.h"
 
@@ -57,6 +58,7 @@ void wait_for_timeline(Timeline& t, time_t target) {
 }
 
 Client::Client() : config(*new ClientConfig()), 
+        object_model(*new Model::UnorderedMapObjectModel()), 
         foreground_listener(*new Events::OrderedPriorityListener()) {
     // fix framerate limit env
     get_config().get_timing_config().update_framerate_limit(30);  // default 30
@@ -101,12 +103,12 @@ void Client::start() {
         handle_key_event(sf::Keyboard::Key::Escape);
 
         // generate tick events (if unpaused)
-        std::unordered_set<size_t> ids = Model::GameObjectModel::get_instance().get_ids();
+        std::unordered_set<size_t> ids = get_object_model().get_ids();
         std::vector<SPlat::Model::Moving*> moving;
         for (size_t id : ids) {
             try {
                 SPlat::Model::Moving& asset = dynamic_cast<SPlat::Model::Moving&>(
-                    Model::GameObjectModel::get_instance().read_asset(id));
+                    get_object_model().read_asset(id));
                 moving.push_back(&asset);
             } catch (std::bad_cast&) {}
         }
@@ -114,10 +116,9 @@ void Client::start() {
         // draw all assets
         window.clear(sf::Color::Black);
 
-        std::unordered_set<size_t> asset_ids = Model::GameObjectModel::
-            get_instance().get_ids();
+        std::unordered_set<size_t> asset_ids = get_object_model().get_ids();
         for (size_t id : asset_ids) {
-            Model::Asset& asset = Model::GameObjectModel::get_instance()
+            Model::Asset& asset = get_object_model()
                 .read_asset(id);
             window.draw(asset.get_asset_properties().get_rectangle_shape());
         }
@@ -134,7 +135,7 @@ void Client::start() {
                 for (size_t other : ids) {
                     if (id == other) continue;
 
-                    SPlat::Model::Asset& other_asset = Model::GameObjectModel::get_instance().read_asset(other);
+                    SPlat::Model::Asset& other_asset = get_object_model().read_asset(other);
                     asset.resolve_collision(other_asset);
                 }
             } catch (std::exception& e) {
@@ -180,4 +181,12 @@ Client& Client::get_instance() {
     } catch (std::bad_cast&) {
         throw std::invalid_argument("Entrypoint is of type Client");
     }
+}
+
+Model::ObjectModelInterface& Client::get_object_model() {
+    m.lock();
+    Model::ObjectModelInterface& local = object_model;
+    m.unlock();
+
+    return local;
 }

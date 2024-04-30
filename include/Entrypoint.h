@@ -2,6 +2,7 @@
 #define SPlat_Entrypoint_h
 
 #include "ConfigInterface.h"
+#include "model/ObjectModelInterface.h"
 
 #include <mutex>
 
@@ -18,6 +19,8 @@ namespace SPlat {
     public:
 
         virtual ConfigInterface& get_config() = 0;
+
+        virtual Model::ObjectModelInterface& get_object_model() = 0;
 
         virtual void start() = 0;
 
