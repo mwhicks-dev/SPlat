@@ -51,21 +51,24 @@ static void keypress_override(std::string serialized) {
         if (args.key == sf::Keyboard::Key::Left) {
             ctl->get_moving_properties().set_velocity(ctl
                 ->get_moving_properties().get_velocity() + sf::Vector2f(
-                    Config::get_instance().get_environment().get_unit() * -15, 0));
+                    Config::get_instance().get_environment().get_unit() * -10, 0));
         } else if (args.key == sf::Keyboard::Key::Right) {
             ctl->get_moving_properties().set_velocity(ctl
                 ->get_moving_properties().get_velocity() + sf::Vector2f(
-                    Config::get_instance().get_environment().get_unit() * 15, 0));
+                    Config::get_instance().get_environment().get_unit() * 10, 0));
         } else if (args.key == sf::Keyboard::Key::Up 
-                && ((Model::CharacterProperties&) ctl->get_moving_properties())
-                .get_standing_on() != nullptr) {
+                && ctl->get_character_properties().get_standing_on() != nullptr) {
             ctl->get_moving_properties().set_velocity(ctl
                 ->get_moving_properties().get_velocity() + sf::Vector2f(
-                    0, Config::get_instance().get_environment().get_unit() * -75));
+                    0, Config::get_instance().get_environment().get_unit() * -11.5));
+#ifdef DEBUG
+            sf::Vector2f updated_debug_velocity = ctl->get_moving_properties().get_velocity();
+            std::cout << "new velocity: <" << updated_debug_velocity.x << ", " << updated_debug_velocity.y << ">" << std::endl;
+#endif
         }
 
     } catch (std::logic_error & e) {
-        std::cout << e.what() << std::endl;
+        std::cout << "key press handler: " << e.what() << std::endl;
     }
 }
 
@@ -98,11 +101,11 @@ static void keyrelease_override(std::string serialized) {
         if (args.key == sf::Keyboard::Key::Left) {
             ctl->get_moving_properties().set_velocity(ctl
                 ->get_moving_properties().get_velocity() - sf::Vector2f(
-                    Config::get_instance().get_environment().get_unit() * -15, 0));
+                    Config::get_instance().get_environment().get_unit() * -10, 0));
         } else if (args.key == sf::Keyboard::Key::Right) {
             ctl->get_moving_properties().set_velocity(ctl
                 ->get_moving_properties().get_velocity() - sf::Vector2f(
-                    Config::get_instance().get_environment().get_unit() * 15, 0));
+                    Config::get_instance().get_environment().get_unit() * 10, 0));
         }
 
     } catch (std::logic_error & e) {
@@ -137,5 +140,8 @@ int main() {
     Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);
     Events::ForegroundListener::get_instance().set_handler(Events::KeyReleaseEvent::get_type(), keyrelease_override);
     
-    Client client; client.start();
+    conf.get_environment().set_framerate_limit(90);
+
+    Client client;
+    client.start();
 }
