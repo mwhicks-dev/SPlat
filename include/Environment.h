@@ -17,6 +17,8 @@ namespace SPlat {
 
         bool running;
 
+        Model::StandingConfigInterface& standing_config;
+
         float unit;
 
     public:
@@ -28,6 +30,8 @@ namespace SPlat {
         long get_framerate_limit() override;
 
         bool get_running() override;
+
+        Model::StandingConfigInterface& get_standing_config() override;
 
         float get_unit() override;
 

@@ -2,6 +2,7 @@
 #define SPlat_EnvironmentInterface_h
 
 #include "model/Character.h"
+#include "model/StandingConfigInterface.h"
 
 namespace SPlat {
 
@@ -14,6 +15,8 @@ namespace SPlat {
         virtual long get_framerate_limit() = 0;
 
         virtual bool get_running() = 0;
+
+        virtual Model::StandingConfigInterface& get_standing_config() = 0;
 
         virtual float get_unit() = 0;
 
