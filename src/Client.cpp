@@ -26,14 +26,14 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
 }
 
 void wait_for_timeline(Timeline& t, time_t target) {
-    if (Config::get_instance().get_timing_config().get_display_timeline().get_paused()
+    if (Client::get_instance().get_config().get_timing_config().get_display_timeline().get_paused()
          || t.get_time() >= target) return;
 
     return wait_for_timeline(t, target);
 }
 
-Client::Client() {
-    update_framerate_limit(Config::get_instance().get_environment().get_framerate_limit());
+Client::Client() : config(*new Config()) {
+    update_framerate_limit(get_config().get_environment().get_framerate_limit());
 }
 
 void Client::start() {
@@ -47,8 +47,8 @@ void Client::start() {
 
     std::this_thread::sleep_for(std::chrono::milliseconds(250));  // give window time to open
     
-    Config::get_instance().get_timing_config().get_display_timeline().unpause();  // paused by default
-    time_t last_updated = Config::get_instance().get_timing_config()
+    get_config().get_timing_config().get_display_timeline().unpause();  // paused by default
+    time_t last_updated = get_config().get_timing_config()
         .get_display_timeline().get_time();
     while (window.isOpen()) {
         // dispatch foreground events
@@ -84,12 +84,12 @@ void Client::start() {
         }
 
         window.display();
-        wait_for_timeline(Config::get_instance().get_timing_config()
+        wait_for_timeline(get_config().get_timing_config()
             .get_display_timeline(), last_updated + 1);
-        last_updated = Config::get_instance().get_timing_config().get_display_timeline().get_time();
+        last_updated = get_config().get_timing_config().get_display_timeline().get_time();
     }
 
-    Config::get_instance().get_environment().set_running(false);
+    get_config().get_environment().set_running(false);
 
     t.join();
 #ifdef DEBUG
@@ -101,13 +101,21 @@ void Client::update_framerate_limit(long framerate_limit) {
 #ifdef DEBUG
     std::cout << "-> Client::set_framerate_limit(" << framerate_limit << ")" << std::endl;
 #endif
-    Config::get_instance().get_environment().set_framerate_limit(framerate_limit);
-    Config::get_instance().get_timing_config().get_display_timeline().set_tic(
-        Config::get_instance().get_timing_config().get_anchor_steps_per_second() / framerate_limit
+    get_config().get_environment().set_framerate_limit(framerate_limit);
+    get_config().get_timing_config().get_display_timeline().set_tic(
+        get_config().get_timing_config().get_anchor_steps_per_second() / framerate_limit
     );
 #ifdef DEBUG
     std::cout << "<- Client::set_framerate_limit" << std::endl;
 #endif
+}
+
+Config& Client::get_config() {
+    m.lock();
+    Config& local = config;
+    m.unlock();
+
+    return local;
 }
 
 Client& Client::get_instance() {

@@ -8,17 +8,22 @@
 #include <SFML/Window.hpp>
 
 #include "model/GameObjectModel.h"
+#include "Config.h"
 #include "Controller.h"
 
 namespace SPlat {
 
     class Client {
 
+        std::mutex m;
+
         /// @brief main display
         sf::RenderWindow window;
 
         /// @brief single controller for event handling
         Controller ctl;
+
+        Config& config;
 
         /// @brief performs keyboard press/release event checking
         /// @param key actual key to check
@@ -31,6 +36,8 @@ namespace SPlat {
         void start();
 
         void update_framerate_limit(long); 
+
+        Config& get_config();
 
         static Client& get_instance();
 
