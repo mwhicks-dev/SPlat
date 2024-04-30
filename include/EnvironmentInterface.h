@@ -5,6 +5,7 @@
 #include "model/handler/StandingConfigInterface.h"
 
 #include <SFML/Window/Keyboard.hpp>
+#include <set>
 
 namespace SPlat {
 

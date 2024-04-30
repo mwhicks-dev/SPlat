@@ -17,17 +17,19 @@ namespace SPlat {
 
             std::priority_queue<Command> command_queue;
 
-            std::map<std::string, CommandHandlerInterface&> handlers;
+            std::map<std::string, CommandHandlerInterface*>& handlers;
 
             Command poll_command();
 
-            CommandHandlerInterface& get_handler(std::string);
+            CommandHandlerInterface* get_handler(std::string);
 
             bool command_available();
 
             void listener_loop();
 
         public:
+
+            OrderedPriorityListener();
 
             void set_handler(std::string, CommandHandlerInterface&);
 

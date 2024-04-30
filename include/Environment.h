@@ -4,7 +4,6 @@
 #include "EnvironmentInterface.h"
 
 #include <mutex>
-#include <set>
 
 namespace SPlat {
 
