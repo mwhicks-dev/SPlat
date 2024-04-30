@@ -27,6 +27,14 @@ long Environment::get_framerate_limit() {
     return local;
 }
 
+std::set<sf::Keyboard::Key> Environment::get_held_keys() {
+    m.lock();
+    auto local = held_keys;
+    m.unlock();
+
+    return local;
+}
+
 bool Environment::get_running() {
     m.lock();
     bool local = running;
@@ -60,6 +68,18 @@ void Environment::set_controlled_asset(Model::Character * controlled_asset) {
 void Environment::set_framerate_limit(long framerate_limit) {
     m.lock();
     this->framerate_limit = framerate_limit;
+    m.unlock();
+}
+
+void Environment::add_held_key(sf::Keyboard::Key key) {
+    m.lock();
+    held_keys.insert(key);
+    m.unlock();
+}
+
+void Environment::remove_held_key(sf::Keyboard::Key key) {
+    m.lock();
+    held_keys.erase(key);
     m.unlock();
 }
 

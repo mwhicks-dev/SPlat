@@ -4,6 +4,7 @@
 #include "EnvironmentInterface.h"
 
 #include <mutex>
+#include <set>
 
 namespace SPlat {
 
@@ -17,6 +18,8 @@ namespace SPlat {
 
         bool running;
 
+        std::set<sf::Keyboard::Key> held_keys;
+
         Model::StandingConfigInterface& standing_config;
 
         float unit;
@@ -29,6 +32,8 @@ namespace SPlat {
 
         long get_framerate_limit() override;
 
+        std::set<sf::Keyboard::Key> get_held_keys() override;
+
         bool get_running() override;
 
         Model::StandingConfigInterface& get_standing_config() override;
@@ -38,6 +43,10 @@ namespace SPlat {
         void set_controlled_asset(Model::Character *) override;
 
         void set_framerate_limit(long) override;
+
+        void add_held_key(sf::Keyboard::Key) override;
+
+        void remove_held_key(sf::Keyboard::Key) override;
 
         void set_running(bool) override;
 
