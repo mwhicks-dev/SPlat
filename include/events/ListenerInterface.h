@@ -2,6 +2,7 @@
 #define SPlat_Events_ListenerInterface_h
 
 #include "events/Command.h"
+#include "events/CommandHandlerInterface.h"
 
 namespace SPlat {
 
@@ -10,6 +11,8 @@ namespace SPlat {
         class ListenerInterface {
 
         public:
+
+            virtual void set_handler(std::string, CommandHandlerInterface&) = 0;
 
             virtual void push_command(Command) = 0;
 
