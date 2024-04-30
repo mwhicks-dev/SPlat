@@ -61,12 +61,20 @@ void MovingPlatformUpdateHandler::update() {
         moving_properties.set_velocity(velocity);
     }
 
+    // get velocity
+    sf::Vector2f update_velocity;
     {
         float dt = static_cast<float>(conf.get_timing_config()
             .get_display_timeline().get_time() - moving_properties
             .get_last_updated()) / static_cast<float>(conf.get_environment()
             .get_framerate_limit());
-        asset_properties.set_position(asset_properties.get_position() 
-            + moving_properties.get_velocity() * dt);
+        update_velocity = moving_properties.get_velocity() * dt;
+    }
+
+    // update self and children
+    {
+        asset_properties.set_position(asset_properties.get_position() + update_velocity);
+        conf.get_environment().get_standing_config().push_update_to_children(
+            asset_properties.get_id(), update_velocity);
     }
 }

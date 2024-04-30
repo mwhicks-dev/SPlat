@@ -1,4 +1,5 @@
 #include "model/CharacterCollisionHandler.h"
+#include "Config.h"
 
 #include <cmath>
 
@@ -29,6 +30,7 @@ CharacterProperties& CharacterCollisionHandler::get_character_properties() {
 }
 
 void CharacterCollisionHandler::resolve_collision(AssetProperties& other) {
+    EnvironmentInterface& env = Config::get_instance().get_environment();
     AssetProperties& self = get_asset_properties();
 
     sf::RectangleShape self_rect = self.get_rectangle_shape();
@@ -43,6 +45,7 @@ void CharacterCollisionHandler::resolve_collision(AssetProperties& other) {
         unit_velocity = self_velocity / magnitude;
     }
     if (other.get_collision_priority() <= self.get_collision_priority()) {
+
         // shortest component distance opposite velocity
         unit_velocity = -unit_velocity;
         sf::Vector2f shortest;
@@ -117,7 +120,10 @@ void CharacterCollisionHandler::resolve_collision(AssetProperties& other) {
             MovingProperties& self_moving = get_moving_properties();
             self_moving.set_velocity(sf::Vector2f(self_moving
                 .get_velocity().x, 0));
-            if (landing) get_character_properties().set_standing_on(&other);
+            if (landing) {
+                get_character_properties().set_standing_on(&other);
+                env.get_standing_config().push_child(other.get_id(), self.get_id());
+            }
         }
     } else {
         // shortest distance velocity

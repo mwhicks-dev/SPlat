@@ -51,7 +51,10 @@ void CharacterUpdateHandler::update() {
         sf::RectangleShape cpy = asset_properties.get_rectangle_shape();
         cpy.move(0, 1);
         if (!cpy.getGlobalBounds().intersects(standing_on
-                ->get_rectangle_shape().getGlobalBounds()))
+                ->get_rectangle_shape().getGlobalBounds())) {
+            conf.get_environment().get_standing_config().remove_child(
+                standing_on->get_id(), asset_properties.get_id());
             character_properties.set_standing_on(nullptr);
+        }
     }
 }
