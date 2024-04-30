@@ -74,4 +74,5 @@ void OrderedPriorityListener::push_command(Command cmd) {
 
 void OrderedPriorityListener::run() {
     std::thread t(&OrderedPriorityListener::run, this);
+    t.detach();
 }
