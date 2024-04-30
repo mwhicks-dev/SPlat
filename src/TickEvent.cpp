@@ -7,6 +7,9 @@
 
 #include <cereal/archives/json.hpp>
 
+#include <vector>
+#include <algorithm>
+
 #ifdef DEBUG
 #include <iostream>
 #endif
@@ -43,6 +46,11 @@ void TickEvent::raise() {
 #endif
 }
 
+bool compare(SPlat::Model::Moving* lhs, SPlat::Model::Moving* rhs) {
+    return lhs->get_asset_properties().get_collision_priority()
+        < rhs->get_asset_properties().get_collision_priority();
+}
+
 void TickEvent::handler(std::string serialized) {
 #ifdef DEBUG
     std::cout << "-> TickEvent::handler(" << serialized << ")" << std::endl;
@@ -56,16 +64,25 @@ void TickEvent::handler(std::string serialized) {
     }
 
     // for each asset...
-    time_t curr = Config::get_instance().get_timing_config()
-        .get_display_timeline().get_time();
+    std::vector<SPlat::Model::Moving*> moving;
     for (size_t id : args.ids) {
         try {
-            // get and update
             SPlat::Model::Moving& asset = dynamic_cast<SPlat::Model::Moving&>(
                 SPlat::Model::GameObjectModel::get_instance().read_asset(id));
+            moving.push_back(&asset);
+        } catch (std::bad_cast&) {}
+    }
+    sort(moving.begin(), moving.end(), compare);
+    time_t curr = Config::get_instance().get_timing_config()
+        .get_display_timeline().get_time();
+    for (SPlat::Model::Moving* asset_ptr : moving) {
+        try {
+            // get and update
+            SPlat::Model::Moving& asset = *asset_ptr;
             asset.update();
             asset.get_moving_properties().set_last_update(curr);
 
+            size_t id = asset.get_asset_properties().get_id();
             for (size_t other : args.ids) {
                 if (id == other) continue;
 
