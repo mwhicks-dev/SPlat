@@ -22,13 +22,13 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
             && env.get_held_keys().count(key) == 0) {
         Events::Command cmd;
         cmd.type = Events::KeyPressCommandHandler::get_event_type();
+        std::stringstream ss;
         {
             Events::KeyPressCommandHandler::Args args = { key };
-            std::stringstream ss;
             cereal::JSONOutputArchive oar(ss);
             oar(args);
-            cmd.args = ss.str();
         }
+        cmd.args = ss.str();
         cmd.priority = 0;
         foreground_listener.push_command(cmd);
 
@@ -37,13 +37,13 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
             && env.get_held_keys().count(key) > 0) {
         Events::Command cmd;
         cmd.type = Events::KeyReleaseCommandHandler::get_event_type();
+        std::stringstream ss;
         {
             Events::KeyReleaseCommandHandler::Args args = { key };
-            std::stringstream ss;
             cereal::JSONOutputArchive oar(ss);
             oar(args);
-            cmd.args = ss.str();
         }
+        cmd.args = ss.str();
         cmd.priority = 0;
         foreground_listener.push_command(cmd);
     }
@@ -64,8 +64,8 @@ Client::Client() : config(*new ClientConfig()),
     // set default handlers for key press/release events
     foreground_listener.set_handler(Events::KeyPressCommandHandler
         ::get_event_type(), *new Events::KeyPressCommandHandler());
-    foreground_listener.set_handler(Events::KeyPressCommandHandler
-        ::get_event_type(), *new Events::KeyPressCommandHandler());
+    foreground_listener.set_handler(Events::KeyReleaseCommandHandler
+        ::get_event_type(), *new Events::KeyReleaseCommandHandler());
 }
 
 bool compare(SPlat::Model::Moving* lhs, SPlat::Model::Moving* rhs) {
