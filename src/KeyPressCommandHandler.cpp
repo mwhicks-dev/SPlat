@@ -1,4 +1,5 @@
-#include "KeyPressCommandHandler.h"
+#include "events/KeyPressCommandHandler.h"
+#include "Client.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -15,5 +16,5 @@ void KeyPressCommandHandler::handle(std::string serialized) {
         iar(args);
     }
 
-    // TODO: Insert key into environment held keys
+    Client::get_instance().get_config().get_environment().add_held_key(args.key);
 }
