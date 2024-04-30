@@ -1,4 +1,4 @@
-#include "Config.h"
+#include "ClientConfig.h"
 #include "AssetFactoryConfig.h"
 #include "Environment.h"
 #include "TimingConfig.h"
@@ -11,7 +11,7 @@
 
 using namespace SPlat;
 
-Config::Config()
+ClientConfig::ClientConfig()
 : asset_factory_config(*new AssetFactoryConfig()),
 timing_config(*new TimingConfig()),
 environment(*new Environment()) {
@@ -20,7 +20,7 @@ environment(*new Environment()) {
     get_environment().set_running(true);
 }
 
-AssetFactoryConfigInterface& Config::get_asset_factory_config() {
+AssetFactoryConfigInterface& ClientConfig::get_asset_factory_config() {
     m.lock();
     AssetFactoryConfigInterface& local = asset_factory_config;
     m.unlock();
@@ -28,7 +28,7 @@ AssetFactoryConfigInterface& Config::get_asset_factory_config() {
     return local;
 }
 
-EnvironmentInterface& Config::get_environment() {
+EnvironmentInterface& ClientConfig::get_environment() {
     m.lock();
     EnvironmentInterface& local = environment;
     m.unlock();
@@ -36,7 +36,7 @@ EnvironmentInterface& Config::get_environment() {
     return local;
 }
 
-TimingConfigInterface& Config::get_timing_config() {
+TimingConfigInterface& ClientConfig::get_timing_config() {
     m.lock();
     TimingConfigInterface& local = timing_config;
     m.unlock();
