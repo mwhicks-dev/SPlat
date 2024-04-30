@@ -48,7 +48,8 @@ public:
             // move right
             moving_properties.set_velocity(moving_properties.get_velocity() 
                 + sf::Vector2f(conf.get_environment().get_unit() * 10, 0));
-        } else if (args.key == sf::Keyboard::Up) {
+        } else if (args.key == sf::Keyboard::Up 
+                && controlled->get_character_properties().get_standing_on() != nullptr) {
             // jump
             moving_properties.set_velocity(moving_properties.get_velocity() 
                 + sf::Vector2f(0, conf.get_environment().get_unit() * -11.5));
