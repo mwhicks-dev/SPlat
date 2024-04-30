@@ -31,15 +31,17 @@ CharacterProperties& CharacterCollisionHandler::get_character_properties() {
 void CharacterCollisionHandler::resolve_collision(AssetProperties& other) {
     AssetProperties& self = get_asset_properties();
 
+    sf::RectangleShape self_rect = self.get_rectangle_shape();
+    sf::RectangleShape other_rect = other.get_rectangle_shape();
+
+    if (!self_rect.getGlobalBounds().intersects(other_rect.getGlobalBounds())) return;
+
     sf::Vector2f unit_velocity;
     {
         sf::Vector2f self_velocity = get_moving_properties().get_velocity();
         float magnitude = sqrt(pow(self_velocity.x, 2) + pow(self_velocity.y, 2));
         unit_velocity = self_velocity / magnitude;
     }
-
-    sf::RectangleShape self_rect = self.get_rectangle_shape();
-    sf::RectangleShape other_rect = other.get_rectangle_shape();
     if (other.get_collision_priority() <= self.get_collision_priority()) {
         // shortest component distance opposite velocity
         unit_velocity = -unit_velocity;

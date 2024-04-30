@@ -31,6 +31,13 @@ MovingPlatformProperties& MovingPlatformCollisionHandler::get_moving_platform_pr
 void MovingPlatformCollisionHandler::resolve_collision(AssetProperties& other) {
     AssetProperties& self = get_asset_properties();
 
+    sf::RectangleShape self_rect = self.get_rectangle_shape();
+    sf::RectangleShape other_rect = other.get_rectangle_shape();
+
+    if (!self_rect.getGlobalBounds().intersects(other_rect.getGlobalBounds())) return;
+
+    if (other.get_collision_priority() > self.get_collision_priority()) return;  // let other handle
+
     // find unit velocity
     sf::Vector2f unit_velocity;
     {
@@ -41,19 +48,10 @@ void MovingPlatformCollisionHandler::resolve_collision(AssetProperties& other) {
 
 
     // move other forward in respective direction until no more collision
-    bool condition = get_asset_properties().get_collision_priority() 
-        < other.get_collision_priority();
-    sf::RectangleShape self_cpy = get_asset_properties().get_rectangle_shape();
-    sf::RectangleShape other_cpy = other.get_rectangle_shape();
-    while (self_cpy.getGlobalBounds().intersects(other_cpy.getGlobalBounds())) {
-        if (condition) other_cpy.move(unit_velocity);
-        else self_cpy.move(-unit_velocity);
+    while (self_rect.getGlobalBounds().intersects(other_rect.getGlobalBounds())) {
+        self_rect.move(-unit_velocity);
     }
     
     // update
-    if (condition) {
-        other.set_position(other_cpy.getPosition());
-    } else {
-        self.set_position(self_cpy.getPosition());
-    }
+    self.set_position(self_rect.getPosition());
 }
