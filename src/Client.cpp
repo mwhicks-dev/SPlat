@@ -59,7 +59,7 @@ void wait_for_timeline(Timeline& t, time_t target) {
 Client::Client() : config(*new ClientConfig()), 
         foreground_listener(*new Events::OrderedPriorityListener()) {
     // fix framerate limit env
-    update_framerate_limit(30);  // default 30
+    get_config().get_timing_config().update_framerate_limit(30);  // default 30
 
     // set default handlers for key press/release events
     foreground_listener.set_handler(Events::KeyPressCommandHandler
@@ -153,19 +153,6 @@ void Client::start() {
     get_config().get_environment().set_running(false);
 #ifdef DEBUG
     std::cout << "<- Client::start" << std::endl;
-#endif
-}
-
-void Client::update_framerate_limit(long framerate_limit) {
-#ifdef DEBUG
-    std::cout << "-> Client::set_framerate_limit(" << framerate_limit << ")" << std::endl;
-#endif
-    get_config().get_timing_config().set_framerate_limit(framerate_limit);
-    get_config().get_timing_config().get_display_timeline().set_tic(
-        get_config().get_timing_config().get_anchor_steps_per_second() / framerate_limit
-    );
-#ifdef DEBUG
-    std::cout << "<- Client::set_framerate_limit" << std::endl;
 #endif
 }
 

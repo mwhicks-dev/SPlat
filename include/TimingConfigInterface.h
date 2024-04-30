@@ -7,6 +7,8 @@ namespace SPlat {
 
     class TimingConfigInterface {
 
+        virtual void set_framerate_limit(long) = 0;
+
     public:
 
         virtual Timeline& get_anchor_timeline() = 0;
@@ -17,7 +19,7 @@ namespace SPlat {
 
         virtual time_t get_anchor_steps_per_second() = 0;
 
-        virtual void set_framerate_limit(long) = 0;
+        virtual void update_framerate_limit(long) = 0;
 
     };
 

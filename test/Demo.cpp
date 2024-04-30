@@ -151,7 +151,7 @@ int main() {
     cli.get_foreground_listener().set_handler(Events::KeyPressCommandHandler::get_event_type(), *new KeyPressOverride());
     cli.get_foreground_listener().set_handler(Events::KeyReleaseCommandHandler::get_event_type(), *new KeyReleaseOverride());
 
-    cli.update_framerate_limit(90);
+    cli.get_config().get_timing_config().update_framerate_limit(90);
 
     cli.start();
 }

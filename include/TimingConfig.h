@@ -19,6 +19,8 @@ namespace SPlat {
 
         void set_anchor_steps_per_second(time_t);
 
+        void set_framerate_limit(long) override;
+
     public:
 
         TimingConfig();
@@ -31,7 +33,7 @@ namespace SPlat {
 
         time_t get_anchor_steps_per_second() override;
 
-        void set_framerate_limit(long) override;
+        void update_framerate_limit(long) override;
 
     };
 

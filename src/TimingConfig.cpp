@@ -67,3 +67,8 @@ void TimingConfig::set_framerate_limit(long framerate_limit) {
     this->framerate_limit = framerate_limit;
     m.unlock();
 }
+
+void TimingConfig::update_framerate_limit(long framerate_limit) {
+    set_framerate_limit(framerate_limit);
+    get_display_timeline().set_tic(get_anchor_steps_per_second() / framerate_limit);
+}

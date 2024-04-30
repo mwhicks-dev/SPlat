@@ -34,8 +34,6 @@ namespace SPlat {
 
         void start();
 
-        void update_framerate_limit(long); 
-
         ConfigInterface& get_config();
 
         Events::ListenerInterface& get_foreground_listener();
