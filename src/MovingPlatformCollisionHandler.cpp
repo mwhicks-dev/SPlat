@@ -36,22 +36,27 @@ void MovingPlatformCollisionHandler::resolve_collision(AssetProperties& other) {
 
     if (!self_rect.getGlobalBounds().intersects(other_rect.getGlobalBounds())) return;
 
-    if (other.get_collision_priority() > self.get_collision_priority()) return;  // let other handle
-
     // find unit velocity
     sf::Vector2f unit_velocity;
     {
         sf::Vector2f curr_velocity = get_moving_properties().get_velocity();
         float magnitude = sqrt(pow(curr_velocity.x, 2) + pow(curr_velocity.y, 2));
-        sf::Vector2f unit_velocity = curr_velocity / magnitude;
+        unit_velocity = curr_velocity / magnitude;
     }
 
 
     // move other forward in respective direction until no more collision
+    bool condition = self.get_collision_priority() 
+        < other.get_collision_priority();
     while (self_rect.getGlobalBounds().intersects(other_rect.getGlobalBounds())) {
-        self_rect.move(-unit_velocity);
+        if (condition) other_rect.move(unit_velocity);
+        else self_rect.move(-unit_velocity);
     }
     
     // update
-    self.set_position(self_rect.getPosition());
+    if (condition) {
+        other.set_position(other_rect.getPosition());
+    } else {
+        self.set_position(self_rect.getPosition());
+    }
 }
