@@ -2,20 +2,16 @@
 #define SPLAT_CLIENT_H
 
 #include <queue>
-#include <mutex>
 
-#include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
 #include "model/GameObjectModel.h"
-#include "ConfigInterface.h"
 #include "events/ListenerInterface.h"
+#include "Entrypoint.h"
 
 namespace SPlat {
 
-    class Client {
-
-        std::mutex m;
+    class Client : public Entrypoint {
 
         /// @brief main display
         sf::RenderWindow window;
@@ -32,9 +28,9 @@ namespace SPlat {
 
     public:
 
-        void start();
+        void start() override;
 
-        ConfigInterface& get_config();
+        ConfigInterface& get_config() override;
 
         Events::ListenerInterface& get_foreground_listener();
 

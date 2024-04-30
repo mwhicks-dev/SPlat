@@ -1,5 +1,5 @@
 #include "model/handler/CharacterCollisionHandler.h"
-#include "Client.h"
+#include "Entrypoint.h"
 
 #include <cmath>
 
@@ -30,7 +30,7 @@ CharacterProperties& CharacterCollisionHandler::get_character_properties() {
 }
 
 void CharacterCollisionHandler::resolve_collision(AssetProperties& other) {
-    EnvironmentInterface& env = Client::get_instance().get_config().get_environment();
+    EnvironmentInterface& env = Entrypoint::get_instance().get_config().get_environment();
     AssetProperties& self = get_asset_properties();
 
     sf::RectangleShape self_rect = self.get_rectangle_shape();

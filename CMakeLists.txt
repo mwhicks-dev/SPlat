@@ -16,7 +16,7 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-set(LA src/CharacterCollisionHandler.cpp src/GameObjectModel.cpp src/MovingPlatformCollisionHandler.cpp src/UnorderedStandingConfig.cpp src/OrderedPriorityListener.cpp src/PlatformCollisionHandler.cpp src/KeyPressCommandHandler.cpp src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp src/Environment.cpp src/Platform.cpp src/AssetFactoryConfig.cpp src/Character.cpp src/MovingPlatformUpdateHandler.cpp src/TimingConfig.cpp src/KeyReleaseCommandHandler.cpp src/ClientConfig.cpp src/MovingPlatform.cpp src/AbstractAssetFactory.cpp)
+set(LA src/CharacterCollisionHandler.cpp src/GameObjectModel.cpp src/MovingPlatformCollisionHandler.cpp src/Entrypoint.cpp src/UnorderedStandingConfig.cpp src/OrderedPriorityListener.cpp src/PlatformCollisionHandler.cpp src/KeyPressCommandHandler.cpp src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp src/Environment.cpp src/Platform.cpp src/AssetFactoryConfig.cpp src/Character.cpp src/MovingPlatformUpdateHandler.cpp src/TimingConfig.cpp src/KeyReleaseCommandHandler.cpp src/ClientConfig.cpp src/MovingPlatform.cpp src/AbstractAssetFactory.cpp)
 set(LB src/CharacterFactory.cpp src/Client.cpp src/PlatformFactory.cpp src/MovingPlatformFactory.cpp)
 set(ALL_IMPLEMENTATIONS ${LA} ${LB})
 

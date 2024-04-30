@@ -173,6 +173,11 @@ Events::ListenerInterface& Client::get_foreground_listener() {
 }
 
 Client& Client::get_instance() {
-    static Client client;
-    return client;
+    if (instance == nullptr)
+        instance = new Client();
+    try {
+        return *dynamic_cast<Client*>(instance);
+    } catch (std::bad_cast&) {
+        throw std::invalid_argument("Entrypoint is of type Client");
+    }
 }
