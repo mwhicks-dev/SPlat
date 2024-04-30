@@ -96,3 +96,16 @@ void GameObjectModel::check_collision(size_t id) {
     std::cout << "<- GameObjectModel::check_collision" << std::endl;
 #endif
 }
+
+std::unordered_set<size_t> GameObjectModel::get_ids() {
+    lock.lock();
+    auto local = ids;
+    lock.unlock();
+
+    return ids;
+}
+
+GameObjectModel& GameObjectModel::get_instance() {
+    static GameObjectModel instance;
+    return instance;
+}

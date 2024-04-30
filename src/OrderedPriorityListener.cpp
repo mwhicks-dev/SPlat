@@ -57,6 +57,9 @@ void OrderedPriorityListener::listener_loop() {
     }
 }
 
+OrderedPriorityListener::OrderedPriorityListener()
+: handlers(*new std::map<std::string, CommandHandlerInterface*>) {}
+
 void OrderedPriorityListener::set_handler(std::string type, CommandHandlerInterface& handler) {
     m.lock();
     handlers[type] = &handler;
