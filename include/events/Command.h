@@ -1,7 +1,7 @@
 #ifndef SPLAT_EVENTS_COMMAND_H
 #define SPLAT_EVENTS_COMMAND_H
 
-#include <string>
+#include <cereal/cereal.hpp>
 
 namespace SPlat {
 
