@@ -19,8 +19,6 @@ namespace SPlat {
 
         TimingConfigInterface& timing_config;
 
-        Config();
-
     public:
 
         AssetFactoryConfigInterface& get_asset_factory_config();
@@ -29,7 +27,7 @@ namespace SPlat {
 
         TimingConfigInterface& get_timing_config();
 
-        static Config& get_instance();
+        Config();
 
     };
 

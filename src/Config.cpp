@@ -43,8 +43,3 @@ TimingConfigInterface& Config::get_timing_config() {
 
     return local;
 }
-
-Config& Config::get_instance() {
-    static Config instance;
-    return instance;
-}
