@@ -4,7 +4,7 @@
 #include "model/AssetProperties.h"
 #include "model/MovingProperties.h"
 #include "model/MovingPlatformProperties.h"
-#include "model/CollisionHandler.h"
+#include "model/handler/CollisionHandler.h"
 
 namespace SPlat {
 

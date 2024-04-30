@@ -2,7 +2,7 @@
 #define SPlat_PlatformCollisionHandler_h
 
 #include "model/AssetProperties.h"
-#include "model/CollisionHandler.h"
+#include "model/handler/CollisionHandler.h"
 
 namespace SPlat {
 

@@ -1,4 +1,4 @@
-#include "model/CharacterCollisionHandler.h"
+#include "model/handler/CharacterCollisionHandler.h"
 #include "Config.h"
 
 #include <cmath>

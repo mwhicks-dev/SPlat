@@ -1,6 +1,6 @@
 #include "model/MovingPlatform.h"
-#include "model/MovingPlatformCollisionHandler.h"
-#include "model/MovingPlatformUpdateHandler.h"
+#include "model/handler/MovingPlatformCollisionHandler.h"
+#include "model/handler/MovingPlatformUpdateHandler.h"
 
 using namespace SPlat::Model;
 

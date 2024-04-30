@@ -1,5 +1,5 @@
 #include "model/Platform.h"
-#include "model/PlatformCollisionHandler.h"
+#include "model/handler/PlatformCollisionHandler.h"
 
 using namespace SPlat::Model;
 

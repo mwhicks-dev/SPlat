@@ -1,4 +1,4 @@
-#include "model/UnorderedStandingConfig.h"
+#include "model/handler/UnorderedStandingConfig.h"
 #include "model/GameObjectModel.h"
 
 using namespace SPlat::Model;

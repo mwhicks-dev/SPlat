@@ -2,7 +2,7 @@
 #define SPLAT_MODEL_ASSET_H
 
 #include "model/AssetProperties.h"
-#include "model/CollisionHandler.h"
+#include "model/handler/CollisionHandler.h"
 
 namespace SPlat {
 

@@ -3,8 +3,8 @@
 
 #include "model/Moving.h"
 #include "model/CharacterProperties.h"
-#include "model/CollisionHandler.h"
-#include "model/UpdateHandler.h"
+#include "model/handler/CollisionHandler.h"
+#include "model/handler/UpdateHandler.h"
 
 namespace SPlat {
 

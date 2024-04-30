@@ -2,7 +2,7 @@
 #define SPlat_EnvironmentInterface_h
 
 #include "model/Character.h"
-#include "model/StandingConfigInterface.h"
+#include "model/handler/StandingConfigInterface.h"
 
 namespace SPlat {
 

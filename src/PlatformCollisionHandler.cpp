@@ -1,4 +1,4 @@
-#include "model/PlatformCollisionHandler.h"
+#include "model/handler/PlatformCollisionHandler.h"
 
 #include <cmath>
 #include <limits>

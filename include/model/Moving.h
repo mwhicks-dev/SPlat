@@ -3,7 +3,7 @@
 
 #include "model/Asset.h"
 #include "model/MovingProperties.h"
-#include "model/UpdateHandler.h"
+#include "model/handler/UpdateHandler.h"
 
 namespace SPlat {
 

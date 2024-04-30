@@ -1,4 +1,4 @@
-#include "model/MovingPlatformCollisionHandler.h"
+#include "model/handler/MovingPlatformCollisionHandler.h"
 
 #include <cmath>
 

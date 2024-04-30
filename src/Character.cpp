@@ -1,6 +1,6 @@
 #include "model/Character.h"
-#include "model/CharacterCollisionHandler.h"
-#include "model/CharacterUpdateHandler.h"
+#include "model/handler/CharacterCollisionHandler.h"
+#include "model/handler/CharacterUpdateHandler.h"
 
 using namespace SPlat::Model;
 

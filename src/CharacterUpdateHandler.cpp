@@ -1,4 +1,4 @@
-#include "model/CharacterUpdateHandler.h"
+#include "model/handler/CharacterUpdateHandler.h"
 #include "Config.h"
 
 using namespace SPlat::Model;

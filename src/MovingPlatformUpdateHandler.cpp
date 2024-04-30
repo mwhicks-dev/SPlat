@@ -1,4 +1,4 @@
-#include "model/MovingPlatformUpdateHandler.h"
+#include "model/handler/MovingPlatformUpdateHandler.h"
 #include "Config.h"
 
 #ifdef DEBUG

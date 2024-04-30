@@ -1,7 +1,7 @@
 #ifndef SPlat_Model_UnorderedStandingConfig_h
 #define SPlat_Model_UnorderedStandingConfig_h
 
-#include "model/StandingConfigInterface.h"
+#include "model/handler/StandingConfigInterface.h"
 
 #include <unordered_map>
 #include <unordered_set>
