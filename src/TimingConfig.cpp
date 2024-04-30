@@ -53,3 +53,17 @@ time_t TimingConfig::get_anchor_steps_per_second() {
 
     return local;
 }
+
+long TimingConfig::get_framerate_limit() {
+    m.lock();
+    auto local = framerate_limit;
+    m.unlock();
+
+    return local;
+}
+
+void TimingConfig::set_framerate_limit(long framerate_limit) {
+    m.lock();
+    this->framerate_limit = framerate_limit;
+    m.unlock();
+}

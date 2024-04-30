@@ -13,8 +13,6 @@ namespace SPlat {
 
         Model::Character * controlled_asset;
 
-        long framerate_limit;
-
         bool running;
 
         std::set<sf::Keyboard::Key> held_keys;
@@ -29,8 +27,6 @@ namespace SPlat {
 
         Model::Character * get_controlled_asset() override;
 
-        long get_framerate_limit() override;
-
         std::set<sf::Keyboard::Key> get_held_keys() override;
 
         bool get_running() override;
@@ -40,8 +36,6 @@ namespace SPlat {
         float get_unit() override;
 
         void set_controlled_asset(Model::Character *) override;
-
-        void set_framerate_limit(long) override;
 
         void add_held_key(sf::Keyboard::Key) override;
 

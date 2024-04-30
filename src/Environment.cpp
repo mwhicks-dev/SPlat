@@ -7,21 +7,12 @@ Environment::Environment()
         : standing_config(*new Model::UnorderedStandingConfig()) {
     set_controlled_asset(nullptr);
     set_running(true);
-    set_framerate_limit(60);
     set_unit(50);
 }
 
 Model::Character * Environment::get_controlled_asset() {
     m.lock();
     Model::Character * local = controlled_asset;
-    m.unlock();
-
-    return local;
-}
-
-long Environment::get_framerate_limit() {
-    m.lock();
-    long local = framerate_limit;
     m.unlock();
 
     return local;
@@ -62,12 +53,6 @@ float Environment::get_unit() {
 void Environment::set_controlled_asset(Model::Character * controlled_asset) {
     m.lock();
     this->controlled_asset = controlled_asset;
-    m.unlock();
-}
-
-void Environment::set_framerate_limit(long framerate_limit) {
-    m.lock();
-    this->framerate_limit = framerate_limit;
     m.unlock();
 }
 

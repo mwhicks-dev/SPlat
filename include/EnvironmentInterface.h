@@ -15,8 +15,6 @@ namespace SPlat {
 
         virtual Model::Character * get_controlled_asset() = 0;
 
-        virtual long get_framerate_limit() = 0;
-
         virtual std::set<sf::Keyboard::Key> get_held_keys() = 0;
 
         virtual bool get_running() = 0;
@@ -26,8 +24,6 @@ namespace SPlat {
         virtual float get_unit() = 0;
 
         virtual void set_controlled_asset(Model::Character *) = 0;
-
-        virtual void set_framerate_limit(long) = 0;
 
         virtual void add_held_key(sf::Keyboard::Key) = 0;
 

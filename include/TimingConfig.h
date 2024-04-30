@@ -13,6 +13,8 @@ namespace SPlat {
 
         LocalTimeline& display_timeline;
 
+        long framerate_limit;
+
         time_t anchor_steps_per_second;
 
         void set_anchor_steps_per_second(time_t);
@@ -25,7 +27,11 @@ namespace SPlat {
 
         LocalTimeline& get_display_timeline() override;
 
+        long get_framerate_limit() override;
+
         time_t get_anchor_steps_per_second() override;
+
+        void set_framerate_limit(long) override;
 
     };
 
