@@ -109,3 +109,8 @@ void Client::update_framerate_limit(long framerate_limit) {
     std::cout << "<- Client::set_framerate_limit" << std::endl;
 #endif
 }
+
+Client& Client::get_instance() {
+    static Client client;
+    return client;
+}

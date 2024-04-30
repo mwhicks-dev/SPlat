@@ -24,13 +24,15 @@ namespace SPlat {
         /// @param key actual key to check
         void handle_key_event(sf::Keyboard::Key);
 
-    public:
-
         Client();
+
+    public:
 
         void start();
 
-        void update_framerate_limit(long);
+        void update_framerate_limit(long); 
+
+        static Client& get_instance();
 
     };
 
