@@ -14,17 +14,17 @@ Command OrderedPriorityListener::poll_command() {
     return local;
 }
 
-CommandHandlerInterface& OrderedPriorityListener::get_handler(std::string type) {
+CommandHandlerInterface* OrderedPriorityListener::get_handler(std::string type) {
     CommandHandlerInterface * local = nullptr;
     m.lock();
     if (handlers.count(type) > 0)
-        local = &handlers[type];
+        local = handlers[type];
     m.unlock();
 
     if (local == nullptr)
         throw std::invalid_argument("Listener has no set handler for type " + type);
 
-    return *local;
+    return local;
 }
 
 bool OrderedPriorityListener::command_available() {
@@ -42,8 +42,8 @@ void OrderedPriorityListener::listener_loop() {
         if (command_available()) {
             Command curr = poll_command();
             try {
-                CommandHandlerInterface& handler = get_handler(curr.type);
-                handler.handle(curr.args);
+                CommandHandlerInterface* handler = get_handler(curr.type);
+                handler->handle(curr.args);
             } catch (std::exception& e) {
                 std::cout << "Warning: Listener was unable to process the following event: " << std::endl;
                 std::cout << "  type: " << curr.type << std::endl;
@@ -59,7 +59,7 @@ void OrderedPriorityListener::listener_loop() {
 
 void OrderedPriorityListener::set_handler(std::string type, CommandHandlerInterface& handler) {
     m.lock();
-    handlers[type] = handler;
+    handlers[type] = &handler;
     m.unlock();
 }
 
