@@ -177,6 +177,14 @@ ConfigInterface& Client::get_config() {
     return local;
 }
 
+Events::ListenerInterface& Client::get_foreground_listener() {
+    m.lock();
+    Events::ListenerInterface& local = foreground_listener;
+    m.unlock();
+
+    return local;
+}
+
 Client& Client::get_instance() {
     static Client client;
     return client;
