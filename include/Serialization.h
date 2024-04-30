@@ -5,8 +5,6 @@
 
 #include <cereal/cereal.hpp>
 
-#include "events/Event.h"
-
 namespace cereal {
 
     /// @brief external serialization func for sf::Vector2 

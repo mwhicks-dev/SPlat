@@ -9,7 +9,7 @@
 
 #include "model/GameObjectModel.h"
 #include "ConfigInterface.h"
-#include "Controller.h"
+#include "events/ListenerInterface.h"
 
 namespace SPlat {
 
@@ -20,10 +20,9 @@ namespace SPlat {
         /// @brief main display
         sf::RenderWindow window;
 
-        /// @brief single controller for event handling
-        Controller ctl;
-
         ConfigInterface& config;
+
+        Events::ListenerInterface& foreground_listener;
 
         /// @brief performs keyboard press/release event checking
         /// @param key actual key to check
@@ -38,6 +37,8 @@ namespace SPlat {
         void update_framerate_limit(long); 
 
         ConfigInterface& get_config();
+
+        Events::ListenerInterface& get_foreground_listener();
 
         static Client& get_instance();
 
