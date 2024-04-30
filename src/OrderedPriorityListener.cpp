@@ -29,7 +29,7 @@ CommandHandlerInterface* OrderedPriorityListener::get_handler(std::string type) 
 
 bool OrderedPriorityListener::command_available() {
     m.lock();
-    auto local = command_queue.size() > 0;
+    auto local = !command_queue.empty();
     m.unlock();
 
     return local;
@@ -73,6 +73,6 @@ void OrderedPriorityListener::push_command(Command cmd) {
 }
 
 void OrderedPriorityListener::run() {
-    std::thread t(&OrderedPriorityListener::run, this);
+    std::thread t(&OrderedPriorityListener::listener_loop, this);
     t.detach();
 }
