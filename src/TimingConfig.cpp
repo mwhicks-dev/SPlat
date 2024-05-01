@@ -3,6 +3,10 @@
 #include <chrono>
 #include <thread>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat;
 
 class SystemTimeline : public Timeline {
@@ -25,9 +29,15 @@ display_timeline(*new LocalTimeline(anchor_timeline, -1)) {
 
 void TimingConfig::set_anchor_steps_per_second(
         time_t anchor_steps_per_second) {
+#ifdef DEBUG
+    std::cout << "-> TimingConfig::set_anchor_steps_per_second(" << anchor_steps_per_second << ")" << std::endl;
+#endif
     m.lock();
     this->anchor_steps_per_second = anchor_steps_per_second;
     m.unlock();
+#ifdef DEBUG
+    std::cout << "<- TimingConfig::set_anchor_steps_per_second" << std::endl;
+#endif
 }
 
 Timeline& TimingConfig::get_anchor_timeline() {
@@ -63,12 +73,24 @@ long TimingConfig::get_framerate_limit() {
 }
 
 void TimingConfig::set_framerate_limit(long framerate_limit) {
+#ifdef DEBUG
+    std::cout << "-> TimingConfig::set_framerate_limit(" << framerate_limit << ")" << std::endl;
+#endif
     m.lock();
     this->framerate_limit = framerate_limit;
     m.unlock();
+#ifdef DEBUG
+    std::cout << "<- TimingConfig::set_framerate_limit" << std::endl;
+#endif
 }
 
 void TimingConfig::update_framerate_limit(long framerate_limit) {
+#ifdef DEBUG
+    std::cout << "-> TimingConfig::update_framerate_limit(" << framerate_limit << ")" << std::endl;
+#endif
     set_framerate_limit(framerate_limit);
     get_display_timeline().set_tic(get_anchor_steps_per_second() / framerate_limit);
+#ifdef DEBUG
+    std::cout << "<- TimingConfig::update_framerate_limit(" << std::endl;
+#endif
 }

@@ -25,6 +25,9 @@
 using namespace SPlat;
 
 void Client::handle_key_event(sf::Keyboard::Key key) {
+#ifdef DEBUG
+    std::cout << "-> Client::handle_key_event(sf::Keyboard::Key)" << std::endl;
+#endif
     EnvironmentInterface& env = get_config().get_environment();
     if (sf::Keyboard::isKeyPressed(key) 
             && env.get_held_keys().count(key) == 0) {
@@ -55,6 +58,9 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
         cmd.priority = 0;
         foreground_listener.push_command(cmd);
     }
+#ifdef DEBUG
+    std::cout << "<- Client::handle_key_event" << std::endl;
+#endif
 }
 
 void wait_for_timeline(Timeline& t, time_t target) {
@@ -205,7 +211,7 @@ Client& Client::get_instance() {
     try {
         return *dynamic_cast<Client*>(instance);
     } catch (std::bad_cast&) {
-        throw std::invalid_argument("Entrypoint is of type Client");
+        throw std::invalid_argument("Entrypoint is not of type Client");
     }
 }
 

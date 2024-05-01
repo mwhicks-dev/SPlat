@@ -9,6 +9,9 @@
 using namespace SPlat::Events;
 
 void GetAssetHandler::handle(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> GetAssetHandler::handle(" << serialized << ")" << std::endl;
+#endif
     /// used to query an asset for the first time; server returns creator
     Entrypoint& entrypoint = Entrypoint::get_instance();
     ConfigInterface& config = entrypoint.get_config();
@@ -61,4 +64,7 @@ void GetAssetHandler::handle(std::string serialized) {
 
     config.get_asset_factory_config().get_platform_factory()
         .create_asset(args.properties);
+#ifdef DEBUG
+    std::cout << "<- GetAssetHandler::handle" << std::endl;
+#endif
 }

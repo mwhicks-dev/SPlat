@@ -5,9 +5,16 @@
 
 #include <cereal/archives/json.hpp>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Events;
 
 void UpdateAssetHandler::handle(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> UpdateAssetHandler::handle(" << serialized << ")" << std::endl;
+#endif
     Entrypoint& entrypoint = Entrypoint::get_instance();
     ConfigInterface& config = entrypoint.get_config();
     EnvironmentInterface& environment = config.get_environment();
@@ -54,4 +61,7 @@ void UpdateAssetHandler::handle(std::string serialized) {
         .get_asset_properties().get_position() - args.properties
         .get_position();
     config.get_environment().get_standing_config().push_update_to_children(args.id, diff);
+#ifdef DEBUG
+    std::cout << "<- UpdateAssetHandler::handle" << std::endl;
+#endif
 }

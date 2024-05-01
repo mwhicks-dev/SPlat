@@ -3,6 +3,10 @@
 
 #include <cmath>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Model;
 
 AssetProperties& CharacterCollisionHandler::get_asset_properties() {
@@ -30,6 +34,9 @@ CharacterProperties& CharacterCollisionHandler::get_character_properties() {
 }
 
 void CharacterCollisionHandler::resolve_collision(AssetProperties& other) {
+#ifdef DEBUG
+    std::cout << "-> CharacterCollisionHandler::resolve_collision(AssetProperties&)" << std::endl;
+#endif
     EnvironmentInterface& env = Entrypoint::get_instance().get_config().get_environment();
     AssetProperties& self = get_asset_properties();
 
@@ -131,4 +138,7 @@ void CharacterCollisionHandler::resolve_collision(AssetProperties& other) {
             other_rect.move(unit_velocity);
         other.set_position(other_rect.getPosition());
     }
+#ifdef DEBUG
+    std::cout << "<- CharacterCollisionHandler::resolve_collision" << std::endl;
+#endif
 }

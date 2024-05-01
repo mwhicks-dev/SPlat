@@ -8,6 +8,9 @@
 
 #include <string>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
 
 using namespace SPlat::Model;
 
@@ -22,31 +25,52 @@ std::unordered_map<size_t, std::unordered_set<size_t>> UnorderedStandingConfig
 
 void UnorderedStandingConfig::set_coupled(std::unordered_map<size_t, 
         std::unordered_set<size_t>> coupled) {
+#ifdef DEBUG
+    std::cout << "-> UnorderedStandingConfig::set_coupled(std::unordered_map<size_t, std::unordered_set<size_t>>)" << std::endl;
+#endif
     m.lock();
     this->coupled = coupled;
     m.unlock();
+#ifdef DEBUG
+    std::cout << "<- UnorderedStandingConfig::set_coupled" << std::endl;
+#endif
 }
 
 void UnorderedStandingConfig::push_child(size_t parent, size_t child) {
+#ifdef DEBUG
+    std::cout << "-> UnorderedStandingConfig::push_child(" << parent << ", " << child << ")" << std::endl;
+#endif
     auto local = get_coupled();
     
     if (local.count(parent) == 0) local[parent] = {};
     local[parent].insert(child);
 
     set_coupled(local);
+#ifdef DEBUG
+    std::cout << "<- UnorderedStandingConfig::push_child" << std::endl;
+#endif
 }
 
 void UnorderedStandingConfig::remove_child(size_t parent, size_t child) {
+#ifdef DEBUG
+    std::cout << "-> UnorderedStandingConfig::remove_child(" << parent << ", " << child << ")" << std::endl;
+#endif
     auto local = get_coupled();
 
     if (local.count(parent) == 0) local[parent] = {};
     local[parent].erase(child);
 
     set_coupled(local);
+#ifdef DEBUG
+    std::cout << "<- UnorderedStandingConfig::remove_child" << std::endl;
+#endif
 }
 
 void UnorderedStandingConfig::push_update_to_children(size_t parent, 
         sf::Vector2f update) {
+#ifdef DEBUG
+    std::cout << "-> UnorderedStandingConfig::push_update_to_children(" << parent << ", sf::Vector2f)" << std::endl;
+#endif
     Entrypoint& entrypoint = Entrypoint::get_instance();
     auto local = get_coupled();
 
@@ -97,4 +121,7 @@ void UnorderedStandingConfig::push_update_to_children(size_t parent,
             entrypoint.get_controller().push_outgoing_request(request);
         } catch (std::exception&) {}
     }
+#ifdef DEBUG
+    std::cout << "<- UnorderedStandingConfig::push_update_to_children(" << parent << ", sf::Vector2f)" << std::endl;
+#endif
 }

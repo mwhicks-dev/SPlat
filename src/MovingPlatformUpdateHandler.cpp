@@ -40,6 +40,9 @@ MovingPlatformProperties& MovingPlatformUpdateHandler::get_moving_platform_prope
 }
 
 void MovingPlatformUpdateHandler::update() {
+#ifdef DEBUG
+    std::cout << "-> MovingPlatformHandler::update()" << std::endl;
+#endif
     ConfigInterface& conf = Entrypoint::get_instance().get_config();
     AssetProperties& asset_properties = get_asset_properties();
     MovingProperties& moving_properties = get_moving_properties();
@@ -116,4 +119,7 @@ void MovingPlatformUpdateHandler::update() {
         .body=ss.str()
     };
     Entrypoint::get_instance().get_controller().push_outgoing_request(request);
+#ifdef DEBUG
+    std::cout << "<- MovingPlatformHandler::update()" << std::endl;
+#endif
 }

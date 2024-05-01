@@ -1,5 +1,9 @@
 #include "model/UnorderedMapObjectModel.h"
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Model;
 
 bool UnorderedMapObjectModel::causes_collision(size_t id) {
@@ -11,27 +15,51 @@ bool UnorderedMapObjectModel::causes_collision(size_t id) {
 }
 
 void UnorderedMapObjectModel::add_id(size_t id) {
+#ifdef DEBUG
+    std::cout << "-> UnorderedMapObjectModel::add_id(" << id << ")" << std::endl;
+#endif
     m.lock();
     asset_ids.insert(id);
     m.unlock();
+#ifdef DEBUG
+    std::cout << "<- UnorderedMapObjectModel::add_id" << std::endl;
+#endif
 }
 
 void UnorderedMapObjectModel::remove_id(size_t id) {
+#ifdef DEBUG
+    std::cout << "-> UnorderedMapObjectModel::remove_id(" << id << ")" << std::endl;
+#endif
     m.lock();
     asset_ids.erase(id);
     m.unlock();
+#ifdef DEBUG
+    std::cout << "<- UnorderedMapObjectModel::remove_id" << std::endl;
+#endif
 }
 
 void UnorderedMapObjectModel::add_asset(size_t id, Asset* ptr) {
+#ifdef DEBUG
+    std::cout << "-> UnorderedMapObjectModel::add_asset(" << id << ", Asset*)" << std::endl;
+#endif
     m.lock();
     game_assets[id] = ptr;
     m.unlock();
+#ifdef DEBUG
+    std::cout << "<- UnorderedMapObjectModel::add_asset" << std::endl;
+#endif
 }
 
 void UnorderedMapObjectModel::remove_asset(size_t id) {
+#ifdef DEBUG
+    std::cout << "-> UnorderedMapObjectModel::remove_asset(" << id << ")" << std::endl;
+#endif
     m.lock();
     game_assets.erase(id);
     m.unlock();
+#ifdef DEBUG
+    std::cout << "<- UnorderedMapObjectModel::remove_asset" << std::endl;
+#endif
 }
 
 Asset& UnorderedMapObjectModel::create_asset(Asset& asset) {

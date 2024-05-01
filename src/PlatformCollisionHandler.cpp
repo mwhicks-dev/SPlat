@@ -3,6 +3,10 @@
 #include <cmath>
 #include <limits>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Model;
 
 AssetProperties& PlatformCollisionHandler::get_asset_properties() {
@@ -14,6 +18,9 @@ AssetProperties& PlatformCollisionHandler::get_asset_properties() {
 }
 
 void PlatformCollisionHandler::resolve_collision(AssetProperties& other) {
+#ifdef DEBUG
+    std::cout << "-> PlatformCollisionHandler::resolve_collision(AssetProperties&)" << std::endl;
+#endif
     AssetProperties& self = get_asset_properties();
 
     sf::RectangleShape self_rect = self.get_rectangle_shape();
@@ -41,4 +48,7 @@ void PlatformCollisionHandler::resolve_collision(AssetProperties& other) {
     }
 
     other.set_position(other_rect.getPosition() + shortest);
+#ifdef DEBUG
+    std::cout << "<- PlatformCollisionHandler::resolve_collision" << std::endl;
+#endif
 }

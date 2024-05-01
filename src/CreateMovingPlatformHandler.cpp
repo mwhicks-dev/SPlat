@@ -8,6 +8,9 @@
 using namespace SPlat::Events;
 
 void CreateMovingPlatformHandler::handle(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> CreateMovingPlatformHandler::handle(" << serialized << ")" << std::endl;
+#endif
     Entrypoint& entrypoint = Entrypoint::get_instance();
     ConfigInterface& config = entrypoint.get_config();
     EnvironmentInterface& environment = config.get_environment();
@@ -59,4 +62,7 @@ void CreateMovingPlatformHandler::handle(std::string serialized) {
 
     config.get_asset_factory_config().get_moving_platform_factory()
         .create_asset(args.properties);
+#ifdef DEBUG
+    std::cout << "<- CreateMovingPlatformHandler::handle" << std::endl;
+#endif
 }

@@ -5,9 +5,16 @@
 
 #include <cereal/archives/json.hpp>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Events;
 
 void CreateCharacterHandler::handle(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> CreateCharacterHandler::handle(" << serialized << ")" << std::endl;
+#endif
     Entrypoint& entrypoint = Entrypoint::get_instance();
     ConfigInterface& config = entrypoint.get_config();
     EnvironmentInterface& environment = config.get_environment();
@@ -59,4 +66,7 @@ void CreateCharacterHandler::handle(std::string serialized) {
 
     config.get_asset_factory_config().get_character_factory()
         .create_asset(args.properties);
+#ifdef DEBUG
+    std::cout << "<- CreateCharacterHandler::handle" << std::endl;
+#endif
 }

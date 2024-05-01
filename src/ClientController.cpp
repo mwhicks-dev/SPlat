@@ -45,6 +45,9 @@ bool ClientController::has_incoming_response() {
 }
 
 void ClientController::run_request_thread() {
+#ifdef DEBUG
+    std::cout << "-> ClientController::run_request_thread()" << std::endl;
+#endif
     // prepare client environment
     EnvironmentInterface& environment 
         = Client::get_instance().get_config().get_environment();
@@ -91,9 +94,15 @@ void ClientController::run_request_thread() {
 
         delete serialized_reply;
     }
+#ifdef DEBUG
+    std::cout << "<- ClientController::run_request_thread" << std::endl;
+#endif
 }
 
 void ClientController::run_response_thread() {
+#ifdef DEBUG
+    std::cout << "-> ClientController::run_response_thread()" << std::endl;
+#endif
     // start subscriber thread
     zmq::context_t * subscriber_context = new zmq::context_t(2);
     std::thread subscriber_thread(&ClientController::run_subscriber_thread, 
@@ -125,9 +134,15 @@ void ClientController::run_response_thread() {
     }
 
     subscriber_context->close();
+#ifdef DEBUG
+    std::cout << "<- ClientController::run_response_thread()" << std::endl;
+#endif
 }
 
 void ClientController::run_subscriber_thread(zmq::context_t* context) {
+#ifdef DEBUG
+    std::cout << "-> ClientController::run_subscriber_thread(zmq::context_t*)" << std::endl;
+#endif
     // prepare environment
     EnvironmentInterface& environment 
         = Client::get_instance().get_config().get_environment();
@@ -170,21 +185,39 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
 
         delete tmp;
     }
+#ifdef DEBUG
+    std::cout << "<- ClientController::run_subscriber_thread" << std::endl;
+#endif
 }
 
 void ClientController::push_incoming_response(Response response) {
+#ifdef DEBUG
+    std::cout << "-> ClientController::push_incoming_response(Response)" << std::endl;
+#endif
     m.lock();
     responses.push(response);
     m.unlock();
+#ifdef DEBUG
+    std::cout << "<- ClientController::push_incoming_response" << std::endl;
+#endif
 }
 
 void ClientController::push_outgoing_request(Request request) {
+#ifdef DEBUG
+    std::cout << "-> ClientController::push_outgoing_request(Request)" << std::endl;
+#endif
     m.lock();
     requests.push(request);
     m.unlock();
+#ifdef DEBUG
+    std::cout << "<- ClientController::push_outgoing_request" << std::endl;
+#endif
 }
 
 void ClientController::run() {
+#ifdef DEBUG
+    std::cout << "-> ClientController::run()" << std::endl;
+#endif
     // ensure server address defined; if not, create new faux
     EnvironmentInterface& environment = Client::get_instance().get_config()
         .get_environment();
@@ -222,6 +255,9 @@ void ClientController::run() {
     // detach
     request_thread.detach();
     response_thread.detach();
+#ifdef DEBUG
+    std::cout << "<- ClientController::run()" << std::endl;
+#endif
 }
 
 Response ClientController::await(Request request) {

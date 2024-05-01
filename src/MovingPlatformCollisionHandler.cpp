@@ -29,6 +29,9 @@ MovingPlatformProperties& MovingPlatformCollisionHandler::get_moving_platform_pr
 }
 
 void MovingPlatformCollisionHandler::resolve_collision(AssetProperties& other) {
+#ifdef DEBUG
+    std::cout << "-> MovingPlatformCollisionHandler::resolve_collision(AssetProperties&)" << std::endl;
+#endif
     AssetProperties& self = get_asset_properties();
 
     sf::RectangleShape self_rect = self.get_rectangle_shape();
@@ -59,4 +62,7 @@ void MovingPlatformCollisionHandler::resolve_collision(AssetProperties& other) {
     } else {
         self.set_position(self_rect.getPosition());
     }
+#ifdef DEBUG
+    std::cout << "<- MovingPlatformCollisionHandler::resolve_collision" << std::endl;
+#endif
 }

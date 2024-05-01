@@ -8,6 +8,9 @@
 using namespace SPlat::Events;
 
 void DeleteAssetHandler::handle(std::string serialized) {
+#ifdef DEBUG
+    std::cout << "-> DeleteAssetHandler::handle(" << serialized << ")" << std::endl;
+#endif
     Entrypoint& entrypoint = Entrypoint::get_instance();
     ConfigInterface& config = entrypoint.get_config();
     EnvironmentInterface& environment = config.get_environment();
@@ -51,4 +54,7 @@ void DeleteAssetHandler::handle(std::string serialized) {
         iar(args);
     }
     entrypoint.get_object_model().delete_asset(args.id);
+#ifdef DEBUG
+    std::cout << "<- DeleteAssetHandler::handle" << std::endl;
+#endif
 }

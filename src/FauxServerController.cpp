@@ -12,9 +12,16 @@
 
 #include <thread>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat;
 
 void FauxServerController::run_request_thread() {
+#ifdef DEBUG
+    std::cout << "-> FauxServerController::run_request_thread()" << std::endl;
+#endif
     // prepare environment
     EnvironmentInterface& environment 
         = Client::get_instance().get_config().get_environment();
@@ -48,6 +55,9 @@ void FauxServerController::run_request_thread() {
         zmq::message_t response_message(ss.str());
         socket.send(response_message, zmq::send_flags::none);
     }
+#ifdef DEBUG
+    std::cout << "<- FauxServerController::run_request_thread" << std::endl;
+#endif
 }
 
 Response FauxServerController::await(Request request) {

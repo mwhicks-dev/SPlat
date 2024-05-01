@@ -8,6 +8,10 @@
 
 #include <string>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Model;
 
 AssetProperties& CharacterUpdateHandler::get_asset_properties() {
@@ -35,6 +39,9 @@ CharacterProperties& CharacterUpdateHandler::get_character_properties() {
 }
 
 void CharacterUpdateHandler::update() {
+#ifdef DEBUG
+    std::cout << "-> CharacterUpdateHandler::update()" << std::endl;
+#endif
     ConfigInterface& conf = Entrypoint::get_instance().get_config();
     AssetProperties& asset_properties = get_asset_properties();
     MovingProperties& moving_properties = get_moving_properties();
@@ -95,4 +102,7 @@ void CharacterUpdateHandler::update() {
             character_properties.set_standing_on(nullptr);
         }
     }
+#ifdef DEBUG
+    std::cout << "<- CharacterUpdateHandler::update" << std::endl;
+#endif
 }
