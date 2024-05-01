@@ -1,4 +1,5 @@
 #include "events/CreateMovingPlatformHandler.h"
+#include "model/MovingPlatform.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
@@ -27,8 +28,15 @@ void CreateMovingPlatformHandler::handle(std::string serialized) {
         .sender=environment.get_entrypoint_id()
     };
 
+    Args local_args;
+    std::stringstream ss; ss << serialized;
+    {
+        cereal::JSONInputArchive iar(ss);
+        iar(local_args);
+    }
+
     // send to server as request
-    std::stringstream ss;
+    ss.clear(); ss.str("");
     {
         cereal::JSONOutputArchive oar(ss);
         oar(event);
@@ -60,8 +68,19 @@ void CreateMovingPlatformHandler::handle(std::string serialized) {
         iar(args.properties);
     }
 
-    config.get_asset_factory_config().get_moving_platform_factory()
-        .create_asset(args.properties);
+    SPlat::Model::Asset* asset = &config.get_asset_factory_config()
+        .get_moving_platform_factory().create_asset(args.properties);
+
+    if (server_event.sender == environment.get_entrypoint_id()) {
+        std::cout << "Hit!" << std::endl;
+        SPlat::Model::MovingPlatform* moving_platform 
+            = dynamic_cast<SPlat::Model::MovingPlatform*>(asset);
+        moving_platform->get_moving_platform_properties()
+            .set_states(local_args.states);
+        moving_platform->get_moving_platform_properties()
+            .set_last_state_change(config.get_timing_config()
+            .get_anchor_timeline().get_time());
+    }
 #ifdef DEBUG
     std::cout << "<- CreateMovingPlatformHandler::handle" << std::endl;
 #endif

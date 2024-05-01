@@ -164,11 +164,6 @@ int main() {
         Events::CreateMovingPlatformHandler::Args args = {
             .properties=properties
         };
-        std::stringstream ss;
-        {
-            cereal::JSONOutputArchive oar(ss);
-            oar(args);
-        }
 
         // add states
         std::vector<Model::State> states;
@@ -187,6 +182,11 @@ int main() {
             )
         );
         args.states = states;
+        std::stringstream ss;
+        {
+            cereal::JSONOutputArchive oar(ss);
+            oar(args);
+        }
         Events::Command cmd = {
             .priority=-1,
             .type=Events::CreateMovingPlatformHandler::get_type(),
