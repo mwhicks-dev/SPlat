@@ -13,6 +13,7 @@ namespace SPlat {
             Event,
             Connect,
             Disconnect,
+            Shutdown,
 
         };
 
