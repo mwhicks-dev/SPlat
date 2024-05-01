@@ -215,3 +215,19 @@ Model::ObjectModelInterface& Client::get_object_model() {
 
     return local;
 }
+
+Events::ListenerInterface& Client::get_background_listener() {
+    m.lock();
+    Events::ListenerInterface& local = background_listener;
+    m.unlock();
+
+    return local;
+}
+
+ControllerInterface& Client::get_controller() {
+    m.lock();
+    ControllerInterface& local = ctl;
+    m.unlock();
+
+    return local;
+}

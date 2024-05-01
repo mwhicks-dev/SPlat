@@ -2,6 +2,7 @@
 #define SPlat_Entrypoint_h
 
 #include "ConfigInterface.h"
+#include "ControllerInterface.h"
 #include "model/ObjectModelInterface.h"
 
 #include <mutex>
@@ -27,6 +28,8 @@ namespace SPlat {
         static Entrypoint& get_instance();
 
         virtual Events::ListenerInterface& get_background_listener() = 0;
+
+        virtual ControllerInterface& get_controller() = 0;
 
     };
 

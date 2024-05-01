@@ -7,7 +7,6 @@
 
 #include "model/ObjectModelInterface.h"
 #include "events/ListenerInterface.h"
-#include "ControllerInterface.h"
 #include "Entrypoint.h"
 
 namespace SPlat {
@@ -45,7 +44,9 @@ namespace SPlat {
 
         static Client& get_instance();
 
-        Events::ListenerInterface& get_background_listener();
+        Events::ListenerInterface& get_background_listener() override;
+
+        ControllerInterface& get_controller() override;
 
     };
 
