@@ -79,3 +79,45 @@ void Environment::set_unit(float unit) {
     this->unit = unit;
     m.unlock();
 }
+
+size_t Environment::get_entrypoint_id() {
+    m.lock();
+    auto local = entrypoint_id;
+    m.unlock();
+
+    return local;
+}
+
+std::string Environment::get_pub_sub_addres() {
+    m.lock();
+    auto local = pub_sub_address;
+    m.unlock();
+
+    return local;
+}
+
+std::string Environment::get_req_rep_addres() {
+    m.lock();
+    auto local = req_rep_address;
+    m.unlock();
+
+    return local;
+}
+
+void Environment::set_entrypoint_id(size_t entrypoint_id) {
+    m.lock();
+    this->entrypoint_id = entrypoint_id;
+    m.unlock();
+}
+
+void Environment::set_pub_sub_addres(std::string pub_sub_address) {
+    m.lock();
+    this->pub_sub_address = pub_sub_address;
+    m.unlock();
+}
+
+void Environment::set_req_rep_address(std::string req_rep_address) {
+    m.lock();
+    this->req_rep_address = req_rep_address;
+    m.unlock();
+}

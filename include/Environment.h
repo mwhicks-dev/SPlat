@@ -21,6 +21,12 @@ namespace SPlat {
 
         float unit;
 
+        size_t entrypoint_id;
+
+        std::string pub_sub_address;
+
+        std::string req_rep_address;
+
     public:
 
         Environment();
@@ -44,6 +50,18 @@ namespace SPlat {
         void set_running(bool) override;
 
         void set_unit(float) override;
+
+        size_t get_entrypoint_id() override;
+
+        std::string get_pub_sub_addres() override;
+
+        std::string get_req_rep_addres() override;
+
+        void set_entrypoint_id(size_t) override;
+
+        void set_pub_sub_addres(std::string) override;
+
+        void set_req_rep_address(std::string) override;
 
     };
 
