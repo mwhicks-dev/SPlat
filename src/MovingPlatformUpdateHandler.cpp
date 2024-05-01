@@ -1,5 +1,13 @@
 #include "model/handler/MovingPlatformUpdateHandler.h"
+#include "events/Command.h"
+#include "events/UpdateAssetHandler.h"
 #include "Entrypoint.h"
+#include "Event.h"
+
+#include <cereal/archives/json.hpp>
+
+#include <string>
+
 
 #ifdef DEBUG
 #include <iostream>
@@ -77,4 +85,35 @@ void MovingPlatformUpdateHandler::update() {
         conf.get_environment().get_standing_config().push_update_to_children(
             asset_properties.get_id(), update_velocity);
     }
+
+    // raise update event for persistence
+    Events::UpdateAssetHandler::Args args = {
+        .id=asset_properties.get_id(),
+        .properties=asset_properties
+    };
+    std::stringstream ss;
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(args);
+    }
+    Events::Command cmd = {
+        .priority=0,
+        .type=Events::UpdateAssetHandler::get_type(),
+        .args=ss.str(),
+    };
+    Event event = {
+        .command=cmd,
+        .client_side=false,
+        .sender=conf.get_environment().get_entrypoint_id(),
+    };
+    ss.clear();
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(event);
+    }
+    Request request = {
+        .content_type=Request::ContentType::Event,
+        .body=ss.str()
+    };
+    Entrypoint::get_instance().get_controller().push_outgoing_request(request);
 }
