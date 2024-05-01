@@ -35,14 +35,8 @@ void UnorderedMapObjectModel::remove_asset(size_t id) {
 }
 
 Asset& UnorderedMapObjectModel::create_asset(Asset& asset) {
-    // get asset ID
-    size_t id = asset_ids.size();
-    while (causes_collision(id)) id++;
-
-    // update asset ID
-    asset.get_asset_properties().set_id(id);
-
     // add to persistent state
+    size_t id = asset.get_asset_properties().get_id();
     add_id(id);
     add_asset(id, &asset);
 
