@@ -31,11 +31,13 @@ namespace SPlat {
 
             OrderedPriorityListener();
 
-            void set_handler(std::string, CommandHandlerInterface&);
+            void set_handler(std::string, CommandHandlerInterface&) override;
 
-            void push_command(Command);
+            void push_command(Command) override;
 
-            void run();
+            void run() override;
+
+            void await(Command) override;
 
         };
 

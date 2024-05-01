@@ -18,6 +18,8 @@ namespace SPlat {
 
             virtual void run() = 0;
 
+            virtual void await(Command) = 0;
+
         };
 
     }
