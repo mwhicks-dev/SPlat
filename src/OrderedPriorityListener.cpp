@@ -76,3 +76,8 @@ void OrderedPriorityListener::run() {
     std::thread t(&OrderedPriorityListener::listener_loop, this);
     t.detach();
 }
+
+void OrderedPriorityListener::await(Command cmd) {
+    CommandHandlerInterface * handler = get_handler(cmd.type);
+    handler->handle(cmd.args);
+}
