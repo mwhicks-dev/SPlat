@@ -54,7 +54,7 @@ void CreatePlatformHandler::handle(std::string serialized) {
     {
         std::stringstream iss; iss << server_event.command.args;
         cereal::JSONInputArchive iar(iss);
-        iar(args);
+        iar(args.properties);
     }
 
     config.get_asset_factory_config().get_platform_factory().create_asset(args

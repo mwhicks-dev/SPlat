@@ -49,12 +49,12 @@ void CreateCharacterHandler::handle(std::string serialized) {
         cereal::JSONInputArchive iar(iss);
         iar(server_event);
     }
-
+    
     Args args;
     {
         std::stringstream iss; iss << server_event.command.args;
         cereal::JSONInputArchive iar(iss);
-        iar(args);
+        iar(args.properties);
     }
 
     config.get_asset_factory_config().get_character_factory()

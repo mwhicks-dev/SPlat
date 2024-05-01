@@ -54,7 +54,7 @@ void CreateMovingPlatformHandler::handle(std::string serialized) {
     {
         std::stringstream iss; iss << server_event.command.args;
         cereal::JSONInputArchive iar(iss);
-        iar(args);
+        iar(args.properties);
     }
 
     config.get_asset_factory_config().get_moving_platform_factory()

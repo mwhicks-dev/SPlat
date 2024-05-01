@@ -11,17 +11,17 @@ namespace SPlat {
 
         std::mutex m;
 
-        Model::Character * controlled_asset;
+        Model::Character * controlled_asset = nullptr;
 
-        bool running;
+        bool running = false;
 
         std::set<sf::Keyboard::Key> held_keys;
 
         Model::StandingConfigInterface& standing_config;
 
-        float unit;
+        float unit = 1.0;
 
-        size_t entrypoint_id;
+        size_t entrypoint_id = 0;
 
         std::string pub_sub_address = "";
 

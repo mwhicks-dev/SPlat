@@ -5,8 +5,14 @@
 #include "model/MovingPlatform.h"
 #include "events/KeyPressCommandHandler.h"
 #include "events/KeyReleaseCommandHandler.h"
+#include "events/CreatePlatformHandler.h"
+#include "events/CreateMovingPlatformHandler.h"
+#include "events/CreateCharacterHandler.h"
+#include "FauxServerController.h"
 
 #include <cereal/archives/json.hpp>
+
+#include <thread>
 
 using namespace SPlat;
 
@@ -99,6 +105,12 @@ public:
 int main() {
     Client& cli = Client::get_instance();
     ConfigInterface& conf = cli.get_config();
+    
+    cli.get_foreground_listener().set_handler(Events::KeyPressCommandHandler::get_event_type(), *new KeyPressOverride());
+    cli.get_foreground_listener().set_handler(Events::KeyReleaseCommandHandler::get_event_type(), *new KeyReleaseOverride());
+
+    cli.get_config().get_timing_config().update_framerate_limit(90);
+
     // Create assets
     {
         Model::AssetProperties properties(
@@ -106,9 +118,20 @@ int main() {
             sf::Vector2f(50, 100),  // size
             sf::Color::Magenta  // fill_color
         );
-        Model::Asset& asset = conf.get_asset_factory_config().get_character_factory().create_asset(properties);
-        Model::Character& character = dynamic_cast<Model::Character&>(asset);
-        Client::get_instance().get_config().get_environment().set_controlled_asset(&character);
+        Events::CreateCharacterHandler::Args args = {
+            .properties=properties
+        };
+        std::stringstream ss;
+        {
+            cereal::JSONOutputArchive oar(ss);
+            oar(args);
+        }
+        Events::Command cmd = {
+            .priority=-1,
+            .type=Events::CreateCharacterHandler::get_type(),
+            .args=ss.str()
+        };
+        cli.get_background_listener().push_command(cmd);
     }
     {
         Model::AssetProperties properties(
@@ -116,7 +139,20 @@ int main() {
             sf::Vector2f(400, 100),  // size
             sf::Color::Green  // fill_color
         );
-        conf.get_asset_factory_config().get_platform_factory().create_asset(properties);
+        Events::CreatePlatformHandler::Args args = {
+            .properties=properties
+        };
+        std::stringstream ss;
+        {
+            cereal::JSONOutputArchive oar(ss);
+            oar(args);
+        }
+        Events::Command cmd = {
+            .priority=-1,
+            .type=Events::CreatePlatformHandler::get_type(),
+            .args=ss.str()
+        };
+        cli.get_background_listener().push_command(cmd);
     }
     {
         Model::AssetProperties properties(
@@ -124,11 +160,34 @@ int main() {
             sf::Vector2f(150, 25),  // size
             sf::Color::White  // fill_color
         );
-        Model::Asset& asset = conf.get_asset_factory_config().get_moving_platform_factory().create_asset(properties);
-        Model::MovingPlatform& moving_platform = dynamic_cast<Model::MovingPlatform&>(asset);
+        Events::CreateMovingPlatformHandler::Args args = {
+            .properties=properties
+        };
+        std::stringstream ss;
+        {
+            cereal::JSONOutputArchive oar(ss);
+            oar(args);
+        }
+        Events::Command cmd = {
+            .priority=-1,
+            .type=Events::CreateMovingPlatformHandler::get_type(),
+            .args=ss.str()
+        };
+        cli.get_background_listener().push_command(cmd);
+        std::unordered_set<size_t> ids = cli.get_object_model().get_ids(); size_t max = 0;
+        Model::MovingPlatform * moving_platform = nullptr;
+        size_t client_id = conf.get_environment().get_entrypoint_id();
+        for (size_t id : ids) {
+            std::cout << id << std::endl;
+            try {
+                Model::MovingPlatform& mplat 
+                    = dynamic_cast<Model::MovingPlatform&>(cli
+                    .get_object_model().read_asset(id));
+            } catch (std::bad_cast&) {}
+        }
 
         // add states
-        Model::MovingPlatformProperties& moving_platform_properties = moving_platform.get_moving_platform_properties();
+        /*Model::MovingPlatformProperties& moving_platform_properties = moving_platform->get_moving_platform_properties();
         std::vector<Model::State> states = moving_platform_properties.get_states();
         states.push_back(
             Model::State(
@@ -145,13 +204,10 @@ int main() {
             )
         );
         moving_platform_properties.set_last_state_change(conf.get_timing_config().get_anchor_timeline().get_time());
-        moving_platform_properties.set_states(states);
+        moving_platform_properties.set_states(states);*/
     }
-    
-    cli.get_foreground_listener().set_handler(Events::KeyPressCommandHandler::get_event_type(), *new KeyPressOverride());
-    cli.get_foreground_listener().set_handler(Events::KeyReleaseCommandHandler::get_event_type(), *new KeyReleaseOverride());
 
-    cli.get_config().get_timing_config().update_framerate_limit(90);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
 
     cli.start();
 }

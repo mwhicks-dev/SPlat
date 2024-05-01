@@ -67,7 +67,7 @@ void CharacterUpdateHandler::update() {
         .client_side=false,
         .sender=conf.get_environment().get_entrypoint_id(),
     };
-    ss.clear();
+    ss.clear(); ss.str("");
     {
         cereal::JSONOutputArchive oar(ss);
         oar(event);

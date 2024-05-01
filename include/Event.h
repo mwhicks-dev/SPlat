@@ -8,17 +8,17 @@ namespace SPlat {
     /// @brief event state
     struct Event {
 
-        time_t event_time;
+        time_t event_time = 0;
 
         Events::Command command;
 
         bool client_side = true;
 
-        size_t sender;
+        size_t sender = 0;
 
         template <class Archive>
         void serialize(Archive& ar) {
-            ar(event_time, command, sender);
+            ar(event_time, command, client_side, sender);
         }
         
         /// @brief overload < operator 

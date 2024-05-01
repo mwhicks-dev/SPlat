@@ -15,9 +15,9 @@ namespace SPlat {
 
         };
 
-        ContentType content_type;
+        ContentType content_type = ContentType::None;
         
-        unsigned short status;
+        unsigned short status = 500;
 
         std::string body = "";
 

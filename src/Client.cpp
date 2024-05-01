@@ -103,9 +103,10 @@ void Client::start() {
     std::cout << "-> Client::start()" << std::endl;
 #endif
 
+    ctl.run();
+
     foreground_listener.run();
     background_listener.run();
-    ctl.run();
 
     window.create(sf::VideoMode(800, 600), "SPlat");
 

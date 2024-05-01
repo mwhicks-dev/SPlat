@@ -85,7 +85,7 @@ void UnorderedStandingConfig::push_update_to_children(size_t parent,
                 .client_side=false,
                 .sender=entrypoint.get_config().get_environment().get_entrypoint_id(),
             };
-            ss.clear();
+            ss.clear(); ss.str("");
             {
                 cereal::JSONOutputArchive oar(ss);
                 oar(event);

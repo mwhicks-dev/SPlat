@@ -13,9 +13,9 @@ namespace SPlat {
 
             std::mutex m;
 
-            size_t id;
+            size_t id = 0;
 
-            size_t owner;
+            size_t owner = 0;
 
             sf::Vector2f position = sf::Vector2f(0, 0);
 
@@ -23,7 +23,7 @@ namespace SPlat {
 
             sf::Color fill_color = sf::Color::White;
 
-            int collision_priority;
+            int collision_priority = 0;
 
         public:
 
@@ -137,7 +137,7 @@ namespace SPlat {
 
             template <class Archive>
             void serialize(Archive& ar) {
-                ar(id, position, size, fill_color, collision_priority);
+                ar(id, owner, position, size, fill_color, collision_priority);
             }
 
         };

@@ -20,7 +20,7 @@ void FauxServerController::run_request_thread() {
         = Client::get_instance().get_config().get_environment();
     
     // prepare context and socket
-    zmq::context_t context(4);
+    zmq::context_t context(1);
     zmq::socket_t socket(context, zmq::socket_type::rep);
     socket.bind("tcp://*:9000");
 
@@ -30,8 +30,7 @@ void FauxServerController::run_request_thread() {
         socket.recv(request_message, zmq::recv_flags::none);
 
         // deserialize to request obj
-        char* request_string = new char(request_message.size());
-        memcpy(request_string, request_message.data(), request_message.size());
+        std::string request_string = request_message.to_string();
         Request request;
         {
             std::stringstream ss; ss << request_string;
@@ -46,9 +45,7 @@ void FauxServerController::run_request_thread() {
             cereal::JSONOutputArchive oar(ss);
             oar(response);
         }
-        const char* response_string = ss.str().c_str();
-        zmq::message_t response_message;
-        memcpy(response_message.data(), response_string, ss.str().size());
+        zmq::message_t response_message(ss.str());
         socket.send(response_message, zmq::send_flags::none);
     }
 }
@@ -58,7 +55,7 @@ Response FauxServerController::await(Request request) {
     const Request::ContentType request_type = request.content_type;
     if (request_type == Request::ContentType::Connect) {
         response.content_type=Response::ContentType::ServerDto;
-        ServerDto sd = { .client_id=1, .pub_sub_address="tcp://localhost:5556" };
+        ServerDto sd = { .client_id=1, .pub_sub_address="tcp://localhost:9001" };
         std::stringstream ss;
         {
             cereal::JSONOutputArchive oar(ss);
@@ -101,7 +98,7 @@ Response FauxServerController::await(Request request) {
 
             // update response content
             response.content_type == Response::ContentType::Event;
-            ss.clear();
+            ss.clear(); ss.str("");
             {
                 cereal::JSONOutputArchive oar(ss);
                 oar(event);

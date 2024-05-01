@@ -14,10 +14,10 @@ namespace SPlat {
             int priority = 0;
 
             /// @brief command type, derived from calling event
-            std::string type;
+            std::string type = "";
 
             /// @brief args as passed from event serialized to string
-            std::string args;
+            std::string args = "";
 
             template <class Archive>
             void serialize(Archive& ar) {

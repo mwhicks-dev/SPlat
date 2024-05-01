@@ -227,6 +227,14 @@ void ClientController::run() {
 Response ClientController::await(Request request) {
     zmq::context_t context(3);
     zmq::socket_t socket(context, zmq::socket_type::req);
+    
+    EnvironmentInterface& environment = Client::get_instance().get_config().get_environment();
+
+    std::string req_rep_address;
+    do {
+        req_rep_address = environment.get_req_rep_addres();
+    } while (req_rep_address == "");
+
     socket.connect(Client::get_instance().get_config().get_environment()
         .get_req_rep_addres());
 
@@ -243,8 +251,7 @@ Response ClientController::await(Request request) {
 
     zmq::message_t response_msg;
     socket.recv(response_msg, zmq::recv_flags::none);
-    char* response_str = new char(response_msg.size());
-    memcpy(response_str, response_msg.data(), response_msg.size());
+    std::string response_str = response_msg.to_string();
 
     Response response;
     {
@@ -253,7 +260,7 @@ Response ClientController::await(Request request) {
         iar(response);
     }
 
-    delete response_str;
+    socket.close();
     context.close();
 
     return response;

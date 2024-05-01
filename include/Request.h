@@ -17,7 +17,7 @@ namespace SPlat {
 
         };
 
-        ContentType content_type;
+        ContentType content_type = None;
 
         std::string body = "";
 
