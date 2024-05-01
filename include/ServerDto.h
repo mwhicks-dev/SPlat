@@ -7,13 +7,13 @@ namespace SPlat {
 
     struct ServerDto {
 
-        size_t client_size;
+        size_t client_id;
 
         std::string pub_sub_address;
 
         template <class Archive>
         void serialize(Archive& ar) {
-            ar(client_size, pub_sub_address);
+            ar(client_id, pub_sub_address);
         }
 
     };
