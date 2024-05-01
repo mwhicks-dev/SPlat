@@ -18,9 +18,11 @@ namespace SPlat {
 
                 SPlat::Model::AssetProperties properties;
 
+                bool set_controlled = false;
+
                 template <class Archive>
                 void serialize(Archive& ar) {
-                    ar(properties);
+                    ar(properties, set_controlled);
                 }
 
             };

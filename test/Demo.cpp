@@ -119,7 +119,8 @@ int main() {
             sf::Color::Magenta  // fill_color
         );
         Events::CreateCharacterHandler::Args args = {
-            .properties=properties
+            .properties=properties,
+            .set_controlled=true
         };
         std::stringstream ss;
         {

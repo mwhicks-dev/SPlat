@@ -92,17 +92,46 @@ Response FauxServerController::await(Request request) {
             while (asset_ids.count(id) > 0) id++;
             
             // set generated ID in event
-            Events::CreateCharacterHandler::Args args;  // all 3 create events have same args so should be OK
-            {
-                std::stringstream ss; ss << event.command.args;
-                cereal::JSONInputArchive iar(ss);
-                iar(args);
-            }
-            args.properties.set_id(id);
             std::stringstream ss;
-            {
-                cereal::JSONOutputArchive oar(ss);
-                oar(args.properties);
+            if (event.command.type == Events::CreatePlatformHandler::get_type()) {
+                Events::CreatePlatformHandler::Args args;
+                {
+                    std::stringstream ss; ss << event.command.args;
+                    cereal::JSONInputArchive iar(ss);
+                    iar(args);
+                }
+                args.properties.set_id(id);
+                ss.clear(); ss.str("");
+                {
+                    cereal::JSONOutputArchive oar(ss);
+                    oar(args.properties);
+                }
+            } else if (event.command.type == Events::CreateMovingPlatformHandler::get_type()) {
+                Events::CreateMovingPlatformHandler::Args args;
+                {
+                    std::stringstream ss; ss << event.command.args;
+                    cereal::JSONInputArchive iar(ss);
+                    iar(args);
+                }
+                args.properties.set_id(id);
+                ss.clear(); ss.str("");
+                {
+                    cereal::JSONOutputArchive oar(ss);
+                    oar(args.properties);
+                }
+            } else if (event.command.type == Events::CreateCharacterHandler::get_type()) {
+                Events::CreateCharacterHandler::Args args;
+                {
+                    std::stringstream ss; ss << event.command.args;
+                    cereal::JSONInputArchive iar(ss);
+                    iar(args);
+                }
+                args.properties.set_id(id);
+                ss.clear(); ss.str("");
+                {
+                    cereal::JSONOutputArchive oar(ss);
+                    oar(args.properties);
+                }
             }
             event.command.args = ss.str();
 

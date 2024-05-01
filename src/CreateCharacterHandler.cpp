@@ -31,8 +31,15 @@ void CreateCharacterHandler::handle(std::string serialized) {
         .sender=environment.get_entrypoint_id()
     };
 
+    Args local_args;
+    std::stringstream ss; ss << serialized;
+    {
+        cereal::JSONInputArchive iar(ss);
+        iar(local_args);
+    }
+    
     // send to server as request
-    std::stringstream ss;
+    ss.clear(); ss.str("");
     {
         cereal::JSONOutputArchive oar(ss);
         oar(event);
@@ -64,8 +71,16 @@ void CreateCharacterHandler::handle(std::string serialized) {
         iar(args.properties);
     }
 
-    config.get_asset_factory_config().get_character_factory()
-        .create_asset(args.properties);
+    SPlat::Model::Asset* asset = &config.get_asset_factory_config()
+        .get_character_factory().create_asset(args.properties);
+
+    if (server_event.sender == environment.get_entrypoint_id() 
+            && local_args.set_controlled) {
+        std::cout << "Hit!" << std::endl;
+        SPlat::Model::Character* character 
+            = dynamic_cast<SPlat::Model::Character*>(asset);
+        environment.set_controlled_asset(character);
+    }
 #ifdef DEBUG
     std::cout << "<- CreateCharacterHandler::handle" << std::endl;
 #endif
