@@ -13,9 +13,9 @@ namespace SPlat {
 
             std::mutex m;
 
-        public:
-
             size_t id;
+
+            size_t owner;
 
             sf::Vector2f position = sf::Vector2f(0, 0);
 
@@ -24,6 +24,8 @@ namespace SPlat {
             sf::Color fill_color = sf::Color::White;
 
             int collision_priority;
+
+        public:
 
             AssetProperties() = default;
 
@@ -45,6 +47,14 @@ namespace SPlat {
             size_t get_id() {
                 m.lock();
                 size_t local = id;
+                m.unlock();
+
+                return local;
+            }
+
+            size_t get_owner() {
+                m.lock();
+                auto local = owner;
                 m.unlock();
 
                 return local;
@@ -85,6 +95,12 @@ namespace SPlat {
             void set_id(size_t id) {
                 m.lock();
                 this->id = id;
+                m.unlock();
+            }
+
+            void set_owner(size_t owner) {
+                m.lock();
+                this->owner = owner;
                 m.unlock();
             }
 
