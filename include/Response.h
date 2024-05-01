@@ -10,7 +10,7 @@ namespace SPlat {
         enum ContentType {
 
             None,
-            Event,
+            IdDto,
             ServerDto,
 
         };
