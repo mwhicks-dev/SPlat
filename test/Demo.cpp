@@ -169,27 +169,9 @@ int main() {
             cereal::JSONOutputArchive oar(ss);
             oar(args);
         }
-        Events::Command cmd = {
-            .priority=-1,
-            .type=Events::CreateMovingPlatformHandler::get_type(),
-            .args=ss.str()
-        };
-        cli.get_background_listener().push_command(cmd);
-        std::unordered_set<size_t> ids = cli.get_object_model().get_ids(); size_t max = 0;
-        Model::MovingPlatform * moving_platform = nullptr;
-        size_t client_id = conf.get_environment().get_entrypoint_id();
-        for (size_t id : ids) {
-            std::cout << id << std::endl;
-            try {
-                Model::MovingPlatform& mplat 
-                    = dynamic_cast<Model::MovingPlatform&>(cli
-                    .get_object_model().read_asset(id));
-            } catch (std::bad_cast&) {}
-        }
 
         // add states
-        /*Model::MovingPlatformProperties& moving_platform_properties = moving_platform->get_moving_platform_properties();
-        std::vector<Model::State> states = moving_platform_properties.get_states();
+        std::vector<Model::State> states;
         states.push_back(
             Model::State(
                 sf::Vector2f(5, 0) * conf.get_environment().get_unit(),  // velocity
@@ -204,8 +186,13 @@ int main() {
                 true  // repeat
             )
         );
-        moving_platform_properties.set_last_state_change(conf.get_timing_config().get_anchor_timeline().get_time());
-        moving_platform_properties.set_states(states);*/
+        args.states = states;
+        Events::Command cmd = {
+            .priority=-1,
+            .type=Events::CreateMovingPlatformHandler::get_type(),
+            .args=ss.str()
+        };
+        cli.get_background_listener().push_command(cmd);
     }
 
     std::this_thread::sleep_for(std::chrono::seconds(1));

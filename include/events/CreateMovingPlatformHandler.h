@@ -3,8 +3,10 @@
 
 #include "events/CommandHandlerInterface.h"
 #include "model/AssetProperties.h"
+#include "model/MovingPlatformProperties.h"
 
 #include <cereal/cereal.hpp>
+#include <cereal/types/vector.hpp>
 
 namespace SPlat {
 
@@ -18,9 +20,11 @@ namespace SPlat {
 
                 SPlat::Model::AssetProperties properties;
 
+                std::vector<SPlat::Model::State> states;
+
                 template <class Archive>
                 void serialize(Archive& ar) {
-                    ar(properties);
+                    ar(properties, states);
                 }
 
             };

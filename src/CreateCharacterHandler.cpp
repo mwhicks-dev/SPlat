@@ -76,7 +76,6 @@ void CreateCharacterHandler::handle(std::string serialized) {
 
     if (server_event.sender == environment.get_entrypoint_id() 
             && local_args.set_controlled) {
-        std::cout << "Hit!" << std::endl;
         SPlat::Model::Character* character 
             = dynamic_cast<SPlat::Model::Character*>(asset);
         environment.set_controlled_asset(character);
