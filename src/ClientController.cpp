@@ -163,13 +163,11 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
             std::cerr << "Shutting down..." << std::endl;
             continue;
         }
-        char* tmp = new char(request.size());
-        memcpy(tmp, request.data(), request.size());
 
         // deserialize request and push
         Request req;
         {
-            std::stringstream ss; ss << tmp;
+            std::stringstream ss; ss << request.to_string();
             cereal::JSONInputArchive iar(ss);
             iar(req);
         }
@@ -187,8 +185,6 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
 
         if (sender != environment.get_entrypoint_id())
             push_outgoing_request(req);
-
-        delete tmp;
     }
 #ifdef DEBUG
     std::cout << "<- ClientController::run_subscriber_thread" << std::endl;
