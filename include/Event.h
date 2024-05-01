@@ -12,9 +12,13 @@ namespace SPlat {
 
         Events::Command command;
 
+        bool client_side = true;
+
+        size_t sender;
+
         template <class Archive>
         void serialize(Archive& ar) {
-            ar(event_time, command);
+            ar(event_time, command, sender);
         }
         
         /// @brief overload < operator 
