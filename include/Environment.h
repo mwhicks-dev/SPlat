@@ -23,9 +23,9 @@ namespace SPlat {
 
         size_t entrypoint_id;
 
-        std::string pub_sub_address;
+        std::string pub_sub_address = "";
 
-        std::string req_rep_address;
+        std::string req_rep_address = "";
 
     public:
 
