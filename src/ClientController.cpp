@@ -153,7 +153,20 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
             cereal::JSONInputArchive iar(ss);
             iar(req);
         }
-        push_outgoing_request(req);
+        size_t sender = 0;  // server by default
+        if (req.content_type == Request::ContentType::Event) {
+            // check if sender is self
+            Event e;
+            {
+                std::stringstream ss; ss << req.body;
+                cereal::JSONInputArchive iar(ss);
+                iar(e);
+            }
+            sender = e.sender;
+        }
+
+        if (sender != environment.get_entrypoint_id())
+            push_outgoing_request(req);
 
         delete tmp;
     }
