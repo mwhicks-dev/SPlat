@@ -69,6 +69,7 @@ void ClientController::run_request_thread() {
             oar(curr);
         }
         std::string serialized = ss.str();
+        ss.clear(); ss.str("");
 
         // convert serialized string to zmq::message_t
         zmq::message_t request(serialized.size());
@@ -78,21 +79,18 @@ void ClientController::run_request_thread() {
         // get reply string
         zmq::message_t reply;
         socket.recv(reply, zmq::recv_flags::none);
-        char* serialized_reply = new char(reply.size());
-        memcpy(serialized_reply, reply.data(), reply.size());
+        std::string serialized_reply = reply.to_string();
 
         // deserialize string into response
         Response resp;
         {
-            std::stringstream ss; ss << serialized;
+            std::stringstream ss; ss << serialized_reply;
             cereal::JSONInputArchive iar(ss);
             iar(resp);
         }
 
         // send string to cousin thread
         push_incoming_response(resp);
-
-        delete serialized_reply;
     }
 #ifdef DEBUG
     std::cout << "<- ClientController::run_request_thread" << std::endl;
@@ -157,7 +155,13 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
         // get request string
         zmq::message_t request;
         std::string serialized;
-        socket.recv(request, zmq::recv_flags::none);
+        try {
+            socket.recv(request, zmq::recv_flags::none);
+        } catch (zmq::error_t&) {
+            std::cerr << "Could not connect to server" << std::endl;
+            std::cerr << "Shutting down..." << std::endl;
+            continue;
+        }
         char* tmp = new char(request.size());
         memcpy(tmp, request.data(), request.size());
 
