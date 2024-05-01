@@ -26,6 +26,8 @@ namespace SPlat {
 
         static Entrypoint& get_instance();
 
+        virtual Events::ListenerInterface& get_background_listener() = 0;
+
     };
 
 }

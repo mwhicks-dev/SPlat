@@ -1,9 +1,16 @@
 #include "Client.h"
 #include "ClientConfig.h"
+#include "ClientController.cpp"
 #include "events/OrderedPriorityListener.h"
 #include "model/UnorderedMapObjectModel.h"
 #include "events/KeyPressCommandHandler.h"
 #include "events/KeyReleaseCommandHandler.h"
+#include "events/CreateCharacterHandler.h"
+#include "events/CreatePlatformHandler.h"
+#include "events/CreateMovingPlatformHandler.h"
+#include "events/GetAssetHandler.h"
+#include "events/UpdateAssetHandler.h"
+#include "events/DeleteAssetHandler.h"
 
 #include <thread>
 #include <chrono>
@@ -59,15 +66,31 @@ void wait_for_timeline(Timeline& t, time_t target) {
 
 Client::Client() : config(*new ClientConfig()), 
         object_model(*new Model::UnorderedMapObjectModel()), 
-        foreground_listener(*new Events::OrderedPriorityListener()) {
+        foreground_listener(*new Events::OrderedPriorityListener()),
+        background_listener(*new Events::OrderedPriorityListener()),
+        ctl(*new ClientController()) {
     // fix framerate limit env
     get_config().get_timing_config().update_framerate_limit(30);  // default 30
 
-    // set default handlers for key press/release events
+    // set foreground event defaults
     foreground_listener.set_handler(Events::KeyPressCommandHandler
         ::get_event_type(), *new Events::KeyPressCommandHandler());
     foreground_listener.set_handler(Events::KeyReleaseCommandHandler
         ::get_event_type(), *new Events::KeyReleaseCommandHandler());
+
+    // set background event defaults
+    background_listener.set_handler(Events::CreateCharacterHandler::get_type(),
+        *new Events::CreateCharacterHandler());
+    background_listener.set_handler(Events::CreatePlatformHandler::get_type(),
+        *new Events::CreatePlatformHandler());
+    background_listener.set_handler(Events::CreateMovingPlatformHandler
+        ::get_type(), *new Events::CreateMovingPlatformHandler());
+    background_listener.set_handler(Events::GetAssetHandler::get_type(), *new
+        Events::GetAssetHandler());
+    background_listener.set_handler(Events::UpdateAssetHandler::get_type(), 
+        *new Events::UpdateAssetHandler());
+    background_listener.set_handler(Events::DeleteAssetHandler::get_type(), 
+        *new Events::DeleteAssetHandler());
 }
 
 bool compare(SPlat::Model::Moving* lhs, SPlat::Model::Moving* rhs) {
@@ -81,6 +104,8 @@ void Client::start() {
 #endif
 
     foreground_listener.run();
+    background_listener.run();
+    ctl.run();
 
     window.create(sf::VideoMode(800, 600), "SPlat");
 

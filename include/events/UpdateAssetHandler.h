@@ -1,5 +1,5 @@
-#ifndef SPlat_Events_GetAssetHandler_h
-#define SPlat_Events_GetAssetHandler_h
+#ifndef SPlat_Events_UpdateAssetHandler_h
+#define SPlat_Events_UpdateAssetHandler_h
 
 #include "events/CommandHandlerInterface.h"
 #include "model/AssetProperties.h"

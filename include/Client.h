@@ -7,6 +7,7 @@
 
 #include "model/ObjectModelInterface.h"
 #include "events/ListenerInterface.h"
+#include "ControllerInterface.h"
 #include "Entrypoint.h"
 
 namespace SPlat {
@@ -21,6 +22,10 @@ namespace SPlat {
         Model::ObjectModelInterface& object_model;
 
         Events::ListenerInterface& foreground_listener;
+
+        Events::ListenerInterface& background_listener;
+
+        ControllerInterface& ctl;
 
         /// @brief performs keyboard press/release event checking
         /// @param key actual key to check
@@ -39,6 +44,8 @@ namespace SPlat {
         Events::ListenerInterface& get_foreground_listener();
 
         static Client& get_instance();
+
+        Events::ListenerInterface& get_background_listener();
 
     };
 
