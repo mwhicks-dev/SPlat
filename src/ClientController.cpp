@@ -158,6 +158,7 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
         try {
             socket.recv(request, zmq::recv_flags::none);
         } catch (zmq::error_t&) {
+            if (!environment.get_running()) return;
             std::cerr << "Could not connect to server" << std::endl;
             std::cerr << "Shutting down..." << std::endl;
             continue;

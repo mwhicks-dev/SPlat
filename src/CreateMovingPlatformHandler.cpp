@@ -72,7 +72,6 @@ void CreateMovingPlatformHandler::handle(std::string serialized) {
         .get_moving_platform_factory().create_asset(args.properties);
 
     if (server_event.sender == environment.get_entrypoint_id()) {
-        std::cout << "Hit!" << std::endl;
         SPlat::Model::MovingPlatform* moving_platform 
             = dynamic_cast<SPlat::Model::MovingPlatform*>(asset);
         moving_platform->get_moving_platform_properties()
