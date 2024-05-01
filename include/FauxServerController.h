@@ -17,19 +17,19 @@ namespace SPlat {
 
         std::queue<Response> responses;
 
-        Response pop_incoming_response() override;
+        Request pop_outgoing_request() override {}
 
-        bool has_outgoing_request() override;
+        Response pop_incoming_response() override {}
 
-        bool has_incoming_response() override;
+        bool has_outgoing_request() override { return false; }
+
+        bool has_incoming_response() override { return false; }
 
         void run_request_thread();
 
-        void run_response_thread();
-
     public:
 
-        void push_outgoing_request(Request) override;
+        void push_outgoing_request(Request) override {}
 
         void run() override;
 
