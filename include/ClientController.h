@@ -16,6 +16,8 @@ namespace SPlat {
 
         std::queue<Response> responses;
 
+        Request pop_outgoing_request() override;
+
         Response pop_incoming_response() override;
 
         bool has_outgoing_request() override;
@@ -24,7 +26,11 @@ namespace SPlat {
 
         void run_request_thread();
 
+        void run_subscriber_thread(zmq::context_t*);
+
         void run_response_thread();
+        
+        void push_incoming_response(Response);
 
     public:
 

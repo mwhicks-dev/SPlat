@@ -8,6 +8,8 @@ namespace SPlat {
 
     class ControllerInterface {
 
+        virtual Request pop_outgoing_request() = 0;
+
         virtual Response pop_incoming_response() = 0;
 
         virtual bool has_outgoing_request() = 0;
