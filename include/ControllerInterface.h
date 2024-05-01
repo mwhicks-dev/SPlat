@@ -1,7 +1,8 @@
 #ifndef SPlat_Events_ControllerInterface_h
 #define SPlat_Events_ControllerInterface_h
 
-#include "Event.h"
+#include "Request.h"
+#include "Response.h"
 
 namespace SPlat {
 
@@ -9,11 +10,11 @@ namespace SPlat {
 
     public:
 
-        virtual void push_outgoing_event(Event) = 0;
+        virtual void push_outgoing_request(Request) = 0;
 
-        virtual Event pop_incoming_event() = 0;
+        virtual Response pop_incoming_response() = 0;
 
-        virtual bool has_incoming_event() = 0;
+        virtual bool has_incoming_response() = 0;
 
     };
 
