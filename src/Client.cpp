@@ -1,6 +1,6 @@
 #include "Client.h"
 #include "ClientConfig.h"
-#include "ClientController.cpp"
+#include "ClientController.h"
 #include "events/OrderedPriorityListener.h"
 #include "model/UnorderedMapObjectModel.h"
 #include "events/KeyPressCommandHandler.h"

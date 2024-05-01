@@ -4,6 +4,7 @@
 #include "ConfigInterface.h"
 #include "ControllerInterface.h"
 #include "model/ObjectModelInterface.h"
+#include "events/ListenerInterface.h"
 
 #include <mutex>
 

@@ -1,10 +1,12 @@
 #ifndef SPlat_ClientController_h
 #define SPlat_ClientController_h
 
+#include "ControllerInterface.h"
+
+#include <cppzmq/zmq.hpp>
+
 #include <queue>
 #include <mutex>
-
-#include "ControllerInterface.h"
 
 namespace SPlat {
 

@@ -5,8 +5,6 @@
 
 #include <SFML/Window.hpp>
 
-#include "model/ObjectModelInterface.h"
-#include "events/ListenerInterface.h"
 #include "Entrypoint.h"
 
 namespace SPlat {

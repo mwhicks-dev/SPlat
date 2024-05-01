@@ -17,9 +17,9 @@ namespace SPlat {
 
         std::queue<Response> responses;
 
-        Request pop_outgoing_request() override {}
+        Request pop_outgoing_request() override { Request request; return request; }
 
-        Response pop_incoming_response() override {}
+        Response pop_incoming_response() override { Response response; return response; }
 
         bool has_outgoing_request() override { return false; }
 

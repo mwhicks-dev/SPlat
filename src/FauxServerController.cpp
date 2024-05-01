@@ -101,7 +101,7 @@ Response FauxServerController::await(Request request) {
 
             // update response content
             response.content_type == Response::ContentType::Event;
-            std::stringstream ss;
+            ss.clear();
             {
                 cereal::JSONOutputArchive oar(ss);
                 oar(event);
