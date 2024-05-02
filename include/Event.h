@@ -12,9 +12,11 @@ namespace SPlat {
 
         size_t sender = 0;
 
+        size_t context = 0;
+
         template <class Archive>
         void serialize(Archive& ar) {
-            ar(command, sender);
+            ar(command, sender, context);
         }
         
         /// @brief overload < operator 
