@@ -7,7 +7,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class ServerCreatCharacterHandler : public CreateCharacterHandler {
+        class ServerCreateCharacterHandler : public CreateCharacterHandler {
 
         public:
 

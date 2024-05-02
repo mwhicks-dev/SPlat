@@ -7,7 +7,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class ServerCreateMovingPlatormHandler : public CreateMovingPlatformHandler {
+        class ServerCreateMovingPlatformHandler : public CreateMovingPlatformHandler {
 
         public:
 
