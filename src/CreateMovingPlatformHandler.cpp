@@ -68,8 +68,6 @@ void CreateMovingPlatformHandler::handle(std::string serialized) {
             .set_last_state_change(config.get_timing_config()
             .get_anchor_timeline().get_time());
     }
-
-    std::cout << id_dto.id << std::endl;
 #ifdef DEBUG
     std::cout << "<- CreateMovingPlatformHandler::handle" << std::endl;
 #endif

@@ -68,8 +68,6 @@ void CreateCharacterHandler::handle(std::string serialized) {
             = dynamic_cast<SPlat::Model::Character*>(asset);
         environment.set_controlled_asset(character);
     }
-
-    std::cout << id_dto.id << std::endl;
 #ifdef DEBUG
     std::cout << "<- CreateCharacterHandler::handle" << std::endl;
 #endif

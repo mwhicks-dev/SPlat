@@ -58,8 +58,6 @@ void CreatePlatformHandler::handle(std::string serialized) {
 
     SPlat::Model::Asset* asset = &config.get_asset_factory_config()
         .get_platform_factory().create_asset(args.properties);
-
-    std::cout << id_dto.id << std::endl;
 #ifdef DEBUG
     std::cout << "<- CreatePlatformHandler::handle" << std::endl;
 #endif
