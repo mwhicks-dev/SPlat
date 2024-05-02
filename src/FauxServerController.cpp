@@ -1,6 +1,6 @@
-#include "events/handlers/CreateCharacterHandler.h"
-#include "events/handlers/CreatePlatformHandler.h"
-#include "events/handlers/CreateMovingPlatformHandler.h"
+#include "events/handlers/ClientCreateCharacterHandler.h"
+#include "events/handlers/ClientCreatePlatformHandler.h"
+#include "events/handlers/ClientCreateMovingPlatformHandler.h"
 #include "Client.h"
 #include "Event.h"
 #include "IdDto.h"
@@ -84,10 +84,10 @@ Response FauxServerController::await(Request request) {
             iar(event);
         }
 
-        if (event.command.type == Events::CreateCharacterHandler
+        if (event.command.type == Events::ClientCreateCharacterHandler
                 ::get_type() || event.command.type == Events
-                ::CreatePlatformHandler::get_type() || event.command.type
-                == Events::CreateMovingPlatformHandler::get_type()) {
+                ::ClientCreatePlatformHandler::get_type() || event.command.type
+                == Events::ClientCreateMovingPlatformHandler::get_type()) {
             // find latest unused ID
             std::unordered_set<size_t> asset_ids 
                 = Client::get_instance().get_object_model().get_ids();

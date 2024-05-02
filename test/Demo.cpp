@@ -5,9 +5,9 @@
 #include "model/MovingPlatform.h"
 #include "events/handlers/KeyPressHandler.h"
 #include "events/handlers/KeyReleaseHandler.h"
-#include "events/handlers/CreatePlatformHandler.h"
-#include "events/handlers/CreateMovingPlatformHandler.h"
-#include "events/handlers/CreateCharacterHandler.h"
+#include "events/handlers/ClientCreatePlatformHandler.h"
+#include "events/handlers/ClientCreateMovingPlatformHandler.h"
+#include "events/handlers/ClientCreateCharacterHandler.h"
 #include "FauxServerController.h"
 
 #include <cereal/archives/json.hpp>
@@ -132,7 +132,7 @@ int main() {
             sf::Vector2f(50, 100),  // size
             sf::Color::Magenta  // fill_color
         );
-        Events::CreateCharacterHandler::Args args = {
+        Events::ClientCreateCharacterHandler::Args args = {
             .properties=properties,
             .set_controlled=true
         };
@@ -143,7 +143,7 @@ int main() {
         }
         Events::Command cmd = {
             .priority=-1,
-            .type=Events::CreateCharacterHandler::get_type(),
+            .type=Events::ClientCreateCharacterHandler::get_type(),
             .args=ss.str()
         };
         Event event = {
@@ -158,7 +158,7 @@ int main() {
             sf::Vector2f(400, 100),  // size
             sf::Color::Green  // fill_color
         );
-        Events::CreatePlatformHandler::Args args = {
+        Events::ClientCreatePlatformHandler::Args args = {
             .properties=properties
         };
         std::stringstream ss;
@@ -168,7 +168,7 @@ int main() {
         }
         Events::Command cmd = {
             .priority=-1,
-            .type=Events::CreatePlatformHandler::get_type(),
+            .type=Events::ClientCreatePlatformHandler::get_type(),
             .args=ss.str()
         };
         Event event = {
@@ -183,7 +183,7 @@ int main() {
             sf::Vector2f(150, 25),  // size
             sf::Color::White  // fill_color
         );
-        Events::CreateMovingPlatformHandler::Args args = {
+        Events::ClientCreateMovingPlatformHandler::Args args = {
             .properties=properties
         };
 
@@ -211,7 +211,7 @@ int main() {
         }
         Events::Command cmd = {
             .priority=-1,
-            .type=Events::CreateMovingPlatformHandler::get_type(),
+            .type=Events::ClientCreateMovingPlatformHandler::get_type(),
             .args=ss.str()
         };
         Event event = {

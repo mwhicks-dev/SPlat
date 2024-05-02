@@ -1,5 +1,4 @@
 #include "events/handlers/GetAssetHandler.h"
-#include "events/handlers/CreatePlatformHandler.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"

@@ -5,9 +5,9 @@
 #include "model/UnorderedMapObjectModel.h"
 #include "events/handlers/KeyPressHandler.h"
 #include "events/handlers/KeyReleaseHandler.h"
-#include "events/handlers/CreateCharacterHandler.h"
-#include "events/handlers/CreatePlatformHandler.h"
-#include "events/handlers/CreateMovingPlatformHandler.h"
+#include "events/handlers/ClientCreateCharacterHandler.h"
+#include "events/handlers/ClientCreatePlatformHandler.h"
+#include "events/handlers/ClientCreateMovingPlatformHandler.h"
 #include "events/handlers/GetAssetHandler.h"
 #include "events/handlers/UpdateAssetHandler.h"
 #include "events/handlers/DeleteAssetHandler.h"
@@ -93,12 +93,12 @@ Client::Client() : config(*new ClientConfig()),
         ::get_event_type(), *new Events::KeyReleaseHandler());
 
     // set background event defaults
-    background_listener.set_handler(Events::CreateCharacterHandler::get_type(),
-        *new Events::CreateCharacterHandler());
-    background_listener.set_handler(Events::CreatePlatformHandler::get_type(),
-        *new Events::CreatePlatformHandler());
-    background_listener.set_handler(Events::CreateMovingPlatformHandler
-        ::get_type(), *new Events::CreateMovingPlatformHandler());
+    background_listener.set_handler(Events::ClientCreateCharacterHandler::get_type(),
+        *new Events::ClientCreateCharacterHandler());
+    background_listener.set_handler(Events::ClientCreatePlatformHandler::get_type(),
+        *new Events::ClientCreatePlatformHandler());
+    background_listener.set_handler(Events::ClientCreateMovingPlatformHandler
+        ::get_type(), *new Events::ClientCreateMovingPlatformHandler());
     background_listener.set_handler(Events::GetAssetHandler::get_type(), *new
         Events::GetAssetHandler());
     background_listener.set_handler(Events::UpdateAssetHandler::get_type(), 

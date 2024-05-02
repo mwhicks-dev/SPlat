@@ -1,5 +1,4 @@
-#include "events/handlers/CreateMovingPlatformHandler.h"
-#include "model/MovingPlatform.h"
+#include "events/handlers/ClientCreatePlatformHandler.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
@@ -9,9 +8,9 @@
 
 using namespace SPlat::Events;
 
-void CreateMovingPlatformHandler::handle(std::string serialized) {
+void ClientCreatePlatformHandler::handle(std::string serialized) {
 #ifdef DEBUG
-    std::cout << "-> CreateMovingPlatformHandler::handle(" << serialized << ")" << std::endl;
+    std::cout << "-> ClientCreatePlatformHandler::handle(" << serialized << ")" << std::endl;
 #endif
     Entrypoint& entrypoint = Entrypoint::get_instance();
     ConfigInterface& config = entrypoint.get_config();
@@ -38,6 +37,7 @@ void CreateMovingPlatformHandler::handle(std::string serialized) {
         .content_type=Request::ContentType::Event,
         .body=serialized
     };
+
     ControllerInterface& ctl = entrypoint.get_controller();
     Response response = ctl.await(request);
 
@@ -57,18 +57,8 @@ void CreateMovingPlatformHandler::handle(std::string serialized) {
     args.properties.set_id(id_dto.id);
 
     SPlat::Model::Asset* asset = &config.get_asset_factory_config()
-        .get_moving_platform_factory().create_asset(args.properties);
-
-    if (event.sender == environment.get_entrypoint_id()) {
-        SPlat::Model::MovingPlatform* moving_platform 
-            = dynamic_cast<SPlat::Model::MovingPlatform*>(asset);
-        moving_platform->get_moving_platform_properties()
-            .set_states(args.states);
-        moving_platform->get_moving_platform_properties()
-            .set_last_state_change(config.get_timing_config()
-            .get_anchor_timeline().get_time());
-    }
+        .get_platform_factory().create_asset(args.properties);
 #ifdef DEBUG
-    std::cout << "<- CreateMovingPlatformHandler::handle" << std::endl;
+    std::cout << "<- ClientCreatePlatformHandler::handle" << std::endl;
 #endif
 }

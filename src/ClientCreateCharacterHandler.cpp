@@ -1,4 +1,4 @@
-#include "events/handlers/CreatePlatformHandler.h"
+#include "events/handlers/ClientCreateCharacterHandler.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
@@ -6,11 +6,15 @@
 
 #include <cereal/archives/json.hpp>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace SPlat::Events;
 
-void CreatePlatformHandler::handle(std::string serialized) {
+void ClientCreateCharacterHandler::handle(std::string serialized) {
 #ifdef DEBUG
-    std::cout << "-> CreatePlatformHandler::handle(" << serialized << ")" << std::endl;
+    std::cout << "-> ClientCreateCharacterHandler::handle(" << serialized << ")" << std::endl;
 #endif
     Entrypoint& entrypoint = Entrypoint::get_instance();
     ConfigInterface& config = entrypoint.get_config();
@@ -37,7 +41,6 @@ void CreatePlatformHandler::handle(std::string serialized) {
         .content_type=Request::ContentType::Event,
         .body=serialized
     };
-
     ControllerInterface& ctl = entrypoint.get_controller();
     Response response = ctl.await(request);
 
@@ -57,8 +60,15 @@ void CreatePlatformHandler::handle(std::string serialized) {
     args.properties.set_id(id_dto.id);
 
     SPlat::Model::Asset* asset = &config.get_asset_factory_config()
-        .get_platform_factory().create_asset(args.properties);
+        .get_character_factory().create_asset(args.properties);
+
+    if (event.sender == environment.get_entrypoint_id() 
+            && args.set_controlled) {
+        SPlat::Model::Character* character 
+            = dynamic_cast<SPlat::Model::Character*>(asset);
+        environment.set_controlled_asset(character);
+    }
 #ifdef DEBUG
-    std::cout << "<- CreatePlatformHandler::handle" << std::endl;
+    std::cout << "<- ClientCreateCharacterHandler::handle" << std::endl;
 #endif
 }

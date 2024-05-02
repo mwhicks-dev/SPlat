@@ -1,4 +1,5 @@
-#include "events/handlers/CreateCharacterHandler.h"
+#include "events/handlers/ClientCreateMovingPlatformHandler.h"
+#include "model/MovingPlatform.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
@@ -6,15 +7,11 @@
 
 #include <cereal/archives/json.hpp>
 
-#ifdef DEBUG
-#include <iostream>
-#endif
-
 using namespace SPlat::Events;
 
-void CreateCharacterHandler::handle(std::string serialized) {
+void ClientCreateMovingPlatformHandler::handle(std::string serialized) {
 #ifdef DEBUG
-    std::cout << "-> CreateCharacterHandler::handle(" << serialized << ")" << std::endl;
+    std::cout << "-> ClientCreateMovingPlatformHandler::handle(" << serialized << ")" << std::endl;
 #endif
     Entrypoint& entrypoint = Entrypoint::get_instance();
     ConfigInterface& config = entrypoint.get_config();
@@ -60,15 +57,18 @@ void CreateCharacterHandler::handle(std::string serialized) {
     args.properties.set_id(id_dto.id);
 
     SPlat::Model::Asset* asset = &config.get_asset_factory_config()
-        .get_character_factory().create_asset(args.properties);
+        .get_moving_platform_factory().create_asset(args.properties);
 
-    if (event.sender == environment.get_entrypoint_id() 
-            && args.set_controlled) {
-        SPlat::Model::Character* character 
-            = dynamic_cast<SPlat::Model::Character*>(asset);
-        environment.set_controlled_asset(character);
+    if (event.sender == environment.get_entrypoint_id()) {
+        SPlat::Model::MovingPlatform* moving_platform 
+            = dynamic_cast<SPlat::Model::MovingPlatform*>(asset);
+        moving_platform->get_moving_platform_properties()
+            .set_states(args.states);
+        moving_platform->get_moving_platform_properties()
+            .set_last_state_change(config.get_timing_config()
+            .get_anchor_timeline().get_time());
     }
 #ifdef DEBUG
-    std::cout << "<- CreateCharacterHandler::handle" << std::endl;
+    std::cout << "<- ClientCreateMovingPlatformHandler::handle" << std::endl;
 #endif
 }
