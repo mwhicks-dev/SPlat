@@ -65,6 +65,8 @@ size_t ServerController::add_connected_client() {
     while (local.count(client_id) > 0) client_id++;
     local.insert(client_id);
     set_connected_clients(local);
+
+    return client_id;
 }
 
 void ServerController::remove_connected_client(size_t client) {

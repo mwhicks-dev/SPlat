@@ -4,9 +4,9 @@
 #include "events/handlers/ServerReadAssetHandler.h"
 #include "events/handlers/ServerUpdateAssetHandler.h"
 #include "events/handlers/ServerDeleteAssetHandler.h"
+#include "events/OrderedPriorityListener.h"
+#include "model/UnorderedMapObjectModel.h"
 #include "ServerController.h"
-#include "UnorderedMapObjectModel.h"
-#include "OrderedPriorityListener.h"
 #include "ClientConfig.h"
 #include "Server.h"
 
