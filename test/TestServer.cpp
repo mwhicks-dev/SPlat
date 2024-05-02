@@ -2,6 +2,8 @@
 #include "events/handlers/ServerCreateMovingPlatformHandler.h"
 #include "Server.h"
 
+#include <thread>
+
 #include <cereal/archives/json.hpp>
 
 using namespace SPlat;
@@ -9,6 +11,11 @@ using namespace SPlat;
 int main() {
     Server& server = server.get_instance();
     ConfigInterface& conf = server.get_config();
+    EnvironmentInterface& env = conf.get_environment();
+
+    std::thread t(&Server::start, &server);
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
 
     {
         Model::AssetProperties properties(
@@ -16,6 +23,7 @@ int main() {
             sf::Vector2f(400, 100),  // size
             sf::Color::Green  // fill_color
         );
+        properties.set_owner(env.get_entrypoint_id());
         Events::ServerCreatePlatformHandler::Args args = {
             .properties=properties
         };
@@ -31,7 +39,7 @@ int main() {
         };
         Event event = {
             .command=cmd,
-            .sender=1,
+            .sender=env.get_entrypoint_id(),
         };
         server.get_background_listener().push_event(event);
     }
@@ -74,10 +82,10 @@ int main() {
         };
         Event event = {
             .command=cmd,
-            .sender=1,
+            .sender=env.get_entrypoint_id(),
         };
         server.get_background_listener().push_event(event);
     }
 
-    server.start();
+    t.join();
 }

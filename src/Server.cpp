@@ -17,7 +17,7 @@ config(*new ClientConfig()),
 controller(*new ServerController()),
 object_model(*new Model::UnorderedMapObjectModel()),
 background_listener(*new Events::OrderedPriorityListener()) {
-    get_config().get_timing_config().update_framerate_limit(30);
+    get_config().get_timing_config().update_framerate_limit(120);
 
     // set listener handlers
     background_listener.set_handler(Events::ServerCreateCharacterHandler::get_type(),
@@ -76,6 +76,10 @@ void Server::start() {
                 moving->resolve_collision(other_asset);
             }
         }
+
+        time_t next = last_update + 1;
+        do {} while (timing.get_display_timeline().get_time() < next);
+        last_update = next;
     }
 
     get_config().get_environment().set_running(false);  // TODO: Get interrupt handler that does this on ^C
