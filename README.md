@@ -15,8 +15,9 @@ docker build -t SPlat/test . && docker run -it --rm SPlat/test
 Build (via Docker):
 
 1. Go to the `build/` directory.
-2. Execute `make -j$(nproc) demo` to build the demo.
-3. Execute `./demo` to run the demo.
+2. Execute `make -j$(nproc) client server` to build the client-server.
+3. Execute `./server` to run the server demo.
+4. Execute `./client` to run the client demo.
 
 ## Libraries
 
