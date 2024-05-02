@@ -162,7 +162,7 @@ Response ServerController::await(Request request) {
                 response.status = 400;
                 response.body = e.what();  // TODO replace with event exception string
             }
-            push_outgoing_event(event);
+            // push_outgoing_event(event);
         }
     } catch (std::exception& e) {
         response.status = 500;
