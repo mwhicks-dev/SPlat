@@ -168,7 +168,7 @@ void Client::start() {
             Model::Asset& asset = get_object_model()
                 .read_asset(id);
             window.draw(asset.get_asset_properties().get_rectangle_shape());
-            std::cout << "Asset " << id << " position: <" << asset.get_asset_properties().get_position().x << ", " << asset.get_asset_properties().get_position().y << std::endl;
+            std::cout << "Asset " << id << " owner: " << asset.get_asset_properties().get_owner() << std::endl;
         }
         time_t curr = Client::get_instance().get_config().get_timing_config()
         .get_display_timeline().get_time();

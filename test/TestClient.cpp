@@ -126,7 +126,7 @@ int main() {
     cli.get_config().get_environment().set_req_rep_address("tcp://localhost:5555");
     std::thread t(&Client::start, &cli);
 
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    while (cli.get_config().get_environment().get_entrypoint_id() == 0) {}
 
     {
         Model::AssetProperties properties(
@@ -134,6 +134,7 @@ int main() {
             sf::Vector2f(50, 100),  // size
             sf::Color::Magenta  // fill_color
         );
+        properties.set_owner(cli.get_config().get_environment().get_entrypoint_id());
         Events::ClientCreateCharacterHandler::Args args = {
             .properties=properties,
             .set_controlled=true
@@ -143,6 +144,7 @@ int main() {
             cereal::JSONOutputArchive oar(ss);
             oar(args);
         }
+        std::cout << ss.str() << std::endl;
         Events::Command cmd = {
             .priority=-1,
             .type=Events::ClientCreateCharacterHandler::get_type(),

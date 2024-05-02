@@ -38,6 +38,7 @@ namespace SPlat {
 
             AssetProperties(AssetProperties& other) {
                 set_id(other.get_id());
+                set_owner(other.get_owner());
                 set_position(other.get_position());
                 set_size(other.get_size());
                 set_fill_color(other.get_fill_color());

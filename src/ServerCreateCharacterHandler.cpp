@@ -53,6 +53,5 @@ void ServerCreateCharacterHandler::handle(std::string serialized) {
         SPlat::Model::Asset* asset_ptr = &asset;
         SPlat::Model::Character* character 
             = dynamic_cast<SPlat::Model::Character*>(asset_ptr);
-        environment.set_controlled_asset(character);
     }
 }
