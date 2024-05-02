@@ -1,6 +1,6 @@
 #include "model/handler/MovingPlatformUpdateHandler.h"
 #include "events/Command.h"
-#include "events/UpdateAssetHandler.h"
+#include "events/handlers/UpdateAssetHandler.h"
 #include "Entrypoint.h"
 #include "Event.h"
 

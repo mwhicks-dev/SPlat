@@ -3,11 +3,11 @@
 #include "model/Character.h"
 #include "model/Platform.h"
 #include "model/MovingPlatform.h"
-#include "events/KeyPressHandler.h"
-#include "events/KeyReleaseHandler.h"
-#include "events/CreatePlatformHandler.h"
-#include "events/CreateMovingPlatformHandler.h"
-#include "events/CreateCharacterHandler.h"
+#include "events/handlers/KeyPressHandler.h"
+#include "events/handlers/KeyReleaseHandler.h"
+#include "events/handlers/CreatePlatformHandler.h"
+#include "events/handlers/CreateMovingPlatformHandler.h"
+#include "events/handlers/CreateCharacterHandler.h"
 #include "FauxServerController.h"
 
 #include <cereal/archives/json.hpp>

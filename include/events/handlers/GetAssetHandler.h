@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_GetAssetHandler_h
 #define SPlat_Events_GetAssetHandler_h
 
-#include "events/EventHandlerInterface.h"
+#include "events/handlers/EventHandlerInterface.h"
 
 #include <cereal/cereal.hpp>
 

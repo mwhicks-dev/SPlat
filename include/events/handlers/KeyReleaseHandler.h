@@ -1,7 +1,7 @@
 #ifndef SPlat_KeyReleaseHandler_h
 #define SPlat_KeyReleaseHandler_h
 
-#include "EventHandlerInterface.h"
+#include "events/handlers/EventHandlerInterface.h"
 
 #include <SFML/Window/Keyboard.hpp>
 

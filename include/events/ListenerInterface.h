@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_ListenerInterface_h
 #define SPlat_Events_ListenerInterface_h
 
-#include "events/EventHandlerInterface.h"
+#include "events/handlers/EventHandlerInterface.h"
 #include "Event.h"
 
 namespace SPlat {

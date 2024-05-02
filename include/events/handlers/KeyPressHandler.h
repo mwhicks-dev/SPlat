@@ -1,7 +1,7 @@
 #ifndef SPlat_KeyPressHandler_h
 #define SPlat_KeyPressHandler_h
 
-#include "EventHandlerInterface.h"
+#include "events/handlers/EventHandlerInterface.h"
 
 #include <SFML/Window/Keyboard.hpp>
 

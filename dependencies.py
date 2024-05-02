@@ -38,7 +38,7 @@ def process_individual_file(file_path: str) -> list[str]:
     return output
 
 def process_all_files() -> dict[str, str]:
-    files = get_file_paths('include') + get_file_paths('include/events') + get_file_paths('include/model') + get_file_paths('include/model/handler')
+    files = get_file_paths('include') + get_file_paths('include/events') + get_file_paths('include/events/handlers') + get_file_paths('include/model') + get_file_paths('include/model/handler')
     dependencies = {}
     for f in files:
         key = strip_file_peripheral(f)

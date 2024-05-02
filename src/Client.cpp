@@ -3,14 +3,14 @@
 #include "ClientController.h"
 #include "events/OrderedPriorityListener.h"
 #include "model/UnorderedMapObjectModel.h"
-#include "events/KeyPressHandler.h"
-#include "events/KeyReleaseHandler.h"
-#include "events/CreateCharacterHandler.h"
-#include "events/CreatePlatformHandler.h"
-#include "events/CreateMovingPlatformHandler.h"
-#include "events/GetAssetHandler.h"
-#include "events/UpdateAssetHandler.h"
-#include "events/DeleteAssetHandler.h"
+#include "events/handlers/KeyPressHandler.h"
+#include "events/handlers/KeyReleaseHandler.h"
+#include "events/handlers/CreateCharacterHandler.h"
+#include "events/handlers/CreatePlatformHandler.h"
+#include "events/handlers/CreateMovingPlatformHandler.h"
+#include "events/handlers/GetAssetHandler.h"
+#include "events/handlers/UpdateAssetHandler.h"
+#include "events/handlers/DeleteAssetHandler.h"
 
 #include <thread>
 #include <chrono>

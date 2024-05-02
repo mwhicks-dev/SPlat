@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_CreatePlatformHandler_h
 #define SPlat_Events_CreatePlatformHandler_h
 
-#include "events/EventHandlerInterface.h"
+#include "events/handlers/EventHandlerInterface.h"
 #include "model/AssetProperties.h"
 
 #include <cereal/cereal.hpp>

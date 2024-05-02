@@ -1,5 +1,5 @@
 #include "model/handler/UnorderedStandingConfig.h"
-#include "events/UpdateAssetHandler.h"
+#include "events/handlers/UpdateAssetHandler.h"
 #include "events/Command.h"
 #include "Entrypoint.h"
 #include "Event.h"

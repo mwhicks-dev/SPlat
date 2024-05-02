@@ -1,4 +1,4 @@
-#include "events/CreateCharacterHandler.h"
+#include "events/handlers/CreateCharacterHandler.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"

@@ -1,4 +1,4 @@
-#include "events/CreateMovingPlatformHandler.h"
+#include "events/handlers/CreateMovingPlatformHandler.h"
 #include "model/MovingPlatform.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"

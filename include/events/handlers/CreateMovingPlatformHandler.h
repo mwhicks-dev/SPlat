@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_CreateMovingPlatformHandler_h
 #define SPlat_Events_CreateMovingPlatformHandler_h
 
-#include "events/EventHandlerInterface.h"
+#include "events/handlers/EventHandlerInterface.h"
 #include "model/AssetProperties.h"
 #include "model/MovingPlatformProperties.h"
 

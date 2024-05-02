@@ -1,4 +1,4 @@
-#include "events/DeleteAssetHandler.h"
+#include "events/handlers/DeleteAssetHandler.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
