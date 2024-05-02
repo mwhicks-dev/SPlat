@@ -21,25 +21,24 @@ void UpdateAssetHandler::handle(std::string serialized) {
     Timeline& anchor = config.get_timing_config().get_anchor_timeline();
 
     // recreate event from details
-    SPlat::Event event = {
-        .event_time=anchor.get_time(), 
-        .command={
-            .priority=0,
-            .type=get_type(),
-            .args=serialized
-        },
-        .sender=environment.get_entrypoint_id()
-    };
+    SPlat::Event event;
+    {
+        std::stringstream ss; ss << serialized;
+        cereal::JSONInputArchive iar(ss);
+        iar(event);
+    }
+
+    Args args;
+    {
+        std::stringstream iss; iss << event.command.args;
+        cereal::JSONInputArchive iar(iss);
+        iar(args);
+    }
 
     // send to server as request
-    std::stringstream ss;
-    {
-        cereal::JSONOutputArchive oar(ss);
-        oar(event);
-    }
     Request request = {
         .content_type=Request::ContentType::Event,
-        .body=ss.str()
+        .body=serialized
     };
     ControllerInterface& ctl = entrypoint.get_controller();
     Response response = ctl.await(request);
@@ -51,12 +50,6 @@ void UpdateAssetHandler::handle(std::string serialized) {
     }
 
     // perform update client-side
-    Args args;
-    {
-        std::stringstream ssi; ssi << serialized;
-        cereal::JSONInputArchive iar(ssi);
-        iar(args);
-    }
     sf::Vector2f diff = entrypoint.get_object_model().read_asset(args.id)
         .get_asset_properties().get_position() - args.properties
         .get_position();

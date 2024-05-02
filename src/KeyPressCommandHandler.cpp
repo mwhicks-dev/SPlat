@@ -1,5 +1,6 @@
 #include "events/KeyPressCommandHandler.h"
 #include "Entrypoint.h"
+#include "Event.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -11,11 +12,17 @@ void KeyPressCommandHandler::handle(std::string serialized) {
 #ifdef DEBUG
     std::cout << "-> KeyPressCommandHandler::handle(" << serialized << ")" << std::endl;
 #endif
+    SPlat::Event event;
+    {
+        std::stringstream ss; ss << serialized;
+        cereal::JSONInputArchive iar(ss);
+        iar(event);
+    }
+
     Args args;
     {
-        std::stringstream ss;
-        ss << serialized;
-        cereal::JSONInputArchive iar(ss);
+        std::stringstream iss; iss << event.command.args;
+        cereal::JSONInputArchive iar(iss);
         iar(args);
     }
 
