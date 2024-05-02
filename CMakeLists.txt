@@ -16,12 +16,12 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-set(LA src/KeyPressHandler.cpp src/CharacterCollisionHandler.cpp src/UpdateAssetHandler.cpp src/ClientController.cpp src/DeleteAssetHandler.cpp)
-set(LB src/UnorderedMapObjectModel.cpp src/GetAssetHandler.cpp src/MovingPlatformCollisionHandler.cpp src/Entrypoint.cpp src/ClientCreateMovingPlatformHandler.cpp)
-set(LC src/UnorderedStandingConfig.cpp src/OrderedPriorityListener.cpp src/PlatformCollisionHandler.cpp src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp)
-set(LD src/Environment.cpp src/KeyReleaseHandler.cpp src/Platform.cpp src/AssetFactoryConfig.cpp src/Character.cpp)
-set(LE src/ClientCreatePlatformHandler.cpp src/MovingPlatformUpdateHandler.cpp src/FauxServerController.cpp src/TimingConfig.cpp src/ClientCreateCharacterHandler.cpp)
-set(LF src/ClientConfig.cpp src/MovingPlatform.cpp src/AbstractAssetFactory.cpp)
+set(LA src/KeyPressHandler.cpp src/CharacterCollisionHandler.cpp src/ClientController.cpp src/DeleteAssetHandler.cpp src/UnorderedMapObjectModel.cpp)
+set(LB src/GetAssetHandler.cpp src/MovingPlatformCollisionHandler.cpp src/Entrypoint.cpp src/ClientCreateMovingPlatformHandler.cpp src/UnorderedStandingConfig.cpp)
+set(LC src/OrderedPriorityListener.cpp src/PlatformCollisionHandler.cpp src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp src/Environment.cpp)
+set(LD src/KeyReleaseHandler.cpp src/Platform.cpp src/AssetFactoryConfig.cpp src/Character.cpp src/ClientCreatePlatformHandler.cpp)
+set(LE src/MovingPlatformUpdateHandler.cpp src/FauxServerController.cpp src/TimingConfig.cpp src/ClientCreateCharacterHandler.cpp src/ClientConfig.cpp)
+set(LF src/MovingPlatform.cpp src/ClientUpdateAssetHandler.cpp src/AbstractAssetFactory.cpp)
 set(LG src/CharacterFactory.cpp src/Client.cpp src/PlatformFactory.cpp src/MovingPlatformFactory.cpp)
 set(ALL_IMPLEMENTATIONS ${LA} ${LB} ${LC} ${LD} ${LE} ${LF} ${LG})
 

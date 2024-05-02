@@ -1,6 +1,6 @@
 #include "model/handler/CharacterUpdateHandler.h"
 #include "events/Command.h"
-#include "events/handlers/UpdateAssetHandler.h"
+#include "events/handlers/ClientUpdateAssetHandler.h"
 #include "Entrypoint.h"
 #include "Event.h"
 
@@ -55,7 +55,7 @@ void CharacterUpdateHandler::update() {
     asset_properties.set_position(asset_properties.get_position() + velocity * dt);
 
     // raise update event for persistence
-    Events::UpdateAssetHandler::Args args = {
+    Events::ClientUpdateAssetHandler::Args args = {
         .id=asset_properties.get_id(),
         .properties=asset_properties
     };
@@ -66,7 +66,7 @@ void CharacterUpdateHandler::update() {
     }
     Events::Command cmd = {
         .priority=0,
-        .type=Events::UpdateAssetHandler::get_type(),
+        .type=Events::ClientUpdateAssetHandler::get_type(),
         .args=ss.str(),
     };
     Event event = {

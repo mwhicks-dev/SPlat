@@ -9,7 +9,7 @@
 #include "events/handlers/ClientCreatePlatformHandler.h"
 #include "events/handlers/ClientCreateMovingPlatformHandler.h"
 #include "events/handlers/GetAssetHandler.h"
-#include "events/handlers/UpdateAssetHandler.h"
+#include "events/handlers/ClientUpdateAssetHandler.h"
 #include "events/handlers/DeleteAssetHandler.h"
 
 #include <thread>
@@ -101,8 +101,8 @@ Client::Client() : config(*new ClientConfig()),
         ::get_type(), *new Events::ClientCreateMovingPlatformHandler());
     background_listener.set_handler(Events::GetAssetHandler::get_type(), *new
         Events::GetAssetHandler());
-    background_listener.set_handler(Events::UpdateAssetHandler::get_type(), 
-        *new Events::UpdateAssetHandler());
+    background_listener.set_handler(Events::ClientUpdateAssetHandler::get_type(), 
+        *new Events::ClientUpdateAssetHandler());
     background_listener.set_handler(Events::DeleteAssetHandler::get_type(), 
         *new Events::DeleteAssetHandler());
 }

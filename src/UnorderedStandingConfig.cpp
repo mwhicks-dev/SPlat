@@ -1,5 +1,5 @@
 #include "model/handler/UnorderedStandingConfig.h"
-#include "events/handlers/UpdateAssetHandler.h"
+#include "events/handlers/ClientUpdateAssetHandler.h"
 #include "events/Command.h"
 #include "Entrypoint.h"
 #include "Event.h"
@@ -90,7 +90,7 @@ void UnorderedStandingConfig::push_update_to_children(size_t parent,
 
             // raise event for persistence
             // raise update event for persistence
-            Events::UpdateAssetHandler::Args args = {
+            Events::ClientUpdateAssetHandler::Args args = {
                 .id=child,
                 .properties=child_asset_properties
             };
@@ -101,7 +101,7 @@ void UnorderedStandingConfig::push_update_to_children(size_t parent,
             }
             Events::Command cmd = {
                 .priority=0,
-                .type=Events::UpdateAssetHandler::get_type(),
+                .type=Events::ClientUpdateAssetHandler::get_type(),
                 .args=ss.str(),
             };
             Event event = {
