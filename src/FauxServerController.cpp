@@ -46,6 +46,8 @@ void FauxServerController::run_request_thread() {
             iar(request);
         }
 
+        push_outgoing_request(request);
+
         // generate response and serialize
         Response response = await(request);
         std::stringstream ss;
@@ -114,4 +116,54 @@ Response FauxServerController::await(Request request) {
 void FauxServerController::run() {
     std::thread t(&FauxServerController::run_request_thread, this);
     t.detach();
+
+    std::thread t2(&FauxServerController::run_publisher_thread, this);
+    t2.detach();
+}
+
+bool FauxServerController::has_outgoing_request() {
+    m.lock();
+    auto local = !requests.empty();
+    m.unlock();
+
+    return local;
+}
+
+Request FauxServerController::pop_outgoing_request() {
+    m.lock();
+    auto local = requests.front(); requests.pop();
+    m.unlock();
+
+    return local;
+}
+
+void FauxServerController::run_publisher_thread() {
+    zmq::context_t context(2);
+    zmq::socket_t socket(context, zmq::socket_type::pub);
+    socket.bind("tcp://*:9001");
+
+    EnvironmentInterface& environment = Entrypoint::get_instance().get_config()
+        .get_environment();
+    
+    while (environment.get_running()) {
+        if (!has_outgoing_request()) continue;
+
+        Request request = pop_outgoing_request();
+
+        std::stringstream request_stringstream; 
+        request_stringstream << "SPlat: ";
+        {
+            cereal::JSONOutputArchive oar(request_stringstream);
+            oar(request);
+        }
+
+        zmq::message_t request_message(request_stringstream.str());
+        socket.send(request_message, zmq::send_flags::none);
+    }
+}
+
+void FauxServerController::push_outgoing_request(Request request) {
+    m.lock();
+    requests.push(request);
+    m.unlock();
 }

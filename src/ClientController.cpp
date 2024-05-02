@@ -158,7 +158,8 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
         // deserialize request and push
         Request req;
         {
-            std::stringstream ss; ss << request.to_string();
+            std::stringstream ss; ss << request.to_string()
+                .substr(strlen("SPlat: "));
             cereal::JSONInputArchive iar(ss);
             iar(req);
         }
