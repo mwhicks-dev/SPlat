@@ -21,6 +21,8 @@ namespace SPlat {
 
         void set_framerate_limit(long) override;
 
+        void display_timeline_loop();
+
     public:
 
         TimingConfig();

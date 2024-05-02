@@ -1,4 +1,5 @@
 #include "TimingConfig.h"
+#include "Client.h"
 
 #include <chrono>
 #include <thread>
@@ -25,6 +26,8 @@ display_timeline(*new LocalTimeline(anchor_timeline, -1)) {
     time_t tf = get_anchor_timeline().get_time();
     set_anchor_steps_per_second(tf - t0);
     display_timeline.set_tic(get_anchor_steps_per_second());
+    // std::thread t(&TimingConfig::display_timeline_loop, this);
+    // t.detach();
 }
 
 void TimingConfig::set_anchor_steps_per_second(
@@ -93,4 +96,27 @@ void TimingConfig::update_framerate_limit(long framerate_limit) {
 #ifdef DEBUG
     std::cout << "<- TimingConfig::update_framerate_limit(" << std::endl;
 #endif
+}
+
+void TimingConfig::display_timeline_loop() {
+    EnvironmentInterface& environment 
+        = Entrypoint::get_instance().get_config().get_environment();
+    Timeline& anchor_timeline = get_anchor_timeline();
+    LocalTimeline& display_timeline = get_display_timeline();
+
+    try {
+        Client::get_instance();  // see if running client or not
+    } catch (std::exception&) { return; }
+
+    time_t initial = anchor_timeline.get_time();
+
+    time_t seconds_passed = 0;
+    while (environment.get_running()) {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        time_t current = anchor_timeline.get_time();
+        seconds_passed += 1;
+        time_t average = (current - initial) / seconds_passed;
+        set_anchor_steps_per_second(average);
+        display_timeline.set_tic(get_anchor_steps_per_second() / get_framerate_limit());
+    }
 }
