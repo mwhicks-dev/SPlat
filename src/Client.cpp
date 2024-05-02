@@ -41,7 +41,13 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
         }
         cmd.args = ss.str();
         cmd.priority = 0;
-        foreground_listener.push_command(cmd);
+        Event event = {
+            .event_time=0,
+            .command=cmd,
+            .client_side=true,
+            .sender=get_config().get_environment().get_entrypoint_id()
+        };
+        foreground_listener.push_event(event);
 
     }
     if (!sf::Keyboard::isKeyPressed(key)
@@ -56,7 +62,13 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
         }
         cmd.args = ss.str();
         cmd.priority = 0;
-        foreground_listener.push_command(cmd);
+        Event event = {
+            .event_time=0,
+            .command=cmd,
+            .client_side=true,
+            .sender=get_config().get_environment().get_entrypoint_id()
+        };
+        foreground_listener.push_event(event);
     }
 #ifdef DEBUG
     std::cout << "<- Client::handle_key_event" << std::endl;
@@ -110,6 +122,12 @@ void Client::start() {
 #endif
 
     ctl.run();
+
+    EnvironmentInterface& environment = get_config().get_environment();
+    size_t id;
+    do {
+        id = environment.get_entrypoint_id();
+    } while (id == 0);
 
     foreground_listener.run();
     background_listener.run();

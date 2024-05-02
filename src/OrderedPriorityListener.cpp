@@ -1,6 +1,9 @@
 #include "events/OrderedPriorityListener.h"
 #include "Entrypoint.h"
 
+#include <cereal/archives/json.hpp>
+
+#include <sstream>
 #include <thread>
 
 #ifdef DEBUG
@@ -9,10 +12,10 @@
 
 using namespace SPlat::Events;
 
-Command OrderedPriorityListener::poll_command() {
+SPlat::Event OrderedPriorityListener::poll_event() {
     m.lock();
-    auto local = command_queue.top();
-    command_queue.pop();
+    auto local = event_queue.top();
+    event_queue.pop();
     m.unlock();
 
     return local;
@@ -33,7 +36,7 @@ CommandHandlerInterface* OrderedPriorityListener::get_handler(std::string type) 
 
 bool OrderedPriorityListener::command_available() {
     m.lock();
-    auto local = !command_queue.empty();
+    auto local = !event_queue.empty();
     m.unlock();
 
     return local;
@@ -47,16 +50,21 @@ void OrderedPriorityListener::listener_loop() {
 
     while (env.get_running()) {
         if (command_available()) {
-            Command curr = poll_command();
+            Event curr = poll_event();
+            std::stringstream ss;
+            {
+                cereal::JSONOutputArchive oar(ss);
+                oar(curr);
+            }
             try {
-                CommandHandlerInterface* handler = get_handler(curr.type);
-                handler->handle(curr.args);
+                CommandHandlerInterface* handler = get_handler(curr.command.type);
+                handler->handle(ss.str());
             } catch (std::exception& e) {
                 std::cout << "Warning: Listener was unable to process the following event: " << std::endl;
-                std::cout << "  type: " << curr.type << std::endl;
+                std::cout << "  type: " << curr.command.type << std::endl;
                 std::cout << "  args: " << std::endl;
                 std::cout << "```" << std::endl;
-                std::cout << curr.args << std::endl;
+                std::cout << curr.command.args << std::endl;
                 std::cout << "```" << std::endl;
                 std::cout << "raised exception " << e.what() << std::endl;
             }
@@ -82,12 +90,12 @@ void OrderedPriorityListener::set_handler(std::string type, CommandHandlerInterf
 #endif
 }
 
-void OrderedPriorityListener::push_command(Command cmd) {
+void OrderedPriorityListener::push_event(Event event) {
 #ifdef DEBUG
     std::cout << "-> OrderedPriorityListener::push_command(Command)" << std::endl;
 #endif
     m.lock();
-    command_queue.push(cmd);
+    event_queue.push(event);
     m.unlock();
 #ifdef DEBUG
     std::cout << "<- OrderedPriorityListener::push_command(Command)" << std::endl;
@@ -105,12 +113,12 @@ void OrderedPriorityListener::run() {
 #endif
 }
 
-void OrderedPriorityListener::await(Command cmd) {
+void OrderedPriorityListener::await(Event event) {
 #ifdef DEBUG
     std::cout << "-> OrderedPriorityListener::await(Command)" << std::endl;
 #endif
-    CommandHandlerInterface * handler = get_handler(cmd.type);
-    handler->handle(cmd.args);
+    CommandHandlerInterface * handler = get_handler(event.command.type);
+    handler->handle(event.command.args);
 #ifdef DEBUG
     std::cout << "<- OrderedPriorityListener::await" << std::endl;
 #endif

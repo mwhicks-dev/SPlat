@@ -15,11 +15,11 @@ namespace SPlat {
 
             std::mutex m;
 
-            std::priority_queue<Command> command_queue;
+            std::priority_queue<Event> event_queue;
 
             std::map<std::string, CommandHandlerInterface*>& handlers;
 
-            Command poll_command();
+            Event poll_event();
 
             CommandHandlerInterface* get_handler(std::string);
 
@@ -33,11 +33,11 @@ namespace SPlat {
 
             void set_handler(std::string, CommandHandlerInterface&) override;
 
-            void push_command(Command) override;
+            void push_event(Event) override;
 
             void run() override;
 
-            void await(Command) override;
+            void await(Event) override;
 
         };
 

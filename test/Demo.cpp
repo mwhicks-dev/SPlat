@@ -21,9 +21,16 @@ class KeyPressOverride : public SPlat::Events::KeyPressCommandHandler {
 public:
 
     void handle(std::string serialized) override {
-        Args args;
+        Event event;
         {
             std::stringstream ss; ss << serialized;
+            cereal::JSONInputArchive iar(ss);
+            iar(event);
+        }
+
+        Args args;
+        {
+            std::stringstream ss; ss << event.command.args;
             cereal::JSONInputArchive iar(ss);
             iar(args);
         }
@@ -69,9 +76,16 @@ class KeyReleaseOverride : public Events::KeyReleaseCommandHandler {
 public:
 
     void handle(std::string serialized) override {
-        Args args;
+        Event event;
         {
             std::stringstream ss; ss << serialized;
+            cereal::JSONInputArchive iar(ss);
+            iar(event);
+        }
+
+        Args args;
+        {
+            std::stringstream ss; ss << event.command.args;
             cereal::JSONInputArchive iar(ss);
             iar(args);
         }
@@ -132,7 +146,13 @@ int main() {
             .type=Events::CreateCharacterHandler::get_type(),
             .args=ss.str()
         };
-        cli.get_background_listener().push_command(cmd);
+        Event event = {
+            .event_time=0,
+            .command=cmd,
+            .client_side=false,
+            .sender=1,
+        };
+        cli.get_background_listener().push_event(event);
     }
     {
         Model::AssetProperties properties(
@@ -153,7 +173,13 @@ int main() {
             .type=Events::CreatePlatformHandler::get_type(),
             .args=ss.str()
         };
-        cli.get_background_listener().push_command(cmd);
+        Event event = {
+            .event_time=0,
+            .command=cmd,
+            .client_side=false,
+            .sender=1,
+        };
+        cli.get_background_listener().push_event(event);
     }
     {
         Model::AssetProperties properties(
@@ -192,7 +218,13 @@ int main() {
             .type=Events::CreateMovingPlatformHandler::get_type(),
             .args=ss.str()
         };
-        cli.get_background_listener().push_command(cmd);
+        Event event = {
+            .event_time=0,
+            .command=cmd,
+            .client_side=false,
+            .sender=1,
+        };
+        cli.get_background_listener().push_event(event);
     }
 
     std::this_thread::sleep_for(std::chrono::seconds(1));

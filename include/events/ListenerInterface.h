@@ -1,8 +1,8 @@
 #ifndef SPlat_Events_ListenerInterface_h
 #define SPlat_Events_ListenerInterface_h
 
-#include "events/Command.h"
 #include "events/CommandHandlerInterface.h"
+#include "Event.h"
 
 namespace SPlat {
 
@@ -14,11 +14,11 @@ namespace SPlat {
 
             virtual void set_handler(std::string, CommandHandlerInterface&) = 0;
 
-            virtual void push_command(Command) = 0;
+            virtual void push_event(Event) = 0;
 
             virtual void run() = 0;
 
-            virtual void await(Command) = 0;
+            virtual void await(Event) = 0;
 
         };
 
