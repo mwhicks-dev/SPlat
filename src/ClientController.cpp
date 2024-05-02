@@ -56,7 +56,7 @@ void ClientController::run_request_thread() {
     zmq::context_t context(1);
     zmq::socket_t socket(context, zmq::socket_type::req);
 
-    socket.connect(environment.get_req_rep_addres());  // Assumed set by this point; handle in main if not
+    socket.connect(environment.get_req_rep_addres());
 
     while (environment.get_running()) {
         if (!has_outgoing_request()) continue;
@@ -68,12 +68,9 @@ void ClientController::run_request_thread() {
             cereal::JSONOutputArchive oar(ss);
             oar(curr);
         }
-        std::string serialized = ss.str();
-        ss.clear(); ss.str("");
 
         // convert serialized string to zmq::message_t
-        zmq::message_t request(serialized.size());
-        memcpy(request.data(), serialized.c_str(), serialized.size());
+        zmq::message_t request(ss.str());
         socket.send(request, zmq::send_flags::none);
 
         // get reply string
@@ -82,6 +79,7 @@ void ClientController::run_request_thread() {
         std::string serialized_reply = reply.to_string();
 
         // deserialize string into response
+        ss.clear(); ss.str("");
         Response resp;
         {
             std::stringstream ss; ss << serialized_reply;
@@ -92,6 +90,43 @@ void ClientController::run_request_thread() {
         // send string to cousin thread
         push_incoming_response(resp);
     }
+
+    std::stringstream ss;
+    // DisconnectDto disconnect_dto = {
+    //     .id=environment.get_entrypoint_id()
+    // };
+    // {
+    //     cereal::JSONOutputArchive oar(ss);
+    //     oar(disconnect_dto);
+    // };
+    Request disconnect_request = {
+        .content_type=Request::ContentType::Disconnect,
+        // .body=ss.str(),
+    };
+    // ss.clear(); ss.str("");
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(disconnect_request);
+    }
+
+    size_t status;
+    do {
+        zmq::message_t disconnect_request_message(ss.str());
+        socket.send(disconnect_request_message, zmq::send_flags::none);
+
+        zmq::message_t disconnect_response_message;
+        socket.recv(disconnect_response_message, zmq::recv_flags::none);
+
+        Response disconnect_response;
+        {
+            std::stringstream disconnect_response_ss; 
+            disconnect_response_ss << disconnect_response_message.to_string();
+            cereal::JSONInputArchive iar(disconnect_response_ss);
+            iar(disconnect_response);
+        }
+
+        status = disconnect_response.status;
+    } while (status != 200);
 #ifdef DEBUG
     std::cout << "<- ClientController::run_request_thread" << std::endl;
 #endif

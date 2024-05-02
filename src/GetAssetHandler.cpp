@@ -40,22 +40,15 @@ void GetAssetHandler::handle(std::string serialized) {
         throw std::logic_error("");  // TODO create some TCPException class
     }
     
-    SPlat::Event server_event;
+    Model::AssetProperties asset_properties;
     {
         std::stringstream iss; iss << response.body;
         cereal::JSONInputArchive iar(iss);
-        iar(server_event);
-    }
-
-    CreatePlatformHandler::Args args;  // all creators' properties same so we can get away with this
-    {
-        std::stringstream iss; iss << server_event.command.args;
-        cereal::JSONInputArchive iar(iss);
-        iar(args);
+        iar(asset_properties);
     }
 
     config.get_asset_factory_config().get_platform_factory()
-        .create_asset(args.properties);
+        .create_asset(asset_properties);
 #ifdef DEBUG
     std::cout << "<- GetAssetHandler::handle" << std::endl;
 #endif
