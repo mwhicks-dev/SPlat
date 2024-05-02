@@ -53,23 +53,18 @@ void ClientController::run_request_thread() {
     EnvironmentInterface& environment 
         = Client::get_instance().get_config().get_environment();
 
+    // process events during runtime
     while (environment.get_running()) {
         if (!has_outgoing_request()) continue;
 
-        // get request string
         Request curr = pop_outgoing_request();
-        std::stringstream ss;
-        {
-            cereal::JSONOutputArchive oar(ss);
-            oar(curr);
-        }
-
         Response current_response = await(curr);
 
         // send string to cousin thread
         push_incoming_response(current_response);
     }
 
+    // disconnect from server
     std::stringstream ss;
     DisconnectDto disconnect_dto = {
         .entrypoint_id=environment.get_entrypoint_id(),
