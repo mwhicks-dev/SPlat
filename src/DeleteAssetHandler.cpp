@@ -32,17 +32,19 @@ void DeleteAssetHandler::handle(std::string serialized) {
     }
 
     // send to server as request
-    Request request = {
-        .content_type=Request::ContentType::Event,
-        .body=serialized
-    };
-    ControllerInterface& ctl = entrypoint.get_controller();
-    Response response = ctl.await(request);
+    if (event.sender == environment.get_entrypoint_id()) {
+        Request request = {
+            .content_type=Request::ContentType::Event,
+            .body=serialized
+        };
+        ControllerInterface& ctl = entrypoint.get_controller();
+        Response response = ctl.await(request);
 
-    if (response.status != 200) {
-        std::cerr << "Could not update asset (" << response.status << "):" << std::endl;
-        std::cerr << response.body << std::endl;
-        throw std::logic_error("");  // TODO create some TCPException class
+        if (response.status != 200) {
+            std::cerr << "Could not update asset (" << response.status << "):" << std::endl;
+            std::cerr << response.body << std::endl;
+            throw std::logic_error("");  // TODO create some TCPException class
+        }
     }
     
     entrypoint.get_object_model().delete_asset(args.id);
