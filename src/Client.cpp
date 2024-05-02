@@ -10,7 +10,7 @@
 #include "events/handlers/ClientCreateMovingPlatformHandler.h"
 #include "events/handlers/GetAssetHandler.h"
 #include "events/handlers/ClientUpdateAssetHandler.h"
-#include "events/handlers/DeleteAssetHandler.h"
+#include "events/handlers/ClientDeleteAssetHandler.h"
 
 #include <thread>
 #include <chrono>
@@ -103,8 +103,8 @@ Client::Client() : config(*new ClientConfig()),
         Events::GetAssetHandler());
     background_listener.set_handler(Events::ClientUpdateAssetHandler::get_type(), 
         *new Events::ClientUpdateAssetHandler());
-    background_listener.set_handler(Events::DeleteAssetHandler::get_type(), 
-        *new Events::DeleteAssetHandler());
+    background_listener.set_handler(Events::ClientDeleteAssetHandler::get_type(), 
+        *new Events::ClientDeleteAssetHandler());
 }
 
 bool compare(SPlat::Model::Moving* lhs, SPlat::Model::Moving* rhs) {

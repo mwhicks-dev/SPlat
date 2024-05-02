@@ -16,7 +16,7 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-set(LA src/KeyPressHandler.cpp src/CharacterCollisionHandler.cpp src/ClientController.cpp src/DeleteAssetHandler.cpp src/UnorderedMapObjectModel.cpp)
+set(LA src/KeyPressHandler.cpp src/CharacterCollisionHandler.cpp src/ClientController.cpp src/ClientDeleteAssetHandler.cpp src/UnorderedMapObjectModel.cpp)
 set(LB src/GetAssetHandler.cpp src/MovingPlatformCollisionHandler.cpp src/Entrypoint.cpp src/ClientCreateMovingPlatformHandler.cpp src/UnorderedStandingConfig.cpp)
 set(LC src/OrderedPriorityListener.cpp src/PlatformCollisionHandler.cpp src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp src/Environment.cpp)
 set(LD src/KeyReleaseHandler.cpp src/Platform.cpp src/AssetFactoryConfig.cpp src/Character.cpp src/ClientCreatePlatformHandler.cpp)
