@@ -1,17 +1,19 @@
 #ifndef SPlat_Events_ServerUpdateAssetHandler_h
 #define SPlat_Events_ServerUpdateAssetHandler_h
 
-#include "events/handlers/EventHandlerInterface.h"
+#include "events/handlers/UpdateAssetHandler.h"
 
 namespace SPlat {
 
     namespace Events {
 
-        class ServerUpdateAssetHandler : public EventHandlerInterface {
+        class ServerUpdateAssetHandler : public UpdateAssetHandler {
 
         public:
 
             void handle(std::string);
+
+            static std::string get_type() { return UpdateAssetHandler::get_type(); }
 
         };
 

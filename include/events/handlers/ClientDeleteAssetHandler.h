@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_ClientDeleteAssetHandler_h
 #define SPlat_Events_ClientDeleteAssetHandler_h
 
-#include "events/handlers/EventHandlerInterface.h"
+#include "events/handlers/DeleteAssetHandler.h"
 
 #include <cereal/cereal.hpp>
 
@@ -9,24 +9,13 @@ namespace SPlat {
 
     namespace Events {
 
-        class ClientDeleteAssetHandler : public EventHandlerInterface {
+        class ClientDeleteAssetHandler : public DeleteAssetHandler {
 
         public:
 
-            struct Args {
-
-                size_t id;
-
-                template <class Archive>
-                void serialize(Archive& ar) {
-                    ar(id);
-                }
-
-            };
-
             void handle(std::string) override;
 
-            static std::string get_type() { return "delete_asset"; }
+            static std::string get_type() { return DeleteAssetHandler::get_type(); }
 
         };
 

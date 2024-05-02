@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_ClientUpdateAssetHandler_h
 #define SPlat_Events_ClientUpdateAssetHandler_h
 
-#include "events/handlers/EventHandlerInterface.h"
+#include "events/handlers/UpdateAssetHandler.h"
 #include "model/AssetProperties.h"
 
 #include <cereal/cereal.hpp>
@@ -10,26 +10,13 @@ namespace SPlat {
 
     namespace Events {
 
-        class ClientUpdateAssetHandler : public EventHandlerInterface {
+        class ClientUpdateAssetHandler : public UpdateAssetHandler {
 
         public:
 
-            struct Args {
-
-                size_t id;
-
-                SPlat::Model::AssetProperties properties;
-
-                template <class Archive>
-                void serialize(Archive& ar) {
-                    ar(id, properties);
-                }
-
-            };
-
             void handle(std::string) override;
 
-            static std::string get_type() { return "update_asset"; }
+            static std::string get_type() { return UpdateAssetHandler::get_type(); }
 
         };
 

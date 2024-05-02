@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_ClientCreatePlatformHandler_h
 #define SPlat_Events_ClientCreatePlatformHandler_h
 
-#include "events/handlers/EventHandlerInterface.h"
+#include "events/handlers/CreatePlatformHandler.h"
 #include "model/AssetProperties.h"
 
 #include <cereal/cereal.hpp>
@@ -10,24 +10,13 @@ namespace SPlat {
 
     namespace Events {
 
-        class ClientCreatePlatformHandler : public EventHandlerInterface {
+        class ClientCreatePlatformHandler : public CreatePlatformHandler {
 
         public:
 
-            struct Args {
-
-                SPlat::Model::AssetProperties properties;
-
-                template <class Archive>
-                void serialize(Archive& ar) {
-                    ar(properties);
-                }
-
-            };
-
             void handle(std::string) override;
 
-            static std::string get_type() { return "create_platform"; }
+            static std::string get_type() { return CreatePlatformHandler::get_type(); }
 
         };
 
