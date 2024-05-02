@@ -123,7 +123,9 @@ void OrderedPriorityListener::await(Event event) {
         cereal::JSONOutputArchive oar(event_ss);
         oar(event);
     }
+    m.lock();
     handler->handle(event_ss.str());
+    m.unlock();
 #ifdef DEBUG
     std::cout << "<- OrderedPriorityListener::await" << std::endl;
 #endif
