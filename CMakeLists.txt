@@ -37,3 +37,9 @@ target_link_libraries(asset_factory_test gtest gtest_main sfml-system sfml-graph
 
 add_executable(demo test/Demo.cpp ${ALL_IMPLEMENTATIONS})
 target_link_libraries(demo pthread zmq sfml-system sfml-graphics sfml-window)
+
+add_executable(client test/TestClient.cpp ${ALL_IMPLEMENTATIONS})
+target_link_libraries(client pthread zmq sfml-system sfml-graphics sfml-window)
+
+add_executable(server test/TestServer.cpp ${ALL_IMPLEMENTATIONS})
+target_link_libraries(server pthread zmq sfml-system sfml-graphics sfml-window)
