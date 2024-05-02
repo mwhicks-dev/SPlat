@@ -1,4 +1,4 @@
-#include "events/handlers/GetAssetHandler.h"
+#include "events/handlers/ClientReadAssetHandler.h"
 #include "events/handlers/ClientUpdateAssetHandler.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
@@ -67,7 +67,7 @@ void ClientUpdateAssetHandler::handle(std::string serialized) {
             asset_properties.set_size(args.properties.get_size());
         } catch (std::exception&) {
             // retrieve asset from server if cannot find
-            GetAssetHandler::Args get_asset_args = {
+            ClientReadAssetHandler::Args get_asset_args = {
                 .id=args.id
             };
             std::stringstream get_asset_args_ss;
@@ -77,7 +77,7 @@ void ClientUpdateAssetHandler::handle(std::string serialized) {
             }
             Command get_asset_command = {
                 .priority=-2,
-                .type=GetAssetHandler::get_type(),
+                .type=ClientReadAssetHandler::get_type(),
                 .args=get_asset_args_ss.str()
             };
             Event get_asset_event = {

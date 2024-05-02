@@ -1,4 +1,4 @@
-#include "events/handlers/GetAssetHandler.h"
+#include "events/handlers/ClientReadAssetHandler.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
@@ -7,9 +7,9 @@
 
 using namespace SPlat::Events;
 
-void GetAssetHandler::handle(std::string serialized) {
+void ClientReadAssetHandler::handle(std::string serialized) {
 #ifdef DEBUG
-    std::cout << "-> GetAssetHandler::handle(" << serialized << ")" << std::endl;
+    std::cout << "-> ClientReadAssetHandler::handle(" << serialized << ")" << std::endl;
 #endif
     /// used to query an asset for the first time; server returns creator
     Entrypoint& entrypoint = Entrypoint::get_instance();
@@ -49,6 +49,6 @@ void GetAssetHandler::handle(std::string serialized) {
     config.get_asset_factory_config().get_platform_factory()
         .create_asset(asset_properties);
 #ifdef DEBUG
-    std::cout << "<- GetAssetHandler::handle" << std::endl;
+    std::cout << "<- ClientReadAssetHandler::handle" << std::endl;
 #endif
 }

@@ -6,6 +6,7 @@
 #include "model/MovingPlatformProperties.h"
 
 #include <cereal/cereal.hpp>
+#include <cereal/types/vector.hpp>
 
 namespace SPlat {
 

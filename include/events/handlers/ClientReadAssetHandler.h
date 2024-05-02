@@ -1,5 +1,5 @@
-#ifndef SPlat_Events_GetAssetHandler_h
-#define SPlat_Events_GetAssetHandler_h
+#ifndef SPlat_Events_ClientReadAssetHandler_h
+#define SPlat_Events_ClientReadAssetHandler_h
 
 #include "events/handlers/EventHandlerInterface.h"
 
@@ -9,7 +9,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class GetAssetHandler : public EventHandlerInterface {
+        class ClientReadAssetHandler : public EventHandlerInterface {
 
         public:
 

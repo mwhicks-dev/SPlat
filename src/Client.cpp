@@ -8,7 +8,7 @@
 #include "events/handlers/ClientCreateCharacterHandler.h"
 #include "events/handlers/ClientCreatePlatformHandler.h"
 #include "events/handlers/ClientCreateMovingPlatformHandler.h"
-#include "events/handlers/GetAssetHandler.h"
+#include "events/handlers/ClientReadAssetHandler.h"
 #include "events/handlers/ClientUpdateAssetHandler.h"
 #include "events/handlers/ClientDeleteAssetHandler.h"
 
@@ -99,8 +99,8 @@ Client::Client() : config(*new ClientConfig()),
         *new Events::ClientCreatePlatformHandler());
     background_listener.set_handler(Events::ClientCreateMovingPlatformHandler
         ::get_type(), *new Events::ClientCreateMovingPlatformHandler());
-    background_listener.set_handler(Events::GetAssetHandler::get_type(), *new
-        Events::GetAssetHandler());
+    background_listener.set_handler(Events::ClientReadAssetHandler::get_type(), *new
+        Events::ClientReadAssetHandler());
     background_listener.set_handler(Events::ClientUpdateAssetHandler::get_type(), 
         *new Events::ClientUpdateAssetHandler());
     background_listener.set_handler(Events::ClientDeleteAssetHandler::get_type(), 
