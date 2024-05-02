@@ -62,9 +62,11 @@ void ClientUpdateAssetHandler::handle(std::string serialized) {
             // get asset from GOM
             Model::Asset& asset = entrypoint.get_object_model().read_asset(args.id);
             Model::AssetProperties& asset_properties = asset.get_asset_properties();
+            sf::Vector2f diff = args.properties.get_position() - asset_properties.get_position();
             asset_properties.set_fill_color(args.properties.get_fill_color());
             asset_properties.set_position(args.properties.get_position());
             asset_properties.set_size(args.properties.get_size());
+            config.get_environment().get_standing_config().push_update_to_children(args.id, diff);
         } catch (std::exception&) {
             // retrieve asset from server if cannot find
             ClientReadAssetHandler::Args get_asset_args = {
