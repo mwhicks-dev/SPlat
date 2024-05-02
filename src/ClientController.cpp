@@ -131,9 +131,9 @@ bool preprocess_event(Event event) {
     return true;
 }
 
-void ClientController::run_subscriber_thread(zmq::context_t* context) {
+void ClientController::run_subscriber_thread() {
 #ifdef DEBUG
-    std::cout << "-> ClientController::run_subscriber_thread(zmq::context_t*)" << std::endl;
+    std::cout << "-> ClientController::run_subscriber_thread()" << std::endl;
 #endif
     // prepare environment
     Client& client = Client::get_instance();
@@ -144,7 +144,8 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
     const char* filter = "SPlat: ";
 
     // prepare context, socket, and filter
-    zmq::socket_t socket(*context, zmq::socket_type::sub);
+    zmq::context_t context(2);
+    zmq::socket_t socket(context, zmq::socket_type::sub);
     socket.connect(environment.get_pub_sub_addres());
     socket.set(zmq::sockopt::subscribe, filter);
 
@@ -188,6 +189,9 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
             }
         }
     }
+
+    context.close();
+    socket.close();
 #ifdef DEBUG
     std::cout << "<- ClientController::run_subscriber_thread" << std::endl;
 #endif
@@ -256,9 +260,7 @@ void ClientController::run() {
     std::thread response_thread(&ClientController::run_response_thread, this);
     
     // start subscriber thread
-    zmq::context_t * subscriber_context = new zmq::context_t(2);
-    std::thread subscriber_thread(&ClientController::run_subscriber_thread, 
-        this, subscriber_context);
+    std::thread subscriber_thread(&ClientController::run_subscriber_thread, this);
 
     // detach
     request_thread.detach();
@@ -270,8 +272,13 @@ void ClientController::run() {
 }
 
 Response ClientController::await(Request request) {
-    zmq::context_t context(3);
+    zmq::context_t context(1);
     zmq::socket_t socket(context, zmq::socket_type::req);
+    
+    timeval retry_time = {
+        .tv_sec=3,
+        .tv_usec=0
+    };
     
     EnvironmentInterface& environment = Client::get_instance().get_config().get_environment();
 

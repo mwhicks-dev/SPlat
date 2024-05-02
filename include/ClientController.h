@@ -28,7 +28,7 @@ namespace SPlat {
 
         void run_request_thread();
 
-        void run_subscriber_thread(zmq::context_t*);
+        void run_subscriber_thread();
 
         void run_response_thread();
         

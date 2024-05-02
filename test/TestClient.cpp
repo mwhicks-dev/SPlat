@@ -128,6 +128,8 @@ int main() {
 
     while (cli.get_config().get_environment().get_entrypoint_id() == 0) {}
 
+    std::cout << "Hit!" << std::endl;
+    
     {
         Model::AssetProperties properties(
             sf::Vector2f(100, 100),  // position

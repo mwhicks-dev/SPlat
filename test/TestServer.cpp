@@ -3,12 +3,19 @@
 #include "Server.h"
 
 #include <thread>
+#include <csignal>
 
 #include <cereal/archives/json.hpp>
 
 using namespace SPlat;
 
+void sigint_handler(int f) {
+    Entrypoint::get_instance().get_config().get_environment().set_running(false);
+}
+
 int main() {
+    signal(SIGINT, sigint_handler);
+
     Server& server = server.get_instance();
     ConfigInterface& conf = server.get_config();
     EnvironmentInterface& env = conf.get_environment();
@@ -45,7 +52,7 @@ int main() {
     }
     {
         Model::AssetProperties properties(
-            sf::Vector2f(200, 300),  // position
+            sf::Vector2f(400, 300),  // position
             sf::Vector2f(150, 25),  // size
             sf::Color::White  // fill_color
         );

@@ -176,7 +176,7 @@ void ServerController::run_response_thread() {
     EnvironmentInterface& environment 
         = Server::get_instance().get_config().get_environment();
     
-    zmq::context_t context(1);
+    zmq::context_t context(4);
     zmq::socket_t socket(context, zmq::socket_type::rep);
     socket.bind("tcp://*:5555");
 
@@ -244,7 +244,7 @@ void ServerController::run_publish_thread() {
     EnvironmentInterface& environment 
         = Server::get_instance().get_config().get_environment();
 
-    zmq::context_t context(2);
+    zmq::context_t context(3);
     zmq::socket_t socket(context, zmq::socket_type::pub);
     socket.bind("tcp://*:5556");
 
@@ -269,6 +269,9 @@ void ServerController::run_publish_thread() {
         }
         socket.send(zmq::message_t(request_ss.str()), zmq::send_flags::none);
     }
+
+    socket.close();
+    context.close();
 }
 
 void ServerController::run() {

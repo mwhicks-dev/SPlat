@@ -50,7 +50,7 @@ void Server::start() {
     loop_timeline.unpause();
 
     time_t last_update = timing.get_display_timeline().get_time();
-    while (1) {
+    while (environment.get_running()) {
         std::unordered_set<size_t> ids = object_model.get_ids();
         std::vector<SPlat::Model::Moving*> moving_vector;
         for (size_t id : ids) {
