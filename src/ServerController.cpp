@@ -297,7 +297,7 @@ void ServerController::run_routine_update_thread() {
     
     while (environment.get_running()) {
         // sleep for variable time -- for now 1s
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(400));
 
         // push new updateassetevent with all id
         std::unordered_set<size_t> asset_ids = object_model.get_ids();
