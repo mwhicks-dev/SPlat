@@ -143,10 +143,12 @@ void Client::start() {
         }
 
         // check for keyboard inputs
-        handle_key_event(sf::Keyboard::Key::Left);
-        handle_key_event(sf::Keyboard::Key::Right);
-        handle_key_event(sf::Keyboard::Key::Up);
-        handle_key_event(sf::Keyboard::Key::Escape);
+        if (window.hasFocus()) {
+            handle_key_event(sf::Keyboard::Key::Left);
+            handle_key_event(sf::Keyboard::Key::Right);
+            handle_key_event(sf::Keyboard::Key::Up);
+            handle_key_event(sf::Keyboard::Key::Escape);
+        }
 
         // generate tick events (if unpaused)
         std::unordered_set<size_t> ids = get_object_model().get_ids();
@@ -168,7 +170,6 @@ void Client::start() {
             Model::Asset& asset = get_object_model()
                 .read_asset(id);
             window.draw(asset.get_asset_properties().get_rectangle_shape());
-            std::cout << "Asset " << id << " owner: " << asset.get_asset_properties().get_owner() << std::endl;
         }
         time_t curr = Client::get_instance().get_config().get_timing_config()
         .get_display_timeline().get_time();
