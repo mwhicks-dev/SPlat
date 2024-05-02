@@ -34,27 +34,29 @@ void ClientCreateMovingPlatformHandler::handle(std::string serialized) {
     }
     
     // send to server as request
-    Request request = {
-        .content_type=Request::ContentType::Event,
-        .body=serialized
-    };
-    ControllerInterface& ctl = entrypoint.get_controller();
-    Response response = ctl.await(request);
+    if (event.sender == environment.get_entrypoint_id()) {
+        Request request = {
+            .content_type=Request::ContentType::Event,
+            .body=serialized
+        };
+        ControllerInterface& ctl = entrypoint.get_controller();
+        Response response = ctl.await(request);
 
-    if (response.status != 200) {
-        std::cerr << "Could not create character (" << response.status << "):" << std::endl;
-        std::cerr << response.body << std::endl;
-        throw std::logic_error("");  // TODO create some TCPException class
-    }
+        if (response.status != 200) {
+            std::cerr << "Could not create character (" << response.status << "):" << std::endl;
+            std::cerr << response.body << std::endl;
+            throw std::logic_error("");  // TODO create some TCPException class
+        }
 
-    SPlat::IdDto id_dto;
-    {
-        std::stringstream iss; iss << response.body;
-        cereal::JSONInputArchive iar(iss);
-        iar(id_dto);
-    }
+        SPlat::IdDto id_dto;
+        {
+            std::stringstream iss; iss << response.body;
+            cereal::JSONInputArchive iar(iss);
+            iar(id_dto);
+        }
 
-    args.properties.set_id(id_dto.id);
+        args.properties.set_id(id_dto.id);
+    }  
 
     SPlat::Model::Asset* asset = &config.get_asset_factory_config()
         .get_moving_platform_factory().create_asset(args.properties);
