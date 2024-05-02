@@ -57,8 +57,7 @@ void OrderedPriorityListener::listener_loop() {
                 oar(curr);
             }
             try {
-                EventHandlerInterface* handler = get_handler(curr.command.type);
-                handler->handle(ss.str());
+                await(curr);
             } catch (std::exception& e) {
                 std::cout << "Warning: Listener was unable to process the following event: " << std::endl;
                 std::cout << "  type: " << curr.command.type << std::endl;
