@@ -3,6 +3,7 @@
 #include "Event.h"
 #include "FauxServerController.h"
 #include "ServerDto.h"
+#include "DisconnectDto.h"
 
 #include <cppzmq/zmq.hpp>
 
@@ -92,18 +93,18 @@ void ClientController::run_request_thread() {
     }
 
     std::stringstream ss;
-    // DisconnectDto disconnect_dto = {
-    //     .id=environment.get_entrypoint_id()
-    // };
-    // {
-    //     cereal::JSONOutputArchive oar(ss);
-    //     oar(disconnect_dto);
-    // };
+    DisconnectDto disconnect_dto = {
+        .entrypoint_id=environment.get_entrypoint_id(),
+    };
+    {
+        cereal::JSONOutputArchive oar(ss);
+        oar(disconnect_dto);
+    };
     Request disconnect_request = {
         .content_type=Request::ContentType::Disconnect,
-        // .body=ss.str(),
+        .body=ss.str(),
     };
-    // ss.clear(); ss.str("");
+    ss.clear(); ss.str("");
     {
         cereal::JSONOutputArchive oar(ss);
         oar(disconnect_request);
