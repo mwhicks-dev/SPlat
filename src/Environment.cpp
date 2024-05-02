@@ -173,3 +173,36 @@ void Environment::set_req_rep_address(std::string req_rep_address) {
     std::cout << "<- Environment::set_req_rep_address" << std::endl;
 #endif
 }
+
+std::map<size_t, std::string> Environment::get_contexts() {
+    m.lock();
+    auto local = contexts;
+    m.unlock();
+
+    return local;
+}
+
+void Environment::set_contexts(std::map<size_t, std::string> contexts) {
+    m.lock();
+    this->contexts = contexts;
+    m.unlock();
+}
+
+std::string Environment::get_context(size_t key) {
+    auto local = get_contexts();
+    if (local.count(key) == 0) return "";
+
+    return local[key];
+}
+
+void Environment::set_context(size_t key, std::string value) {
+    auto local = get_contexts();
+    local[key] = value;
+    set_contexts(local);
+}
+
+void Environment::remove_context(size_t key) {
+    auto local = get_contexts();
+    local.erase(key);
+    set_contexts(local);
+}

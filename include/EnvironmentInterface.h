@@ -45,6 +45,12 @@ namespace SPlat {
 
         virtual void set_unit(float) = 0;
 
+        virtual std::string get_context(size_t) = 0;
+
+        virtual void set_context(size_t, std::string) = 0;
+
+        virtual void remove_context(size_t) = 0;
+
     };
 
 }

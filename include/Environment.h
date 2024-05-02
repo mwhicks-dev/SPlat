@@ -27,6 +27,12 @@ namespace SPlat {
 
         std::string req_rep_address = "";
 
+        std::map<size_t, std::string> contexts;
+
+        std::map<size_t, std::string> get_contexts();
+
+        void set_contexts(std::map<size_t, std::string>);
+
     public:
 
         Environment();
@@ -62,6 +68,12 @@ namespace SPlat {
         void set_pub_sub_addres(std::string) override;
 
         void set_req_rep_address(std::string) override;
+
+        std::string get_context(size_t) override;
+
+        void set_context(size_t, std::string) override;
+
+        void remove_context(size_t) override;
 
     };
 
