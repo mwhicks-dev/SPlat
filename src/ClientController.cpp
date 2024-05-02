@@ -53,12 +53,6 @@ void ClientController::run_request_thread() {
     EnvironmentInterface& environment 
         = Client::get_instance().get_config().get_environment();
 
-    // prepare context and socket
-    zmq::context_t context(1);
-    zmq::socket_t socket(context, zmq::socket_type::req);
-
-    socket.connect(environment.get_req_rep_addres());
-
     while (environment.get_running()) {
         if (!has_outgoing_request()) continue;
 
@@ -70,26 +64,10 @@ void ClientController::run_request_thread() {
             oar(curr);
         }
 
-        // convert serialized string to zmq::message_t
-        zmq::message_t request(ss.str());
-        socket.send(request, zmq::send_flags::none);
-
-        // get reply string
-        zmq::message_t reply;
-        socket.recv(reply, zmq::recv_flags::none);
-        std::string serialized_reply = reply.to_string();
-
-        // deserialize string into response
-        ss.clear(); ss.str("");
-        Response resp;
-        {
-            std::stringstream ss; ss << serialized_reply;
-            cereal::JSONInputArchive iar(ss);
-            iar(resp);
-        }
+        Response current_response = await(curr);
 
         // send string to cousin thread
-        push_incoming_response(resp);
+        push_incoming_response(current_response);
     }
 
     std::stringstream ss;
@@ -104,29 +82,10 @@ void ClientController::run_request_thread() {
         .content_type=Request::ContentType::Disconnect,
         .body=ss.str(),
     };
-    ss.clear(); ss.str("");
-    {
-        cereal::JSONOutputArchive oar(ss);
-        oar(disconnect_request);
-    }
 
     size_t status;
     do {
-        zmq::message_t disconnect_request_message(ss.str());
-        socket.send(disconnect_request_message, zmq::send_flags::none);
-
-        zmq::message_t disconnect_response_message;
-        socket.recv(disconnect_response_message, zmq::recv_flags::none);
-
-        Response disconnect_response;
-        {
-            std::stringstream disconnect_response_ss; 
-            disconnect_response_ss << disconnect_response_message.to_string();
-            cereal::JSONInputArchive iar(disconnect_response_ss);
-            iar(disconnect_response);
-        }
-
-        status = disconnect_response.status;
+        status = await(disconnect_request).status;
     } while (status != 200);
 #ifdef DEBUG
     std::cout << "<- ClientController::run_request_thread" << std::endl;
