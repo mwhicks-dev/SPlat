@@ -118,7 +118,12 @@ void OrderedPriorityListener::await(Event event) {
     std::cout << "-> OrderedPriorityListener::await(Command)" << std::endl;
 #endif
     EventHandlerInterface * handler = get_handler(event.command.type);
-    handler->handle(event.command.args);
+    std::stringstream event_ss;
+    {
+        cereal::JSONOutputArchive oar(event_ss);
+        oar(event);
+    }
+    handler->handle(event_ss.str());
 #ifdef DEBUG
     std::cout << "<- OrderedPriorityListener::await" << std::endl;
 #endif

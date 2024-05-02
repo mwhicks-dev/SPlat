@@ -1,3 +1,4 @@
+#include "events/handlers/ReadAssetHandler.h"
 #include "events/handlers/UpdateAssetHandler.h"
 #include "events/handlers/DeleteAssetHandler.h"
 #include "IdDto.h"

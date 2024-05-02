@@ -123,7 +123,11 @@ int main() {
     cli.get_foreground_listener().set_handler(Events::KeyPressHandler::get_event_type(), *new KeyPressOverride());
     cli.get_foreground_listener().set_handler(Events::KeyReleaseHandler::get_event_type(), *new KeyReleaseOverride());
 
-    // Create assets
+    cli.get_config().get_environment().set_req_rep_address("tcp://localhost:5555");
+    std::thread t(&Client::start, &cli);
+
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
     {
         Model::AssetProperties properties(
             sf::Vector2f(100, 100),  // position
@@ -142,10 +146,11 @@ int main() {
         Events::Command cmd = {
             .priority=-1,
             .type=Events::ClientCreateCharacterHandler::get_type(),
-            .args=ss.str()
+            .args=ss.str(),
         };
         Event event = {
-            .command=cmd
+            .command=cmd,
+            .sender=cli.get_config().get_environment().get_entrypoint_id()
         };
         std::stringstream event_ss;
         {
@@ -159,10 +164,6 @@ int main() {
 
         cli.get_background_listener().push_event(event);
     }
-
-    cli.get_config().get_environment().set_req_rep_address("tcp://localhost:5555");
-
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-
-    cli.start();
+    
+    while (cli.get_config().get_environment().get_running()) {}
 }

@@ -155,7 +155,8 @@ void Client::start() {
             try {
                 SPlat::Model::Moving& asset = dynamic_cast<SPlat::Model::Moving&>(
                     get_object_model().read_asset(id));
-                moving.push_back(&asset);
+                if (asset.get_asset_properties().get_owner() == environment.get_entrypoint_id())
+                    moving.push_back(&asset);
             } catch (std::bad_cast&) {}
         }
 
@@ -167,6 +168,7 @@ void Client::start() {
             Model::Asset& asset = get_object_model()
                 .read_asset(id);
             window.draw(asset.get_asset_properties().get_rectangle_shape());
+            std::cout << "Asset " << id << " position: <" << asset.get_asset_properties().get_position().x << ", " << asset.get_asset_properties().get_position().y << std::endl;
         }
         time_t curr = Client::get_instance().get_config().get_timing_config()
         .get_display_timeline().get_time();
