@@ -21,6 +21,8 @@ namespace SPlat {
 
         Response pop_incoming_response() override;
 
+        Request pop_outgoing_request() override;
+
         bool has_outgoing_request() override;
 
         bool has_incoming_response() override;
