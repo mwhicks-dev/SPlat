@@ -3,8 +3,8 @@
 #include "ClientController.h"
 #include "events/OrderedPriorityListener.h"
 #include "model/UnorderedMapObjectModel.h"
-#include "events/KeyPressCommandHandler.h"
-#include "events/KeyReleaseCommandHandler.h"
+#include "events/KeyPressHandler.h"
+#include "events/KeyReleaseHandler.h"
 #include "events/CreateCharacterHandler.h"
 #include "events/CreatePlatformHandler.h"
 #include "events/CreateMovingPlatformHandler.h"
@@ -32,10 +32,10 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
     if (sf::Keyboard::isKeyPressed(key) 
             && env.get_held_keys().count(key) == 0) {
         Events::Command cmd;
-        cmd.type = Events::KeyPressCommandHandler::get_event_type();
+        cmd.type = Events::KeyPressHandler::get_event_type();
         std::stringstream ss;
         {
-            Events::KeyPressCommandHandler::Args args = { key };
+            Events::KeyPressHandler::Args args = { key };
             cereal::JSONOutputArchive oar(ss);
             oar(args);
         }
@@ -53,10 +53,10 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
     if (!sf::Keyboard::isKeyPressed(key)
             && env.get_held_keys().count(key) > 0) {
         Events::Command cmd;
-        cmd.type = Events::KeyReleaseCommandHandler::get_event_type();
+        cmd.type = Events::KeyReleaseHandler::get_event_type();
         std::stringstream ss;
         {
-            Events::KeyReleaseCommandHandler::Args args = { key };
+            Events::KeyReleaseHandler::Args args = { key };
             cereal::JSONOutputArchive oar(ss);
             oar(args);
         }
@@ -91,10 +91,10 @@ Client::Client() : config(*new ClientConfig()),
     get_config().get_timing_config().update_framerate_limit(30);  // default 30
 
     // set foreground event defaults
-    foreground_listener.set_handler(Events::KeyPressCommandHandler
-        ::get_event_type(), *new Events::KeyPressCommandHandler());
-    foreground_listener.set_handler(Events::KeyReleaseCommandHandler
-        ::get_event_type(), *new Events::KeyReleaseCommandHandler());
+    foreground_listener.set_handler(Events::KeyPressHandler
+        ::get_event_type(), *new Events::KeyPressHandler());
+    foreground_listener.set_handler(Events::KeyReleaseHandler
+        ::get_event_type(), *new Events::KeyReleaseHandler());
 
     // set background event defaults
     background_listener.set_handler(Events::CreateCharacterHandler::get_type(),

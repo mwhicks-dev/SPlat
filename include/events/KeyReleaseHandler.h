@@ -1,7 +1,7 @@
-#ifndef SPlat_KeyPressCommandHandler_h
-#define SPlat_KeyPressCommandHandler_h
+#ifndef SPlat_KeyReleaseHandler_h
+#define SPlat_KeyReleaseHandler_h
 
-#include "CommandHandlerInterface.h"
+#include "EventHandlerInterface.h"
 
 #include <SFML/Window/Keyboard.hpp>
 
@@ -11,7 +11,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class KeyPressCommandHandler : public CommandHandlerInterface {
+        class KeyReleaseHandler : public EventHandlerInterface {
 
         public:
 
@@ -28,7 +28,7 @@ namespace SPlat {
 
             void handle(std::string) override;
 
-            static std::string get_event_type() { return "key_press"; }
+            static std::string get_event_type() { return "key_release"; }
 
         };
 

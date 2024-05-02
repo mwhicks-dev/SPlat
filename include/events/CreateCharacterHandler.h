@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_CreateCharacterHandler_h
 #define SPlat_Events_CreateCharacterHandler_h
 
-#include "events/CommandHandlerInterface.h"
+#include "events/EventHandlerInterface.h"
 #include "model/AssetProperties.h"
 
 #include <cereal/cereal.hpp>
@@ -10,7 +10,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class CreateCharacterHandler : public CommandHandlerInterface {
+        class CreateCharacterHandler : public EventHandlerInterface {
 
         public:
 

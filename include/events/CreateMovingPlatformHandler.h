@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_CreateMovingPlatformHandler_h
 #define SPlat_Events_CreateMovingPlatformHandler_h
 
-#include "events/CommandHandlerInterface.h"
+#include "events/EventHandlerInterface.h"
 #include "model/AssetProperties.h"
 #include "model/MovingPlatformProperties.h"
 
@@ -12,7 +12,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class CreateMovingPlatformHandler : public CommandHandlerInterface {
+        class CreateMovingPlatformHandler : public EventHandlerInterface {
 
         public:
 

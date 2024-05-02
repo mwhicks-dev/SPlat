@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_ListenerInterface_h
 #define SPlat_Events_ListenerInterface_h
 
-#include "events/CommandHandlerInterface.h"
+#include "events/EventHandlerInterface.h"
 #include "Event.h"
 
 namespace SPlat {
@@ -12,7 +12,7 @@ namespace SPlat {
 
         public:
 
-            virtual void set_handler(std::string, CommandHandlerInterface&) = 0;
+            virtual void set_handler(std::string, EventHandlerInterface&) = 0;
 
             virtual void push_event(Event) = 0;
 

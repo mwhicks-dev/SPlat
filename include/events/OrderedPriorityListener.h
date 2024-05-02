@@ -17,11 +17,11 @@ namespace SPlat {
 
             std::priority_queue<Event> event_queue;
 
-            std::map<std::string, CommandHandlerInterface*>& handlers;
+            std::map<std::string, EventHandlerInterface*>& handlers;
 
             Event poll_event();
 
-            CommandHandlerInterface* get_handler(std::string);
+            EventHandlerInterface* get_handler(std::string);
 
             bool command_available();
 
@@ -31,7 +31,7 @@ namespace SPlat {
 
             OrderedPriorityListener();
 
-            void set_handler(std::string, CommandHandlerInterface&) override;
+            void set_handler(std::string, EventHandlerInterface&) override;
 
             void push_event(Event) override;
 

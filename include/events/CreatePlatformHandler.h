@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_CreatePlatformHandler_h
 #define SPlat_Events_CreatePlatformHandler_h
 
-#include "events/CommandHandlerInterface.h"
+#include "events/EventHandlerInterface.h"
 #include "model/AssetProperties.h"
 
 #include <cereal/cereal.hpp>
@@ -10,7 +10,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class CreatePlatformHandler : public CommandHandlerInterface {
+        class CreatePlatformHandler : public EventHandlerInterface {
 
         public:
 

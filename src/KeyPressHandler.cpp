@@ -1,4 +1,4 @@
-#include "events/KeyPressCommandHandler.h"
+#include "events/KeyPressHandler.h"
 #include "Entrypoint.h"
 #include "Event.h"
 
@@ -8,7 +8,7 @@
 
 using namespace SPlat::Events;
 
-void KeyPressCommandHandler::handle(std::string serialized) {
+void KeyPressHandler::handle(std::string serialized) {
 #ifdef DEBUG
     std::cout << "-> KeyPressCommandHandler::handle(" << serialized << ")" << std::endl;
 #endif

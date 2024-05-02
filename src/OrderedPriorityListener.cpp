@@ -21,8 +21,8 @@ SPlat::Event OrderedPriorityListener::poll_event() {
     return local;
 }
 
-CommandHandlerInterface* OrderedPriorityListener::get_handler(std::string type) {
-    CommandHandlerInterface * local = nullptr;
+EventHandlerInterface* OrderedPriorityListener::get_handler(std::string type) {
+    EventHandlerInterface * local = nullptr;
     m.lock();
     if (handlers.count(type) > 0)
         local = handlers[type];
@@ -57,7 +57,7 @@ void OrderedPriorityListener::listener_loop() {
                 oar(curr);
             }
             try {
-                CommandHandlerInterface* handler = get_handler(curr.command.type);
+                EventHandlerInterface* handler = get_handler(curr.command.type);
                 handler->handle(ss.str());
             } catch (std::exception& e) {
                 std::cout << "Warning: Listener was unable to process the following event: " << std::endl;
@@ -76,11 +76,11 @@ void OrderedPriorityListener::listener_loop() {
 }
 
 OrderedPriorityListener::OrderedPriorityListener()
-: handlers(*new std::map<std::string, CommandHandlerInterface*>) {}
+: handlers(*new std::map<std::string, EventHandlerInterface*>) {}
 
-void OrderedPriorityListener::set_handler(std::string type, CommandHandlerInterface& handler) {
+void OrderedPriorityListener::set_handler(std::string type, EventHandlerInterface& handler) {
 #ifdef DEBUG
-    std::cout << "-> OrderedPriorityListener::set_handler(" << type << ", CommandHandlerInterface&)" << std::endl;
+    std::cout << "-> OrderedPriorityListener::set_handler(" << type << ", EventHandlerInterface&)" << std::endl;
 #endif
     m.lock();
     handlers[type] = &handler;
@@ -117,7 +117,7 @@ void OrderedPriorityListener::await(Event event) {
 #ifdef DEBUG
     std::cout << "-> OrderedPriorityListener::await(Command)" << std::endl;
 #endif
-    CommandHandlerInterface * handler = get_handler(event.command.type);
+    EventHandlerInterface * handler = get_handler(event.command.type);
     handler->handle(event.command.args);
 #ifdef DEBUG
     std::cout << "<- OrderedPriorityListener::await" << std::endl;

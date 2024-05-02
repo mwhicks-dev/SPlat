@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_DeleteAssetHandler_h
 #define SPlat_Events_DeleteAssetHandler_h
 
-#include "events/CommandHandlerInterface.h"
+#include "events/EventHandlerInterface.h"
 
 #include <cereal/cereal.hpp>
 
@@ -9,7 +9,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class DeleteAssetHandler : public CommandHandlerInterface {
+        class DeleteAssetHandler : public EventHandlerInterface {
 
         public:
 

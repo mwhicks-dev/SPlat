@@ -1,4 +1,4 @@
-#include "events/KeyReleaseCommandHandler.h"
+#include "events/KeyReleaseHandler.h"
 #include "Entrypoint.h"
 #include "Event.h"
 
@@ -8,9 +8,9 @@
 
 using namespace SPlat::Events;
 
-void KeyReleaseCommandHandler::handle(std::string serialized) {
+void KeyReleaseHandler::handle(std::string serialized) {
 #ifdef DEBUG
-    std::cout << "-> KeyReleaseCommandHandler::handle(" << serialized << ")" << std::endl;
+    std::cout << "-> KeyReleaseHandler::handle(" << serialized << ")" << std::endl;
 #endif
     SPlat::Event event;
     {
@@ -28,6 +28,6 @@ void KeyReleaseCommandHandler::handle(std::string serialized) {
 
     Entrypoint::get_instance().get_config().get_environment().remove_held_key(args.key);
 #ifdef DEBUG
-    std::cout << "<- KeyReleaseCommandHandler::handle" << std::endl;
+    std::cout << "<- KeyReleaseHandler::handle" << std::endl;
 #endif
 }

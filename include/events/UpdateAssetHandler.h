@@ -1,7 +1,7 @@
 #ifndef SPlat_Events_UpdateAssetHandler_h
 #define SPlat_Events_UpdateAssetHandler_h
 
-#include "events/CommandHandlerInterface.h"
+#include "events/EventHandlerInterface.h"
 #include "model/AssetProperties.h"
 
 #include <cereal/cereal.hpp>
@@ -10,7 +10,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class UpdateAssetHandler : public CommandHandlerInterface {
+        class UpdateAssetHandler : public EventHandlerInterface {
 
         public:
 

@@ -3,8 +3,8 @@
 #include "model/Character.h"
 #include "model/Platform.h"
 #include "model/MovingPlatform.h"
-#include "events/KeyPressCommandHandler.h"
-#include "events/KeyReleaseCommandHandler.h"
+#include "events/KeyPressHandler.h"
+#include "events/KeyReleaseHandler.h"
 #include "events/CreatePlatformHandler.h"
 #include "events/CreateMovingPlatformHandler.h"
 #include "events/CreateCharacterHandler.h"
@@ -16,7 +16,7 @@
 
 using namespace SPlat;
 
-class KeyPressOverride : public SPlat::Events::KeyPressCommandHandler {
+class KeyPressOverride : public SPlat::Events::KeyPressHandler {
 
 public:
 
@@ -71,7 +71,7 @@ public:
 
 };
 
-class KeyReleaseOverride : public Events::KeyReleaseCommandHandler {
+class KeyReleaseOverride : public Events::KeyReleaseHandler {
 
 public:
 
@@ -120,8 +120,8 @@ int main() {
     Client& cli = Client::get_instance();
     ConfigInterface& conf = cli.get_config();
     
-    cli.get_foreground_listener().set_handler(Events::KeyPressCommandHandler::get_event_type(), *new KeyPressOverride());
-    cli.get_foreground_listener().set_handler(Events::KeyReleaseCommandHandler::get_event_type(), *new KeyReleaseOverride());
+    cli.get_foreground_listener().set_handler(Events::KeyPressHandler::get_event_type(), *new KeyPressOverride());
+    cli.get_foreground_listener().set_handler(Events::KeyReleaseHandler::get_event_type(), *new KeyReleaseOverride());
 
     cli.get_config().get_timing_config().update_framerate_limit(90);
 

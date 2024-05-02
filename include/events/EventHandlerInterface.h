@@ -1,5 +1,5 @@
-#ifndef SPlat_CommandHandlerInterface_h
-#define SPlat_CommandHandlerInterface_h
+#ifndef SPlat_EventHandlerInterface_h
+#define SPlat_EventHandlerInterface_h
 
 #include <string>
 
@@ -7,7 +7,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class CommandHandlerInterface {
+        class EventHandlerInterface {
 
         public:
 
