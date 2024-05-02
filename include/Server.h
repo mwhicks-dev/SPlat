@@ -25,7 +25,7 @@ namespace SPlat {
 
         void start() override;
 
-        Server& get_instance();
+        static Server& get_instance();
 
         Events::ListenerInterface& get_background_listener() override;
 

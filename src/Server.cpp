@@ -35,14 +35,17 @@ background_listener(*new Events::OrderedPriorityListener()) {
 }
 
 void Server::start() {
-    controller.run();
-    background_listener.run();
-
     ConfigInterface& config = get_config();
     EnvironmentInterface& environment = config.get_environment();
     TimingConfigInterface& timing = config.get_timing_config();
     Model::ObjectModelInterface& object_model = get_object_model();
     LocalTimeline& loop_timeline = timing.get_display_timeline();
+    
+    environment.set_req_rep_address("tcp://localhost:5555");
+    environment.set_pub_sub_addres("tcp://localhost:5556");
+    
+    controller.run();
+    background_listener.run();
 
     loop_timeline.unpause();
 
