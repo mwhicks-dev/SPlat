@@ -1,5 +1,6 @@
 #include "events/handlers/ServerCreatePlatformHandler.h"
 #include "Entrypoint.h"
+#include "IdDto.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -33,10 +34,14 @@ void ServerCreatePlatformHandler::handle(std::string serialized) {
 
     args.properties.set_id(id);
 
-    // TODO: Provide way for IdDto to be returned by server
-    // Event::context: size_t, default 0, if 0 then no context (like nullptr)
-    // Environment contains mapping of Event::context to string, string denotes
-    // output (ie. IdDto, or AssetProperties for ServerGetAssetHandler)
+    IdDto id_dto = {id};
+    std::stringstream id_dto_ss;
+    {
+        cereal::JSONOutputArchive oar(id_dto_ss);
+        oar(id_dto);
+    }
+    entrypoint.get_config().get_environment()
+        .set_context(event.context, id_dto_ss.str());
 
     SPlat::Model::Asset& asset = entrypoint.get_config()
         .get_asset_factory_config().get_platform_factory()
