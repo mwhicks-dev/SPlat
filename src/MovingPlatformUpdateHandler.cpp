@@ -89,6 +89,8 @@ void MovingPlatformUpdateHandler::update() {
             asset_properties.get_id(), update_velocity);
     }
 
+    asset_properties.set_updated_time(conf.get_timing_config().get_anchor_timeline().get_time());
+
     // raise update event for persistence
     Events::ClientUpdateAssetHandler::Args args = {
         .id=asset_properties.get_id(),
