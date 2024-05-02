@@ -29,6 +29,8 @@ void ServerUpdateAssetHandler::handle(std::string serialized) {
     Model::Asset& asset = entrypoint.get_object_model().read_asset(args.id);
     Model::AssetProperties& asset_properties = asset.get_asset_properties();
 
+    if (asset_properties.get_updated_time() > args.properties.get_updated_time()) return;
+
     asset_properties.set_fill_color(args.properties.get_fill_color());
     asset_properties.set_position(args.properties.get_position());
     asset_properties.set_size(args.properties.get_size());

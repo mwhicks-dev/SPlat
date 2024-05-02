@@ -62,6 +62,9 @@ void ClientUpdateAssetHandler::handle(std::string serialized) {
             // get asset from GOM
             Model::Asset& asset = entrypoint.get_object_model().read_asset(args.id);
             Model::AssetProperties& asset_properties = asset.get_asset_properties();
+
+            if (asset_properties.get_updated_time() > args.properties.get_updated_time()) return;
+
             sf::Vector2f diff = args.properties.get_position() - asset_properties.get_position();
             asset_properties.set_fill_color(args.properties.get_fill_color());
             asset_properties.set_position(args.properties.get_position());
