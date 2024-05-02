@@ -1,5 +1,5 @@
 #include "events/handlers/GetAssetHandler.h"
-#include "events/handlers/UpdateAssetHandler.h"
+#include "events/handlers/ClientUpdateAssetHandler.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
@@ -12,9 +12,9 @@
 
 using namespace SPlat::Events;
 
-void UpdateAssetHandler::handle(std::string serialized) {
+void ClientUpdateAssetHandler::handle(std::string serialized) {
 #ifdef DEBUG
-    std::cout << "-> UpdateAssetHandler::handle(" << serialized << ")" << std::endl;
+    std::cout << "-> ClientUpdateAssetHandler::handle(" << serialized << ")" << std::endl;
 #endif
     Entrypoint& entrypoint = Entrypoint::get_instance();
     ConfigInterface& config = entrypoint.get_config();
@@ -117,6 +117,6 @@ void UpdateAssetHandler::handle(std::string serialized) {
     }
     
 #ifdef DEBUG
-    std::cout << "<- UpdateAssetHandler::handle" << std::endl;
+    std::cout << "<- ClientUpdateAssetHandler::handle" << std::endl;
 #endif
 }

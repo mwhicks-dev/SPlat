@@ -1,5 +1,5 @@
-#ifndef SPlat_Events_UpdateAssetHandler_h
-#define SPlat_Events_UpdateAssetHandler_h
+#ifndef SPlat_Events_ClientUpdateAssetHandler_h
+#define SPlat_Events_ClientUpdateAssetHandler_h
 
 #include "events/handlers/EventHandlerInterface.h"
 #include "model/AssetProperties.h"
@@ -10,7 +10,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class UpdateAssetHandler : public EventHandlerInterface {
+        class ClientUpdateAssetHandler : public EventHandlerInterface {
 
         public:
 
