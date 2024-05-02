@@ -20,9 +20,9 @@ set(LA src/KeyPressHandler.cpp src/CharacterCollisionHandler.cpp src/ClientContr
 set(LB src/ClientReadAssetHandler.cpp src/UnorderedMapObjectModel.cpp src/ServerUpdateAssetHandler.cpp src/MovingPlatformCollisionHandler.cpp src/Entrypoint.cpp)
 set(LC src/ClientCreateMovingPlatformHandler.cpp src/UnorderedStandingConfig.cpp src/OrderedPriorityListener.cpp src/ServerCreatePlatformHandler.cpp src/PlatformCollisionHandler.cpp)
 set(LD src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp src/Environment.cpp src/KeyReleaseHandler.cpp src/Platform.cpp)
-set(LE src/AssetFactoryConfig.cpp src/ServerCreateCharacterHandler.cpp src/Character.cpp src/ClientCreatePlatformHandler.cpp src/MovingPlatformUpdateHandler.cpp)
-set(LF src/FauxServerController.cpp src/ServerCreateMovingPlatformHandler.cpp src/TimingConfig.cpp src/ClientCreateCharacterHandler.cpp src/ClientConfig.cpp)
-set(LG src/MovingPlatform.cpp src/ClientUpdateAssetHandler.cpp src/AbstractAssetFactory.cpp)
+set(LE src/AssetFactoryConfig.cpp src/ServerCreateCharacterHandler.cpp src/Character.cpp src/ServerReadAssetHandler.cpp src/ClientCreatePlatformHandler.cpp)
+set(LF src/MovingPlatformUpdateHandler.cpp src/FauxServerController.cpp src/ServerCreateMovingPlatformHandler.cpp src/TimingConfig.cpp src/ClientCreateCharacterHandler.cpp)
+set(LG src/ClientConfig.cpp src/MovingPlatform.cpp src/ClientUpdateAssetHandler.cpp src/AbstractAssetFactory.cpp)
 set(LH src/CharacterFactory.cpp src/Client.cpp src/PlatformFactory.cpp src/MovingPlatformFactory.cpp)
 set(ALL_IMPLEMENTATIONS ${LA} ${LB} ${LC} ${LD} ${LE} ${LF} ${LG} ${LH})
 
