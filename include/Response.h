@@ -12,6 +12,7 @@ namespace SPlat {
             None,
             IdDto,
             ServerDto,
+            AssetProperties,
 
         };
 
