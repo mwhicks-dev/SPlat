@@ -1,4 +1,4 @@
-#include "events/handlers/DeleteAssetHandler.h"
+#include "events/handlers/ClientDeleteAssetHandler.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
@@ -7,9 +7,9 @@
 
 using namespace SPlat::Events;
 
-void DeleteAssetHandler::handle(std::string serialized) {
+void ClientDeleteAssetHandler::handle(std::string serialized) {
 #ifdef DEBUG
-    std::cout << "-> DeleteAssetHandler::handle(" << serialized << ")" << std::endl;
+    std::cout << "-> ClientDeleteAssetHandler::handle(" << serialized << ")" << std::endl;
 #endif
     Entrypoint& entrypoint = Entrypoint::get_instance();
     ConfigInterface& config = entrypoint.get_config();
@@ -49,6 +49,6 @@ void DeleteAssetHandler::handle(std::string serialized) {
     
     entrypoint.get_object_model().delete_asset(args.id);
 #ifdef DEBUG
-    std::cout << "<- DeleteAssetHandler::handle" << std::endl;
+    std::cout << "<- ClientDeleteAssetHandler::handle" << std::endl;
 #endif
 }

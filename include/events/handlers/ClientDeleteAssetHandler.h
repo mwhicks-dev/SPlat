@@ -1,5 +1,5 @@
-#ifndef SPlat_Events_DeleteAssetHandler_h
-#define SPlat_Events_DeleteAssetHandler_h
+#ifndef SPlat_Events_ClientDeleteAssetHandler_h
+#define SPlat_Events_ClientDeleteAssetHandler_h
 
 #include "events/handlers/EventHandlerInterface.h"
 
@@ -9,7 +9,7 @@ namespace SPlat {
 
     namespace Events {
 
-        class DeleteAssetHandler : public EventHandlerInterface {
+        class ClientDeleteAssetHandler : public EventHandlerInterface {
 
         public:
 
