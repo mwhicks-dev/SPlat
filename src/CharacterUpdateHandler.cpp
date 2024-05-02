@@ -71,7 +71,6 @@ void CharacterUpdateHandler::update() {
     };
     Event event = {
         .command=cmd,
-        .client_side=false,
         .sender=conf.get_environment().get_entrypoint_id(),
     };
     ss.clear(); ss.str("");

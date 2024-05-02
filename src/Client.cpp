@@ -42,9 +42,7 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
         cmd.args = ss.str();
         cmd.priority = 0;
         Event event = {
-            .event_time=0,
             .command=cmd,
-            .client_side=true,
             .sender=get_config().get_environment().get_entrypoint_id()
         };
         foreground_listener.push_event(event);
@@ -63,9 +61,7 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
         cmd.args = ss.str();
         cmd.priority = 0;
         Event event = {
-            .event_time=0,
             .command=cmd,
-            .client_side=true,
             .sender=get_config().get_environment().get_entrypoint_id()
         };
         foreground_listener.push_event(event);

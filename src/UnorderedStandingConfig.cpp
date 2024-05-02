@@ -106,7 +106,6 @@ void UnorderedStandingConfig::push_update_to_children(size_t parent,
             };
             Event event = {
                 .command=cmd,
-                .client_side=false,
                 .sender=entrypoint.get_config().get_environment().get_entrypoint_id(),
             };
             ss.clear(); ss.str("");

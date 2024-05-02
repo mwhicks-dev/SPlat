@@ -147,9 +147,7 @@ int main() {
             .args=ss.str()
         };
         Event event = {
-            .event_time=0,
             .command=cmd,
-            .client_side=false,
             .sender=1,
         };
         cli.get_background_listener().push_event(event);
@@ -174,9 +172,7 @@ int main() {
             .args=ss.str()
         };
         Event event = {
-            .event_time=0,
             .command=cmd,
-            .client_side=false,
             .sender=1,
         };
         cli.get_background_listener().push_event(event);
@@ -219,9 +215,7 @@ int main() {
             .args=ss.str()
         };
         Event event = {
-            .event_time=0,
             .command=cmd,
-            .client_side=false,
             .sender=1,
         };
         cli.get_background_listener().push_event(event);
