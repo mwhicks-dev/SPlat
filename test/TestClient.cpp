@@ -167,5 +167,5 @@ int main() {
         cli.get_background_listener().push_event(event);
     }
     
-    while (cli.get_config().get_environment().get_running()) {}
+    t.join();
 }
