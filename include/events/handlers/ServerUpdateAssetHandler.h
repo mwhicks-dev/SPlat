@@ -11,7 +11,7 @@ namespace SPlat {
 
         public:
 
-            void handle(std::string);
+            void handle(std::string) override;
 
             static std::string get_type() { return UpdateAssetHandler::get_type(); }
 
