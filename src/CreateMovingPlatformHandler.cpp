@@ -3,6 +3,7 @@
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
+#include "IdDto.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -28,15 +29,15 @@ void CreateMovingPlatformHandler::handle(std::string serialized) {
         .sender=environment.get_entrypoint_id()
     };
 
-    Args local_args;
-    std::stringstream ss; ss << serialized;
+    Args args;
     {
-        cereal::JSONInputArchive iar(ss);
-        iar(local_args);
+        std::stringstream iss; iss << serialized;
+        cereal::JSONInputArchive iar(iss);
+        iar(args);
     }
-
+    
     // send to server as request
-    ss.clear(); ss.str("");
+    std::stringstream ss;
     {
         cereal::JSONOutputArchive oar(ss);
         oar(event);
@@ -49,37 +50,34 @@ void CreateMovingPlatformHandler::handle(std::string serialized) {
     Response response = ctl.await(request);
 
     if (response.status != 200) {
-        std::cerr << "Could not create moving platform(" << response.status << "):" << std::endl;
+        std::cerr << "Could not create character (" << response.status << "):" << std::endl;
         std::cerr << response.body << std::endl;
         throw std::logic_error("");  // TODO create some TCPException class
     }
 
-    SPlat::Event server_event;
+    SPlat::IdDto id_dto;
     {
         std::stringstream iss; iss << response.body;
         cereal::JSONInputArchive iar(iss);
-        iar(server_event);
+        iar(id_dto);
     }
 
-    Args args;
-    {
-        std::stringstream iss; iss << server_event.command.args;
-        cereal::JSONInputArchive iar(iss);
-        iar(args.properties);
-    }
+    args.properties.set_id(id_dto.id);
 
     SPlat::Model::Asset* asset = &config.get_asset_factory_config()
         .get_moving_platform_factory().create_asset(args.properties);
 
-    if (server_event.sender == environment.get_entrypoint_id()) {
+    if (event.sender == environment.get_entrypoint_id()) {
         SPlat::Model::MovingPlatform* moving_platform 
             = dynamic_cast<SPlat::Model::MovingPlatform*>(asset);
         moving_platform->get_moving_platform_properties()
-            .set_states(local_args.states);
+            .set_states(args.states);
         moving_platform->get_moving_platform_properties()
             .set_last_state_change(config.get_timing_config()
             .get_anchor_timeline().get_time());
     }
+
+    std::cout << id_dto.id << std::endl;
 #ifdef DEBUG
     std::cout << "<- CreateMovingPlatformHandler::handle" << std::endl;
 #endif

@@ -2,6 +2,7 @@
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
+#include "IdDto.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -31,15 +32,15 @@ void CreateCharacterHandler::handle(std::string serialized) {
         .sender=environment.get_entrypoint_id()
     };
 
-    Args local_args;
-    std::stringstream ss; ss << serialized;
+    Args args;
     {
-        cereal::JSONInputArchive iar(ss);
-        iar(local_args);
+        std::stringstream iss; iss << serialized;
+        cereal::JSONInputArchive iar(iss);
+        iar(args);
     }
     
     // send to server as request
-    ss.clear(); ss.str("");
+    std::stringstream ss;
     {
         cereal::JSONOutputArchive oar(ss);
         oar(event);
@@ -57,29 +58,26 @@ void CreateCharacterHandler::handle(std::string serialized) {
         throw std::logic_error("");  // TODO create some TCPException class
     }
 
-    SPlat::Event server_event;
+    SPlat::IdDto id_dto;
     {
         std::stringstream iss; iss << response.body;
         cereal::JSONInputArchive iar(iss);
-        iar(server_event);
+        iar(id_dto);
     }
-    
-    Args args;
-    {
-        std::stringstream iss; iss << server_event.command.args;
-        cereal::JSONInputArchive iar(iss);
-        iar(args.properties);
-    }
+
+    args.properties.set_id(id_dto.id);
 
     SPlat::Model::Asset* asset = &config.get_asset_factory_config()
         .get_character_factory().create_asset(args.properties);
 
-    if (server_event.sender == environment.get_entrypoint_id() 
-            && local_args.set_controlled) {
+    if (event.sender == environment.get_entrypoint_id() 
+            && args.set_controlled) {
         SPlat::Model::Character* character 
             = dynamic_cast<SPlat::Model::Character*>(asset);
         environment.set_controlled_asset(character);
     }
+
+    std::cout << id_dto.id << std::endl;
 #ifdef DEBUG
     std::cout << "<- CreateCharacterHandler::handle" << std::endl;
 #endif

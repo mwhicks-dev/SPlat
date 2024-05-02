@@ -119,16 +119,7 @@ void ClientController::run_response_thread() {
 
         Response curr = pop_incoming_response();
 
-        const Response::ContentType type = curr.content_type;
-        if (type == Response::ContentType::Event) {
-            Event e;
-            {
-                std::stringstream ss; ss << curr.body;
-                cereal::JSONInputArchive iar(ss);
-                iar(e);
-            }
-            listener.push_command(e.command);
-        }
+        // handle later
     }
 
     subscriber_context->close();

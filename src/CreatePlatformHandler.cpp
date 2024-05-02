@@ -2,6 +2,7 @@
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
+#include "IdDto.h"
 
 #include <cereal/archives/json.hpp>
 
@@ -27,6 +28,13 @@ void CreatePlatformHandler::handle(std::string serialized) {
         .sender=environment.get_entrypoint_id()
     };
 
+    Args args;
+    {
+        std::stringstream iss; iss << serialized;
+        cereal::JSONInputArchive iar(iss);
+        iar(args);
+    }
+    
     // send to server as request
     std::stringstream ss;
     {
@@ -37,31 +45,29 @@ void CreatePlatformHandler::handle(std::string serialized) {
         .content_type=Request::ContentType::Event,
         .body=ss.str()
     };
+
     ControllerInterface& ctl = entrypoint.get_controller();
     Response response = ctl.await(request);
 
     if (response.status != 200) {
-        std::cerr << "Could not create platform(" << response.status << "):" << std::endl;
+        std::cerr << "Could not create character (" << response.status << "):" << std::endl;
         std::cerr << response.body << std::endl;
         throw std::logic_error("");  // TODO create some TCPException class
     }
 
-    SPlat::Event server_event;
+    SPlat::IdDto id_dto;
     {
         std::stringstream iss; iss << response.body;
         cereal::JSONInputArchive iar(iss);
-        iar(server_event);
+        iar(id_dto);
     }
 
-    Args args;
-    {
-        std::stringstream iss; iss << server_event.command.args;
-        cereal::JSONInputArchive iar(iss);
-        iar(args.properties);
-    }
+    args.properties.set_id(id_dto.id);
 
-    config.get_asset_factory_config().get_platform_factory().create_asset(args
-        .properties);
+    SPlat::Model::Asset* asset = &config.get_asset_factory_config()
+        .get_platform_factory().create_asset(args.properties);
+
+    std::cout << id_dto.id << std::endl;
 #ifdef DEBUG
     std::cout << "<- CreatePlatformHandler::handle" << std::endl;
 #endif

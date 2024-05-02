@@ -3,6 +3,7 @@
 #include "events/CreateMovingPlatformHandler.h"
 #include "Client.h"
 #include "Event.h"
+#include "IdDto.h"
 #include "FauxServerController.h"
 #include "ServerDto.h"
 
@@ -92,56 +93,17 @@ Response FauxServerController::await(Request request) {
             while (asset_ids.count(id) > 0) id++;
             
             // set generated ID in event
+            IdDto id_dto = {
+                .id=id
+            };
             std::stringstream ss;
-            if (event.command.type == Events::CreatePlatformHandler::get_type()) {
-                Events::CreatePlatformHandler::Args args;
-                {
-                    std::stringstream ss; ss << event.command.args;
-                    cereal::JSONInputArchive iar(ss);
-                    iar(args);
-                }
-                args.properties.set_id(id);
-                ss.clear(); ss.str("");
-                {
-                    cereal::JSONOutputArchive oar(ss);
-                    oar(args.properties);
-                }
-            } else if (event.command.type == Events::CreateMovingPlatformHandler::get_type()) {
-                Events::CreateMovingPlatformHandler::Args args;
-                {
-                    std::stringstream ss; ss << event.command.args;
-                    cereal::JSONInputArchive iar(ss);
-                    iar(args);
-                }
-                args.properties.set_id(id);
-                ss.clear(); ss.str("");
-                {
-                    cereal::JSONOutputArchive oar(ss);
-                    oar(args.properties);
-                }
-            } else if (event.command.type == Events::CreateCharacterHandler::get_type()) {
-                Events::CreateCharacterHandler::Args args;
-                {
-                    std::stringstream ss; ss << event.command.args;
-                    cereal::JSONInputArchive iar(ss);
-                    iar(args);
-                }
-                args.properties.set_id(id);
-                ss.clear(); ss.str("");
-                {
-                    cereal::JSONOutputArchive oar(ss);
-                    oar(args.properties);
-                }
-            }
-            event.command.args = ss.str();
-
-            // update response content
-            response.content_type == Response::ContentType::Event;
-            ss.clear(); ss.str("");
             {
                 cereal::JSONOutputArchive oar(ss);
-                oar(event);
+                oar(id_dto);
             }
+
+            // update response content
+            response.content_type == Response::ContentType::IdDto;
             response.body = ss.str();
         }
     }
