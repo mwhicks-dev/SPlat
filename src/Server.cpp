@@ -83,21 +83,22 @@ void Server::start() {
 
 Server& Server::get_instance() {
     m.lock();
-    if (instance == nullptr) {
-        instance = new Server();
-    }
-    m.unlock();
-    Server* local = nullptr;
-    try {
-        m.lock();
-        local = dynamic_cast<Server*>(instance);
-    } catch (std::bad_exception&) {}
+    Entrypoint * local = instance;
     m.unlock();
     if (local == nullptr) {
+        instance = new Server();
+    }
+    Server* server = nullptr;
+    try {
+        m.lock();
+        server = dynamic_cast<Server*>(instance);
+    } catch (std::bad_exception&) {}
+    m.unlock();
+    if (server == nullptr) {
         throw std::invalid_argument("Entrypoint is not of type Server");
     }
 
-    return *local;
+    return *server;
 }
 
 ConfigInterface& Server::get_config() {

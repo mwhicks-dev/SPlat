@@ -1,3 +1,4 @@
+#include "events/handlers/UpdateAssetHandler.h"
 #include "events/handlers/DeleteAssetHandler.h"
 #include "IdDto.h"
 #include "Server.h"
@@ -251,19 +252,73 @@ void ServerController::run_publish_thread() {
 
         Event event = pop_outgoing_event();
         std::stringstream event_ss;
-        event_ss << "SPlat: ";
         {
             cereal::JSONOutputArchive oar(event_ss);
             oar(event);
         }
-        socket.send(zmq::message_t(event_ss.str()), zmq::send_flags::none);
+        Request request = {
+            .content_type=Request::ContentType::Event,
+            .body=event_ss.str()
+        };
+        std::stringstream request_ss;
+        request_ss << "SPlat: ";
+        {
+            cereal::JSONOutputArchive oar(request_ss);
+            oar(request);
+        }
+        socket.send(zmq::message_t(request_ss.str()), zmq::send_flags::none);
     }
 }
 
 void ServerController::run() {
     std::thread response_thread(&ServerController::run_response_thread, this);
     std::thread publisher_thread(&ServerController::run_publish_thread, this);
+    std::thread routine_update_thread(&ServerController::run_routine_update_thread, this);
 
     response_thread.detach();
     publisher_thread.detach();
+    routine_update_thread.detach();
+}
+
+void ServerController::run_routine_update_thread() {
+    Server& server = Server::get_instance();
+    EnvironmentInterface& environment = server.get_config().get_environment();
+    Model::ObjectModelInterface& object_model 
+        = server.get_object_model();
+    
+    Event prototype = {
+        .command={
+            .priority=-1,
+            .type=Events::UpdateAssetHandler::get_type()
+        },
+        .sender=environment.get_entrypoint_id()
+    };
+    
+    while (environment.get_running()) {
+        // sleep for variable time -- for now 1s
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+        // push new updateassetevent with all id
+        std::unordered_set<size_t> asset_ids = object_model.get_ids();
+        for (size_t asset_id : asset_ids) {
+            // format args for specific asset
+            Model::Asset& curr = object_model.read_asset(asset_id);
+            Event asset_event = prototype;
+            Events::UpdateAssetHandler::Args args = {
+                .id=asset_id,
+                .properties=curr.get_asset_properties()
+            };
+
+            // serialize args to command args
+            std::stringstream args_ss;
+            {
+                cereal::JSONOutputArchive oar(args_ss);
+                oar(args);
+            }
+            asset_event.command.args = args_ss.str();
+
+            // push event to outgoing
+            push_outgoing_event(asset_event);
+        }
+    }
 }

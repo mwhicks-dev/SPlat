@@ -49,6 +49,8 @@ namespace SPlat {
 
         void push_outgoing_event(Event);
 
+        void run_routine_update_thread();
+
     public:
 
         void push_outgoing_request(Request) override;

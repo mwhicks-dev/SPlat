@@ -160,6 +160,8 @@ int main() {
         cli.get_background_listener().push_event(event);
     }
 
+    cli.get_config().get_environment().set_req_rep_address("tcp://localhost:5555");
+
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
     cli.start();

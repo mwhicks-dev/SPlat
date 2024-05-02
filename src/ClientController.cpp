@@ -9,6 +9,7 @@
 
 #include <cereal/archives/json.hpp>
 
+#include <sstream>
 #include <thread>
 
 using namespace SPlat;
@@ -91,11 +92,6 @@ void ClientController::run_response_thread() {
 #ifdef DEBUG
     std::cout << "-> ClientController::run_response_thread()" << std::endl;
 #endif
-    // start subscriber thread
-    zmq::context_t * subscriber_context = new zmq::context_t(2);
-    std::thread subscriber_thread(&ClientController::run_subscriber_thread, 
-        this, subscriber_context);
-    subscriber_thread.detach();
 
     // prepare client
     Client& cli = Client::get_instance();
@@ -111,8 +107,6 @@ void ClientController::run_response_thread() {
 
         // handle later
     }
-
-    subscriber_context->close();
 #ifdef DEBUG
     std::cout << "<- ClientController::run_response_thread()" << std::endl;
 #endif
@@ -123,8 +117,11 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
     std::cout << "-> ClientController::run_subscriber_thread(zmq::context_t*)" << std::endl;
 #endif
     // prepare environment
+    Client& client = Client::get_instance();
+    Events::ListenerInterface& background_listener 
+        = client.get_background_listener();
     EnvironmentInterface& environment 
-        = Client::get_instance().get_config().get_environment();
+        = client.get_config().get_environment();
     const char* filter = "SPlat: ";
 
     // prepare context, socket, and filter
@@ -148,8 +145,10 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
         // deserialize request and push
         Request req;
         {
-            std::stringstream ss; ss << request.to_string()
-                .substr(strlen("SPlat: "));
+            // std::stringstream ss; ss << request.to_string()
+            //     .substr(strlen("SPlat: "));
+            std::stringstream ss;
+            ss << request.to_string().substr(strlen("SPlat: "));
             cereal::JSONInputArchive iar(ss);
             iar(req);
         }
@@ -163,10 +162,11 @@ void ClientController::run_subscriber_thread(zmq::context_t* context) {
                 iar(e);
             }
             sender = e.sender;
+            if (sender != environment.get_entrypoint_id()) {
+                background_listener.push_event(e);
+                push_outgoing_request(req);
+            }
         }
-
-        if (sender != environment.get_entrypoint_id())
-            push_outgoing_request(req);
     }
 #ifdef DEBUG
     std::cout << "<- ClientController::run_subscriber_thread" << std::endl;
@@ -234,10 +234,16 @@ void ClientController::run() {
     // start req/rep threads
     std::thread request_thread(&ClientController::run_request_thread, this);
     std::thread response_thread(&ClientController::run_response_thread, this);
+    
+    // start subscriber thread
+    zmq::context_t * subscriber_context = new zmq::context_t(2);
+    std::thread subscriber_thread(&ClientController::run_subscriber_thread, 
+        this, subscriber_context);
 
     // detach
     request_thread.detach();
     response_thread.detach();
+    subscriber_thread.detach();
 #ifdef DEBUG
     std::cout << "<- ClientController::run()" << std::endl;
 #endif
