@@ -16,9 +16,14 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-set(LA src/KeyPressHandler.cpp src/CharacterCollisionHandler.cpp src/UpdateAssetHandler.cpp src/CreatePlatformHandler.cpp src/ClientController.cpp src/DeleteAssetHandler.cpp src/UnorderedMapObjectModel.cpp src/GetAssetHandler.cpp src/MovingPlatformCollisionHandler.cpp src/Entrypoint.cpp src/UnorderedStandingConfig.cpp src/OrderedPriorityListener.cpp src/PlatformCollisionHandler.cpp src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp src/Environment.cpp src/KeyReleaseHandler.cpp src/Platform.cpp src/AssetFactoryConfig.cpp src/CreateMovingPlatformHandler.cpp src/Character.cpp src/MovingPlatformUpdateHandler.cpp src/FauxServerController.cpp src/TimingConfig.cpp src/CreateCharacterHandler.cpp src/ClientConfig.cpp src/MovingPlatform.cpp src/AbstractAssetFactory.cpp)
-set(LB src/CharacterFactory.cpp src/Client.cpp src/PlatformFactory.cpp src/MovingPlatformFactory.cpp)
-set(ALL_IMPLEMENTATIONS ${LA} ${LB})
+set(LA src/KeyPressHandler.cpp src/CharacterCollisionHandler.cpp src/UpdateAssetHandler.cpp src/CreatePlatformHandler.cpp src/ClientController.cpp)
+set(LB src/DeleteAssetHandler.cpp src/UnorderedMapObjectModel.cpp src/GetAssetHandler.cpp src/MovingPlatformCollisionHandler.cpp src/Entrypoint.cpp)
+set(LC src/UnorderedStandingConfig.cpp src/OrderedPriorityListener.cpp src/PlatformCollisionHandler.cpp src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp)
+set(LD src/Environment.cpp src/KeyReleaseHandler.cpp src/Platform.cpp src/AssetFactoryConfig.cpp src/CreateMovingPlatformHandler.cpp)
+set(LE src/Character.cpp src/MovingPlatformUpdateHandler.cpp src/FauxServerController.cpp src/TimingConfig.cpp src/CreateCharacterHandler.cpp)
+set(LF src/ClientConfig.cpp src/MovingPlatform.cpp src/AbstractAssetFactory.cpp)
+set(LG src/CharacterFactory.cpp src/Client.cpp src/PlatformFactory.cpp src/MovingPlatformFactory.cpp)
+set(ALL_IMPLEMENTATIONS ${LA} ${LB} ${LC} ${LD} ${LE} ${LF} ${LG})
 
 add_executable(gom_test test/TestGameObjectModel.cpp ${ALL_IMPLEMENTATIONS})
 target_link_libraries(gom_test gtest gtest_main sfml-graphics)

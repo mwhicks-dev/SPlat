@@ -56,6 +56,7 @@ def get_src_units() -> list[str]:
     return files
 
 def main() -> None:
+    # get actual dependencies
     dependencies = process_all_files()
     not_compiled = get_src_units()
     src_units_order = []
@@ -72,6 +73,22 @@ def main() -> None:
                 src_units_order[-1].append(target)
         for target in src_units_order[-1]:
             not_compiled.pop(not_compiled.index(target))
+    
+    # split larger dependencies lists into smaller ones with same order
+    split_lists = []
+    for units_layer in src_units_order:
+        unit_sublayer = []
+        while len(units_layer) > 0:
+            unit = units_layer[0]
+            unit_sublayer.append(unit)
+            units_layer.pop(0)
+            if len(unit_sublayer) == 5:
+                split_lists.append(unit_sublayer)
+                unit_sublayer = []
+        if len(unit_sublayer) > 0:
+            split_lists.append(unit_sublayer)
+    src_units_order = split_lists
+
     layer_number = 65
     for units_layer in src_units_order:
         print(f'set(L{chr(layer_number)}', end='')
