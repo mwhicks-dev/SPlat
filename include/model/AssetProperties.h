@@ -25,7 +25,14 @@ namespace SPlat {
 
             int collision_priority = 0;
 
+            time_t updated_time = 0;
+
         public:
+
+            template <class Archive>
+            void serialize(Archive& ar) {
+                ar(id, owner, position, size, fill_color, collision_priority, updated_time);
+            }
 
             AssetProperties() = default;
 
@@ -136,9 +143,18 @@ namespace SPlat {
                 return r;
             }
 
-            template <class Archive>
-            void serialize(Archive& ar) {
-                ar(id, owner, position, size, fill_color, collision_priority);
+            void set_updated_time(time_t updated_time) {
+                m.lock();
+                this->updated_time = updated_time;
+                m.unlock();
+            }
+
+            time_t get_updated_time() {
+                m.lock();
+                auto local = updated_time;
+                m.unlock();
+
+                return local;
             }
 
         };
