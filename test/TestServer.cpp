@@ -9,13 +9,7 @@
 
 using namespace SPlat;
 
-void sigint_handler(int f) {
-    Entrypoint::get_instance().get_config().get_environment().set_running(false);
-}
-
 int main() {
-    // signal(SIGINT, sigint_handler);
-
     Server& server = server.get_instance();
     ConfigInterface& conf = server.get_config();
     EnvironmentInterface& env = conf.get_environment();

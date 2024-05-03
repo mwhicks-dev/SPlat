@@ -72,8 +72,10 @@ void Client::handle_key_event(sf::Keyboard::Key key) {
 }
 
 void wait_for_timeline(Timeline& t, time_t target) {
+
     if (Client::get_instance().get_config().get_timing_config().get_display_timeline().get_paused()
-         || t.get_time() >= target) return;
+         || t.get_time() >= target 
+         || !Client::get_instance().get_config().get_environment().get_running()) return;
 
     return wait_for_timeline(t, target);
 }
@@ -143,7 +145,7 @@ void Client::start() {
         .sender=environment.get_entrypoint_id()
     };
 
-    while (window.isOpen()) {
+    while (window.isOpen() && environment.get_running()) {
         // poll for closed event
         sf::Event event;
         while (window.pollEvent(event)) {
