@@ -26,8 +26,8 @@ display_timeline(*new LocalTimeline(anchor_timeline, -1)) {
     time_t tf = get_anchor_timeline().get_time();
     set_anchor_steps_per_second(tf - t0);
     display_timeline.set_tic(get_anchor_steps_per_second());
-    // std::thread t(&TimingConfig::display_timeline_loop, this);
-    // t.detach();
+    std::thread t(&TimingConfig::display_timeline_loop, this);
+    t.detach();
 }
 
 void TimingConfig::set_anchor_steps_per_second(
@@ -85,6 +85,8 @@ void TimingConfig::update_framerate_limit(long framerate_limit) {
 }
 
 void TimingConfig::display_timeline_loop() {
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
     EnvironmentInterface& environment 
         = Entrypoint::get_instance().get_config().get_environment();
     Timeline& anchor_timeline = get_anchor_timeline();
