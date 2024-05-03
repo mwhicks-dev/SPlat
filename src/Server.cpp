@@ -51,30 +51,28 @@ void Server::start() {
 
     time_t last_update = timing.get_display_timeline().get_time();
     while (environment.get_running()) {
+        // update all owned objects
         std::unordered_set<size_t> ids = object_model.get_ids();
-        std::vector<SPlat::Model::Moving*> moving_vector;
         for (size_t id : ids) {
+            Model::Asset& asset = object_model.read_asset(id);
+            Model::AssetProperties& asset_properties 
+                = asset.get_asset_properties();
+            if (asset_properties.get_owner() 
+                != environment.get_entrypoint_id()) continue;
             try {
-                SPlat::Model::Moving& moving = dynamic_cast
-                    <SPlat::Model::Moving&>(object_model.read_asset(id));
-                if (moving.get_asset_properties().get_owner() 
-                        == environment.get_entrypoint_id())
-                    moving_vector.push_back(&moving);
+                Model::Moving& moving = dynamic_cast<Model::Moving&>(asset);
+                moving.update();
+                moving.get_moving_properties()
+                    .set_last_update(loop_timeline.get_time());
+                
+                for (size_t other : ids) {
+                    if (id == other) continue;
+
+                    SPlat::Model::Asset& other_asset 
+                        = object_model.read_asset(other);
+                    asset.resolve_collision(other_asset);
+                }
             } catch (std::bad_cast&) {}
-        }
-
-        for (SPlat::Model::Moving* moving : moving_vector) {
-            moving->update();
-            moving->get_moving_properties().set_last_update(loop_timeline
-                .get_time());
-            
-            size_t id = moving->get_asset_properties().get_id();
-            for (size_t other : ids) {
-                if (id == other) continue;
-
-                SPlat::Model::Asset& other_asset = object_model.read_asset(other);
-                moving->resolve_collision(other_asset);
-            }
         }
 
         time_t next = last_update + 1;

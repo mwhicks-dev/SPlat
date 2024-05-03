@@ -150,48 +150,36 @@ void Client::start() {
             handle_key_event(sf::Keyboard::Key::Escape);
         }
 
-        // generate tick events (if unpaused)
-        std::unordered_set<size_t> ids = get_object_model().get_ids();
-        std::vector<SPlat::Model::Moving*> moving;
-        for (size_t id : ids) {
-            try {
-                SPlat::Model::Moving& asset = dynamic_cast<SPlat::Model::Moving&>(
-                    get_object_model().read_asset(id));
-                if (asset.get_asset_properties().get_owner() == environment.get_entrypoint_id())
-                    moving.push_back(&asset);
-            } catch (std::bad_cast&) {}
-        }
-
-        // draw all assets
         window.clear(sf::Color::Black);
 
-        std::unordered_set<size_t> asset_ids = get_object_model().get_ids();
-        for (size_t id : asset_ids) {
-            Model::Asset& asset = get_object_model()
-                .read_asset(id);
-            window.draw(asset.get_asset_properties().get_rectangle_shape());
-        }
-        time_t curr = Client::get_instance().get_config().get_timing_config()
-        .get_display_timeline().get_time();
-        for (SPlat::Model::Moving* asset_ptr : moving) {
+        std::unordered_set<size_t> ids = object_model.get_ids();
+        for (size_t id : ids) {
+            // get asset
+            Model::Asset& asset = object_model.read_asset(id);
+
+            Model::AssetProperties& asset_properties 
+                = asset.get_asset_properties();
+
+            // attempt routine update
             try {
-                // get and update
-                SPlat::Model::Moving& asset = *asset_ptr;
-                asset.update();
-                asset.get_moving_properties().set_last_update(curr);
-
-                size_t id = asset.get_asset_properties().get_id();
-                for (size_t other : ids) {
-                    if (id == other) continue;
-
-                    SPlat::Model::Asset& other_asset = get_object_model().read_asset(other);
-                    asset.resolve_collision(other_asset);
+                if (asset_properties.get_owner() 
+                        == environment.get_entrypoint_id()) {
+                    Model::Moving& moving 
+                        = dynamic_cast<Model::Moving&>(asset);
+                    moving.update();
+                    moving.get_moving_properties()
+                        .set_last_update(last_updated);
+                    for (size_t other_id : ids) {
+                        if (id == other_id) continue;
+                        Model::Asset& other_asset 
+                            = object_model.read_asset(other_id);
+                        asset.resolve_collision(other_asset);
+                    }
                 }
-            } catch (std::exception& e) {
-    #ifdef DEBUG
-                std::cout << e.what() << std::endl;
-    #endif
-            }
+            } catch (std::bad_cast&) {}
+
+            // draw to screen
+            window.draw(asset_properties.get_rectangle_shape());
         }
 
         window.display();
