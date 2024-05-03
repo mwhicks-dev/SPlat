@@ -45,8 +45,14 @@ public:
         if (conf.get_environment().get_held_keys().count(args.key) > 0) return;
         conf.get_environment().add_held_key(args.key);
 
-        if (args.key == sf::Keyboard::Escape)
-            return conf.get_timing_config().get_display_timeline().pause();
+        if (args.key == sf::Keyboard::Escape) {
+            LocalTimeline& display_timeline = conf.get_timing_config().get_display_timeline();
+            if (display_timeline.get_paused()) {
+                return display_timeline.unpause();
+            } else {
+                return display_timeline.pause();
+            }
+        }
 
         Model::Character* controlled = conf.get_environment().get_controlled_asset();
         if (controlled == nullptr) return;
