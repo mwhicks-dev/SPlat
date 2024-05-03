@@ -11,6 +11,8 @@
 #include "events/handlers/ClientReadAssetHandler.h"
 #include "events/handlers/ClientUpdateAssetHandler.h"
 #include "events/handlers/ClientDeleteAssetHandler.h"
+#include "events/handlers/ClientSpawnAssetHandler.h"
+#include "events/handlers/ClientDespawnAssetHandler.h"
 
 #include <thread>
 #include <chrono>
@@ -107,6 +109,10 @@ Client::Client() : config(*new ClientConfig()),
         *new Events::ClientUpdateAssetHandler());
     background_listener.set_handler(Events::ClientDeleteAssetHandler::get_type(), 
         *new Events::ClientDeleteAssetHandler());
+    background_listener.set_handler(Events::ClientSpawnAssetHandler::get_type(),
+        *new Events::ClientSpawnAssetHandler());
+    background_listener.set_handler(Events::ClientDespawnAssetHandler::get_type(),
+        *new Events::ClientDespawnAssetHandler());
 }
 
 bool compare(SPlat::Model::Moving* lhs, SPlat::Model::Moving* rhs) {

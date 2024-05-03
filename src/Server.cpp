@@ -4,6 +4,8 @@
 #include "events/handlers/ServerReadAssetHandler.h"
 #include "events/handlers/ServerUpdateAssetHandler.h"
 #include "events/handlers/ServerDeleteAssetHandler.h"
+#include "events/handlers/ServerSpawnAssetHandler.h"
+#include "events/handlers/ServerDespawnAssetHandler.h"
 #include "events/OrderedPriorityListener.h"
 #include "model/UnorderedMapObjectModel.h"
 #include "model/Spawnpoint.h"
@@ -36,6 +38,10 @@ spawnpoint(*new Model::Spawnpoint(*new Model::AssetProperties())) {
         *new Events::ServerUpdateAssetHandler());
     background_listener.set_handler(Events::ServerDeleteAssetHandler::get_type(), 
         *new Events::ServerDeleteAssetHandler());
+    background_listener.set_handler(Events::ServerSpawnAssetHandler::get_type(),
+        *new Events::ServerSpawnAssetHandler());
+    background_listener.set_handler(Events::ServerDespawnAssetHandler::get_type(),
+        *new Events::ServerDespawnAssetHandler());
 }
 
 void Server::start() {
