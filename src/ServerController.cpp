@@ -176,7 +176,6 @@ void ServerController::run_response_thread() {
     EnvironmentInterface& environment 
         = Server::get_instance().get_config().get_environment();
     
-    zmq::context_t context(4);
     zmq::socket_t socket(context, zmq::socket_type::rep);
     socket.bind("tcp://*:5555");
 
@@ -210,7 +209,6 @@ void ServerController::run_response_thread() {
     }
 
     socket.close();
-    context.close();
 }
 
 void ServerController::set_outgoing_events(std::priority_queue<Event> outgoing_events) {
@@ -244,7 +242,6 @@ void ServerController::run_publish_thread() {
     EnvironmentInterface& environment 
         = Server::get_instance().get_config().get_environment();
 
-    zmq::context_t context(3);
     zmq::socket_t socket(context, zmq::socket_type::pub);
     socket.bind("tcp://*:5556");
 
@@ -271,7 +268,6 @@ void ServerController::run_publish_thread() {
     }
 
     socket.close();
-    context.close();
 }
 
 void ServerController::run() {
@@ -325,4 +321,12 @@ void ServerController::run_routine_update_thread() {
             push_outgoing_event(asset_event);
         }
     }
+}
+
+ServerController::ServerController() {
+    context = zmq::context_t(2);
+}
+
+ServerController::~ServerController() {
+    context.close();
 }

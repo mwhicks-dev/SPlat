@@ -144,7 +144,6 @@ void ClientController::run_subscriber_thread() {
     const char* filter = "SPlat: ";
 
     // prepare context, socket, and filter
-    zmq::context_t context(2);
     zmq::socket_t socket(context, zmq::socket_type::sub);
     socket.connect(environment.get_pub_sub_addres());
     socket.set(zmq::sockopt::subscribe, filter);
@@ -190,7 +189,6 @@ void ClientController::run_subscriber_thread() {
         }
     }
 
-    context.close();
     socket.close();
 #ifdef DEBUG
     std::cout << "<- ClientController::run_subscriber_thread" << std::endl;
@@ -272,7 +270,6 @@ void ClientController::run() {
 }
 
 Response ClientController::await(Request request) {
-    zmq::context_t context(1);
     zmq::socket_t socket(context, zmq::socket_type::req);
     
     timeval retry_time = {
@@ -313,7 +310,14 @@ Response ClientController::await(Request request) {
     }
 
     socket.close();
-    context.close();
 
     return response;
+}
+
+ClientController::ClientController() {
+    context = zmq::context_t(1);
+}
+
+ClientController::~ClientController() {
+    context.close();
 }

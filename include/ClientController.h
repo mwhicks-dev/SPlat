@@ -14,6 +14,8 @@ namespace SPlat {
 
         std::mutex m;
 
+        zmq::context_t context;
+
         std::queue<Request> requests;
 
         std::queue<Response> responses;
@@ -34,6 +36,8 @@ namespace SPlat {
         
         void push_incoming_response(Response);
 
+        zmq::context_t get_context();
+
     public:
 
         void push_outgoing_request(Request) override;
@@ -41,6 +45,10 @@ namespace SPlat {
         void run() override;
 
         Response await(Request) override;
+
+        ClientController();
+
+        ~ClientController();
 
     };
 

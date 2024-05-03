@@ -1,17 +1,21 @@
 #ifndef SPlat_ServerController_h
 #define SPlat_ServerController_h
 
+#include "ControllerInterface.h"
+
+#include <cppzmq/zmq.hpp>
+
 #include <queue>
 #include <mutex>
 #include <set>
-
-#include "ControllerInterface.h"
 
 namespace SPlat {
 
     class ServerController : public ControllerInterface {
 
         std::mutex m;
+
+        zmq::context_t context;
 
         std::set<size_t> connected_clients;
 
@@ -58,6 +62,10 @@ namespace SPlat {
         void run() override;
 
         Response await(Request) override;
+
+        ServerController();
+
+        ~ServerController();
 
     };
 
