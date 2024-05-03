@@ -57,31 +57,23 @@ namespace SPlat {
             }
 
             time_t get_last_state_change() {
-                m.lock();
-                time_t local = last_state_change;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return last_state_change;
             }
 
             std::vector<State> get_states() {
-                m.lock();
-                std::vector<State> local = states;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return states;
             }
 
             void set_states(std::vector<State> states) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->states = states;
-                m.unlock();
             }
 
             void set_last_state_change(time_t last_state_change) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->last_state_change = last_state_change;
-                m.unlock();
             }
 
         };

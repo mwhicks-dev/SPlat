@@ -19,11 +19,8 @@ namespace SPlat {
         protected:
 
             CollisionHandler * get_collision_handler() {
-                m.lock();
-                CollisionHandler * local = collision_handler;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return collision_handler;
             }
 
         public:
@@ -31,17 +28,13 @@ namespace SPlat {
             Asset(AssetProperties& properties) : properties(properties) {}
 
             void set_collision_handler(CollisionHandler * collision_handler) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->collision_handler = collision_handler;
-                m.unlock();
             }
 
             AssetProperties& get_asset_properties() {
-                m.lock();
-                AssetProperties& local = properties;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return properties;
             }
 
             virtual void resolve_collision(Asset& other) = 0;

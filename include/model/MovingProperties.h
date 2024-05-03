@@ -32,31 +32,23 @@ namespace SPlat {
             }
 
             sf::Vector2f get_velocity() {
-                m.lock();
-                sf::Vector2f local = velocity;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return velocity;
             }
 
             time_t get_last_updated() {
-                m.lock();
-                time_t local = last_updated;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return last_updated;
             }
 
             void set_velocity(sf::Vector2f velocity) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->velocity = velocity;
-                m.unlock();
             }
 
             void set_last_update(time_t last_updated) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->last_updated = last_updated;
-                m.unlock();
             }
 
             template <class Archive>

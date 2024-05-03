@@ -21,25 +21,16 @@ environment(*new Environment()) {
 }
 
 AssetFactoryConfigInterface& ClientConfig::get_asset_factory_config() {
-    m.lock();
-    AssetFactoryConfigInterface& local = asset_factory_config;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return asset_factory_config;
 }
 
 EnvironmentInterface& ClientConfig::get_environment() {
-    m.lock();
-    EnvironmentInterface& local = environment;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return environment;
 }
 
 TimingConfigInterface& ClientConfig::get_timing_config() {
-    m.lock();
-    TimingConfigInterface& local = timing_config;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return timing_config;
 }

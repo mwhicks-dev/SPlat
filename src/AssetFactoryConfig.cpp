@@ -11,25 +11,22 @@ platform_factory(*new Model::PlatformFactory()),
 moving_platform_factory(*new Model::MovingPlatformFactory()) {}
 
 Model::AbstractAssetFactory& AssetFactoryConfig::get_character_factory() {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     Model::AbstractAssetFactory& local = character_factory;
-    m.unlock();
-
+    
     return local;
 }
 
 Model::AbstractAssetFactory& AssetFactoryConfig::get_platform_factory() {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     Model::AbstractAssetFactory& local = platform_factory;
-    m.unlock();
-
+    
     return local;
 }
 
 Model::AbstractAssetFactory& AssetFactoryConfig::get_moving_platform_factory() {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     Model::AbstractAssetFactory& local = moving_platform_factory;
-    m.unlock();
-
+    
     return local;
 }

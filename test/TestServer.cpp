@@ -14,7 +14,7 @@ void sigint_handler(int f) {
 }
 
 int main() {
-    signal(SIGINT, sigint_handler);
+    // signal(SIGINT, sigint_handler);
 
     Server& server = server.get_instance();
     ConfigInterface& conf = server.get_config();

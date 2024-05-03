@@ -16,49 +16,37 @@
 using namespace SPlat;
 
 Response ServerController::pop_incoming_response() {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     auto local = responses.front(); responses.pop();
-    m.unlock();
-
+    
     return local;
 }
 
 Request ServerController::pop_outgoing_request() {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     auto local = requests.front(); requests.pop();
-    m.unlock();
-
+    
     return local;
 }
 
 bool ServerController::has_outgoing_request() {
-    m.lock();
-    auto local = !requests.empty();
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return !requests.empty();
 }
 
 bool ServerController::has_incoming_response() {
-    m.lock();
-    auto local = !responses.empty();
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return !responses.empty();
 }
 
 std::set<size_t> ServerController::get_connected_clients() {
-    m.lock();
-    auto local = connected_clients;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return connected_clients;
 }
 
 void ServerController::set_connected_clients(std::set<size_t> connected_clients) {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->connected_clients = connected_clients;
-    m.unlock();
 }
 
 size_t ServerController::add_connected_client() {
@@ -78,9 +66,8 @@ void ServerController::remove_connected_client(size_t client) {
 }
 
 void ServerController::push_outgoing_request(Request request) {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     requests.push(request);
-    m.unlock();
 }
 
 Response ServerController::await(Request request) {
@@ -212,17 +199,13 @@ void ServerController::run_response_thread() {
 }
 
 void ServerController::set_outgoing_events(std::priority_queue<Event> outgoing_events) {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->outgoing_events = outgoing_events;
-    m.unlock();
 }
 
 std::priority_queue<Event> ServerController::get_outgoing_events() {
-    m.lock();
-    auto local = outgoing_events;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return outgoing_events;
 }
 
 Event ServerController::pop_outgoing_event() {

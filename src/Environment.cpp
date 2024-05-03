@@ -15,52 +15,38 @@ Environment::Environment()
 }
 
 Model::Character * Environment::get_controlled_asset() {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     Model::Character * local = controlled_asset;
-    m.unlock();
-
+    
     return local;
 }
 
 std::set<sf::Keyboard::Key> Environment::get_held_keys() {
-    m.lock();
-    auto local = held_keys;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return held_keys;
 }
 
 bool Environment::get_running() {
-    m.lock();
-    bool local = running;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return running;
 }
 
 Model::StandingConfigInterface& Environment::get_standing_config() {
-    m.lock();
-    auto& local = standing_config;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return standing_config;
 }
 
 float Environment::get_unit() {
-    m.lock();
-    float local = unit;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return unit;
 }
 
 void Environment::set_controlled_asset(Model::Character * controlled_asset) {
 #ifdef DEBUG
     std::cout << "-> Environment::set_controlled_asset(Model::Character*)" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->controlled_asset = controlled_asset;
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- Environment::set_controlled_asset" << std::endl;
 #endif
@@ -70,9 +56,8 @@ void Environment::add_held_key(sf::Keyboard::Key key) {
 #ifdef DEBUG
     std::cout << "-> Environment::add_held_key(sf::Keyboard::Key)" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     held_keys.insert(key);
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- Environment::add_held_key" << std::endl;
 #endif
@@ -82,9 +67,8 @@ void Environment::remove_held_key(sf::Keyboard::Key key) {
 #ifdef DEBUG
     std::cout << "-> Environment::remove_held_key(sf::Keyboard::Key)" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     held_keys.erase(key);
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- Environment::remove_held_key" << std::endl;
 #endif
@@ -94,9 +78,8 @@ void Environment::set_running(bool running) {
 #ifdef DEBUG
     std::cout << "-> set_running(" << running << ")" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->running = running;
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- set_running" << std::endl;
 #endif
@@ -106,45 +89,34 @@ void Environment::set_unit(float unit) {
 #ifdef DEBUG
     std::cout << "-> Environment::set_unit(" << unit << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->unit = unit;
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- Environment::set_unit" << std::endl;
 #endif
 }
 
 size_t Environment::get_entrypoint_id() {
-    m.lock();
-    auto local = entrypoint_id;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return entrypoint_id;
 }
 
 std::string Environment::get_pub_sub_addres() {
-    m.lock();
-    auto local = pub_sub_address;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return pub_sub_address;
 }
 
 std::string Environment::get_req_rep_addres() {
-    m.lock();
-    auto local = req_rep_address;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return req_rep_address;
 }
 
 void Environment::set_entrypoint_id(size_t entrypoint_id) {
 #ifdef DEBUG
     std::cout << "-> Environment::set_entrypoint_id(" << entrypoint_id << ")" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->entrypoint_id = entrypoint_id;
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- Environment::set_entrypoint_id" << std::endl;
 #endif
@@ -154,9 +126,8 @@ void Environment::set_pub_sub_addres(std::string pub_sub_address) {
 #ifdef DEBUG
     std::cout << "-> Environment::set_pub_sub_addres(" << pub_sub_address << ")" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->pub_sub_address = pub_sub_address;
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- Environment::set_pub_sub_addres" << std::endl;
 #endif
@@ -166,26 +137,21 @@ void Environment::set_req_rep_address(std::string req_rep_address) {
 #ifdef DEBUG
     std::cout << "-> Environment::set_req_rep_address(" << req_rep_address << ")" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->req_rep_address = req_rep_address;
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- Environment::set_req_rep_address" << std::endl;
 #endif
 }
 
 std::map<size_t, std::string> Environment::get_contexts() {
-    m.lock();
-    auto local = contexts;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return contexts;
 }
 
 void Environment::set_contexts(std::map<size_t, std::string> contexts) {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->contexts = contexts;
-    m.unlock();
 }
 
 std::string Environment::get_context(size_t key) {

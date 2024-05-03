@@ -15,27 +15,18 @@
 using namespace SPlat::Model;
 
 AssetProperties& CharacterUpdateHandler::get_asset_properties() {
-    m.lock();
-    AssetProperties& local = asset;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return asset;
 }
 
 MovingProperties& CharacterUpdateHandler::get_moving_properties() {
-    m.lock();
-    MovingProperties& local = moving;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return moving;
 }
 
 CharacterProperties& CharacterUpdateHandler::get_character_properties() {
-    m.lock();
-    CharacterProperties& local = character;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return character;
 }
 
 void CharacterUpdateHandler::update() {

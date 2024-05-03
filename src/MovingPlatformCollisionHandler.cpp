@@ -5,27 +5,18 @@
 using namespace SPlat::Model;
 
 AssetProperties& MovingPlatformCollisionHandler::get_asset_properties() {
-    m.lock();
-    AssetProperties& local = asset;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return asset;
 }
 
 MovingProperties& MovingPlatformCollisionHandler::get_moving_properties() {
-    m.lock();
-    MovingProperties& local = moving;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return moving;
 }
 
 MovingPlatformProperties& MovingPlatformCollisionHandler::get_moving_platform_properties() {
-    m.lock();
-    MovingPlatformProperties& local = moving_platform;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return moving_platform;
 }
 
 void MovingPlatformCollisionHandler::resolve_collision(AssetProperties& other) {

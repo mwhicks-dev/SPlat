@@ -207,19 +207,13 @@ void Client::start() {
 }
 
 ConfigInterface& Client::get_config() {
-    m.lock();
-    ConfigInterface& local = config;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return config;
 }
 
 Events::ListenerInterface& Client::get_foreground_listener() {
-    m.lock();
-    Events::ListenerInterface& local = foreground_listener;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return foreground_listener;
 }
 
 Client& Client::get_instance() {
@@ -233,25 +227,16 @@ Client& Client::get_instance() {
 }
 
 Model::ObjectModelInterface& Client::get_object_model() {
-    m.lock();
-    Model::ObjectModelInterface& local = object_model;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return object_model;
 }
 
 Events::ListenerInterface& Client::get_background_listener() {
-    m.lock();
-    Events::ListenerInterface& local = background_listener;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return background_listener;
 }
 
 ControllerInterface& Client::get_controller() {
-    m.lock();
-    ControllerInterface& local = ctl;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return ctl;
 }

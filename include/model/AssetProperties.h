@@ -53,87 +53,63 @@ namespace SPlat {
             }
 
             size_t get_id() {
-                m.lock();
-                size_t local = id;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return id;
             }
 
             size_t get_owner() {
-                m.lock();
-                auto local = owner;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return owner;
             }
 
             sf::Vector2f get_position() {
-                m.lock();
-                sf::Vector2f local = position;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return position;
             }
 
             sf::Vector2f get_size() {
-                m.lock();
-                sf::Vector2f local = size;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return size;
             }
 
             sf::Color get_fill_color() {
-                m.lock();
-                sf::Color local = fill_color;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return fill_color;
             }
 
             int get_collision_priority() {
-                m.lock();
-                int local = collision_priority;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return collision_priority;
             }
 
             void set_id(size_t id) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->id = id;
-                m.unlock();
             }
 
             void set_owner(size_t owner) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->owner = owner;
-                m.unlock();
             }
 
             void set_position(sf::Vector2f position) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->position = position;
-                m.unlock();
             }
 
             void set_size(sf::Vector2f size) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->size = size;
-                m.unlock();
             }
 
             void set_fill_color(sf::Color fill_color) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->fill_color = fill_color;
-                m.unlock();
             }
 
             void set_collision_priority(int collision_priority) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->collision_priority = collision_priority;
-                m.unlock();
             }
 
             sf::RectangleShape get_rectangle_shape() {
@@ -144,17 +120,13 @@ namespace SPlat {
             }
 
             void set_updated_time(time_t updated_time) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->updated_time = updated_time;
-                m.unlock();
             }
 
             time_t get_updated_time() {
-                m.lock();
-                auto local = updated_time;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return updated_time;
             }
 
         };

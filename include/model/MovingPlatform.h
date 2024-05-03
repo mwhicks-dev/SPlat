@@ -23,11 +23,8 @@ namespace SPlat {
                     {};
 
             MovingPlatformProperties& get_moving_platform_properties() {
-                m.lock();
-                MovingPlatformProperties& local = properties;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return properties;
             }
 
             void resolve_collision(Asset& other) override;

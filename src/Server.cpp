@@ -86,53 +86,31 @@ void Server::start() {
 }
 
 Server& Server::get_instance() {
-    m.lock();
-    Entrypoint * local = instance;
-    m.unlock();
-    if (local == nullptr) {
+    if (instance == nullptr)
         instance = new Server();
-    }
-    Server* server = nullptr;
     try {
-        m.lock();
-        server = dynamic_cast<Server*>(instance);
-    } catch (std::bad_exception&) {}
-    m.unlock();
-    if (server == nullptr) {
+        return *dynamic_cast<Server*>(instance);
+    } catch (std::bad_exception&) {
         throw std::invalid_argument("Entrypoint is not of type Server");
     }
-
-    return *server;
 }
 
 ConfigInterface& Server::get_config() {
-    m.lock();
-    ConfigInterface& local = config;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return config;
 }
 
 Model::ObjectModelInterface& Server::get_object_model() {
-    m.lock();
-    Model::ObjectModelInterface& local = object_model;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return object_model;
 }
 
 Events::ListenerInterface& Server::get_background_listener() {
-    m.lock();
-    Events::ListenerInterface& local = background_listener;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return background_listener;
 }
 
 ControllerInterface& Server::get_controller() {
-    m.lock();
-    ControllerInterface& local = controller;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return controller;
 }

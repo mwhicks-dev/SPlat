@@ -20,11 +20,8 @@ namespace SPlat {
         protected:
 
             UpdateHandler * get_update_handler() {
-                m.lock();
-                UpdateHandler * local = update_handler;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return update_handler;
             }
 
         public:
@@ -33,17 +30,13 @@ namespace SPlat {
                     : Asset(asset_properties), properties(moving_properties) {}
 
             void set_update_handler(UpdateHandler * update_handler) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->update_handler = update_handler;
-                m.unlock();
             }
 
             MovingProperties& get_moving_properties() {
-                m.lock();
-                MovingProperties& local = properties;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return properties;
             }
 
             virtual void update() = 0;

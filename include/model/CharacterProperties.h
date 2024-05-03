@@ -26,17 +26,13 @@ namespace SPlat {
             }
 
             AssetProperties * get_standing_on() {
-                m.lock();
-                AssetProperties * local = standing_on;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return standing_on;
             }
 
             void set_standing_on(AssetProperties * standing_on) {
-                m.lock();
+                const std::lock_guard<std::mutex> lock(m);
                 this->standing_on = standing_on;
-                m.unlock();
             }
 
         };

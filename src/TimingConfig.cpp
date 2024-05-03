@@ -35,53 +35,39 @@ void TimingConfig::set_anchor_steps_per_second(
 #ifdef DEBUG
     std::cout << "-> TimingConfig::set_anchor_steps_per_second(" << anchor_steps_per_second << ")" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->anchor_steps_per_second = anchor_steps_per_second;
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- TimingConfig::set_anchor_steps_per_second" << std::endl;
 #endif
 }
 
 Timeline& TimingConfig::get_anchor_timeline() {
-    m.lock();
-    Timeline& local = anchor_timeline;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return anchor_timeline;
 }
 
 LocalTimeline& TimingConfig::get_display_timeline() {
-    m.lock();
-    LocalTimeline& local = display_timeline;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return display_timeline;
 }
 
 time_t TimingConfig::get_anchor_steps_per_second() {
-    m.lock();
-    time_t local = anchor_steps_per_second;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return anchor_steps_per_second;
 }
 
 long TimingConfig::get_framerate_limit() {
-    m.lock();
-    auto local = framerate_limit;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return framerate_limit;
 }
 
 void TimingConfig::set_framerate_limit(long framerate_limit) {
 #ifdef DEBUG
     std::cout << "-> TimingConfig::set_framerate_limit(" << framerate_limit << ")" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->framerate_limit = framerate_limit;
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- TimingConfig::set_framerate_limit" << std::endl;
 #endif

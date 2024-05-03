@@ -13,21 +13,19 @@
 using namespace SPlat::Events;
 
 SPlat::Event OrderedPriorityListener::poll_event() {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     auto local = event_queue.top();
     event_queue.pop();
-    m.unlock();
-
+    
     return local;
 }
 
 EventHandlerInterface* OrderedPriorityListener::get_handler(std::string type) {
     EventHandlerInterface * local = nullptr;
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     if (handlers.count(type) > 0)
         local = handlers[type];
-    m.unlock();
-
+    
     if (local == nullptr)
         throw std::invalid_argument("Listener has no set handler for type " + type);
 
@@ -35,11 +33,8 @@ EventHandlerInterface* OrderedPriorityListener::get_handler(std::string type) {
 }
 
 bool OrderedPriorityListener::command_available() {
-    m.lock();
-    auto local = !event_queue.empty();
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return !event_queue.empty();
 }
 
 void OrderedPriorityListener::listener_loop() {
@@ -81,9 +76,8 @@ void OrderedPriorityListener::set_handler(std::string type, EventHandlerInterfac
 #ifdef DEBUG
     std::cout << "-> OrderedPriorityListener::set_handler(" << type << ", EventHandlerInterface&)" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     handlers[type] = &handler;
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- OrderedPriorityListener::set_handler" << std::endl;
 #endif
@@ -93,9 +87,8 @@ void OrderedPriorityListener::push_event(Event event) {
 #ifdef DEBUG
     std::cout << "-> OrderedPriorityListener::push_command(Command)" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     event_queue.push(event);
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- OrderedPriorityListener::push_command(Command)" << std::endl;
 #endif
@@ -122,9 +115,10 @@ void OrderedPriorityListener::await(Event event) {
         cereal::JSONOutputArchive oar(event_ss);
         oar(event);
     }
-    m.lock();
-    handler->handle(event_ss.str());
-    m.unlock();
+    {
+        const std::lock_guard<std::mutex> lock(m);
+        handler->handle(event_ss.str());
+    }
 #ifdef DEBUG
     std::cout << "<- OrderedPriorityListener::await" << std::endl;
 #endif

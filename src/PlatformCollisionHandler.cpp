@@ -10,11 +10,8 @@
 using namespace SPlat::Model;
 
 AssetProperties& PlatformCollisionHandler::get_asset_properties() {
-    m.lock();
-    AssetProperties& local = asset_properties;
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return asset_properties;
 }
 
 void PlatformCollisionHandler::resolve_collision(AssetProperties& other) {

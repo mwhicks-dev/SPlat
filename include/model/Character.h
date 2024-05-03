@@ -28,11 +28,8 @@ namespace SPlat {
                     moving_properties), properties(character_properties) {}
             
             CharacterProperties& get_character_properties() {
-                m.lock();
-                CharacterProperties& local = properties;
-                m.unlock();
-
-                return local;
+                const std::lock_guard<std::mutex> lock(m);
+                return properties;
             }
 
             void resolve_collision(Asset& other) override;

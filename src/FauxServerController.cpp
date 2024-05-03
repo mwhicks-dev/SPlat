@@ -122,18 +122,14 @@ void FauxServerController::run() {
 }
 
 bool FauxServerController::has_outgoing_request() {
-    m.lock();
-    auto local = !requests.empty();
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return !requests.empty();
 }
 
 Request FauxServerController::pop_outgoing_request() {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     auto local = requests.front(); requests.pop();
-    m.unlock();
-
+    
     return local;
 }
 
@@ -163,7 +159,6 @@ void FauxServerController::run_publisher_thread() {
 }
 
 void FauxServerController::push_outgoing_request(Request request) {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     requests.push(request);
-    m.unlock();
 }

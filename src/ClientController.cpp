@@ -16,35 +16,27 @@
 using namespace SPlat;
 
 Request ClientController::pop_outgoing_request() {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     auto local = requests.front(); requests.pop();
-    m.unlock();
 
     return local;
 }
 
 Response ClientController::pop_incoming_response() {
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     auto local = responses.front(); responses.pop();
-    m.unlock();
 
     return local;
 }
 
 bool ClientController::has_outgoing_request() {
-    m.lock();
-    auto local = !requests.empty();
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return !requests.empty();
 }
 
 bool ClientController::has_incoming_response() {
-    m.lock();
-    auto local = !responses.empty();
-    m.unlock();
-
-    return local;
+    const std::lock_guard<std::mutex> lock(m);
+    return !responses.empty();
 }
 
 void ClientController::run_request_thread() {
@@ -199,9 +191,8 @@ void ClientController::push_incoming_response(Response response) {
 #ifdef DEBUG
     std::cout << "-> ClientController::push_incoming_response(Response)" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     responses.push(response);
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- ClientController::push_incoming_response" << std::endl;
 #endif
@@ -211,9 +202,8 @@ void ClientController::push_outgoing_request(Request request) {
 #ifdef DEBUG
     std::cout << "-> ClientController::push_outgoing_request(Request)" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     requests.push(request);
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- ClientController::push_outgoing_request" << std::endl;
 #endif
@@ -271,6 +261,8 @@ void ClientController::run() {
 
 Response ClientController::await(Request request) {
     zmq::socket_t socket(context, zmq::socket_type::req);
+    int timeout = 3000;
+    socket.setsockopt(ZMQ_CONNECT_TIMEOUT, &timeout, sizeof(timeout));
     
     timeval retry_time = {
         .tv_sec=3,
@@ -294,14 +286,13 @@ Response ClientController::await(Request request) {
     }
     std::string serialized = ss.str();
 
-    zmq::message_t msg(serialized.size());
+    zmq::message_t msg(serialized.size()), response_msg;
     memcpy(msg.data(), serialized.c_str(), serialized.size());
-    m.lock();
-    socket.send(msg, zmq::send_flags::none);
-
-    zmq::message_t response_msg;
-    socket.recv(response_msg, zmq::recv_flags::none);
-    m.unlock();
+    {
+        const std::lock_guard<std::mutex> lock(m);
+        socket.send(msg, zmq::send_flags::none);
+        socket.recv(response_msg, zmq::recv_flags::none);
+    }
     std::string response_str = response_msg.to_string();
 
     Response response;

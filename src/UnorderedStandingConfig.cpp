@@ -16,10 +16,7 @@ using namespace SPlat::Model;
 
 std::unordered_map<size_t, std::unordered_set<size_t>> UnorderedStandingConfig
         ::get_coupled() {
-    m.lock();
-    std::unordered_map<size_t, std::unordered_set<size_t>> local = coupled;
-    m.unlock();
-
+    const std::lock_guard<std::mutex> lock(m);
     return coupled;
 }
 
@@ -28,9 +25,8 @@ void UnorderedStandingConfig::set_coupled(std::unordered_map<size_t,
 #ifdef DEBUG
     std::cout << "-> UnorderedStandingConfig::set_coupled(std::unordered_map<size_t, std::unordered_set<size_t>>)" << std::endl;
 #endif
-    m.lock();
+    const std::lock_guard<std::mutex> lock(m);
     this->coupled = coupled;
-    m.unlock();
 #ifdef DEBUG
     std::cout << "<- UnorderedStandingConfig::set_coupled" << std::endl;
 #endif
