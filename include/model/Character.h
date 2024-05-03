@@ -36,6 +36,8 @@ namespace SPlat {
 
             void update() override;
 
+            static constexpr int collision_priority() { return 0; }
+
         };
 
     }

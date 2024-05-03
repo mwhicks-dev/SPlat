@@ -1,4 +1,7 @@
 #include "events/handlers/ClientReadAssetHandler.h"
+#include "model/Platform.h"
+#include "model/MovingPlatform.h"
+#include "model/Character.h"
 #include "ControllerInterface.h"
 #include "Entrypoint.h"
 #include "Event.h"
@@ -49,15 +52,19 @@ void ClientReadAssetHandler::handle(std::string serialized) {
     int collision_priority = asset_properties.get_collision_priority();
     AssetFactoryConfigInterface& afc = config.get_asset_factory_config();
     switch (collision_priority) {
-    case 0:
+    case Model::MovingPlatform::collision_priority():
         afc.get_moving_platform_factory().create_asset(asset_properties);
         break;
-    case -1:
+    case Model::Character::collision_priority():
         afc.get_character_factory().create_asset(asset_properties);
         break;
-    default:  // do platform if cannot recognize
+    case Model::Platform::collision_priority():
         afc.get_platform_factory().create_asset(asset_properties);
         break;
+    default:
+        throw std::invalid_argument(
+            "Did not recognize asset with collision_priority of " 
+            + collision_priority);
     }
 #ifdef DEBUG
     std::cout << "<- ClientReadAssetHandler::handle" << std::endl;

@@ -21,6 +21,8 @@ namespace SPlat {
             
             void resolve_collision(Asset& other);
 
+            static constexpr int collision_priority() { return -2; }
+
         };
 
     }
