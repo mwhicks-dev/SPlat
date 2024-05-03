@@ -105,24 +105,6 @@ void ClientController::run_response_thread() {
 #endif
 }
 
-bool preprocess_event(Event event) {
-    if (event.sender != 0) return true;
-    
-    if (event.command.type != Events::UpdateAssetHandler::get_type()) return true;
-
-    Events::UpdateAssetHandler::Args args;
-    {
-        std::stringstream args_ss;
-        args_ss << event.command.args;
-        cereal::JSONInputArchive iar(args_ss);
-        iar(args);
-    }
-
-    if (args.properties.get_owner() == Client::get_instance().get_config().get_environment().get_entrypoint_id()) return false;
-
-    return true;
-}
-
 void ClientController::run_subscriber_thread() {
 #ifdef DEBUG
     std::cout << "-> ClientController::run_subscriber_thread()" << std::endl;
@@ -174,8 +156,7 @@ void ClientController::run_subscriber_thread() {
             }
             sender = e.sender;
             if (sender != environment.get_entrypoint_id()) {
-                if (preprocess_event(e))
-                    background_listener.push_event(e);
+                background_listener.push_event(e);
                 push_outgoing_request(req);
             }
         }

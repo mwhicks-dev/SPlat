@@ -71,6 +71,7 @@ void ClientUpdateAssetHandler::handle(std::string serialized) {
             asset_properties.set_fill_color(args.properties.get_fill_color());
             asset_properties.set_position(args.properties.get_position());
             asset_properties.set_size(args.properties.get_size());
+            asset_properties.set_loaded(args.properties.get_loaded());
             config.get_environment().get_standing_config().push_update_to_children(args.id, diff);
         } catch (std::exception&) {
             // retrieve asset from server if cannot find
