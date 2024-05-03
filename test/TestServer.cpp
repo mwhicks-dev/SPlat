@@ -22,8 +22,6 @@ int main() {
 
     std::thread t(&Server::start, &server);
 
-    std::this_thread::sleep_for(std::chrono::seconds(2));
-
     {
         Model::AssetProperties properties(
             sf::Vector2f(0, 500),  // position

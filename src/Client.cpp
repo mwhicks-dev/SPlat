@@ -129,8 +129,6 @@ void Client::start() {
     background_listener.run();
 
     window.create(sf::VideoMode(800, 600), "SPlat");
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(250));  // give window time to open
     
     get_config().get_timing_config().get_display_timeline().unpause();  // paused by default
     time_t last_updated = get_config().get_timing_config()
