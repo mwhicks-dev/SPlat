@@ -170,6 +170,8 @@ void Client::start() {
             Model::AssetProperties& asset_properties 
                 = asset.get_asset_properties();
 
+            if (!asset_properties.get_loaded()) continue;
+
             try {
                 if (asset_properties.get_owner() 
                         == environment.get_entrypoint_id()) {
@@ -213,7 +215,8 @@ void Client::start() {
             } catch (std::bad_cast&) {}
 
             // draw to screen
-            window.draw(asset_properties.get_rectangle_shape());
+            if (asset_properties.get_drawable())
+                window.draw(asset_properties.get_rectangle_shape());
         }
 
         window.display();

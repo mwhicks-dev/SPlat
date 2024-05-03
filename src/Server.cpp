@@ -69,7 +69,8 @@ void Server::start() {
             Model::Asset& asset = object_model.read_asset(id);
             Model::AssetProperties& asset_properties 
                 = asset.get_asset_properties();
-            if (asset_properties.get_owner() 
+
+            if (!asset_properties.get_loaded() || asset_properties.get_owner() 
                 != environment.get_entrypoint_id()) continue;
             try {
                 // attempt routine update
