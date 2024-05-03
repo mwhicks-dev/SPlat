@@ -46,8 +46,19 @@ void ClientReadAssetHandler::handle(std::string serialized) {
         iar(asset_properties);
     }
 
-    config.get_asset_factory_config().get_platform_factory()
-        .create_asset(asset_properties);
+    int collision_priority = asset_properties.get_collision_priority();
+    AssetFactoryConfigInterface& afc = config.get_asset_factory_config();
+    switch (collision_priority) {
+    case 0:
+        afc.get_moving_platform_factory().create_asset(asset_properties);
+        break;
+    case -1:
+        afc.get_character_factory().create_asset(asset_properties);
+        break;
+    default:  // do platform if cannot recognize
+        afc.get_platform_factory().create_asset(asset_properties);
+        break;
+    }
 #ifdef DEBUG
     std::cout << "<- ClientReadAssetHandler::handle" << std::endl;
 #endif
