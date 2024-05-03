@@ -27,11 +27,15 @@ namespace SPlat {
 
             time_t updated_time = 0;
 
+            bool loaded = true;
+
+            bool drawable = true;
+
         public:
 
             template <class Archive>
             void serialize(Archive& ar) {
-                ar(id, owner, position, size, fill_color, collision_priority, updated_time);
+                ar(id, owner, position, size, fill_color, collision_priority, updated_time, loaded, drawable);
             }
 
             AssetProperties() = default;
@@ -50,6 +54,8 @@ namespace SPlat {
                 set_size(other.get_size());
                 set_fill_color(other.get_fill_color());
                 set_collision_priority(other.get_collision_priority());
+                set_loaded(other.get_loaded());
+                set_drawable(other.get_drawable());
             }
 
             size_t get_id() {
@@ -127,6 +133,26 @@ namespace SPlat {
             time_t get_updated_time() {
                 const std::lock_guard<std::mutex> lock(m);
                 return updated_time;
+            }
+
+            void set_loaded(bool loaded) {
+                const std::lock_guard<std::mutex> lock(m);
+                this->loaded = loaded;
+            }
+
+            void set_drawable(bool drawable) {
+                const std::lock_guard<std::mutex> lock(m);
+                this->drawable = drawable;
+            }
+
+            bool get_loaded() {
+                const std::lock_guard<std::mutex> lock(m);
+                return loaded;
+            }
+
+            bool get_drawable() {
+                const std::lock_guard<std::mutex> lock(m);
+                return drawable;
             }
 
         };
