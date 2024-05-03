@@ -3,9 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "cereal/cereal.hpp"
-
-#include "events/Event.h"
+#include <cereal/cereal.hpp>
 
 namespace cereal {
 

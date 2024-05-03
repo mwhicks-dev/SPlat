@@ -1,55 +1,37 @@
 #ifndef SPLAT_MOVING_PLATFORM
 #define SPLAT_MOVING_PLATFORM
 
-#include "Platform.h"
+#include "model/Moving.h"
+#include "model/MovingPlatformProperties.h"
 
 namespace SPlat {
 
     namespace Model {
 
-        class MovingPlatform : public Platform {
+        class MovingPlatform : public Moving {
 
-            size_t platform_ticks = 0;
+            std::mutex m;
 
-        public:
-
-            /// @brief MovingPlatform state; position, time and repeat
-            struct State {
-
-                /// @brief state position
-                sf::Vector2f position;
-
-                /// @brief number of ticks from position until next position
-                size_t ticks_til_next;
-
-                /// @brief flag to add this state back to queue (true default) 
-                bool repeat = true;
-
-                template <class Archive>
-                void serialize(Archive& ar) {
-                    ar(position, ticks_til_next, repeat);
-                }
-
-            };
-
-        private:
-
-            /// @brief "queue" of states to cycle between
-            std::vector<State> queue;
+            MovingPlatformProperties& properties;
 
         public:
 
-            static std::string TYPE;
+            MovingPlatform(AssetProperties& asset_properties, MovingProperties&
+                    moving_properties, MovingPlatformProperties& 
+                    moving_platform_properties) : Moving(asset_properties,
+                    moving_properties), properties(moving_platform_properties) 
+                    {};
 
-            MovingPlatform(sf::Vector2f&);
+            MovingPlatformProperties& get_moving_platform_properties() {
+                const std::lock_guard<std::mutex> lock(m);
+                return properties;
+            }
 
-            int get_priority() override;
-
-            std::string get_type() override;
-
-            void add_state(State& s) { queue.push_back(s); }
+            void resolve_collision(Asset& other) override;
 
             void update() override;
+
+            static constexpr int collision_priority() { return -1; }
 
         };
 

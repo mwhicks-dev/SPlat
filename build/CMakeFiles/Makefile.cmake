@@ -167,6 +167,8 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/serialization_test.dir/DependInfo.cmake"
   "CMakeFiles/asset_factory_test.dir/DependInfo.cmake"
   "CMakeFiles/demo.dir/DependInfo.cmake"
+  "CMakeFiles/client.dir/DependInfo.cmake"
+  "CMakeFiles/server.dir/DependInfo.cmake"
   "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
   "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake"
   "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"

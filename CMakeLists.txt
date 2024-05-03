@@ -16,19 +16,30 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-set(MODEL_IMPLEMENTATIONS src/LocalTimeline.cpp src/Runtime.cpp src/Asset.cpp src/Character.cpp src/Platform.cpp src/MovingPlatform.cpp src/GameObjectModel.cpp)
-set(EVENT_IMPLEMENTATIONS src/AssetEvents.cpp src/CharacterEvents.cpp src/KeyEvents.cpp src/MovingPlatformEvents.cpp src/PlatformEvents.cpp src/TickEvent.cpp src/Listener.cpp)
-set(CLIENT_IMPLEMENTATIONS src/Client.cpp src/Controller.cpp)
-set(ALL_IMPLEMENTATIONS ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS} ${CLIENT_IMPLEMENTATIONS})
+set(LA src/KeyPressHandler.cpp src/CharacterCollisionHandler.cpp src/ClientController.cpp src/ServerDeleteAssetHandler.cpp src/ClientDeleteAssetHandler.cpp)
+set(LB src/ClientReadAssetHandler.cpp src/UnorderedMapObjectModel.cpp src/ServerUpdateAssetHandler.cpp src/MovingPlatformCollisionHandler.cpp src/Entrypoint.cpp)
+set(LC src/ClientCreateMovingPlatformHandler.cpp src/UnorderedStandingConfig.cpp src/OrderedPriorityListener.cpp src/ServerCreatePlatformHandler.cpp src/PlatformCollisionHandler.cpp)
+set(LD src/CharacterUpdateHandler.cpp src/LocalTimeline.cpp src/Environment.cpp src/KeyReleaseHandler.cpp src/Platform.cpp)
+set(LE src/AssetFactoryConfig.cpp src/ServerCreateCharacterHandler.cpp src/Character.cpp src/ServerReadAssetHandler.cpp src/ClientCreatePlatformHandler.cpp)
+set(LF src/MovingPlatformUpdateHandler.cpp src/FauxServerController.cpp src/ServerCreateMovingPlatformHandler.cpp src/TimingConfig.cpp src/ClientCreateCharacterHandler.cpp)
+set(LG src/ClientConfig.cpp src/MovingPlatform.cpp src/ClientUpdateAssetHandler.cpp src/ServerController.cpp src/AbstractAssetFactory.cpp)
+set(LH src/CharacterFactory.cpp src/Client.cpp src/PlatformFactory.cpp src/Server.cpp src/MovingPlatformFactory.cpp)
+set(ALL_IMPLEMENTATIONS ${LA} ${LB} ${LC} ${LD} ${LE} ${LF} ${LG} ${LH})
 
-add_executable(gom_test test/TestGameObjectModel.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
+add_executable(gom_test test/TestGameObjectModel.cpp ${ALL_IMPLEMENTATIONS})
 target_link_libraries(gom_test gtest gtest_main sfml-graphics)
 
-add_executable(serialization_test test/TestSerialization.cpp ${MODEL_IMPLEMENTATIONS} ${EVENT_IMPLEMENTATIONS})
+add_executable(serialization_test test/TestSerialization.cpp ${ALL_IMPLEMENTATIONS})
 target_link_libraries(serialization_test gtest gtest_main sfml-graphics)
 
 add_executable(asset_factory_test test/TestAssetFactory.cpp ${ALL_IMPLEMENTATIONS})
 target_link_libraries(asset_factory_test gtest gtest_main sfml-system sfml-graphics sfml-window)
 
 add_executable(demo test/Demo.cpp ${ALL_IMPLEMENTATIONS})
-target_link_libraries(demo pthread sfml-system sfml-graphics sfml-window)
+target_link_libraries(demo pthread zmq sfml-system sfml-graphics sfml-window)
+
+add_executable(client test/TestClient.cpp ${ALL_IMPLEMENTATIONS})
+target_link_libraries(client pthread zmq sfml-system sfml-graphics sfml-window)
+
+add_executable(server test/TestServer.cpp ${ALL_IMPLEMENTATIONS})
+target_link_libraries(server pthread zmq sfml-system sfml-graphics sfml-window)

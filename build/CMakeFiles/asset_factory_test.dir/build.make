@@ -83,10 +83,234 @@ CMakeFiles/asset_factory_test.dir/test/TestAssetFactory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/test/TestAssetFactory.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/test/TestAssetFactory.cpp -o CMakeFiles/asset_factory_test.dir/test/TestAssetFactory.cpp.s
 
+CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.o: /home/mason/git/SPlat/src/KeyPressHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.o -c /home/mason/git/SPlat/src/KeyPressHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/KeyPressHandler.cpp > CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/KeyPressHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.o: /home/mason/git/SPlat/src/CharacterCollisionHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.o -c /home/mason/git/SPlat/src/CharacterCollisionHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/CharacterCollisionHandler.cpp > CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/CharacterCollisionHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.o: /home/mason/git/SPlat/src/ClientController.cpp
+CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.o -c /home/mason/git/SPlat/src/ClientController.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientController.cpp > CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientController.cpp -o CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.o: /home/mason/git/SPlat/src/ServerDeleteAssetHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ServerDeleteAssetHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerDeleteAssetHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerDeleteAssetHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.o: /home/mason/git/SPlat/src/ClientDeleteAssetHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ClientDeleteAssetHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientDeleteAssetHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientDeleteAssetHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.o: /home/mason/git/SPlat/src/ClientReadAssetHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ClientReadAssetHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientReadAssetHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientReadAssetHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.o: /home/mason/git/SPlat/src/UnorderedMapObjectModel.cpp
+CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.o -c /home/mason/git/SPlat/src/UnorderedMapObjectModel.cpp
+
+CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/UnorderedMapObjectModel.cpp > CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/UnorderedMapObjectModel.cpp -o CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.o: /home/mason/git/SPlat/src/ServerUpdateAssetHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ServerUpdateAssetHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerUpdateAssetHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerUpdateAssetHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.o: /home/mason/git/SPlat/src/MovingPlatformCollisionHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.o -c /home/mason/git/SPlat/src/MovingPlatformCollisionHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/MovingPlatformCollisionHandler.cpp > CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/MovingPlatformCollisionHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.o: /home/mason/git/SPlat/src/Entrypoint.cpp
+CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.o -c /home/mason/git/SPlat/src/Entrypoint.cpp
+
+CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Entrypoint.cpp > CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Entrypoint.cpp -o CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o: /home/mason/git/SPlat/src/ClientCreateMovingPlatformHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o -c /home/mason/git/SPlat/src/ClientCreateMovingPlatformHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientCreateMovingPlatformHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientCreateMovingPlatformHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.o: /home/mason/git/SPlat/src/UnorderedStandingConfig.cpp
+CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.o -c /home/mason/git/SPlat/src/UnorderedStandingConfig.cpp
+
+CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/UnorderedStandingConfig.cpp > CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/UnorderedStandingConfig.cpp -o CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.o: /home/mason/git/SPlat/src/OrderedPriorityListener.cpp
+CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.o -c /home/mason/git/SPlat/src/OrderedPriorityListener.cpp
+
+CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/OrderedPriorityListener.cpp > CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/OrderedPriorityListener.cpp -o CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.o: /home/mason/git/SPlat/src/ServerCreatePlatformHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.o -c /home/mason/git/SPlat/src/ServerCreatePlatformHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerCreatePlatformHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerCreatePlatformHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.o: /home/mason/git/SPlat/src/PlatformCollisionHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.o -c /home/mason/git/SPlat/src/PlatformCollisionHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/PlatformCollisionHandler.cpp > CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/PlatformCollisionHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.o: /home/mason/git/SPlat/src/CharacterUpdateHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.o -c /home/mason/git/SPlat/src/CharacterUpdateHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/CharacterUpdateHandler.cpp > CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/CharacterUpdateHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.s
+
 CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
 CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o: /home/mason/git/SPlat/src/LocalTimeline.cpp
 CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o -c /home/mason/git/SPlat/src/LocalTimeline.cpp
 
 CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.i: cmake_force
@@ -97,52 +321,38 @@ CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/LocalTimeline.cpp -o CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.s
 
-CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.o: /home/mason/git/SPlat/src/Runtime.cpp
-CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.o -c /home/mason/git/SPlat/src/Runtime.cpp
+CMakeFiles/asset_factory_test.dir/src/Environment.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/Environment.cpp.o: /home/mason/git/SPlat/src/Environment.cpp
+CMakeFiles/asset_factory_test.dir/src/Environment.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Environment.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/Environment.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/Environment.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/Environment.cpp.o -c /home/mason/git/SPlat/src/Environment.cpp
 
-CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Runtime.cpp > CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.i
+CMakeFiles/asset_factory_test.dir/src/Environment.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/Environment.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Environment.cpp > CMakeFiles/asset_factory_test.dir/src/Environment.cpp.i
 
-CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Runtime.cpp -o CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.s
+CMakeFiles/asset_factory_test.dir/src/Environment.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/Environment.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Environment.cpp -o CMakeFiles/asset_factory_test.dir/src/Environment.cpp.s
 
-CMakeFiles/asset_factory_test.dir/src/Asset.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/Asset.cpp.o: /home/mason/git/SPlat/src/Asset.cpp
-CMakeFiles/asset_factory_test.dir/src/Asset.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Asset.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/Asset.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/Asset.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/Asset.cpp.o -c /home/mason/git/SPlat/src/Asset.cpp
+CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.o: /home/mason/git/SPlat/src/KeyReleaseHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.o -c /home/mason/git/SPlat/src/KeyReleaseHandler.cpp
 
-CMakeFiles/asset_factory_test.dir/src/Asset.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/Asset.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Asset.cpp > CMakeFiles/asset_factory_test.dir/src/Asset.cpp.i
+CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/KeyReleaseHandler.cpp > CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.i
 
-CMakeFiles/asset_factory_test.dir/src/Asset.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/Asset.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Asset.cpp -o CMakeFiles/asset_factory_test.dir/src/Asset.cpp.s
-
-CMakeFiles/asset_factory_test.dir/src/Character.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/Character.cpp.o: /home/mason/git/SPlat/src/Character.cpp
-CMakeFiles/asset_factory_test.dir/src/Character.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Character.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/Character.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/Character.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/Character.cpp.o -c /home/mason/git/SPlat/src/Character.cpp
-
-CMakeFiles/asset_factory_test.dir/src/Character.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/Character.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Character.cpp > CMakeFiles/asset_factory_test.dir/src/Character.cpp.i
-
-CMakeFiles/asset_factory_test.dir/src/Character.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/Character.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Character.cpp -o CMakeFiles/asset_factory_test.dir/src/Character.cpp.s
+CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/KeyReleaseHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.s
 
 CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
 CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o: /home/mason/git/SPlat/src/Platform.cpp
 CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o -c /home/mason/git/SPlat/src/Platform.cpp
 
 CMakeFiles/asset_factory_test.dir/src/Platform.cpp.i: cmake_force
@@ -153,10 +363,164 @@ CMakeFiles/asset_factory_test.dir/src/Platform.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/Platform.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Platform.cpp -o CMakeFiles/asset_factory_test.dir/src/Platform.cpp.s
 
+CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.o: /home/mason/git/SPlat/src/AssetFactoryConfig.cpp
+CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.o -c /home/mason/git/SPlat/src/AssetFactoryConfig.cpp
+
+CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/AssetFactoryConfig.cpp > CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/AssetFactoryConfig.cpp -o CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.o: /home/mason/git/SPlat/src/ServerCreateCharacterHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.o -c /home/mason/git/SPlat/src/ServerCreateCharacterHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerCreateCharacterHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerCreateCharacterHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/Character.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/Character.cpp.o: /home/mason/git/SPlat/src/Character.cpp
+CMakeFiles/asset_factory_test.dir/src/Character.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Character.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/Character.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/Character.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/Character.cpp.o -c /home/mason/git/SPlat/src/Character.cpp
+
+CMakeFiles/asset_factory_test.dir/src/Character.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/Character.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Character.cpp > CMakeFiles/asset_factory_test.dir/src/Character.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/Character.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/Character.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Character.cpp -o CMakeFiles/asset_factory_test.dir/src/Character.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.o: /home/mason/git/SPlat/src/ServerReadAssetHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ServerReadAssetHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerReadAssetHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerReadAssetHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.o: /home/mason/git/SPlat/src/ClientCreatePlatformHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.o -c /home/mason/git/SPlat/src/ClientCreatePlatformHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientCreatePlatformHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientCreatePlatformHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.o: /home/mason/git/SPlat/src/MovingPlatformUpdateHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.o -c /home/mason/git/SPlat/src/MovingPlatformUpdateHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/MovingPlatformUpdateHandler.cpp > CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/MovingPlatformUpdateHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.o: /home/mason/git/SPlat/src/FauxServerController.cpp
+CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.o -c /home/mason/git/SPlat/src/FauxServerController.cpp
+
+CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/FauxServerController.cpp > CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/FauxServerController.cpp -o CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o: /home/mason/git/SPlat/src/ServerCreateMovingPlatformHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o -c /home/mason/git/SPlat/src/ServerCreateMovingPlatformHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerCreateMovingPlatformHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerCreateMovingPlatformHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.o: /home/mason/git/SPlat/src/TimingConfig.cpp
+CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.o -c /home/mason/git/SPlat/src/TimingConfig.cpp
+
+CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/TimingConfig.cpp > CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/TimingConfig.cpp -o CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.o: /home/mason/git/SPlat/src/ClientCreateCharacterHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.o -c /home/mason/git/SPlat/src/ClientCreateCharacterHandler.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientCreateCharacterHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientCreateCharacterHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.o: /home/mason/git/SPlat/src/ClientConfig.cpp
+CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.o -c /home/mason/git/SPlat/src/ClientConfig.cpp
+
+CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientConfig.cpp > CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientConfig.cpp -o CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.s
+
 CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
 CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o: /home/mason/git/SPlat/src/MovingPlatform.cpp
 CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o -c /home/mason/git/SPlat/src/MovingPlatform.cpp
 
 CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.i: cmake_force
@@ -167,122 +531,66 @@ CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/MovingPlatform.cpp -o CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.s
 
-CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.o: /home/mason/git/SPlat/src/GameObjectModel.cpp
-CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.o -c /home/mason/git/SPlat/src/GameObjectModel.cpp
+CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.o: /home/mason/git/SPlat/src/ClientUpdateAssetHandler.cpp
+CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ClientUpdateAssetHandler.cpp
 
-CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/GameObjectModel.cpp > CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.i
+CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientUpdateAssetHandler.cpp > CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.i
 
-CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/GameObjectModel.cpp -o CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.s
+CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientUpdateAssetHandler.cpp -o CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.s
 
-CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.o: /home/mason/git/SPlat/src/AssetEvents.cpp
-CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.o -c /home/mason/git/SPlat/src/AssetEvents.cpp
+CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.o: /home/mason/git/SPlat/src/ServerController.cpp
+CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.o -c /home/mason/git/SPlat/src/ServerController.cpp
 
-CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/AssetEvents.cpp > CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.i
+CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerController.cpp > CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.i
 
-CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/AssetEvents.cpp -o CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.s
+CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerController.cpp -o CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.s
 
-CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.o: /home/mason/git/SPlat/src/CharacterEvents.cpp
-CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.o -c /home/mason/git/SPlat/src/CharacterEvents.cpp
+CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.o: /home/mason/git/SPlat/src/AbstractAssetFactory.cpp
+CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.o -c /home/mason/git/SPlat/src/AbstractAssetFactory.cpp
 
-CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/CharacterEvents.cpp > CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.i
+CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/AbstractAssetFactory.cpp > CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.i
 
-CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/CharacterEvents.cpp -o CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.s
+CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/AbstractAssetFactory.cpp -o CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.s
 
-CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.o: /home/mason/git/SPlat/src/KeyEvents.cpp
-CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.o -c /home/mason/git/SPlat/src/KeyEvents.cpp
+CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.o: /home/mason/git/SPlat/src/CharacterFactory.cpp
+CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.o -c /home/mason/git/SPlat/src/CharacterFactory.cpp
 
-CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/KeyEvents.cpp > CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.i
+CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/CharacterFactory.cpp > CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.i
 
-CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/KeyEvents.cpp -o CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.s
-
-CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.o: /home/mason/git/SPlat/src/MovingPlatformEvents.cpp
-CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.o -c /home/mason/git/SPlat/src/MovingPlatformEvents.cpp
-
-CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/MovingPlatformEvents.cpp > CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.i
-
-CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/MovingPlatformEvents.cpp -o CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.s
-
-CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.o: /home/mason/git/SPlat/src/PlatformEvents.cpp
-CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.o -c /home/mason/git/SPlat/src/PlatformEvents.cpp
-
-CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/PlatformEvents.cpp > CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.i
-
-CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/PlatformEvents.cpp -o CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.s
-
-CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.o: /home/mason/git/SPlat/src/TickEvent.cpp
-CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.o -c /home/mason/git/SPlat/src/TickEvent.cpp
-
-CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/TickEvent.cpp > CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.i
-
-CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/TickEvent.cpp -o CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.s
-
-CMakeFiles/asset_factory_test.dir/src/Listener.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/Listener.cpp.o: /home/mason/git/SPlat/src/Listener.cpp
-CMakeFiles/asset_factory_test.dir/src/Listener.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Listener.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/Listener.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/Listener.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/Listener.cpp.o -c /home/mason/git/SPlat/src/Listener.cpp
-
-CMakeFiles/asset_factory_test.dir/src/Listener.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/Listener.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Listener.cpp > CMakeFiles/asset_factory_test.dir/src/Listener.cpp.i
-
-CMakeFiles/asset_factory_test.dir/src/Listener.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/Listener.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Listener.cpp -o CMakeFiles/asset_factory_test.dir/src/Listener.cpp.s
+CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/CharacterFactory.cpp -o CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.s
 
 CMakeFiles/asset_factory_test.dir/src/Client.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
 CMakeFiles/asset_factory_test.dir/src/Client.cpp.o: /home/mason/git/SPlat/src/Client.cpp
 CMakeFiles/asset_factory_test.dir/src/Client.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Client.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Client.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/Client.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/Client.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/Client.cpp.o -c /home/mason/git/SPlat/src/Client.cpp
 
 CMakeFiles/asset_factory_test.dir/src/Client.cpp.i: cmake_force
@@ -293,66 +601,142 @@ CMakeFiles/asset_factory_test.dir/src/Client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/Client.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Client.cpp -o CMakeFiles/asset_factory_test.dir/src/Client.cpp.s
 
-CMakeFiles/asset_factory_test.dir/src/Controller.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
-CMakeFiles/asset_factory_test.dir/src/Controller.cpp.o: /home/mason/git/SPlat/src/Controller.cpp
-CMakeFiles/asset_factory_test.dir/src/Controller.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Controller.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/Controller.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/Controller.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/Controller.cpp.o -c /home/mason/git/SPlat/src/Controller.cpp
+CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.o: /home/mason/git/SPlat/src/PlatformFactory.cpp
+CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.o -c /home/mason/git/SPlat/src/PlatformFactory.cpp
 
-CMakeFiles/asset_factory_test.dir/src/Controller.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/Controller.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Controller.cpp > CMakeFiles/asset_factory_test.dir/src/Controller.cpp.i
+CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/PlatformFactory.cpp > CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.i
 
-CMakeFiles/asset_factory_test.dir/src/Controller.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/Controller.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Controller.cpp -o CMakeFiles/asset_factory_test.dir/src/Controller.cpp.s
+CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/PlatformFactory.cpp -o CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/Server.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/Server.cpp.o: /home/mason/git/SPlat/src/Server.cpp
+CMakeFiles/asset_factory_test.dir/src/Server.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/asset_factory_test.dir/src/Server.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/Server.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/Server.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/Server.cpp.o -c /home/mason/git/SPlat/src/Server.cpp
+
+CMakeFiles/asset_factory_test.dir/src/Server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/Server.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Server.cpp > CMakeFiles/asset_factory_test.dir/src/Server.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/Server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/Server.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Server.cpp -o CMakeFiles/asset_factory_test.dir/src/Server.cpp.s
+
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.o: CMakeFiles/asset_factory_test.dir/flags.make
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.o: /home/mason/git/SPlat/src/MovingPlatformFactory.cpp
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.o: CMakeFiles/asset_factory_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.o -MF CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.o.d -o CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.o -c /home/mason/git/SPlat/src/MovingPlatformFactory.cpp
+
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/MovingPlatformFactory.cpp > CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.i
+
+CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/MovingPlatformFactory.cpp -o CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.s
 
 # Object files for target asset_factory_test
 asset_factory_test_OBJECTS = \
 "CMakeFiles/asset_factory_test.dir/test/TestAssetFactory.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.o" \
 "CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/Asset.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/Character.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/Environment.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.o" \
 "CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/Character.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.o" \
 "CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/Listener.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.o" \
 "CMakeFiles/asset_factory_test.dir/src/Client.cpp.o" \
-"CMakeFiles/asset_factory_test.dir/src/Controller.cpp.o"
+"CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/Server.cpp.o" \
+"CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.o"
 
 # External object files for target asset_factory_test
 asset_factory_test_EXTERNAL_OBJECTS =
 
 asset_factory_test: CMakeFiles/asset_factory_test.dir/test/TestAssetFactory.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.o
 asset_factory_test: CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/Asset.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/Character.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/Environment.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.o
 asset_factory_test: CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/Character.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.o
 asset_factory_test: CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/Listener.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.o
 asset_factory_test: CMakeFiles/asset_factory_test.dir/src/Client.cpp.o
-asset_factory_test: CMakeFiles/asset_factory_test.dir/src/Controller.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/Server.cpp.o
+asset_factory_test: CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.o
 asset_factory_test: CMakeFiles/asset_factory_test.dir/build.make
 asset_factory_test: lib/libgtest.a
 asset_factory_test: lib/libgtest_main.a
 asset_factory_test: lib/libgtest.a
 asset_factory_test: CMakeFiles/asset_factory_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable asset_factory_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Linking CXX executable asset_factory_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/asset_factory_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

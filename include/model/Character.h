@@ -1,23 +1,42 @@
 #ifndef SPLAT_CHARACTER
 #define SPLAT_CHARACTER
 
-#include "Asset.h"
+#include "model/Moving.h"
+#include "model/CharacterProperties.h"
+#include "model/handler/CollisionHandler.h"
+#include "model/handler/UpdateHandler.h"
 
 namespace SPlat {
 
     namespace Model {
 
-        class Character : public Asset {
+        class Character : public Moving {
+
+            std::mutex m;
+
+            CollisionHandler * collision_handler = nullptr;
+
+            UpdateHandler * update_handler = nullptr;
+
+            CharacterProperties& properties;
 
         public:
 
-            static std::string TYPE;
+            Character(AssetProperties& asset_properties, MovingProperties& 
+                    moving_properties, CharacterProperties& 
+                    character_properties) : Moving(asset_properties, 
+                    moving_properties), properties(character_properties) {}
+            
+            CharacterProperties& get_character_properties() {
+                const std::lock_guard<std::mutex> lock(m);
+                return properties;
+            }
 
-            Character(sf::Vector2f&);
+            void resolve_collision(Asset& other) override;
 
-            int get_priority() override;
+            void update() override;
 
-            std::string get_type() override;
+            static constexpr int collision_priority() { return 0; }
 
         };
 

@@ -1,64 +1,43 @@
-#ifndef SPLAT_ASSET
-#define SPLAT_ASSET
+#ifndef SPLAT_MODEL_ASSET_H
+#define SPLAT_MODEL_ASSET_H
 
-#include <SFML/Graphics.hpp>
-
-#include "Serialization.h"
+#include "model/AssetProperties.h"
+#include "model/handler/CollisionHandler.h"
 
 namespace SPlat {
 
     namespace Model {
 
-        /// @brief communicable properties to use for Asset events
-        struct AssetProperties {
+        class Asset {
 
-            /// @brief asset position vector
-            sf::Vector2f position;
+            std::mutex m;
 
-            /// @brief asset size vector
-            sf::Vector2f size;
+            AssetProperties& properties;
 
-            /// @brief string type of asset
-            std::string type;
+            CollisionHandler * collision_handler = nullptr;
 
-            /// @brief asset fill color, white default
-            sf::Color fill_color;
+        protected:
 
-            /// @brief convert AssetProperties to serializable string
-            /// @tparam Archive cereal archive class
-            /// @param ar Archive to use for AssetProperties conversion
-            template <class Archive>
-            void serialize(Archive& ar) {
-                ar(position, size, type, fill_color);
+            CollisionHandler * get_collision_handler() {
+                const std::lock_guard<std::mutex> lock(m);
+                return collision_handler;
             }
-        };
 
-        class Asset : public sf::RectangleShape {
         public:
 
-            size_t id;
+            Asset(AssetProperties& properties) : properties(properties) {}
 
-            time_t last_updated;
-
-            Asset * standing_on = nullptr;
-
-            std::unordered_set<size_t> standers;
-
-            sf::Vector2f velocity;
-
-            Asset(sf::Vector2f&);
-
-            Asset(sf::Vector2f&, sf::Color);
-
-            virtual int get_priority() = 0;
-
-            virtual std::string get_type() = 0;
-
-            virtual void update();
-
-            AssetProperties get_properties() {
-                return {getPosition(), getSize(), get_type(), getFillColor()};
+            void set_collision_handler(CollisionHandler * collision_handler) {
+                const std::lock_guard<std::mutex> lock(m);
+                this->collision_handler = collision_handler;
             }
+
+            AssetProperties& get_asset_properties() {
+                const std::lock_guard<std::mutex> lock(m);
+                return properties;
+            }
+
+            virtual void resolve_collision(Asset& other) = 0;
 
         };
 

@@ -1,68 +1,36 @@
 #include "model/MovingPlatform.h"
-#include "events/AssetEvents.h"
-#include "Runtime.h"
-#include <cmath>
-
-#ifdef DEBUG
-#include <iostream>
-#endif
+#include "model/handler/MovingPlatformCollisionHandler.h"
+#include "model/handler/MovingPlatformUpdateHandler.h"
 
 using namespace SPlat::Model;
 
-MovingPlatform::MovingPlatform(sf::Vector2f& size)
-: Platform(size) {}
+void MovingPlatform::resolve_collision(Asset& other) {
+#ifdef DEBUG
+    std::cout << "-> MovingPlatform::resolve_collision(Asset&)" << std::endl;
+#endif
+    if (get_collision_handler() == nullptr) {
+        set_collision_handler(new MovingPlatformCollisionHandler(
+            get_asset_properties(), get_moving_properties(), 
+            get_moving_platform_properties()));
+    }
 
-int MovingPlatform::get_priority() { return -1; }
-
-std::string MovingPlatform::TYPE = "moving_platform";
-
-std::string MovingPlatform::get_type() { return MovingPlatform::TYPE; }
+    get_collision_handler()->resolve_collision(other.get_asset_properties());
+#ifdef DEBUG
+    std::cout << "<- MovingPlatform::resolve_collision" << std::endl;
+#endif
+}
 
 void MovingPlatform::update() {
 #ifdef DEBUG
     std::cout << "-> MovingPlatform::update()" << std::endl;
 #endif
-    if (Runtime::get_instance().get_display_timeline().get_paused()) return;
-    // if queue length is zero, do nothing
-    if (queue.size() == 0) return;
-
-    // get current state
-    State curr = queue[0];
-
-    // get difference of next and curr positions
-    size_t remaining_ticks = curr.ticks_til_next - platform_ticks;
-
-    // if tick limit reached, pop first and restart
-    if (remaining_ticks == 0) {
-        queue.erase(queue.begin());
-        if (curr.repeat) queue.push_back(curr);
-        platform_ticks = 0;
-        return update();
+    if (get_update_handler() == nullptr) {
+        set_update_handler(new MovingPlatformUpdateHandler(
+            get_asset_properties(), get_moving_properties(), 
+            get_moving_platform_properties()));
     }
 
-    // get next state
-    State next;
-    if (queue.size() == 1) {  // only one queue element
-        // do nothing if curr is not repeatable
-        if (!curr.repeat) return;
-        // o/w next is curr
-        next = curr;
-    } else {  // multiple elements
-        next = queue[1];
-    }
-
-    // divide difference between next and curr by number of remaining ticks
-    sf::Vector2f move = (next.position - getPosition()) 
-        / static_cast<float>(remaining_ticks);
-    
-    // move platform by vector
-    SPlat::Events::AddPositionEvent event(id, move);
-    event.raise();
-    for (size_t stander_id : standers) {
-        event = SPlat::Events::AddPositionEvent(stander_id, move);
-        event.raise();
-    }
-    platform_ticks += 1;
+    get_update_handler()->update();
 #ifdef DEBUG
     std::cout << "<- MovingPlatform::update" << std::endl;
 #endif

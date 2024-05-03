@@ -1,126 +1,227 @@
 #include "Client.h"
-#include "Runtime.h"
-#include "model/AssetFactory.h"
+#include "ConfigInterface.h"
 #include "model/Character.h"
-#include "events/AssetEvents.h"
-#include "events/CharacterEvents.h"
-#include "events/MovingPlatformEvents.h"
-#include "events/PlatformEvents.h"
-#include "events/KeyEvents.h"
-#include "events/Listener.h"
+#include "model/Platform.h"
+#include "model/MovingPlatform.h"
+#include "events/handlers/KeyPressHandler.h"
+#include "events/handlers/KeyReleaseHandler.h"
+#include "events/handlers/ClientCreatePlatformHandler.h"
+#include "events/handlers/ClientCreateMovingPlatformHandler.h"
+#include "events/handlers/ClientCreateCharacterHandler.h"
+#include "FauxServerController.h"
 
 #include <cereal/archives/json.hpp>
 
+#include <thread>
+
 using namespace SPlat;
 
-/// @brief overriden keypress event handler with movement
-/// @param serialized serialized KeyEventArgs
-static void keypress_override(std::string serialized) {
-    // set key held
-    Events::KeyPressEvent::handler(serialized);
+class KeyPressOverride : public SPlat::Events::KeyPressHandler {
 
-    try {
-        // get asset
-        size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
-        Model::Character ctl = Model::AssetFactory<Model::Character>::read_asset(id);
-        
-        // deserialize KeyEventArgs from args
-        Events::KeyEvent::Args args;
-        std::stringstream ss; ss << serialized;
+public:
+
+    void handle(std::string serialized) override {
+        Event event;
         {
+            std::stringstream ss; ss << serialized;
+            cereal::JSONInputArchive iar(ss);
+            iar(event);
+        }
+
+        Args args;
+        {
+            std::stringstream ss; ss << event.command.args;
             cereal::JSONInputArchive iar(ss);
             iar(args);
         }
 
-        // update velocity based on key pressed
-        if (args.key == sf::Keyboard::Key::Left) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-300, 0));
-            event.raise();
-        } else if (args.key == sf::Keyboard::Key::Right) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(300, 0));
-            event.raise();
-        } else if (args.key == sf::Keyboard::Key::Up 
-                && ctl.standing_on != nullptr) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(0, -490));
-            event.raise();
-        } else if (args.key == sf::Keyboard::Escape) {
-            if (Runtime::get_instance().get_display_timeline().get_paused())
-                Runtime::get_instance().get_display_timeline().unpause();
-            else Runtime::get_instance().get_display_timeline().pause();
+        if (!args.key == sf::Keyboard::Key::Left 
+                && !args.key == sf::Keyboard::Key::Right
+                && !args.key == sf::Keyboard::Key::Up
+                && !args.key == sf::Keyboard::Key::Escape) return;
+        
+        ConfigInterface& conf = Client::get_instance().get_config();
+
+        if (conf.get_environment().get_held_keys().count(args.key) > 0) return;
+        conf.get_environment().add_held_key(args.key);
+
+        if (args.key == sf::Keyboard::Escape)
+            return conf.get_timing_config().get_display_timeline().pause();
+
+        Model::Character* controlled = conf.get_environment().get_controlled_asset();
+        if (controlled == nullptr) return;
+
+        Model::MovingProperties& moving_properties = controlled->get_moving_properties();
+
+        if (args.key == sf::Keyboard::Left) {
+            // move left
+            moving_properties.set_velocity(moving_properties.get_velocity() 
+                + sf::Vector2f(conf.get_environment().get_unit() * -10, 0));
+        } else if (args.key == sf::Keyboard::Right) {
+            // move right
+            moving_properties.set_velocity(moving_properties.get_velocity() 
+                + sf::Vector2f(conf.get_environment().get_unit() * 10, 0));
+        } else if (args.key == sf::Keyboard::Up 
+                && controlled->get_character_properties().get_standing_on() != nullptr) {
+            // jump
+            moving_properties.set_velocity(moving_properties.get_velocity() 
+                + sf::Vector2f(0, conf.get_environment().get_unit() * -11.5));
+        }
+    }
+
+};
+
+class KeyReleaseOverride : public Events::KeyReleaseHandler {
+
+public:
+
+    void handle(std::string serialized) override {
+        Event event;
+        {
+            std::stringstream ss; ss << serialized;
+            cereal::JSONInputArchive iar(ss);
+            iar(event);
         }
 
-    } catch (std::logic_error & e) {
-        std::cout << e.what() << std::endl;
-    }
-}
-
-/// @brief overriden keyrelease event handler with movement
-/// @param serialized serialized KeyEventArgs
-static void keyrelease_override(std::string serialized) {
-    // use default handler to unset key held
-    Events::KeyReleaseEvent::handler(serialized);
-
-    try {
-        // get asset
-        size_t id = Events::ControlAssetEvent::get_controlled_asset_id();
-        Model::Character ctl = Model::AssetFactory<Model::Character>::read_asset(id);
-        
-        // deserialize KeyEventArgs from args
-        Events::KeyEvent::Args args;
-        std::stringstream ss; ss << serialized;
+        Args args;
         {
+            std::stringstream ss; ss << event.command.args;
             cereal::JSONInputArchive iar(ss);
             iar(args);
         }
 
-        // update velocity based on key pressed
-        if (args.key == sf::Keyboard::Key::Left) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(300, 0));
-            event.raise();
-        } else if (args.key == sf::Keyboard::Key::Right) {
-            Events::AddVelocityEvent event(ctl.id, sf::Vector2f(-300, 0));
-            event.raise();
-        }
+        if (!args.key == sf::Keyboard::Key::Left 
+                && !args.key == sf::Keyboard::Key::Right) return;
+        
+        ConfigInterface& conf = Client::get_instance().get_config();
 
-    } catch (std::logic_error & e) {
-        std::cout << e.what() << std::endl;
+        if (conf.get_environment().get_held_keys().count(args.key) == 0) return;
+        conf.get_environment().remove_held_key(args.key);
+
+        Model::Character* controlled = conf.get_environment().get_controlled_asset();
+        if (controlled == nullptr) return;
+        
+        Model::MovingProperties& moving_properties = controlled->get_moving_properties();
+
+        if (args.key == sf::Keyboard::Left) {
+            // move left
+            moving_properties.set_velocity(moving_properties.get_velocity() 
+                - sf::Vector2f(conf.get_environment().get_unit() * -10, 0));
+        } else if (args.key == sf::Keyboard::Right) {
+            // move right
+            moving_properties.set_velocity(moving_properties.get_velocity() 
+                - sf::Vector2f(conf.get_environment().get_unit() * 10, 0));
+        }
     }
-}
+
+};
 
 int main() {
-    // Create assets with events
-    SPlat::Events::CreateControlCharacterEvent({
-        sf::Vector2f(100, 100), // position
-        sf::Vector2f(50, 100),  // size
-        SPlat::Model::Character::TYPE  // type
-    }).raise();
-
-    SPlat::Events::CreatePlatformEvent({
-        sf::Vector2f(0, 500),
-        sf::Vector2f(400, 200),
-        SPlat::Model::Platform::TYPE
-    }).raise();
-
-    SPlat::Events::CreateMovingPlatformEvent(
-        {  // AssetProperties
-            .position=sf::Vector2f(300, 100),
-            .size=sf::Vector2f(200, 25),
-            .type=SPlat::Model::MovingPlatform::TYPE
-        }, {  // std::vector<State>
-            {
-                .position=sf::Vector2f(200, 300),
-                .ticks_til_next=100
-            }, {
-                .position=sf::Vector2f(400, 300),
-                .ticks_til_next=100
-            }
-        }
-    ).raise();
-
-    Events::ForegroundListener::get_instance().set_handler(Events::KeyPressEvent::get_type(), keypress_override);
-    Events::ForegroundListener::get_instance().set_handler(Events::KeyReleaseEvent::get_type(), keyrelease_override);
+    Client& cli = Client::get_instance();
+    ConfigInterface& conf = cli.get_config();
     
-    Client client;
-    client.set_framerate_limit(60);
-    client.start();
+    cli.get_foreground_listener().set_handler(Events::KeyPressHandler::get_event_type(), *new KeyPressOverride());
+    cli.get_foreground_listener().set_handler(Events::KeyReleaseHandler::get_event_type(), *new KeyReleaseOverride());
+
+    cli.get_config().get_timing_config().update_framerate_limit(90);
+
+    // Create assets
+    {
+        Model::AssetProperties properties(
+            sf::Vector2f(100, 100),  // position
+            sf::Vector2f(50, 100),  // size
+            sf::Color::Magenta  // fill_color
+        );
+        Events::ClientCreateCharacterHandler::Args args = {
+            .properties=properties,
+            .set_controlled=true
+        };
+        std::stringstream ss;
+        {
+            cereal::JSONOutputArchive oar(ss);
+            oar(args);
+        }
+        Events::Command cmd = {
+            .priority=-1,
+            .type=Events::ClientCreateCharacterHandler::get_type(),
+            .args=ss.str()
+        };
+        Event event = {
+            .command=cmd,
+            .sender=1,
+        };
+        cli.get_background_listener().push_event(event);
+    }
+    {
+        Model::AssetProperties properties(
+            sf::Vector2f(0, 500),  // position
+            sf::Vector2f(400, 100),  // size
+            sf::Color::Green  // fill_color
+        );
+        Events::ClientCreatePlatformHandler::Args args = {
+            .properties=properties
+        };
+        std::stringstream ss;
+        {
+            cereal::JSONOutputArchive oar(ss);
+            oar(args);
+        }
+        Events::Command cmd = {
+            .priority=-1,
+            .type=Events::ClientCreatePlatformHandler::get_type(),
+            .args=ss.str()
+        };
+        Event event = {
+            .command=cmd,
+            .sender=1,
+        };
+        cli.get_background_listener().push_event(event);
+    }
+    {
+        Model::AssetProperties properties(
+            sf::Vector2f(200, 300),  // position
+            sf::Vector2f(150, 25),  // size
+            sf::Color::White  // fill_color
+        );
+        Events::ClientCreateMovingPlatformHandler::Args args = {
+            .properties=properties
+        };
+
+        // add states
+        std::vector<Model::State> states;
+        states.push_back(
+            Model::State(
+                sf::Vector2f(5, 0) * conf.get_environment().get_unit(),  // velocity
+                1.5 * conf.get_timing_config().get_anchor_steps_per_second(),  // anchor_steps
+                true  // repeat
+            )
+        );
+        states.push_back(
+            Model::State(
+                sf::Vector2f(-15, 0) * conf.get_environment().get_unit(),  // velocity
+                0.5 * conf.get_timing_config().get_anchor_steps_per_second(),  // anchor_steps
+                true  // repeat
+            )
+        );
+        args.states = states;
+        std::stringstream ss;
+        {
+            cereal::JSONOutputArchive oar(ss);
+            oar(args);
+        }
+        Events::Command cmd = {
+            .priority=-1,
+            .type=Events::ClientCreateMovingPlatformHandler::get_type(),
+            .args=ss.str()
+        };
+        Event event = {
+            .command=cmd,
+            .sender=1,
+        };
+        cli.get_background_listener().push_event(event);
+    }
+
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
+    cli.start();
 }

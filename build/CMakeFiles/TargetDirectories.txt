@@ -2,6 +2,8 @@
 /home/mason/git/SPlat/build/CMakeFiles/serialization_test.dir
 /home/mason/git/SPlat/build/CMakeFiles/asset_factory_test.dir
 /home/mason/git/SPlat/build/CMakeFiles/demo.dir
+/home/mason/git/SPlat/build/CMakeFiles/client.dir
+/home/mason/git/SPlat/build/CMakeFiles/server.dir
 /home/mason/git/SPlat/build/CMakeFiles/edit_cache.dir
 /home/mason/git/SPlat/build/CMakeFiles/rebuild_cache.dir
 /home/mason/git/SPlat/build/CMakeFiles/list_install_components.dir

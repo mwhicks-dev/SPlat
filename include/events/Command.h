@@ -1,7 +1,7 @@
 #ifndef SPLAT_EVENTS_COMMAND_H
 #define SPLAT_EVENTS_COMMAND_H
 
-#include <string>
+#include <cereal/cereal.hpp>
 
 namespace SPlat {
 
@@ -14,10 +14,10 @@ namespace SPlat {
             int priority = 0;
 
             /// @brief command type, derived from calling event
-            std::string type;
+            std::string type = "";
 
             /// @brief args as passed from event serialized to string
-            std::string args;
+            std::string args = "";
 
             template <class Archive>
             void serialize(Archive& ar) {

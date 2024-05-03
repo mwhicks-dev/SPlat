@@ -1,20 +1,25 @@
 #include "model/Character.h"
+#include "model/handler/CharacterCollisionHandler.h"
+#include "model/handler/CharacterUpdateHandler.h"
 
 using namespace SPlat::Model;
 
-sf::Color rand_character_color() {
-    srand(time(0));
-    int r = 128 + rand() % 128;
-    int g = 128 + rand() % 128;
-    int b = 128 + rand() % 128;
-    return sf::Color(r, g, b);
+void Character::resolve_collision(Asset& other) {
+    if (get_collision_handler() == nullptr) {
+        set_collision_handler(new CharacterCollisionHandler(
+            get_asset_properties(), get_moving_properties(), 
+            get_character_properties()));
+    }
+
+    get_collision_handler()->resolve_collision(other.get_asset_properties());
 }
 
-Character::Character(sf::Vector2f& size)
-: Asset(size, rand_character_color()) {}
+void Character::update() {
+    if (get_update_handler() == nullptr) {
+        set_update_handler(new CharacterUpdateHandler(
+            get_asset_properties(), get_moving_properties(), 
+            get_character_properties()));
+    }
 
-int Character::get_priority() { return 0; }
-
-std::string Character::TYPE = "character";
-
-std::string Character::get_type() { return Character::TYPE; }
+    get_update_handler()->update();
+}

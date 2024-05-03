@@ -1,7 +1,7 @@
 #ifndef SPLAT_PLATFORM
 #define SPLAT_PLATFORM
 
-#include "Asset.h"
+#include "model/Asset.h"
 
 namespace SPlat {
 
@@ -9,15 +9,19 @@ namespace SPlat {
 
         class Platform : public Asset {
 
+            std::mutex m;
+
+            CollisionHandler * collision_handler = nullptr;
+
+            AssetProperties& properties;
+
         public:
 
-            static std::string TYPE;
+            Platform(AssetProperties& properties) : Asset(properties), properties(properties) {};
+            
+            void resolve_collision(Asset& other);
 
-            Platform(sf::Vector2f&);
-
-            int get_priority() override;
-
-            std::string get_type() override;
+            static constexpr int collision_priority() { return -2; }
 
         };
 
