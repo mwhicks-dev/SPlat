@@ -48,7 +48,7 @@ void CharacterUpdateHandler::update() {
     asset_properties.set_updated_time(conf.get_timing_config().get_anchor_timeline().get_time());
 
     // raise update event for persistence
-    Events::ClientUpdateAssetHandler::Args args = {
+    /*Events::ClientUpdateAssetHandler::Args args = {
         .id=asset_properties.get_id(),
         .properties=asset_properties
     };
@@ -75,7 +75,7 @@ void CharacterUpdateHandler::update() {
         .content_type=Request::ContentType::Event,
         .body=ss.str()
     };
-    Entrypoint::get_instance().get_controller().push_outgoing_request(request);
+    Entrypoint::get_instance().get_controller().push_outgoing_request(request);*/
 
     AssetProperties * standing_on = character_properties.get_standing_on();    
     // if not standing on anything, increment y velocity

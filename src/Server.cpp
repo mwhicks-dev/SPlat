@@ -10,6 +10,8 @@
 #include "ClientConfig.h"
 #include "Server.h"
 
+#include <cereal/archives/json.hpp>
+
 using namespace SPlat;
 
 Server::Server() : 
@@ -50,6 +52,16 @@ void Server::start() {
     loop_timeline.unpause();
 
     time_t last_update = timing.get_display_timeline().get_time();
+
+    // prototype update event
+    Event prototype = {
+        .command = {
+            .priority=-1,
+            .type=Events::UpdateAssetHandler::get_type()
+        },
+        .sender=environment.get_entrypoint_id()
+    };
+
     while (environment.get_running()) {
         // update all owned objects
         std::unordered_set<size_t> ids = object_model.get_ids();
@@ -60,10 +72,12 @@ void Server::start() {
             if (asset_properties.get_owner() 
                 != environment.get_entrypoint_id()) continue;
             try {
+                // attempt routine update
                 Model::Moving& moving = dynamic_cast<Model::Moving&>(asset);
                 moving.update();
                 moving.get_moving_properties()
-                    .set_last_update(loop_timeline.get_time());
+                    .set_last_update(last_update);
+                asset_properties.set_updated_time(last_update);
                 
                 for (size_t other : ids) {
                     if (id == other) continue;
@@ -72,6 +86,29 @@ void Server::start() {
                         = object_model.read_asset(other);
                     asset.resolve_collision(other_asset);
                 }
+
+                // send routine update
+                Event update_event = prototype;
+                Events::UpdateAssetHandler::Args args = {
+                    .id=id,
+                    .properties=asset_properties
+                };
+                std::stringstream args_ss;
+                {
+                    cereal::JSONOutputArchive oar(args_ss);
+                    oar(args);
+                }
+                update_event.command.args = args_ss.str();
+                std::stringstream event_ss;
+                {
+                    cereal::JSONOutputArchive oar(event_ss);
+                    oar(update_event);
+                }
+                Request update_request = {
+                    .content_type=Request::ContentType::Event,
+                    .body=event_ss.str()
+                };
+                get_controller().push_outgoing_request(update_request);
             } catch (std::bad_cast&) {}
         }
 

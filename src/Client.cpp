@@ -135,6 +135,16 @@ void Client::start() {
     get_config().get_timing_config().get_display_timeline().unpause();  // paused by default
     time_t last_updated = get_config().get_timing_config()
         .get_display_timeline().get_time();
+
+    // prototype update event
+    Event prototype = {
+        .command = {
+            .priority=-1,
+            .type=Events::UpdateAssetHandler::get_type()
+        },
+        .sender=environment.get_entrypoint_id()
+    };
+
     while (window.isOpen()) {
         // poll for closed event
         sf::Event event;
@@ -160,21 +170,45 @@ void Client::start() {
             Model::AssetProperties& asset_properties 
                 = asset.get_asset_properties();
 
-            // attempt routine update
             try {
                 if (asset_properties.get_owner() 
                         == environment.get_entrypoint_id()) {
+                    // attempt routine update
                     Model::Moving& moving 
                         = dynamic_cast<Model::Moving&>(asset);
                     moving.update();
                     moving.get_moving_properties()
                         .set_last_update(last_updated);
+                    asset_properties.set_updated_time(last_updated);
                     for (size_t other_id : ids) {
                         if (id == other_id) continue;
                         Model::Asset& other_asset 
                             = object_model.read_asset(other_id);
                         asset.resolve_collision(other_asset);
                     }
+
+                    // send send routine update
+                    Event update_event = prototype;
+                    Events::UpdateAssetHandler::Args args = {
+                        .id=id,
+                        .properties=asset_properties
+                    };
+                    std::stringstream args_ss;
+                    {
+                        cereal::JSONOutputArchive oar(args_ss);
+                        oar(args);
+                    }
+                    update_event.command.args = args_ss.str();
+                    std::stringstream event_ss;
+                    {
+                        cereal::JSONOutputArchive oar(event_ss);
+                        oar(update_event);
+                    }
+                    Request update_request = {
+                        .content_type=Request::ContentType::Event,
+                        .body=event_ss.str()
+                    };
+                    get_controller().push_outgoing_request(update_request);
                 }
             } catch (std::bad_cast&) {}
 
