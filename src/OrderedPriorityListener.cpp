@@ -13,7 +13,7 @@
 using namespace SPlat::Events;
 
 SPlat::Event OrderedPriorityListener::poll_event() {
-    const std::lock_guard<std::mutex> lock(m);
+    const std::lock_guard<std::mutex> lock(n);
     auto local = event_queue.top();
     event_queue.pop();
     
@@ -21,19 +21,15 @@ SPlat::Event OrderedPriorityListener::poll_event() {
 }
 
 EventHandlerInterface* OrderedPriorityListener::get_handler(std::string type) {
-    EventHandlerInterface * local = nullptr;
     const std::lock_guard<std::mutex> lock(m);
-    if (handlers.count(type) > 0)
-        local = handlers[type];
-    
-    if (local == nullptr)
+    if (handlers.count(type) == 0)
         throw std::invalid_argument("Listener has no set handler for type " + type);
-
-    return local;
+    
+    return handlers[type];
 }
 
 bool OrderedPriorityListener::command_available() {
-    const std::lock_guard<std::mutex> lock(m);
+    const std::lock_guard<std::mutex> lock(n);
     return !event_queue.empty();
 }
 
@@ -87,7 +83,7 @@ void OrderedPriorityListener::push_event(Event event) {
 #ifdef DEBUG
     std::cout << "-> OrderedPriorityListener::push_command(Command)" << std::endl;
 #endif
-    const std::lock_guard<std::mutex> lock(m);
+    const std::lock_guard<std::mutex> lock(n);
     event_queue.push(event);
 #ifdef DEBUG
     std::cout << "<- OrderedPriorityListener::push_command(Command)" << std::endl;

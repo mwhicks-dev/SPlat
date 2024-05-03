@@ -15,6 +15,8 @@ namespace SPlat {
 
             std::mutex m;
 
+            std::mutex n;
+
             std::priority_queue<Event> event_queue;
 
             std::map<std::string, EventHandlerInterface*>& handlers;
