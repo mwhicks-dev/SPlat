@@ -25,5 +25,6 @@ I use the following libraries in this implementation:
 * [SFML](https://www.sfml-dev.org/) for core engine and multimedia
 * [cereal](https://uscilab.github.io/cereal/index.html) for serialization
 * [CMake](https://cmake.org) and [Docker](https://www.docker.com) for testing
+* [0MQ](zeromq.org) used for networking
 
 Thanks to all 3rd parties for their contributions!
