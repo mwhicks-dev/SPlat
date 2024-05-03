@@ -14,6 +14,9 @@ int main() {
     ConfigInterface& conf = server.get_config();
     EnvironmentInterface& env = conf.get_environment();
 
+    server.get_spawnpoint().get_asset_properties()
+        .set_position(sf::Vector2f(100, 100));
+
     std::thread t(&Server::start, &server);
 
     {
