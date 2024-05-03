@@ -245,14 +245,14 @@ void ClientController::run() {
     
     // start req/rep threads
     std::thread request_thread(&ClientController::run_request_thread, this);
-    std::thread response_thread(&ClientController::run_response_thread, this);
+    // std::thread response_thread(&ClientController::run_response_thread, this);
     
     // start subscriber thread
     std::thread subscriber_thread(&ClientController::run_subscriber_thread, this);
 
     // detach
     request_thread.detach();
-    response_thread.detach();
+    // response_thread.detach();
     subscriber_thread.detach();
 #ifdef DEBUG
     std::cout << "<- ClientController::run()" << std::endl;

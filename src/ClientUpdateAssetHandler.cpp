@@ -36,6 +36,8 @@ void ClientUpdateAssetHandler::handle(std::string serialized) {
         iar(args);
     }
 
+    Model::Asset * asset = nullptr;
+
     ControllerInterface& ctl = entrypoint.get_controller();
     if (event.sender == environment.get_entrypoint_id()) {
         // send to server as request
@@ -53,15 +55,15 @@ void ClientUpdateAssetHandler::handle(std::string serialized) {
         }
         
         // perform update client-side
-        sf::Vector2f diff = entrypoint.get_object_model().read_asset(args.id)
-            .get_asset_properties().get_position() - args.properties
-            .get_position();
+        asset = &entrypoint.get_object_model().read_asset(args.id);
+        sf::Vector2f diff = asset->get_asset_properties().get_position() 
+            - args.properties.get_position();
         config.get_environment().get_standing_config().push_update_to_children(args.id, diff);
     } else {
         try {
             // get asset from GOM
-            Model::Asset& asset = entrypoint.get_object_model().read_asset(args.id);
-            Model::AssetProperties& asset_properties = asset.get_asset_properties();
+            asset = &entrypoint.get_object_model().read_asset(args.id);
+            Model::AssetProperties& asset_properties = asset->get_asset_properties();
 
             if (asset_properties.get_updated_time() > args.properties.get_updated_time()) return;
 
@@ -115,12 +117,17 @@ void ClientUpdateAssetHandler::handle(std::string serialized) {
                 iar(asset_properties);
             }
 
-            // TODO: find better check for asset type than assuming they're a platform
-            config.get_asset_factory_config().get_platform_factory()
+            asset = &config.get_asset_factory_config().get_platform_factory()
                 .create_asset(asset_properties);
         }
     }
     
+    std::unordered_set<size_t> ids = entrypoint.get_object_model().get_ids();
+    for (size_t id : ids) {
+        if (id == args.id) continue;
+        Model::Asset& other = entrypoint.get_object_model().read_asset(id);
+        asset->resolve_collision(other);
+    }
 #ifdef DEBUG
     std::cout << "<- ClientUpdateAssetHandler::handle" << std::endl;
 #endif
