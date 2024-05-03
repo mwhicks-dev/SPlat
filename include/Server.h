@@ -17,6 +17,8 @@ namespace SPlat {
 
         Server();
 
+        Model::Asset& spawnpoint;
+
     public:
 
         ConfigInterface& get_config() override;
@@ -30,6 +32,10 @@ namespace SPlat {
         Events::ListenerInterface& get_background_listener() override;
 
         ControllerInterface& get_controller() override;
+
+        Model::Asset& get_spawnpoint();
+
+        void set_spawnpoint(Model::Asset&);
 
     };
 

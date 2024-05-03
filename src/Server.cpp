@@ -6,6 +6,7 @@
 #include "events/handlers/ServerDeleteAssetHandler.h"
 #include "events/OrderedPriorityListener.h"
 #include "model/UnorderedMapObjectModel.h"
+#include "model/Spawnpoint.h"
 #include "ServerController.h"
 #include "ClientConfig.h"
 #include "Server.h"
@@ -18,7 +19,8 @@ Server::Server() :
 config(*new ClientConfig()),
 controller(*new ServerController()),
 object_model(*new Model::UnorderedMapObjectModel()),
-background_listener(*new Events::OrderedPriorityListener()) {
+background_listener(*new Events::OrderedPriorityListener()),
+spawnpoint(*new Model::Spawnpoint(*new Model::AssetProperties())) {
     get_config().get_timing_config().update_framerate_limit(120);
 
     // set listener handlers
