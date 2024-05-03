@@ -261,13 +261,6 @@ void ClientController::run() {
 
 Response ClientController::await(Request request) {
     zmq::socket_t socket(context, zmq::socket_type::req);
-    int timeout = 3000;
-    socket.setsockopt(ZMQ_CONNECT_TIMEOUT, &timeout, sizeof(timeout));
-    
-    timeval retry_time = {
-        .tv_sec=3,
-        .tv_usec=0
-    };
     
     EnvironmentInterface& environment = Client::get_instance().get_config().get_environment();
 
