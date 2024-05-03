@@ -39,6 +39,10 @@ void ServerSpawnAssetHandler::handle(std::string serialized) {
     if (asset_properties.get_loaded()) return;
 
     asset_properties.set_loaded(true);
-    asset_properties.set_position(server.get_spawnpoint()
-        .get_asset_properties().get_position());
+    if (asset_properties.get_collision_priority() 
+            == Model::Character::collision_priority()) {
+        std::cout << asset_properties.get_drawable() << std::endl;
+        asset_properties.set_position(server.get_spawnpoint()
+            .get_asset_properties().get_position());
+    }
 }
