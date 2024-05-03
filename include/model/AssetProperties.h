@@ -27,7 +27,7 @@ namespace SPlat {
 
             time_t updated_time = 0;
 
-            bool loaded = true;
+            bool loaded = false;
 
             bool drawable = true;
 
