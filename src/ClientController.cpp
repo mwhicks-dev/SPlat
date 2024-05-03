@@ -296,10 +296,12 @@ Response ClientController::await(Request request) {
 
     zmq::message_t msg(serialized.size());
     memcpy(msg.data(), serialized.c_str(), serialized.size());
+    m.lock();
     socket.send(msg, zmq::send_flags::none);
 
     zmq::message_t response_msg;
     socket.recv(response_msg, zmq::recv_flags::none);
+    m.unlock();
     std::string response_str = response_msg.to_string();
 
     Response response;
