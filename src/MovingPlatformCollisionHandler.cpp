@@ -30,12 +30,14 @@ void MovingPlatformCollisionHandler::resolve_collision(AssetProperties& other) {
 
     if (!self_rect.getGlobalBounds().intersects(other_rect.getGlobalBounds())) return;
 
+    sf::Vector2f self_velocity = get_moving_properties().get_velocity();
+    if (fabs(self_velocity.x) + fabs(self_velocity.y) < 0.001) return;
+
     // find unit velocity
     sf::Vector2f unit_velocity;
     {
-        sf::Vector2f curr_velocity = get_moving_properties().get_velocity();
-        float magnitude = sqrt(pow(curr_velocity.x, 2) + pow(curr_velocity.y, 2));
-        unit_velocity = curr_velocity / magnitude;
+        float magnitude = sqrt(pow(self_velocity.x, 2) + pow(self_velocity.y, 2));
+        unit_velocity = self_velocity / magnitude;
     }
 
 

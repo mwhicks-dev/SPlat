@@ -1,6 +1,4 @@
 #include "model/handler/CharacterUpdateHandler.h"
-#include "events/Command.h"
-#include "events/handlers/ClientUpdateAssetHandler.h"
 #include "Entrypoint.h"
 #include "Event.h"
 
@@ -48,34 +46,6 @@ void CharacterUpdateHandler::update() {
     asset_properties.set_updated_time(conf.get_timing_config().get_anchor_timeline().get_time());
 
     // raise update event for persistence
-    /*Events::ClientUpdateAssetHandler::Args args = {
-        .id=asset_properties.get_id(),
-        .properties=asset_properties
-    };
-    std::stringstream ss;
-    {
-        cereal::JSONOutputArchive oar(ss);
-        oar(args);
-    }
-    Events::Command cmd = {
-        .priority=0,
-        .type=Events::ClientUpdateAssetHandler::get_type(),
-        .args=ss.str(),
-    };
-    Event event = {
-        .command=cmd,
-        .sender=conf.get_environment().get_entrypoint_id(),
-    };
-    ss.clear(); ss.str("");
-    {
-        cereal::JSONOutputArchive oar(ss);
-        oar(event);
-    }
-    Request request = {
-        .content_type=Request::ContentType::Event,
-        .body=ss.str()
-    };
-    Entrypoint::get_instance().get_controller().push_outgoing_request(request);*/
 
     AssetProperties * standing_on = character_properties.get_standing_on();    
     // if not standing on anything, increment y velocity

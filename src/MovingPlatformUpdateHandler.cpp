@@ -81,36 +81,6 @@ void MovingPlatformUpdateHandler::update() {
     }
 
     asset_properties.set_updated_time(conf.get_timing_config().get_anchor_timeline().get_time());
-
-    // raise update event for persistence
-    /*Events::ClientUpdateAssetHandler::Args args = {
-        .id=asset_properties.get_id(),
-        .properties=asset_properties
-    };
-    std::stringstream ss;
-    {
-        cereal::JSONOutputArchive oar(ss);
-        oar(args);
-    }
-    Events::Command cmd = {
-        .priority=0,
-        .type=Events::ClientUpdateAssetHandler::get_type(),
-        .args=ss.str(),
-    };
-    Event event = {
-        .command=cmd,
-        .sender=conf.get_environment().get_entrypoint_id(),
-    };
-    ss.clear(); ss.str("");
-    {
-        cereal::JSONOutputArchive oar(ss);
-        oar(event);
-    }
-    Request request = {
-        .content_type=Request::ContentType::Event,
-        .body=ss.str()
-    };
-    Entrypoint::get_instance().get_controller().push_outgoing_request(request);*/
 #ifdef DEBUG
     std::cout << "<- MovingPlatformHandler::update()" << std::endl;
 #endif
