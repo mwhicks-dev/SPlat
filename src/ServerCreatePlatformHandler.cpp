@@ -1,4 +1,5 @@
 #include "events/handlers/ServerCreatePlatformHandler.h"
+#include "events/handlers/SpawnAssetHandler.h"
 #include "Entrypoint.h"
 #include "IdDto.h"
 
@@ -10,6 +11,7 @@ using namespace SPlat::Events;
 
 void ServerCreatePlatformHandler::handle(std::string serialized) {
     Entrypoint& entrypoint = Entrypoint::get_instance();
+    EnvironmentInterface& environment = entrypoint.get_config().get_environment();
 
     SPlat::Event event;
     {
@@ -40,10 +42,29 @@ void ServerCreatePlatformHandler::handle(std::string serialized) {
         cereal::JSONOutputArchive oar(id_dto_ss);
         oar(id_dto);
     }
-    entrypoint.get_config().get_environment()
-        .set_context(event.context, id_dto_ss.str());
+    environment.set_context(event.context, id_dto_ss.str());
 
     SPlat::Model::Asset& asset = entrypoint.get_config()
         .get_asset_factory_config().get_platform_factory()
         .create_asset(args.properties);
+
+    SpawnAssetHandler::Args spawn_args = {
+        .asset_id=id
+    };
+    std::stringstream spawn_args_ss;
+    {
+        cereal::JSONOutputArchive oar(spawn_args_ss);
+        oar(spawn_args);
+    }
+
+    // spawn newly created asset
+    Event spawn_event {
+        .command = {
+            .priority=-2,
+            .type=SpawnAssetHandler::get_type(),
+            .args=spawn_args_ss.str()
+        },
+        .sender=environment.get_entrypoint_id()
+    };
+    entrypoint.get_background_listener().push_event(spawn_event);
 }

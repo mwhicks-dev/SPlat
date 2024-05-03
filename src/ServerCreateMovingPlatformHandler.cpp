@@ -1,4 +1,5 @@
 #include "events/handlers/ServerCreateMovingPlatformHandler.h"
+#include "events/handlers/SpawnAssetHandler.h"
 #include "model/MovingPlatform.h"
 #include "Entrypoint.h"
 #include "IdDto.h"
@@ -55,4 +56,24 @@ void ServerCreateMovingPlatformHandler::handle(std::string serialized) {
         moving_platform->get_moving_platform_properties()
             .set_states(args.states);
     }
+
+    SpawnAssetHandler::Args spawn_args = {
+        .asset_id=id
+    };
+    std::stringstream spawn_args_ss;
+    {
+        cereal::JSONOutputArchive oar(spawn_args_ss);
+        oar(spawn_args);
+    }
+
+    // spawn newly created asset
+    Event spawn_event {
+        .command = {
+            .priority=-2,
+            .type=SpawnAssetHandler::get_type(),
+            .args=spawn_args_ss.str()
+        },
+        .sender=environment.get_entrypoint_id()
+    };
+    entrypoint.get_background_listener().push_event(spawn_event);
 }
