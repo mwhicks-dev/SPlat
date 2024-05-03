@@ -63,7 +63,7 @@ void ServerController::set_connected_clients(std::set<size_t> connected_clients)
 
 size_t ServerController::add_connected_client() {
     auto local = get_connected_clients();
-    size_t client_id = local.size();
+    size_t client_id = local.size() + 1;
     while (local.count(client_id) > 0) client_id++;
     local.insert(client_id);
     set_connected_clients(local);
