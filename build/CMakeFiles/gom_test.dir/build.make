@@ -83,10 +83,234 @@ CMakeFiles/gom_test.dir/test/TestGameObjectModel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/test/TestGameObjectModel.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/test/TestGameObjectModel.cpp -o CMakeFiles/gom_test.dir/test/TestGameObjectModel.cpp.s
 
+CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.o: /home/mason/git/SPlat/src/KeyPressHandler.cpp
+CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.o -c /home/mason/git/SPlat/src/KeyPressHandler.cpp
+
+CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/KeyPressHandler.cpp > CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/KeyPressHandler.cpp -o CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.o: /home/mason/git/SPlat/src/CharacterCollisionHandler.cpp
+CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.o -c /home/mason/git/SPlat/src/CharacterCollisionHandler.cpp
+
+CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/CharacterCollisionHandler.cpp > CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/CharacterCollisionHandler.cpp -o CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/ClientController.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ClientController.cpp.o: /home/mason/git/SPlat/src/ClientController.cpp
+CMakeFiles/gom_test.dir/src/ClientController.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/gom_test.dir/src/ClientController.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ClientController.cpp.o -MF CMakeFiles/gom_test.dir/src/ClientController.cpp.o.d -o CMakeFiles/gom_test.dir/src/ClientController.cpp.o -c /home/mason/git/SPlat/src/ClientController.cpp
+
+CMakeFiles/gom_test.dir/src/ClientController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ClientController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientController.cpp > CMakeFiles/gom_test.dir/src/ClientController.cpp.i
+
+CMakeFiles/gom_test.dir/src/ClientController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ClientController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientController.cpp -o CMakeFiles/gom_test.dir/src/ClientController.cpp.s
+
+CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.o: /home/mason/git/SPlat/src/ServerDeleteAssetHandler.cpp
+CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ServerDeleteAssetHandler.cpp
+
+CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerDeleteAssetHandler.cpp > CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerDeleteAssetHandler.cpp -o CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.o: /home/mason/git/SPlat/src/ClientDeleteAssetHandler.cpp
+CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ClientDeleteAssetHandler.cpp
+
+CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientDeleteAssetHandler.cpp > CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientDeleteAssetHandler.cpp -o CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.o: /home/mason/git/SPlat/src/ClientReadAssetHandler.cpp
+CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ClientReadAssetHandler.cpp
+
+CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientReadAssetHandler.cpp > CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientReadAssetHandler.cpp -o CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.o: /home/mason/git/SPlat/src/UnorderedMapObjectModel.cpp
+CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.o -MF CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.o.d -o CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.o -c /home/mason/git/SPlat/src/UnorderedMapObjectModel.cpp
+
+CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/UnorderedMapObjectModel.cpp > CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.i
+
+CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/UnorderedMapObjectModel.cpp -o CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.s
+
+CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.o: /home/mason/git/SPlat/src/ServerUpdateAssetHandler.cpp
+CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ServerUpdateAssetHandler.cpp
+
+CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerUpdateAssetHandler.cpp > CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerUpdateAssetHandler.cpp -o CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.o: /home/mason/git/SPlat/src/MovingPlatformCollisionHandler.cpp
+CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.o -c /home/mason/git/SPlat/src/MovingPlatformCollisionHandler.cpp
+
+CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/MovingPlatformCollisionHandler.cpp > CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/MovingPlatformCollisionHandler.cpp -o CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/Entrypoint.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/Entrypoint.cpp.o: /home/mason/git/SPlat/src/Entrypoint.cpp
+CMakeFiles/gom_test.dir/src/Entrypoint.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/gom_test.dir/src/Entrypoint.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/Entrypoint.cpp.o -MF CMakeFiles/gom_test.dir/src/Entrypoint.cpp.o.d -o CMakeFiles/gom_test.dir/src/Entrypoint.cpp.o -c /home/mason/git/SPlat/src/Entrypoint.cpp
+
+CMakeFiles/gom_test.dir/src/Entrypoint.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/Entrypoint.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Entrypoint.cpp > CMakeFiles/gom_test.dir/src/Entrypoint.cpp.i
+
+CMakeFiles/gom_test.dir/src/Entrypoint.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/Entrypoint.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Entrypoint.cpp -o CMakeFiles/gom_test.dir/src/Entrypoint.cpp.s
+
+CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o: /home/mason/git/SPlat/src/ClientCreateMovingPlatformHandler.cpp
+CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o -c /home/mason/git/SPlat/src/ClientCreateMovingPlatformHandler.cpp
+
+CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientCreateMovingPlatformHandler.cpp > CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientCreateMovingPlatformHandler.cpp -o CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.o: /home/mason/git/SPlat/src/UnorderedStandingConfig.cpp
+CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.o -MF CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.o.d -o CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.o -c /home/mason/git/SPlat/src/UnorderedStandingConfig.cpp
+
+CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/UnorderedStandingConfig.cpp > CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.i
+
+CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/UnorderedStandingConfig.cpp -o CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.s
+
+CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.o: /home/mason/git/SPlat/src/OrderedPriorityListener.cpp
+CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.o -MF CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.o.d -o CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.o -c /home/mason/git/SPlat/src/OrderedPriorityListener.cpp
+
+CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/OrderedPriorityListener.cpp > CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.i
+
+CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/OrderedPriorityListener.cpp -o CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.s
+
+CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.o: /home/mason/git/SPlat/src/ServerCreatePlatformHandler.cpp
+CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.o -c /home/mason/git/SPlat/src/ServerCreatePlatformHandler.cpp
+
+CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerCreatePlatformHandler.cpp > CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerCreatePlatformHandler.cpp -o CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.o: /home/mason/git/SPlat/src/PlatformCollisionHandler.cpp
+CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.o -c /home/mason/git/SPlat/src/PlatformCollisionHandler.cpp
+
+CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/PlatformCollisionHandler.cpp > CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/PlatformCollisionHandler.cpp -o CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.o: /home/mason/git/SPlat/src/CharacterUpdateHandler.cpp
+CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.o -c /home/mason/git/SPlat/src/CharacterUpdateHandler.cpp
+
+CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/CharacterUpdateHandler.cpp > CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/CharacterUpdateHandler.cpp -o CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.s
+
 CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.o: CMakeFiles/gom_test.dir/flags.make
 CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.o: /home/mason/git/SPlat/src/LocalTimeline.cpp
 CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.o -MF CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.o.d -o CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.o -c /home/mason/git/SPlat/src/LocalTimeline.cpp
 
 CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.i: cmake_force
@@ -97,52 +321,38 @@ CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/LocalTimeline.cpp -o CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.s
 
-CMakeFiles/gom_test.dir/src/Runtime.cpp.o: CMakeFiles/gom_test.dir/flags.make
-CMakeFiles/gom_test.dir/src/Runtime.cpp.o: /home/mason/git/SPlat/src/Runtime.cpp
-CMakeFiles/gom_test.dir/src/Runtime.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/gom_test.dir/src/Runtime.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/Runtime.cpp.o -MF CMakeFiles/gom_test.dir/src/Runtime.cpp.o.d -o CMakeFiles/gom_test.dir/src/Runtime.cpp.o -c /home/mason/git/SPlat/src/Runtime.cpp
+CMakeFiles/gom_test.dir/src/Environment.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/Environment.cpp.o: /home/mason/git/SPlat/src/Environment.cpp
+CMakeFiles/gom_test.dir/src/Environment.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/gom_test.dir/src/Environment.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/Environment.cpp.o -MF CMakeFiles/gom_test.dir/src/Environment.cpp.o.d -o CMakeFiles/gom_test.dir/src/Environment.cpp.o -c /home/mason/git/SPlat/src/Environment.cpp
 
-CMakeFiles/gom_test.dir/src/Runtime.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/Runtime.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Runtime.cpp > CMakeFiles/gom_test.dir/src/Runtime.cpp.i
+CMakeFiles/gom_test.dir/src/Environment.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/Environment.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Environment.cpp > CMakeFiles/gom_test.dir/src/Environment.cpp.i
 
-CMakeFiles/gom_test.dir/src/Runtime.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/Runtime.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Runtime.cpp -o CMakeFiles/gom_test.dir/src/Runtime.cpp.s
+CMakeFiles/gom_test.dir/src/Environment.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/Environment.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Environment.cpp -o CMakeFiles/gom_test.dir/src/Environment.cpp.s
 
-CMakeFiles/gom_test.dir/src/Asset.cpp.o: CMakeFiles/gom_test.dir/flags.make
-CMakeFiles/gom_test.dir/src/Asset.cpp.o: /home/mason/git/SPlat/src/Asset.cpp
-CMakeFiles/gom_test.dir/src/Asset.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/gom_test.dir/src/Asset.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/Asset.cpp.o -MF CMakeFiles/gom_test.dir/src/Asset.cpp.o.d -o CMakeFiles/gom_test.dir/src/Asset.cpp.o -c /home/mason/git/SPlat/src/Asset.cpp
+CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.o: /home/mason/git/SPlat/src/KeyReleaseHandler.cpp
+CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.o -c /home/mason/git/SPlat/src/KeyReleaseHandler.cpp
 
-CMakeFiles/gom_test.dir/src/Asset.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/Asset.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Asset.cpp > CMakeFiles/gom_test.dir/src/Asset.cpp.i
+CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/KeyReleaseHandler.cpp > CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.i
 
-CMakeFiles/gom_test.dir/src/Asset.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/Asset.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Asset.cpp -o CMakeFiles/gom_test.dir/src/Asset.cpp.s
-
-CMakeFiles/gom_test.dir/src/Character.cpp.o: CMakeFiles/gom_test.dir/flags.make
-CMakeFiles/gom_test.dir/src/Character.cpp.o: /home/mason/git/SPlat/src/Character.cpp
-CMakeFiles/gom_test.dir/src/Character.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/gom_test.dir/src/Character.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/Character.cpp.o -MF CMakeFiles/gom_test.dir/src/Character.cpp.o.d -o CMakeFiles/gom_test.dir/src/Character.cpp.o -c /home/mason/git/SPlat/src/Character.cpp
-
-CMakeFiles/gom_test.dir/src/Character.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/Character.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Character.cpp > CMakeFiles/gom_test.dir/src/Character.cpp.i
-
-CMakeFiles/gom_test.dir/src/Character.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/Character.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Character.cpp -o CMakeFiles/gom_test.dir/src/Character.cpp.s
+CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/KeyReleaseHandler.cpp -o CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.s
 
 CMakeFiles/gom_test.dir/src/Platform.cpp.o: CMakeFiles/gom_test.dir/flags.make
 CMakeFiles/gom_test.dir/src/Platform.cpp.o: /home/mason/git/SPlat/src/Platform.cpp
 CMakeFiles/gom_test.dir/src/Platform.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/gom_test.dir/src/Platform.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/gom_test.dir/src/Platform.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/Platform.cpp.o -MF CMakeFiles/gom_test.dir/src/Platform.cpp.o.d -o CMakeFiles/gom_test.dir/src/Platform.cpp.o -c /home/mason/git/SPlat/src/Platform.cpp
 
 CMakeFiles/gom_test.dir/src/Platform.cpp.i: cmake_force
@@ -153,10 +363,164 @@ CMakeFiles/gom_test.dir/src/Platform.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/Platform.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Platform.cpp -o CMakeFiles/gom_test.dir/src/Platform.cpp.s
 
+CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.o: /home/mason/git/SPlat/src/AssetFactoryConfig.cpp
+CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.o -MF CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.o.d -o CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.o -c /home/mason/git/SPlat/src/AssetFactoryConfig.cpp
+
+CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/AssetFactoryConfig.cpp > CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.i
+
+CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/AssetFactoryConfig.cpp -o CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.s
+
+CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.o: /home/mason/git/SPlat/src/ServerCreateCharacterHandler.cpp
+CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.o -c /home/mason/git/SPlat/src/ServerCreateCharacterHandler.cpp
+
+CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerCreateCharacterHandler.cpp > CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerCreateCharacterHandler.cpp -o CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/Character.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/Character.cpp.o: /home/mason/git/SPlat/src/Character.cpp
+CMakeFiles/gom_test.dir/src/Character.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/gom_test.dir/src/Character.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/Character.cpp.o -MF CMakeFiles/gom_test.dir/src/Character.cpp.o.d -o CMakeFiles/gom_test.dir/src/Character.cpp.o -c /home/mason/git/SPlat/src/Character.cpp
+
+CMakeFiles/gom_test.dir/src/Character.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/Character.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Character.cpp > CMakeFiles/gom_test.dir/src/Character.cpp.i
+
+CMakeFiles/gom_test.dir/src/Character.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/Character.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Character.cpp -o CMakeFiles/gom_test.dir/src/Character.cpp.s
+
+CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.o: /home/mason/git/SPlat/src/ServerReadAssetHandler.cpp
+CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ServerReadAssetHandler.cpp
+
+CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerReadAssetHandler.cpp > CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerReadAssetHandler.cpp -o CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.o: /home/mason/git/SPlat/src/ClientCreatePlatformHandler.cpp
+CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.o -c /home/mason/git/SPlat/src/ClientCreatePlatformHandler.cpp
+
+CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientCreatePlatformHandler.cpp > CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientCreatePlatformHandler.cpp -o CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.o: /home/mason/git/SPlat/src/MovingPlatformUpdateHandler.cpp
+CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.o -c /home/mason/git/SPlat/src/MovingPlatformUpdateHandler.cpp
+
+CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/MovingPlatformUpdateHandler.cpp > CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/MovingPlatformUpdateHandler.cpp -o CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/FauxServerController.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/FauxServerController.cpp.o: /home/mason/git/SPlat/src/FauxServerController.cpp
+CMakeFiles/gom_test.dir/src/FauxServerController.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/gom_test.dir/src/FauxServerController.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/FauxServerController.cpp.o -MF CMakeFiles/gom_test.dir/src/FauxServerController.cpp.o.d -o CMakeFiles/gom_test.dir/src/FauxServerController.cpp.o -c /home/mason/git/SPlat/src/FauxServerController.cpp
+
+CMakeFiles/gom_test.dir/src/FauxServerController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/FauxServerController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/FauxServerController.cpp > CMakeFiles/gom_test.dir/src/FauxServerController.cpp.i
+
+CMakeFiles/gom_test.dir/src/FauxServerController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/FauxServerController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/FauxServerController.cpp -o CMakeFiles/gom_test.dir/src/FauxServerController.cpp.s
+
+CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o: /home/mason/git/SPlat/src/ServerCreateMovingPlatformHandler.cpp
+CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o -c /home/mason/git/SPlat/src/ServerCreateMovingPlatformHandler.cpp
+
+CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerCreateMovingPlatformHandler.cpp > CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerCreateMovingPlatformHandler.cpp -o CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/TimingConfig.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/TimingConfig.cpp.o: /home/mason/git/SPlat/src/TimingConfig.cpp
+CMakeFiles/gom_test.dir/src/TimingConfig.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/gom_test.dir/src/TimingConfig.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/TimingConfig.cpp.o -MF CMakeFiles/gom_test.dir/src/TimingConfig.cpp.o.d -o CMakeFiles/gom_test.dir/src/TimingConfig.cpp.o -c /home/mason/git/SPlat/src/TimingConfig.cpp
+
+CMakeFiles/gom_test.dir/src/TimingConfig.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/TimingConfig.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/TimingConfig.cpp > CMakeFiles/gom_test.dir/src/TimingConfig.cpp.i
+
+CMakeFiles/gom_test.dir/src/TimingConfig.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/TimingConfig.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/TimingConfig.cpp -o CMakeFiles/gom_test.dir/src/TimingConfig.cpp.s
+
+CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.o: /home/mason/git/SPlat/src/ClientCreateCharacterHandler.cpp
+CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.o -c /home/mason/git/SPlat/src/ClientCreateCharacterHandler.cpp
+
+CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientCreateCharacterHandler.cpp > CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.i
+
+CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientCreateCharacterHandler.cpp -o CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.s
+
+CMakeFiles/gom_test.dir/src/ClientConfig.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ClientConfig.cpp.o: /home/mason/git/SPlat/src/ClientConfig.cpp
+CMakeFiles/gom_test.dir/src/ClientConfig.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/gom_test.dir/src/ClientConfig.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ClientConfig.cpp.o -MF CMakeFiles/gom_test.dir/src/ClientConfig.cpp.o.d -o CMakeFiles/gom_test.dir/src/ClientConfig.cpp.o -c /home/mason/git/SPlat/src/ClientConfig.cpp
+
+CMakeFiles/gom_test.dir/src/ClientConfig.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ClientConfig.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientConfig.cpp > CMakeFiles/gom_test.dir/src/ClientConfig.cpp.i
+
+CMakeFiles/gom_test.dir/src/ClientConfig.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ClientConfig.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientConfig.cpp -o CMakeFiles/gom_test.dir/src/ClientConfig.cpp.s
+
 CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.o: CMakeFiles/gom_test.dir/flags.make
 CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.o: /home/mason/git/SPlat/src/MovingPlatform.cpp
 CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.o -MF CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.o.d -o CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.o -c /home/mason/git/SPlat/src/MovingPlatform.cpp
 
 CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.i: cmake_force
@@ -167,160 +531,212 @@ CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/MovingPlatform.cpp -o CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.s
 
-CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.o: CMakeFiles/gom_test.dir/flags.make
-CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.o: /home/mason/git/SPlat/src/GameObjectModel.cpp
-CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.o -MF CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.o.d -o CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.o -c /home/mason/git/SPlat/src/GameObjectModel.cpp
+CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.o: /home/mason/git/SPlat/src/ClientUpdateAssetHandler.cpp
+CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.o -MF CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.o.d -o CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.o -c /home/mason/git/SPlat/src/ClientUpdateAssetHandler.cpp
 
-CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/GameObjectModel.cpp > CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.i
+CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ClientUpdateAssetHandler.cpp > CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.i
 
-CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/GameObjectModel.cpp -o CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.s
+CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ClientUpdateAssetHandler.cpp -o CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.s
 
-CMakeFiles/gom_test.dir/src/AssetEvents.cpp.o: CMakeFiles/gom_test.dir/flags.make
-CMakeFiles/gom_test.dir/src/AssetEvents.cpp.o: /home/mason/git/SPlat/src/AssetEvents.cpp
-CMakeFiles/gom_test.dir/src/AssetEvents.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/gom_test.dir/src/AssetEvents.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/AssetEvents.cpp.o -MF CMakeFiles/gom_test.dir/src/AssetEvents.cpp.o.d -o CMakeFiles/gom_test.dir/src/AssetEvents.cpp.o -c /home/mason/git/SPlat/src/AssetEvents.cpp
+CMakeFiles/gom_test.dir/src/ServerController.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/ServerController.cpp.o: /home/mason/git/SPlat/src/ServerController.cpp
+CMakeFiles/gom_test.dir/src/ServerController.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/gom_test.dir/src/ServerController.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/ServerController.cpp.o -MF CMakeFiles/gom_test.dir/src/ServerController.cpp.o.d -o CMakeFiles/gom_test.dir/src/ServerController.cpp.o -c /home/mason/git/SPlat/src/ServerController.cpp
 
-CMakeFiles/gom_test.dir/src/AssetEvents.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/AssetEvents.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/AssetEvents.cpp > CMakeFiles/gom_test.dir/src/AssetEvents.cpp.i
+CMakeFiles/gom_test.dir/src/ServerController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/ServerController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/ServerController.cpp > CMakeFiles/gom_test.dir/src/ServerController.cpp.i
 
-CMakeFiles/gom_test.dir/src/AssetEvents.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/AssetEvents.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/AssetEvents.cpp -o CMakeFiles/gom_test.dir/src/AssetEvents.cpp.s
+CMakeFiles/gom_test.dir/src/ServerController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/ServerController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/ServerController.cpp -o CMakeFiles/gom_test.dir/src/ServerController.cpp.s
 
-CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.o: CMakeFiles/gom_test.dir/flags.make
-CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.o: /home/mason/git/SPlat/src/CharacterEvents.cpp
-CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.o -MF CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.o.d -o CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.o -c /home/mason/git/SPlat/src/CharacterEvents.cpp
+CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.o: /home/mason/git/SPlat/src/AbstractAssetFactory.cpp
+CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.o -MF CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.o.d -o CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.o -c /home/mason/git/SPlat/src/AbstractAssetFactory.cpp
 
-CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/CharacterEvents.cpp > CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.i
+CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/AbstractAssetFactory.cpp > CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.i
 
-CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/CharacterEvents.cpp -o CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.s
+CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/AbstractAssetFactory.cpp -o CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.s
 
-CMakeFiles/gom_test.dir/src/KeyEvents.cpp.o: CMakeFiles/gom_test.dir/flags.make
-CMakeFiles/gom_test.dir/src/KeyEvents.cpp.o: /home/mason/git/SPlat/src/KeyEvents.cpp
-CMakeFiles/gom_test.dir/src/KeyEvents.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/gom_test.dir/src/KeyEvents.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/KeyEvents.cpp.o -MF CMakeFiles/gom_test.dir/src/KeyEvents.cpp.o.d -o CMakeFiles/gom_test.dir/src/KeyEvents.cpp.o -c /home/mason/git/SPlat/src/KeyEvents.cpp
+CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.o: /home/mason/git/SPlat/src/CharacterFactory.cpp
+CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.o -MF CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.o.d -o CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.o -c /home/mason/git/SPlat/src/CharacterFactory.cpp
 
-CMakeFiles/gom_test.dir/src/KeyEvents.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/KeyEvents.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/KeyEvents.cpp > CMakeFiles/gom_test.dir/src/KeyEvents.cpp.i
+CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/CharacterFactory.cpp > CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.i
 
-CMakeFiles/gom_test.dir/src/KeyEvents.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/KeyEvents.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/KeyEvents.cpp -o CMakeFiles/gom_test.dir/src/KeyEvents.cpp.s
+CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/CharacterFactory.cpp -o CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.s
 
-CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.o: CMakeFiles/gom_test.dir/flags.make
-CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.o: /home/mason/git/SPlat/src/MovingPlatformEvents.cpp
-CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.o -MF CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.o.d -o CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.o -c /home/mason/git/SPlat/src/MovingPlatformEvents.cpp
+CMakeFiles/gom_test.dir/src/Client.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/Client.cpp.o: /home/mason/git/SPlat/src/Client.cpp
+CMakeFiles/gom_test.dir/src/Client.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/gom_test.dir/src/Client.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/Client.cpp.o -MF CMakeFiles/gom_test.dir/src/Client.cpp.o.d -o CMakeFiles/gom_test.dir/src/Client.cpp.o -c /home/mason/git/SPlat/src/Client.cpp
 
-CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/MovingPlatformEvents.cpp > CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.i
+CMakeFiles/gom_test.dir/src/Client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/Client.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Client.cpp > CMakeFiles/gom_test.dir/src/Client.cpp.i
 
-CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/MovingPlatformEvents.cpp -o CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.s
+CMakeFiles/gom_test.dir/src/Client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/Client.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Client.cpp -o CMakeFiles/gom_test.dir/src/Client.cpp.s
 
-CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.o: CMakeFiles/gom_test.dir/flags.make
-CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.o: /home/mason/git/SPlat/src/PlatformEvents.cpp
-CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.o -MF CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.o.d -o CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.o -c /home/mason/git/SPlat/src/PlatformEvents.cpp
+CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.o: /home/mason/git/SPlat/src/PlatformFactory.cpp
+CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.o -MF CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.o.d -o CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.o -c /home/mason/git/SPlat/src/PlatformFactory.cpp
 
-CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/PlatformEvents.cpp > CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.i
+CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/PlatformFactory.cpp > CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.i
 
-CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/PlatformEvents.cpp -o CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.s
+CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/PlatformFactory.cpp -o CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.s
 
-CMakeFiles/gom_test.dir/src/TickEvent.cpp.o: CMakeFiles/gom_test.dir/flags.make
-CMakeFiles/gom_test.dir/src/TickEvent.cpp.o: /home/mason/git/SPlat/src/TickEvent.cpp
-CMakeFiles/gom_test.dir/src/TickEvent.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/gom_test.dir/src/TickEvent.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/TickEvent.cpp.o -MF CMakeFiles/gom_test.dir/src/TickEvent.cpp.o.d -o CMakeFiles/gom_test.dir/src/TickEvent.cpp.o -c /home/mason/git/SPlat/src/TickEvent.cpp
+CMakeFiles/gom_test.dir/src/Server.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/Server.cpp.o: /home/mason/git/SPlat/src/Server.cpp
+CMakeFiles/gom_test.dir/src/Server.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/gom_test.dir/src/Server.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/Server.cpp.o -MF CMakeFiles/gom_test.dir/src/Server.cpp.o.d -o CMakeFiles/gom_test.dir/src/Server.cpp.o -c /home/mason/git/SPlat/src/Server.cpp
 
-CMakeFiles/gom_test.dir/src/TickEvent.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/TickEvent.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/TickEvent.cpp > CMakeFiles/gom_test.dir/src/TickEvent.cpp.i
+CMakeFiles/gom_test.dir/src/Server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/Server.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Server.cpp > CMakeFiles/gom_test.dir/src/Server.cpp.i
 
-CMakeFiles/gom_test.dir/src/TickEvent.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/TickEvent.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/TickEvent.cpp -o CMakeFiles/gom_test.dir/src/TickEvent.cpp.s
+CMakeFiles/gom_test.dir/src/Server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/Server.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Server.cpp -o CMakeFiles/gom_test.dir/src/Server.cpp.s
 
-CMakeFiles/gom_test.dir/src/Listener.cpp.o: CMakeFiles/gom_test.dir/flags.make
-CMakeFiles/gom_test.dir/src/Listener.cpp.o: /home/mason/git/SPlat/src/Listener.cpp
-CMakeFiles/gom_test.dir/src/Listener.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/gom_test.dir/src/Listener.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/Listener.cpp.o -MF CMakeFiles/gom_test.dir/src/Listener.cpp.o.d -o CMakeFiles/gom_test.dir/src/Listener.cpp.o -c /home/mason/git/SPlat/src/Listener.cpp
+CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.o: CMakeFiles/gom_test.dir/flags.make
+CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.o: /home/mason/git/SPlat/src/MovingPlatformFactory.cpp
+CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.o: CMakeFiles/gom_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.o -MF CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.o.d -o CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.o -c /home/mason/git/SPlat/src/MovingPlatformFactory.cpp
 
-CMakeFiles/gom_test.dir/src/Listener.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/Listener.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/Listener.cpp > CMakeFiles/gom_test.dir/src/Listener.cpp.i
+CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mason/git/SPlat/src/MovingPlatformFactory.cpp > CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.i
 
-CMakeFiles/gom_test.dir/src/Listener.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/Listener.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/Listener.cpp -o CMakeFiles/gom_test.dir/src/Listener.cpp.s
+CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mason/git/SPlat/src/MovingPlatformFactory.cpp -o CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.s
 
 # Object files for target gom_test
 gom_test_OBJECTS = \
 "CMakeFiles/gom_test.dir/test/TestGameObjectModel.cpp.o" \
+"CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ClientController.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/Entrypoint.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.o" \
+"CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.o" \
 "CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.o" \
-"CMakeFiles/gom_test.dir/src/Runtime.cpp.o" \
-"CMakeFiles/gom_test.dir/src/Asset.cpp.o" \
-"CMakeFiles/gom_test.dir/src/Character.cpp.o" \
+"CMakeFiles/gom_test.dir/src/Environment.cpp.o" \
+"CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.o" \
 "CMakeFiles/gom_test.dir/src/Platform.cpp.o" \
+"CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/Character.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/FauxServerController.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/TimingConfig.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ClientConfig.cpp.o" \
 "CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.o" \
-"CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.o" \
-"CMakeFiles/gom_test.dir/src/AssetEvents.cpp.o" \
-"CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.o" \
-"CMakeFiles/gom_test.dir/src/KeyEvents.cpp.o" \
-"CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.o" \
-"CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.o" \
-"CMakeFiles/gom_test.dir/src/TickEvent.cpp.o" \
-"CMakeFiles/gom_test.dir/src/Listener.cpp.o"
+"CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.o" \
+"CMakeFiles/gom_test.dir/src/ServerController.cpp.o" \
+"CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.o" \
+"CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.o" \
+"CMakeFiles/gom_test.dir/src/Client.cpp.o" \
+"CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.o" \
+"CMakeFiles/gom_test.dir/src/Server.cpp.o" \
+"CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.o"
 
 # External object files for target gom_test
 gom_test_EXTERNAL_OBJECTS =
 
 gom_test: CMakeFiles/gom_test.dir/test/TestGameObjectModel.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ClientController.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/Entrypoint.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.o
 gom_test: CMakeFiles/gom_test.dir/src/LocalTimeline.cpp.o
-gom_test: CMakeFiles/gom_test.dir/src/Runtime.cpp.o
-gom_test: CMakeFiles/gom_test.dir/src/Asset.cpp.o
-gom_test: CMakeFiles/gom_test.dir/src/Character.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/Environment.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.o
 gom_test: CMakeFiles/gom_test.dir/src/Platform.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/Character.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/FauxServerController.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/TimingConfig.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ClientConfig.cpp.o
 gom_test: CMakeFiles/gom_test.dir/src/MovingPlatform.cpp.o
-gom_test: CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.o
-gom_test: CMakeFiles/gom_test.dir/src/AssetEvents.cpp.o
-gom_test: CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.o
-gom_test: CMakeFiles/gom_test.dir/src/KeyEvents.cpp.o
-gom_test: CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.o
-gom_test: CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.o
-gom_test: CMakeFiles/gom_test.dir/src/TickEvent.cpp.o
-gom_test: CMakeFiles/gom_test.dir/src/Listener.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/ServerController.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/Client.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/Server.cpp.o
+gom_test: CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.o
 gom_test: CMakeFiles/gom_test.dir/build.make
 gom_test: lib/libgtest.a
 gom_test: lib/libgtest_main.a
 gom_test: lib/libgtest.a
 gom_test: CMakeFiles/gom_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable gom_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mason/git/SPlat/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Linking CXX executable gom_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gom_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

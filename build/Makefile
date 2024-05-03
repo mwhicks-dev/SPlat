@@ -214,6 +214,32 @@ demo/fast:
 .PHONY : demo/fast
 
 #=============================================================================
+# Target rules for targets named client
+
+# Build rule for target.
+client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 client
+.PHONY : client
+
+# fast build rule for target.
+client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
+.PHONY : client/fast
+
+#=============================================================================
+# Target rules for targets named server
+
+# Build rule for target.
+server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 server
+.PHONY : server
+
+# fast build rule for target.
+server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
+.PHONY : server/fast
+
+#=============================================================================
 # Target rules for targets named gmock
 
 # Build rule for target.
@@ -265,71 +291,83 @@ gtest_main/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
-src/Asset.o: src/Asset.cpp.o
-.PHONY : src/Asset.o
+src/AbstractAssetFactory.o: src/AbstractAssetFactory.cpp.o
+.PHONY : src/AbstractAssetFactory.o
 
 # target to build an object file
-src/Asset.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Asset.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Asset.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Asset.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Asset.cpp.o
-.PHONY : src/Asset.cpp.o
+src/AbstractAssetFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AbstractAssetFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AbstractAssetFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/AbstractAssetFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/AbstractAssetFactory.cpp.o
+.PHONY : src/AbstractAssetFactory.cpp.o
 
-src/Asset.i: src/Asset.cpp.i
-.PHONY : src/Asset.i
+src/AbstractAssetFactory.i: src/AbstractAssetFactory.cpp.i
+.PHONY : src/AbstractAssetFactory.i
 
 # target to preprocess a source file
-src/Asset.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Asset.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Asset.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Asset.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Asset.cpp.i
-.PHONY : src/Asset.cpp.i
+src/AbstractAssetFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AbstractAssetFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AbstractAssetFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/AbstractAssetFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/AbstractAssetFactory.cpp.i
+.PHONY : src/AbstractAssetFactory.cpp.i
 
-src/Asset.s: src/Asset.cpp.s
-.PHONY : src/Asset.s
+src/AbstractAssetFactory.s: src/AbstractAssetFactory.cpp.s
+.PHONY : src/AbstractAssetFactory.s
 
 # target to generate assembly for a file
-src/Asset.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Asset.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Asset.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Asset.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Asset.cpp.s
-.PHONY : src/Asset.cpp.s
+src/AbstractAssetFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AbstractAssetFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AbstractAssetFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AbstractAssetFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AbstractAssetFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/AbstractAssetFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/AbstractAssetFactory.cpp.s
+.PHONY : src/AbstractAssetFactory.cpp.s
 
-src/AssetEvents.o: src/AssetEvents.cpp.o
-.PHONY : src/AssetEvents.o
+src/AssetFactoryConfig.o: src/AssetFactoryConfig.cpp.o
+.PHONY : src/AssetFactoryConfig.o
 
 # target to build an object file
-src/AssetEvents.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AssetEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AssetEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AssetEvents.cpp.o
-.PHONY : src/AssetEvents.cpp.o
+src/AssetFactoryConfig.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AssetFactoryConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AssetFactoryConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/AssetFactoryConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/AssetFactoryConfig.cpp.o
+.PHONY : src/AssetFactoryConfig.cpp.o
 
-src/AssetEvents.i: src/AssetEvents.cpp.i
-.PHONY : src/AssetEvents.i
+src/AssetFactoryConfig.i: src/AssetFactoryConfig.cpp.i
+.PHONY : src/AssetFactoryConfig.i
 
 # target to preprocess a source file
-src/AssetEvents.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AssetEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AssetEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AssetEvents.cpp.i
-.PHONY : src/AssetEvents.cpp.i
+src/AssetFactoryConfig.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AssetFactoryConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AssetFactoryConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/AssetFactoryConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/AssetFactoryConfig.cpp.i
+.PHONY : src/AssetFactoryConfig.cpp.i
 
-src/AssetEvents.s: src/AssetEvents.cpp.s
-.PHONY : src/AssetEvents.s
+src/AssetFactoryConfig.s: src/AssetFactoryConfig.cpp.s
+.PHONY : src/AssetFactoryConfig.s
 
 # target to generate assembly for a file
-src/AssetEvents.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AssetEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AssetEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AssetEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AssetEvents.cpp.s
-.PHONY : src/AssetEvents.cpp.s
+src/AssetFactoryConfig.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/AssetFactoryConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/AssetFactoryConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/AssetFactoryConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/AssetFactoryConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/AssetFactoryConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/AssetFactoryConfig.cpp.s
+.PHONY : src/AssetFactoryConfig.cpp.s
 
 src/Character.o: src/Character.cpp.o
 .PHONY : src/Character.o
@@ -340,6 +378,8 @@ src/Character.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Character.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Character.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Character.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Character.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Character.cpp.o
 .PHONY : src/Character.cpp.o
 
 src/Character.i: src/Character.cpp.i
@@ -351,6 +391,8 @@ src/Character.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Character.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Character.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Character.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Character.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Character.cpp.i
 .PHONY : src/Character.cpp.i
 
 src/Character.s: src/Character.cpp.s
@@ -362,48 +404,138 @@ src/Character.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Character.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Character.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Character.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Character.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Character.cpp.s
 .PHONY : src/Character.cpp.s
 
-src/CharacterEvents.o: src/CharacterEvents.cpp.o
-.PHONY : src/CharacterEvents.o
+src/CharacterCollisionHandler.o: src/CharacterCollisionHandler.cpp.o
+.PHONY : src/CharacterCollisionHandler.o
 
 # target to build an object file
-src/CharacterEvents.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterEvents.cpp.o
-.PHONY : src/CharacterEvents.cpp.o
+src/CharacterCollisionHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/CharacterCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/CharacterCollisionHandler.cpp.o
+.PHONY : src/CharacterCollisionHandler.cpp.o
 
-src/CharacterEvents.i: src/CharacterEvents.cpp.i
-.PHONY : src/CharacterEvents.i
+src/CharacterCollisionHandler.i: src/CharacterCollisionHandler.cpp.i
+.PHONY : src/CharacterCollisionHandler.i
 
 # target to preprocess a source file
-src/CharacterEvents.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterEvents.cpp.i
-.PHONY : src/CharacterEvents.cpp.i
+src/CharacterCollisionHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/CharacterCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/CharacterCollisionHandler.cpp.i
+.PHONY : src/CharacterCollisionHandler.cpp.i
 
-src/CharacterEvents.s: src/CharacterEvents.cpp.s
-.PHONY : src/CharacterEvents.s
+src/CharacterCollisionHandler.s: src/CharacterCollisionHandler.cpp.s
+.PHONY : src/CharacterCollisionHandler.s
 
 # target to generate assembly for a file
-src/CharacterEvents.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterEvents.cpp.s
-.PHONY : src/CharacterEvents.cpp.s
+src/CharacterCollisionHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/CharacterCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/CharacterCollisionHandler.cpp.s
+.PHONY : src/CharacterCollisionHandler.cpp.s
+
+src/CharacterFactory.o: src/CharacterFactory.cpp.o
+.PHONY : src/CharacterFactory.o
+
+# target to build an object file
+src/CharacterFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/CharacterFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/CharacterFactory.cpp.o
+.PHONY : src/CharacterFactory.cpp.o
+
+src/CharacterFactory.i: src/CharacterFactory.cpp.i
+.PHONY : src/CharacterFactory.i
+
+# target to preprocess a source file
+src/CharacterFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/CharacterFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/CharacterFactory.cpp.i
+.PHONY : src/CharacterFactory.cpp.i
+
+src/CharacterFactory.s: src/CharacterFactory.cpp.s
+.PHONY : src/CharacterFactory.s
+
+# target to generate assembly for a file
+src/CharacterFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/CharacterFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/CharacterFactory.cpp.s
+.PHONY : src/CharacterFactory.cpp.s
+
+src/CharacterUpdateHandler.o: src/CharacterUpdateHandler.cpp.o
+.PHONY : src/CharacterUpdateHandler.o
+
+# target to build an object file
+src/CharacterUpdateHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterUpdateHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterUpdateHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/CharacterUpdateHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/CharacterUpdateHandler.cpp.o
+.PHONY : src/CharacterUpdateHandler.cpp.o
+
+src/CharacterUpdateHandler.i: src/CharacterUpdateHandler.cpp.i
+.PHONY : src/CharacterUpdateHandler.i
+
+# target to preprocess a source file
+src/CharacterUpdateHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterUpdateHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterUpdateHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/CharacterUpdateHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/CharacterUpdateHandler.cpp.i
+.PHONY : src/CharacterUpdateHandler.cpp.i
+
+src/CharacterUpdateHandler.s: src/CharacterUpdateHandler.cpp.s
+.PHONY : src/CharacterUpdateHandler.s
+
+# target to generate assembly for a file
+src/CharacterUpdateHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/CharacterUpdateHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/CharacterUpdateHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/CharacterUpdateHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/CharacterUpdateHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/CharacterUpdateHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/CharacterUpdateHandler.cpp.s
+.PHONY : src/CharacterUpdateHandler.cpp.s
 
 src/Client.o: src/Client.cpp.o
 .PHONY : src/Client.o
 
 # target to build an object file
 src/Client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Client.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Client.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Client.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Client.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Client.cpp.o
 .PHONY : src/Client.cpp.o
 
 src/Client.i: src/Client.cpp.i
@@ -411,8 +543,12 @@ src/Client.i: src/Client.cpp.i
 
 # target to preprocess a source file
 src/Client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Client.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Client.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Client.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Client.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Client.cpp.i
 .PHONY : src/Client.cpp.i
 
 src/Client.s: src/Client.cpp.s
@@ -420,135 +556,520 @@ src/Client.s: src/Client.cpp.s
 
 # target to generate assembly for a file
 src/Client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Client.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Client.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Client.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Client.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Client.cpp.s
 .PHONY : src/Client.cpp.s
 
-src/Controller.o: src/Controller.cpp.o
-.PHONY : src/Controller.o
+src/ClientConfig.o: src/ClientConfig.cpp.o
+.PHONY : src/ClientConfig.o
 
 # target to build an object file
-src/Controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Controller.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Controller.cpp.o
-.PHONY : src/Controller.cpp.o
+src/ClientConfig.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientConfig.cpp.o
+.PHONY : src/ClientConfig.cpp.o
 
-src/Controller.i: src/Controller.cpp.i
-.PHONY : src/Controller.i
+src/ClientConfig.i: src/ClientConfig.cpp.i
+.PHONY : src/ClientConfig.i
 
 # target to preprocess a source file
-src/Controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Controller.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Controller.cpp.i
-.PHONY : src/Controller.cpp.i
+src/ClientConfig.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientConfig.cpp.i
+.PHONY : src/ClientConfig.cpp.i
 
-src/Controller.s: src/Controller.cpp.s
-.PHONY : src/Controller.s
+src/ClientConfig.s: src/ClientConfig.cpp.s
+.PHONY : src/ClientConfig.s
 
 # target to generate assembly for a file
-src/Controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Controller.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Controller.cpp.s
-.PHONY : src/Controller.cpp.s
+src/ClientConfig.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientConfig.cpp.s
+.PHONY : src/ClientConfig.cpp.s
 
-src/GameObjectModel.o: src/GameObjectModel.cpp.o
-.PHONY : src/GameObjectModel.o
+src/ClientController.o: src/ClientController.cpp.o
+.PHONY : src/ClientController.o
 
 # target to build an object file
-src/GameObjectModel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/GameObjectModel.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/GameObjectModel.cpp.o
-.PHONY : src/GameObjectModel.cpp.o
+src/ClientController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientController.cpp.o
+.PHONY : src/ClientController.cpp.o
 
-src/GameObjectModel.i: src/GameObjectModel.cpp.i
-.PHONY : src/GameObjectModel.i
+src/ClientController.i: src/ClientController.cpp.i
+.PHONY : src/ClientController.i
 
 # target to preprocess a source file
-src/GameObjectModel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/GameObjectModel.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/GameObjectModel.cpp.i
-.PHONY : src/GameObjectModel.cpp.i
+src/ClientController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientController.cpp.i
+.PHONY : src/ClientController.cpp.i
 
-src/GameObjectModel.s: src/GameObjectModel.cpp.s
-.PHONY : src/GameObjectModel.s
+src/ClientController.s: src/ClientController.cpp.s
+.PHONY : src/ClientController.s
 
 # target to generate assembly for a file
-src/GameObjectModel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/GameObjectModel.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/GameObjectModel.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/GameObjectModel.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/GameObjectModel.cpp.s
-.PHONY : src/GameObjectModel.cpp.s
+src/ClientController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientController.cpp.s
+.PHONY : src/ClientController.cpp.s
 
-src/KeyEvents.o: src/KeyEvents.cpp.o
-.PHONY : src/KeyEvents.o
+src/ClientCreateCharacterHandler.o: src/ClientCreateCharacterHandler.cpp.o
+.PHONY : src/ClientCreateCharacterHandler.o
 
 # target to build an object file
-src/KeyEvents.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyEvents.cpp.o
-.PHONY : src/KeyEvents.cpp.o
+src/ClientCreateCharacterHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientCreateCharacterHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientCreateCharacterHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientCreateCharacterHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientCreateCharacterHandler.cpp.o
+.PHONY : src/ClientCreateCharacterHandler.cpp.o
 
-src/KeyEvents.i: src/KeyEvents.cpp.i
-.PHONY : src/KeyEvents.i
+src/ClientCreateCharacterHandler.i: src/ClientCreateCharacterHandler.cpp.i
+.PHONY : src/ClientCreateCharacterHandler.i
 
 # target to preprocess a source file
-src/KeyEvents.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyEvents.cpp.i
-.PHONY : src/KeyEvents.cpp.i
+src/ClientCreateCharacterHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientCreateCharacterHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientCreateCharacterHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientCreateCharacterHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientCreateCharacterHandler.cpp.i
+.PHONY : src/ClientCreateCharacterHandler.cpp.i
 
-src/KeyEvents.s: src/KeyEvents.cpp.s
-.PHONY : src/KeyEvents.s
+src/ClientCreateCharacterHandler.s: src/ClientCreateCharacterHandler.cpp.s
+.PHONY : src/ClientCreateCharacterHandler.s
 
 # target to generate assembly for a file
-src/KeyEvents.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyEvents.cpp.s
-.PHONY : src/KeyEvents.cpp.s
+src/ClientCreateCharacterHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientCreateCharacterHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientCreateCharacterHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientCreateCharacterHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientCreateCharacterHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientCreateCharacterHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientCreateCharacterHandler.cpp.s
+.PHONY : src/ClientCreateCharacterHandler.cpp.s
 
-src/Listener.o: src/Listener.cpp.o
-.PHONY : src/Listener.o
+src/ClientCreateMovingPlatformHandler.o: src/ClientCreateMovingPlatformHandler.cpp.o
+.PHONY : src/ClientCreateMovingPlatformHandler.o
 
 # target to build an object file
-src/Listener.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Listener.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Listener.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Listener.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Listener.cpp.o
-.PHONY : src/Listener.cpp.o
+src/ClientCreateMovingPlatformHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientCreateMovingPlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientCreateMovingPlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientCreateMovingPlatformHandler.cpp.o
+.PHONY : src/ClientCreateMovingPlatformHandler.cpp.o
 
-src/Listener.i: src/Listener.cpp.i
-.PHONY : src/Listener.i
+src/ClientCreateMovingPlatformHandler.i: src/ClientCreateMovingPlatformHandler.cpp.i
+.PHONY : src/ClientCreateMovingPlatformHandler.i
 
 # target to preprocess a source file
-src/Listener.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Listener.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Listener.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Listener.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Listener.cpp.i
-.PHONY : src/Listener.cpp.i
+src/ClientCreateMovingPlatformHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientCreateMovingPlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientCreateMovingPlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientCreateMovingPlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientCreateMovingPlatformHandler.cpp.i
+.PHONY : src/ClientCreateMovingPlatformHandler.cpp.i
 
-src/Listener.s: src/Listener.cpp.s
-.PHONY : src/Listener.s
+src/ClientCreateMovingPlatformHandler.s: src/ClientCreateMovingPlatformHandler.cpp.s
+.PHONY : src/ClientCreateMovingPlatformHandler.s
 
 # target to generate assembly for a file
-src/Listener.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Listener.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Listener.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Listener.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Listener.cpp.s
-.PHONY : src/Listener.cpp.s
+src/ClientCreateMovingPlatformHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientCreateMovingPlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientCreateMovingPlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientCreateMovingPlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientCreateMovingPlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientCreateMovingPlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientCreateMovingPlatformHandler.cpp.s
+.PHONY : src/ClientCreateMovingPlatformHandler.cpp.s
+
+src/ClientCreatePlatformHandler.o: src/ClientCreatePlatformHandler.cpp.o
+.PHONY : src/ClientCreatePlatformHandler.o
+
+# target to build an object file
+src/ClientCreatePlatformHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientCreatePlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientCreatePlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientCreatePlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientCreatePlatformHandler.cpp.o
+.PHONY : src/ClientCreatePlatformHandler.cpp.o
+
+src/ClientCreatePlatformHandler.i: src/ClientCreatePlatformHandler.cpp.i
+.PHONY : src/ClientCreatePlatformHandler.i
+
+# target to preprocess a source file
+src/ClientCreatePlatformHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientCreatePlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientCreatePlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientCreatePlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientCreatePlatformHandler.cpp.i
+.PHONY : src/ClientCreatePlatformHandler.cpp.i
+
+src/ClientCreatePlatformHandler.s: src/ClientCreatePlatformHandler.cpp.s
+.PHONY : src/ClientCreatePlatformHandler.s
+
+# target to generate assembly for a file
+src/ClientCreatePlatformHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientCreatePlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientCreatePlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientCreatePlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientCreatePlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientCreatePlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientCreatePlatformHandler.cpp.s
+.PHONY : src/ClientCreatePlatformHandler.cpp.s
+
+src/ClientDeleteAssetHandler.o: src/ClientDeleteAssetHandler.cpp.o
+.PHONY : src/ClientDeleteAssetHandler.o
+
+# target to build an object file
+src/ClientDeleteAssetHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientDeleteAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientDeleteAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientDeleteAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientDeleteAssetHandler.cpp.o
+.PHONY : src/ClientDeleteAssetHandler.cpp.o
+
+src/ClientDeleteAssetHandler.i: src/ClientDeleteAssetHandler.cpp.i
+.PHONY : src/ClientDeleteAssetHandler.i
+
+# target to preprocess a source file
+src/ClientDeleteAssetHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientDeleteAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientDeleteAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientDeleteAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientDeleteAssetHandler.cpp.i
+.PHONY : src/ClientDeleteAssetHandler.cpp.i
+
+src/ClientDeleteAssetHandler.s: src/ClientDeleteAssetHandler.cpp.s
+.PHONY : src/ClientDeleteAssetHandler.s
+
+# target to generate assembly for a file
+src/ClientDeleteAssetHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientDeleteAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientDeleteAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientDeleteAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientDeleteAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientDeleteAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientDeleteAssetHandler.cpp.s
+.PHONY : src/ClientDeleteAssetHandler.cpp.s
+
+src/ClientReadAssetHandler.o: src/ClientReadAssetHandler.cpp.o
+.PHONY : src/ClientReadAssetHandler.o
+
+# target to build an object file
+src/ClientReadAssetHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientReadAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientReadAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientReadAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientReadAssetHandler.cpp.o
+.PHONY : src/ClientReadAssetHandler.cpp.o
+
+src/ClientReadAssetHandler.i: src/ClientReadAssetHandler.cpp.i
+.PHONY : src/ClientReadAssetHandler.i
+
+# target to preprocess a source file
+src/ClientReadAssetHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientReadAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientReadAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientReadAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientReadAssetHandler.cpp.i
+.PHONY : src/ClientReadAssetHandler.cpp.i
+
+src/ClientReadAssetHandler.s: src/ClientReadAssetHandler.cpp.s
+.PHONY : src/ClientReadAssetHandler.s
+
+# target to generate assembly for a file
+src/ClientReadAssetHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientReadAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientReadAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientReadAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientReadAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientReadAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientReadAssetHandler.cpp.s
+.PHONY : src/ClientReadAssetHandler.cpp.s
+
+src/ClientUpdateAssetHandler.o: src/ClientUpdateAssetHandler.cpp.o
+.PHONY : src/ClientUpdateAssetHandler.o
+
+# target to build an object file
+src/ClientUpdateAssetHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientUpdateAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientUpdateAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientUpdateAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientUpdateAssetHandler.cpp.o
+.PHONY : src/ClientUpdateAssetHandler.cpp.o
+
+src/ClientUpdateAssetHandler.i: src/ClientUpdateAssetHandler.cpp.i
+.PHONY : src/ClientUpdateAssetHandler.i
+
+# target to preprocess a source file
+src/ClientUpdateAssetHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientUpdateAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientUpdateAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientUpdateAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientUpdateAssetHandler.cpp.i
+.PHONY : src/ClientUpdateAssetHandler.cpp.i
+
+src/ClientUpdateAssetHandler.s: src/ClientUpdateAssetHandler.cpp.s
+.PHONY : src/ClientUpdateAssetHandler.s
+
+# target to generate assembly for a file
+src/ClientUpdateAssetHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ClientUpdateAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ClientUpdateAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ClientUpdateAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ClientUpdateAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ClientUpdateAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ClientUpdateAssetHandler.cpp.s
+.PHONY : src/ClientUpdateAssetHandler.cpp.s
+
+src/Entrypoint.o: src/Entrypoint.cpp.o
+.PHONY : src/Entrypoint.o
+
+# target to build an object file
+src/Entrypoint.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Entrypoint.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Entrypoint.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Entrypoint.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Entrypoint.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Entrypoint.cpp.o
+.PHONY : src/Entrypoint.cpp.o
+
+src/Entrypoint.i: src/Entrypoint.cpp.i
+.PHONY : src/Entrypoint.i
+
+# target to preprocess a source file
+src/Entrypoint.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Entrypoint.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Entrypoint.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Entrypoint.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Entrypoint.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Entrypoint.cpp.i
+.PHONY : src/Entrypoint.cpp.i
+
+src/Entrypoint.s: src/Entrypoint.cpp.s
+.PHONY : src/Entrypoint.s
+
+# target to generate assembly for a file
+src/Entrypoint.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Entrypoint.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Entrypoint.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Entrypoint.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Entrypoint.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Entrypoint.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Entrypoint.cpp.s
+.PHONY : src/Entrypoint.cpp.s
+
+src/Environment.o: src/Environment.cpp.o
+.PHONY : src/Environment.o
+
+# target to build an object file
+src/Environment.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Environment.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Environment.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Environment.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Environment.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Environment.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Environment.cpp.o
+.PHONY : src/Environment.cpp.o
+
+src/Environment.i: src/Environment.cpp.i
+.PHONY : src/Environment.i
+
+# target to preprocess a source file
+src/Environment.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Environment.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Environment.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Environment.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Environment.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Environment.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Environment.cpp.i
+.PHONY : src/Environment.cpp.i
+
+src/Environment.s: src/Environment.cpp.s
+.PHONY : src/Environment.s
+
+# target to generate assembly for a file
+src/Environment.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Environment.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Environment.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Environment.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Environment.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Environment.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Environment.cpp.s
+.PHONY : src/Environment.cpp.s
+
+src/FauxServerController.o: src/FauxServerController.cpp.o
+.PHONY : src/FauxServerController.o
+
+# target to build an object file
+src/FauxServerController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/FauxServerController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/FauxServerController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/FauxServerController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/FauxServerController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/FauxServerController.cpp.o
+.PHONY : src/FauxServerController.cpp.o
+
+src/FauxServerController.i: src/FauxServerController.cpp.i
+.PHONY : src/FauxServerController.i
+
+# target to preprocess a source file
+src/FauxServerController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/FauxServerController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/FauxServerController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/FauxServerController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/FauxServerController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/FauxServerController.cpp.i
+.PHONY : src/FauxServerController.cpp.i
+
+src/FauxServerController.s: src/FauxServerController.cpp.s
+.PHONY : src/FauxServerController.s
+
+# target to generate assembly for a file
+src/FauxServerController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/FauxServerController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/FauxServerController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/FauxServerController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/FauxServerController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/FauxServerController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/FauxServerController.cpp.s
+.PHONY : src/FauxServerController.cpp.s
+
+src/KeyPressHandler.o: src/KeyPressHandler.cpp.o
+.PHONY : src/KeyPressHandler.o
+
+# target to build an object file
+src/KeyPressHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyPressHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyPressHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/KeyPressHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/KeyPressHandler.cpp.o
+.PHONY : src/KeyPressHandler.cpp.o
+
+src/KeyPressHandler.i: src/KeyPressHandler.cpp.i
+.PHONY : src/KeyPressHandler.i
+
+# target to preprocess a source file
+src/KeyPressHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyPressHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyPressHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/KeyPressHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/KeyPressHandler.cpp.i
+.PHONY : src/KeyPressHandler.cpp.i
+
+src/KeyPressHandler.s: src/KeyPressHandler.cpp.s
+.PHONY : src/KeyPressHandler.s
+
+# target to generate assembly for a file
+src/KeyPressHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyPressHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyPressHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyPressHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyPressHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/KeyPressHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/KeyPressHandler.cpp.s
+.PHONY : src/KeyPressHandler.cpp.s
+
+src/KeyReleaseHandler.o: src/KeyReleaseHandler.cpp.o
+.PHONY : src/KeyReleaseHandler.o
+
+# target to build an object file
+src/KeyReleaseHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyReleaseHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyReleaseHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/KeyReleaseHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/KeyReleaseHandler.cpp.o
+.PHONY : src/KeyReleaseHandler.cpp.o
+
+src/KeyReleaseHandler.i: src/KeyReleaseHandler.cpp.i
+.PHONY : src/KeyReleaseHandler.i
+
+# target to preprocess a source file
+src/KeyReleaseHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyReleaseHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyReleaseHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/KeyReleaseHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/KeyReleaseHandler.cpp.i
+.PHONY : src/KeyReleaseHandler.cpp.i
+
+src/KeyReleaseHandler.s: src/KeyReleaseHandler.cpp.s
+.PHONY : src/KeyReleaseHandler.s
+
+# target to generate assembly for a file
+src/KeyReleaseHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/KeyReleaseHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/KeyReleaseHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/KeyReleaseHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/KeyReleaseHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/KeyReleaseHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/KeyReleaseHandler.cpp.s
+.PHONY : src/KeyReleaseHandler.cpp.s
 
 src/LocalTimeline.o: src/LocalTimeline.cpp.o
 .PHONY : src/LocalTimeline.o
@@ -559,6 +1080,8 @@ src/LocalTimeline.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/LocalTimeline.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/LocalTimeline.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/LocalTimeline.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/LocalTimeline.cpp.o
 .PHONY : src/LocalTimeline.cpp.o
 
 src/LocalTimeline.i: src/LocalTimeline.cpp.i
@@ -570,6 +1093,8 @@ src/LocalTimeline.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/LocalTimeline.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/LocalTimeline.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/LocalTimeline.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/LocalTimeline.cpp.i
 .PHONY : src/LocalTimeline.cpp.i
 
 src/LocalTimeline.s: src/LocalTimeline.cpp.s
@@ -581,6 +1106,8 @@ src/LocalTimeline.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/LocalTimeline.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/LocalTimeline.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/LocalTimeline.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/LocalTimeline.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/LocalTimeline.cpp.s
 .PHONY : src/LocalTimeline.cpp.s
 
 src/MovingPlatform.o: src/MovingPlatform.cpp.o
@@ -592,6 +1119,8 @@ src/MovingPlatform.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatform.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatform.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatform.cpp.o
 .PHONY : src/MovingPlatform.cpp.o
 
 src/MovingPlatform.i: src/MovingPlatform.cpp.i
@@ -603,6 +1132,8 @@ src/MovingPlatform.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatform.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatform.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatform.cpp.i
 .PHONY : src/MovingPlatform.cpp.i
 
 src/MovingPlatform.s: src/MovingPlatform.cpp.s
@@ -614,40 +1145,165 @@ src/MovingPlatform.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatform.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatform.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatform.cpp.s
 .PHONY : src/MovingPlatform.cpp.s
 
-src/MovingPlatformEvents.o: src/MovingPlatformEvents.cpp.o
-.PHONY : src/MovingPlatformEvents.o
+src/MovingPlatformCollisionHandler.o: src/MovingPlatformCollisionHandler.cpp.o
+.PHONY : src/MovingPlatformCollisionHandler.o
 
 # target to build an object file
-src/MovingPlatformEvents.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformEvents.cpp.o
-.PHONY : src/MovingPlatformEvents.cpp.o
+src/MovingPlatformCollisionHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatformCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatformCollisionHandler.cpp.o
+.PHONY : src/MovingPlatformCollisionHandler.cpp.o
 
-src/MovingPlatformEvents.i: src/MovingPlatformEvents.cpp.i
-.PHONY : src/MovingPlatformEvents.i
+src/MovingPlatformCollisionHandler.i: src/MovingPlatformCollisionHandler.cpp.i
+.PHONY : src/MovingPlatformCollisionHandler.i
 
 # target to preprocess a source file
-src/MovingPlatformEvents.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformEvents.cpp.i
-.PHONY : src/MovingPlatformEvents.cpp.i
+src/MovingPlatformCollisionHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatformCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatformCollisionHandler.cpp.i
+.PHONY : src/MovingPlatformCollisionHandler.cpp.i
 
-src/MovingPlatformEvents.s: src/MovingPlatformEvents.cpp.s
-.PHONY : src/MovingPlatformEvents.s
+src/MovingPlatformCollisionHandler.s: src/MovingPlatformCollisionHandler.cpp.s
+.PHONY : src/MovingPlatformCollisionHandler.s
 
 # target to generate assembly for a file
-src/MovingPlatformEvents.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformEvents.cpp.s
-.PHONY : src/MovingPlatformEvents.cpp.s
+src/MovingPlatformCollisionHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatformCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatformCollisionHandler.cpp.s
+.PHONY : src/MovingPlatformCollisionHandler.cpp.s
+
+src/MovingPlatformFactory.o: src/MovingPlatformFactory.cpp.o
+.PHONY : src/MovingPlatformFactory.o
+
+# target to build an object file
+src/MovingPlatformFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatformFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatformFactory.cpp.o
+.PHONY : src/MovingPlatformFactory.cpp.o
+
+src/MovingPlatformFactory.i: src/MovingPlatformFactory.cpp.i
+.PHONY : src/MovingPlatformFactory.i
+
+# target to preprocess a source file
+src/MovingPlatformFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatformFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatformFactory.cpp.i
+.PHONY : src/MovingPlatformFactory.cpp.i
+
+src/MovingPlatformFactory.s: src/MovingPlatformFactory.cpp.s
+.PHONY : src/MovingPlatformFactory.s
+
+# target to generate assembly for a file
+src/MovingPlatformFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatformFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatformFactory.cpp.s
+.PHONY : src/MovingPlatformFactory.cpp.s
+
+src/MovingPlatformUpdateHandler.o: src/MovingPlatformUpdateHandler.cpp.o
+.PHONY : src/MovingPlatformUpdateHandler.o
+
+# target to build an object file
+src/MovingPlatformUpdateHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformUpdateHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformUpdateHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatformUpdateHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatformUpdateHandler.cpp.o
+.PHONY : src/MovingPlatformUpdateHandler.cpp.o
+
+src/MovingPlatformUpdateHandler.i: src/MovingPlatformUpdateHandler.cpp.i
+.PHONY : src/MovingPlatformUpdateHandler.i
+
+# target to preprocess a source file
+src/MovingPlatformUpdateHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformUpdateHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformUpdateHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatformUpdateHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatformUpdateHandler.cpp.i
+.PHONY : src/MovingPlatformUpdateHandler.cpp.i
+
+src/MovingPlatformUpdateHandler.s: src/MovingPlatformUpdateHandler.cpp.s
+.PHONY : src/MovingPlatformUpdateHandler.s
+
+# target to generate assembly for a file
+src/MovingPlatformUpdateHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/MovingPlatformUpdateHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/MovingPlatformUpdateHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/MovingPlatformUpdateHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/MovingPlatformUpdateHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/MovingPlatformUpdateHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/MovingPlatformUpdateHandler.cpp.s
+.PHONY : src/MovingPlatformUpdateHandler.cpp.s
+
+src/OrderedPriorityListener.o: src/OrderedPriorityListener.cpp.o
+.PHONY : src/OrderedPriorityListener.o
+
+# target to build an object file
+src/OrderedPriorityListener.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/OrderedPriorityListener.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/OrderedPriorityListener.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/OrderedPriorityListener.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/OrderedPriorityListener.cpp.o
+.PHONY : src/OrderedPriorityListener.cpp.o
+
+src/OrderedPriorityListener.i: src/OrderedPriorityListener.cpp.i
+.PHONY : src/OrderedPriorityListener.i
+
+# target to preprocess a source file
+src/OrderedPriorityListener.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/OrderedPriorityListener.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/OrderedPriorityListener.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/OrderedPriorityListener.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/OrderedPriorityListener.cpp.i
+.PHONY : src/OrderedPriorityListener.cpp.i
+
+src/OrderedPriorityListener.s: src/OrderedPriorityListener.cpp.s
+.PHONY : src/OrderedPriorityListener.s
+
+# target to generate assembly for a file
+src/OrderedPriorityListener.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/OrderedPriorityListener.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/OrderedPriorityListener.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/OrderedPriorityListener.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/OrderedPriorityListener.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/OrderedPriorityListener.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/OrderedPriorityListener.cpp.s
+.PHONY : src/OrderedPriorityListener.cpp.s
 
 src/Platform.o: src/Platform.cpp.o
 .PHONY : src/Platform.o
@@ -658,6 +1314,8 @@ src/Platform.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Platform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Platform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Platform.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Platform.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Platform.cpp.o
 .PHONY : src/Platform.cpp.o
 
 src/Platform.i: src/Platform.cpp.i
@@ -669,6 +1327,8 @@ src/Platform.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Platform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Platform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Platform.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Platform.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Platform.cpp.i
 .PHONY : src/Platform.cpp.i
 
 src/Platform.s: src/Platform.cpp.s
@@ -680,106 +1340,516 @@ src/Platform.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Platform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Platform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Platform.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Platform.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Platform.cpp.s
 .PHONY : src/Platform.cpp.s
 
-src/PlatformEvents.o: src/PlatformEvents.cpp.o
-.PHONY : src/PlatformEvents.o
+src/PlatformCollisionHandler.o: src/PlatformCollisionHandler.cpp.o
+.PHONY : src/PlatformCollisionHandler.o
 
 # target to build an object file
-src/PlatformEvents.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformEvents.cpp.o
-.PHONY : src/PlatformEvents.cpp.o
+src/PlatformCollisionHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/PlatformCollisionHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/PlatformCollisionHandler.cpp.o
+.PHONY : src/PlatformCollisionHandler.cpp.o
 
-src/PlatformEvents.i: src/PlatformEvents.cpp.i
-.PHONY : src/PlatformEvents.i
+src/PlatformCollisionHandler.i: src/PlatformCollisionHandler.cpp.i
+.PHONY : src/PlatformCollisionHandler.i
 
 # target to preprocess a source file
-src/PlatformEvents.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformEvents.cpp.i
-.PHONY : src/PlatformEvents.cpp.i
+src/PlatformCollisionHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/PlatformCollisionHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/PlatformCollisionHandler.cpp.i
+.PHONY : src/PlatformCollisionHandler.cpp.i
 
-src/PlatformEvents.s: src/PlatformEvents.cpp.s
-.PHONY : src/PlatformEvents.s
+src/PlatformCollisionHandler.s: src/PlatformCollisionHandler.cpp.s
+.PHONY : src/PlatformCollisionHandler.s
 
 # target to generate assembly for a file
-src/PlatformEvents.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformEvents.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformEvents.cpp.s
-.PHONY : src/PlatformEvents.cpp.s
+src/PlatformCollisionHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/PlatformCollisionHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/PlatformCollisionHandler.cpp.s
+.PHONY : src/PlatformCollisionHandler.cpp.s
 
-src/Runtime.o: src/Runtime.cpp.o
-.PHONY : src/Runtime.o
+src/PlatformFactory.o: src/PlatformFactory.cpp.o
+.PHONY : src/PlatformFactory.o
 
 # target to build an object file
-src/Runtime.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Runtime.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Runtime.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Runtime.cpp.o
-.PHONY : src/Runtime.cpp.o
+src/PlatformFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/PlatformFactory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/PlatformFactory.cpp.o
+.PHONY : src/PlatformFactory.cpp.o
 
-src/Runtime.i: src/Runtime.cpp.i
-.PHONY : src/Runtime.i
+src/PlatformFactory.i: src/PlatformFactory.cpp.i
+.PHONY : src/PlatformFactory.i
 
 # target to preprocess a source file
-src/Runtime.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Runtime.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Runtime.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Runtime.cpp.i
-.PHONY : src/Runtime.cpp.i
+src/PlatformFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/PlatformFactory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/PlatformFactory.cpp.i
+.PHONY : src/PlatformFactory.cpp.i
 
-src/Runtime.s: src/Runtime.cpp.s
-.PHONY : src/Runtime.s
+src/PlatformFactory.s: src/PlatformFactory.cpp.s
+.PHONY : src/PlatformFactory.s
 
 # target to generate assembly for a file
-src/Runtime.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Runtime.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Runtime.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Runtime.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Runtime.cpp.s
-.PHONY : src/Runtime.cpp.s
+src/PlatformFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/PlatformFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/PlatformFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/PlatformFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/PlatformFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/PlatformFactory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/PlatformFactory.cpp.s
+.PHONY : src/PlatformFactory.cpp.s
 
-src/TickEvent.o: src/TickEvent.cpp.o
-.PHONY : src/TickEvent.o
+src/Server.o: src/Server.cpp.o
+.PHONY : src/Server.o
 
 # target to build an object file
-src/TickEvent.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/TickEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/TickEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/TickEvent.cpp.o
-.PHONY : src/TickEvent.cpp.o
+src/Server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Server.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Server.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Server.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Server.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Server.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server.cpp.o
+.PHONY : src/Server.cpp.o
 
-src/TickEvent.i: src/TickEvent.cpp.i
-.PHONY : src/TickEvent.i
+src/Server.i: src/Server.cpp.i
+.PHONY : src/Server.i
 
 # target to preprocess a source file
-src/TickEvent.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/TickEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/TickEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/TickEvent.cpp.i
-.PHONY : src/TickEvent.cpp.i
+src/Server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Server.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Server.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Server.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Server.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Server.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server.cpp.i
+.PHONY : src/Server.cpp.i
 
-src/TickEvent.s: src/TickEvent.cpp.s
-.PHONY : src/TickEvent.s
+src/Server.s: src/Server.cpp.s
+.PHONY : src/Server.s
 
 # target to generate assembly for a file
-src/TickEvent.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/TickEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/TickEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/TickEvent.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/TickEvent.cpp.s
-.PHONY : src/TickEvent.cpp.s
+src/Server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/Server.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/Server.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/Server.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/Server.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Server.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server.cpp.s
+.PHONY : src/Server.cpp.s
+
+src/ServerController.o: src/ServerController.cpp.o
+.PHONY : src/ServerController.o
+
+# target to build an object file
+src/ServerController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerController.cpp.o
+.PHONY : src/ServerController.cpp.o
+
+src/ServerController.i: src/ServerController.cpp.i
+.PHONY : src/ServerController.i
+
+# target to preprocess a source file
+src/ServerController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerController.cpp.i
+.PHONY : src/ServerController.cpp.i
+
+src/ServerController.s: src/ServerController.cpp.s
+.PHONY : src/ServerController.s
+
+# target to generate assembly for a file
+src/ServerController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerController.cpp.s
+.PHONY : src/ServerController.cpp.s
+
+src/ServerCreateCharacterHandler.o: src/ServerCreateCharacterHandler.cpp.o
+.PHONY : src/ServerCreateCharacterHandler.o
+
+# target to build an object file
+src/ServerCreateCharacterHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerCreateCharacterHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerCreateCharacterHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerCreateCharacterHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerCreateCharacterHandler.cpp.o
+.PHONY : src/ServerCreateCharacterHandler.cpp.o
+
+src/ServerCreateCharacterHandler.i: src/ServerCreateCharacterHandler.cpp.i
+.PHONY : src/ServerCreateCharacterHandler.i
+
+# target to preprocess a source file
+src/ServerCreateCharacterHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerCreateCharacterHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerCreateCharacterHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerCreateCharacterHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerCreateCharacterHandler.cpp.i
+.PHONY : src/ServerCreateCharacterHandler.cpp.i
+
+src/ServerCreateCharacterHandler.s: src/ServerCreateCharacterHandler.cpp.s
+.PHONY : src/ServerCreateCharacterHandler.s
+
+# target to generate assembly for a file
+src/ServerCreateCharacterHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerCreateCharacterHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerCreateCharacterHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerCreateCharacterHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerCreateCharacterHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerCreateCharacterHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerCreateCharacterHandler.cpp.s
+.PHONY : src/ServerCreateCharacterHandler.cpp.s
+
+src/ServerCreateMovingPlatformHandler.o: src/ServerCreateMovingPlatformHandler.cpp.o
+.PHONY : src/ServerCreateMovingPlatformHandler.o
+
+# target to build an object file
+src/ServerCreateMovingPlatformHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerCreateMovingPlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerCreateMovingPlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerCreateMovingPlatformHandler.cpp.o
+.PHONY : src/ServerCreateMovingPlatformHandler.cpp.o
+
+src/ServerCreateMovingPlatformHandler.i: src/ServerCreateMovingPlatformHandler.cpp.i
+.PHONY : src/ServerCreateMovingPlatformHandler.i
+
+# target to preprocess a source file
+src/ServerCreateMovingPlatformHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerCreateMovingPlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerCreateMovingPlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerCreateMovingPlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerCreateMovingPlatformHandler.cpp.i
+.PHONY : src/ServerCreateMovingPlatformHandler.cpp.i
+
+src/ServerCreateMovingPlatformHandler.s: src/ServerCreateMovingPlatformHandler.cpp.s
+.PHONY : src/ServerCreateMovingPlatformHandler.s
+
+# target to generate assembly for a file
+src/ServerCreateMovingPlatformHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerCreateMovingPlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerCreateMovingPlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerCreateMovingPlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerCreateMovingPlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerCreateMovingPlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerCreateMovingPlatformHandler.cpp.s
+.PHONY : src/ServerCreateMovingPlatformHandler.cpp.s
+
+src/ServerCreatePlatformHandler.o: src/ServerCreatePlatformHandler.cpp.o
+.PHONY : src/ServerCreatePlatformHandler.o
+
+# target to build an object file
+src/ServerCreatePlatformHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerCreatePlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerCreatePlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerCreatePlatformHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerCreatePlatformHandler.cpp.o
+.PHONY : src/ServerCreatePlatformHandler.cpp.o
+
+src/ServerCreatePlatformHandler.i: src/ServerCreatePlatformHandler.cpp.i
+.PHONY : src/ServerCreatePlatformHandler.i
+
+# target to preprocess a source file
+src/ServerCreatePlatformHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerCreatePlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerCreatePlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerCreatePlatformHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerCreatePlatformHandler.cpp.i
+.PHONY : src/ServerCreatePlatformHandler.cpp.i
+
+src/ServerCreatePlatformHandler.s: src/ServerCreatePlatformHandler.cpp.s
+.PHONY : src/ServerCreatePlatformHandler.s
+
+# target to generate assembly for a file
+src/ServerCreatePlatformHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerCreatePlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerCreatePlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerCreatePlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerCreatePlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerCreatePlatformHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerCreatePlatformHandler.cpp.s
+.PHONY : src/ServerCreatePlatformHandler.cpp.s
+
+src/ServerDeleteAssetHandler.o: src/ServerDeleteAssetHandler.cpp.o
+.PHONY : src/ServerDeleteAssetHandler.o
+
+# target to build an object file
+src/ServerDeleteAssetHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerDeleteAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerDeleteAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerDeleteAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerDeleteAssetHandler.cpp.o
+.PHONY : src/ServerDeleteAssetHandler.cpp.o
+
+src/ServerDeleteAssetHandler.i: src/ServerDeleteAssetHandler.cpp.i
+.PHONY : src/ServerDeleteAssetHandler.i
+
+# target to preprocess a source file
+src/ServerDeleteAssetHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerDeleteAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerDeleteAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerDeleteAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerDeleteAssetHandler.cpp.i
+.PHONY : src/ServerDeleteAssetHandler.cpp.i
+
+src/ServerDeleteAssetHandler.s: src/ServerDeleteAssetHandler.cpp.s
+.PHONY : src/ServerDeleteAssetHandler.s
+
+# target to generate assembly for a file
+src/ServerDeleteAssetHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerDeleteAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerDeleteAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerDeleteAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerDeleteAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerDeleteAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerDeleteAssetHandler.cpp.s
+.PHONY : src/ServerDeleteAssetHandler.cpp.s
+
+src/ServerReadAssetHandler.o: src/ServerReadAssetHandler.cpp.o
+.PHONY : src/ServerReadAssetHandler.o
+
+# target to build an object file
+src/ServerReadAssetHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerReadAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerReadAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerReadAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerReadAssetHandler.cpp.o
+.PHONY : src/ServerReadAssetHandler.cpp.o
+
+src/ServerReadAssetHandler.i: src/ServerReadAssetHandler.cpp.i
+.PHONY : src/ServerReadAssetHandler.i
+
+# target to preprocess a source file
+src/ServerReadAssetHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerReadAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerReadAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerReadAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerReadAssetHandler.cpp.i
+.PHONY : src/ServerReadAssetHandler.cpp.i
+
+src/ServerReadAssetHandler.s: src/ServerReadAssetHandler.cpp.s
+.PHONY : src/ServerReadAssetHandler.s
+
+# target to generate assembly for a file
+src/ServerReadAssetHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerReadAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerReadAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerReadAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerReadAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerReadAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerReadAssetHandler.cpp.s
+.PHONY : src/ServerReadAssetHandler.cpp.s
+
+src/ServerUpdateAssetHandler.o: src/ServerUpdateAssetHandler.cpp.o
+.PHONY : src/ServerUpdateAssetHandler.o
+
+# target to build an object file
+src/ServerUpdateAssetHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerUpdateAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerUpdateAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerUpdateAssetHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerUpdateAssetHandler.cpp.o
+.PHONY : src/ServerUpdateAssetHandler.cpp.o
+
+src/ServerUpdateAssetHandler.i: src/ServerUpdateAssetHandler.cpp.i
+.PHONY : src/ServerUpdateAssetHandler.i
+
+# target to preprocess a source file
+src/ServerUpdateAssetHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerUpdateAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerUpdateAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerUpdateAssetHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerUpdateAssetHandler.cpp.i
+.PHONY : src/ServerUpdateAssetHandler.cpp.i
+
+src/ServerUpdateAssetHandler.s: src/ServerUpdateAssetHandler.cpp.s
+.PHONY : src/ServerUpdateAssetHandler.s
+
+# target to generate assembly for a file
+src/ServerUpdateAssetHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/ServerUpdateAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/ServerUpdateAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/ServerUpdateAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/ServerUpdateAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/ServerUpdateAssetHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/ServerUpdateAssetHandler.cpp.s
+.PHONY : src/ServerUpdateAssetHandler.cpp.s
+
+src/TimingConfig.o: src/TimingConfig.cpp.o
+.PHONY : src/TimingConfig.o
+
+# target to build an object file
+src/TimingConfig.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/TimingConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/TimingConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/TimingConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/TimingConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/TimingConfig.cpp.o
+.PHONY : src/TimingConfig.cpp.o
+
+src/TimingConfig.i: src/TimingConfig.cpp.i
+.PHONY : src/TimingConfig.i
+
+# target to preprocess a source file
+src/TimingConfig.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/TimingConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/TimingConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/TimingConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/TimingConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/TimingConfig.cpp.i
+.PHONY : src/TimingConfig.cpp.i
+
+src/TimingConfig.s: src/TimingConfig.cpp.s
+.PHONY : src/TimingConfig.s
+
+# target to generate assembly for a file
+src/TimingConfig.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/TimingConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/TimingConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/TimingConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/TimingConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/TimingConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/TimingConfig.cpp.s
+.PHONY : src/TimingConfig.cpp.s
+
+src/UnorderedMapObjectModel.o: src/UnorderedMapObjectModel.cpp.o
+.PHONY : src/UnorderedMapObjectModel.o
+
+# target to build an object file
+src/UnorderedMapObjectModel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/UnorderedMapObjectModel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/UnorderedMapObjectModel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/UnorderedMapObjectModel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/UnorderedMapObjectModel.cpp.o
+.PHONY : src/UnorderedMapObjectModel.cpp.o
+
+src/UnorderedMapObjectModel.i: src/UnorderedMapObjectModel.cpp.i
+.PHONY : src/UnorderedMapObjectModel.i
+
+# target to preprocess a source file
+src/UnorderedMapObjectModel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/UnorderedMapObjectModel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/UnorderedMapObjectModel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/UnorderedMapObjectModel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/UnorderedMapObjectModel.cpp.i
+.PHONY : src/UnorderedMapObjectModel.cpp.i
+
+src/UnorderedMapObjectModel.s: src/UnorderedMapObjectModel.cpp.s
+.PHONY : src/UnorderedMapObjectModel.s
+
+# target to generate assembly for a file
+src/UnorderedMapObjectModel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/UnorderedMapObjectModel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/UnorderedMapObjectModel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/UnorderedMapObjectModel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/UnorderedMapObjectModel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/UnorderedMapObjectModel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/UnorderedMapObjectModel.cpp.s
+.PHONY : src/UnorderedMapObjectModel.cpp.s
+
+src/UnorderedStandingConfig.o: src/UnorderedStandingConfig.cpp.o
+.PHONY : src/UnorderedStandingConfig.o
+
+# target to build an object file
+src/UnorderedStandingConfig.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/UnorderedStandingConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/UnorderedStandingConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/UnorderedStandingConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/UnorderedStandingConfig.cpp.o
+.PHONY : src/UnorderedStandingConfig.cpp.o
+
+src/UnorderedStandingConfig.i: src/UnorderedStandingConfig.cpp.i
+.PHONY : src/UnorderedStandingConfig.i
+
+# target to preprocess a source file
+src/UnorderedStandingConfig.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/UnorderedStandingConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/UnorderedStandingConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/UnorderedStandingConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/UnorderedStandingConfig.cpp.i
+.PHONY : src/UnorderedStandingConfig.cpp.i
+
+src/UnorderedStandingConfig.s: src/UnorderedStandingConfig.cpp.s
+.PHONY : src/UnorderedStandingConfig.s
+
+# target to generate assembly for a file
+src/UnorderedStandingConfig.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gom_test.dir/build.make CMakeFiles/gom_test.dir/src/UnorderedStandingConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/src/UnorderedStandingConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/src/UnorderedStandingConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/src/UnorderedStandingConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/UnorderedStandingConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/UnorderedStandingConfig.cpp.s
+.PHONY : src/UnorderedStandingConfig.cpp.s
 
 test/Demo.o: test/Demo.cpp.o
 .PHONY : test/Demo.o
@@ -829,6 +1899,30 @@ test/TestAssetFactory.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_factory_test.dir/build.make CMakeFiles/asset_factory_test.dir/test/TestAssetFactory.cpp.s
 .PHONY : test/TestAssetFactory.cpp.s
 
+test/TestClient.o: test/TestClient.cpp.o
+.PHONY : test/TestClient.o
+
+# target to build an object file
+test/TestClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/test/TestClient.cpp.o
+.PHONY : test/TestClient.cpp.o
+
+test/TestClient.i: test/TestClient.cpp.i
+.PHONY : test/TestClient.i
+
+# target to preprocess a source file
+test/TestClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/test/TestClient.cpp.i
+.PHONY : test/TestClient.cpp.i
+
+test/TestClient.s: test/TestClient.cpp.s
+.PHONY : test/TestClient.s
+
+# target to generate assembly for a file
+test/TestClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/test/TestClient.cpp.s
+.PHONY : test/TestClient.cpp.s
+
 test/TestGameObjectModel.o: test/TestGameObjectModel.cpp.o
 .PHONY : test/TestGameObjectModel.o
 
@@ -877,6 +1971,30 @@ test/TestSerialization.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serialization_test.dir/build.make CMakeFiles/serialization_test.dir/test/TestSerialization.cpp.s
 .PHONY : test/TestSerialization.cpp.s
 
+test/TestServer.o: test/TestServer.cpp.o
+.PHONY : test/TestServer.o
+
+# target to build an object file
+test/TestServer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/test/TestServer.cpp.o
+.PHONY : test/TestServer.cpp.o
+
+test/TestServer.i: test/TestServer.cpp.i
+.PHONY : test/TestServer.i
+
+# target to preprocess a source file
+test/TestServer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/test/TestServer.cpp.i
+.PHONY : test/TestServer.cpp.i
+
+test/TestServer.s: test/TestServer.cpp.s
+.PHONY : test/TestServer.s
+
+# target to generate assembly for a file
+test/TestServer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/test/TestServer.cpp.s
+.PHONY : test/TestServer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -890,6 +2008,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... asset_factory_test"
+	@echo "... client"
 	@echo "... demo"
 	@echo "... gmock"
 	@echo "... gmock_main"
@@ -897,66 +2016,145 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... serialization_test"
-	@echo "... src/Asset.o"
-	@echo "... src/Asset.i"
-	@echo "... src/Asset.s"
-	@echo "... src/AssetEvents.o"
-	@echo "... src/AssetEvents.i"
-	@echo "... src/AssetEvents.s"
+	@echo "... server"
+	@echo "... src/AbstractAssetFactory.o"
+	@echo "... src/AbstractAssetFactory.i"
+	@echo "... src/AbstractAssetFactory.s"
+	@echo "... src/AssetFactoryConfig.o"
+	@echo "... src/AssetFactoryConfig.i"
+	@echo "... src/AssetFactoryConfig.s"
 	@echo "... src/Character.o"
 	@echo "... src/Character.i"
 	@echo "... src/Character.s"
-	@echo "... src/CharacterEvents.o"
-	@echo "... src/CharacterEvents.i"
-	@echo "... src/CharacterEvents.s"
+	@echo "... src/CharacterCollisionHandler.o"
+	@echo "... src/CharacterCollisionHandler.i"
+	@echo "... src/CharacterCollisionHandler.s"
+	@echo "... src/CharacterFactory.o"
+	@echo "... src/CharacterFactory.i"
+	@echo "... src/CharacterFactory.s"
+	@echo "... src/CharacterUpdateHandler.o"
+	@echo "... src/CharacterUpdateHandler.i"
+	@echo "... src/CharacterUpdateHandler.s"
 	@echo "... src/Client.o"
 	@echo "... src/Client.i"
 	@echo "... src/Client.s"
-	@echo "... src/Controller.o"
-	@echo "... src/Controller.i"
-	@echo "... src/Controller.s"
-	@echo "... src/GameObjectModel.o"
-	@echo "... src/GameObjectModel.i"
-	@echo "... src/GameObjectModel.s"
-	@echo "... src/KeyEvents.o"
-	@echo "... src/KeyEvents.i"
-	@echo "... src/KeyEvents.s"
-	@echo "... src/Listener.o"
-	@echo "... src/Listener.i"
-	@echo "... src/Listener.s"
+	@echo "... src/ClientConfig.o"
+	@echo "... src/ClientConfig.i"
+	@echo "... src/ClientConfig.s"
+	@echo "... src/ClientController.o"
+	@echo "... src/ClientController.i"
+	@echo "... src/ClientController.s"
+	@echo "... src/ClientCreateCharacterHandler.o"
+	@echo "... src/ClientCreateCharacterHandler.i"
+	@echo "... src/ClientCreateCharacterHandler.s"
+	@echo "... src/ClientCreateMovingPlatformHandler.o"
+	@echo "... src/ClientCreateMovingPlatformHandler.i"
+	@echo "... src/ClientCreateMovingPlatformHandler.s"
+	@echo "... src/ClientCreatePlatformHandler.o"
+	@echo "... src/ClientCreatePlatformHandler.i"
+	@echo "... src/ClientCreatePlatformHandler.s"
+	@echo "... src/ClientDeleteAssetHandler.o"
+	@echo "... src/ClientDeleteAssetHandler.i"
+	@echo "... src/ClientDeleteAssetHandler.s"
+	@echo "... src/ClientReadAssetHandler.o"
+	@echo "... src/ClientReadAssetHandler.i"
+	@echo "... src/ClientReadAssetHandler.s"
+	@echo "... src/ClientUpdateAssetHandler.o"
+	@echo "... src/ClientUpdateAssetHandler.i"
+	@echo "... src/ClientUpdateAssetHandler.s"
+	@echo "... src/Entrypoint.o"
+	@echo "... src/Entrypoint.i"
+	@echo "... src/Entrypoint.s"
+	@echo "... src/Environment.o"
+	@echo "... src/Environment.i"
+	@echo "... src/Environment.s"
+	@echo "... src/FauxServerController.o"
+	@echo "... src/FauxServerController.i"
+	@echo "... src/FauxServerController.s"
+	@echo "... src/KeyPressHandler.o"
+	@echo "... src/KeyPressHandler.i"
+	@echo "... src/KeyPressHandler.s"
+	@echo "... src/KeyReleaseHandler.o"
+	@echo "... src/KeyReleaseHandler.i"
+	@echo "... src/KeyReleaseHandler.s"
 	@echo "... src/LocalTimeline.o"
 	@echo "... src/LocalTimeline.i"
 	@echo "... src/LocalTimeline.s"
 	@echo "... src/MovingPlatform.o"
 	@echo "... src/MovingPlatform.i"
 	@echo "... src/MovingPlatform.s"
-	@echo "... src/MovingPlatformEvents.o"
-	@echo "... src/MovingPlatformEvents.i"
-	@echo "... src/MovingPlatformEvents.s"
+	@echo "... src/MovingPlatformCollisionHandler.o"
+	@echo "... src/MovingPlatformCollisionHandler.i"
+	@echo "... src/MovingPlatformCollisionHandler.s"
+	@echo "... src/MovingPlatformFactory.o"
+	@echo "... src/MovingPlatformFactory.i"
+	@echo "... src/MovingPlatformFactory.s"
+	@echo "... src/MovingPlatformUpdateHandler.o"
+	@echo "... src/MovingPlatformUpdateHandler.i"
+	@echo "... src/MovingPlatformUpdateHandler.s"
+	@echo "... src/OrderedPriorityListener.o"
+	@echo "... src/OrderedPriorityListener.i"
+	@echo "... src/OrderedPriorityListener.s"
 	@echo "... src/Platform.o"
 	@echo "... src/Platform.i"
 	@echo "... src/Platform.s"
-	@echo "... src/PlatformEvents.o"
-	@echo "... src/PlatformEvents.i"
-	@echo "... src/PlatformEvents.s"
-	@echo "... src/Runtime.o"
-	@echo "... src/Runtime.i"
-	@echo "... src/Runtime.s"
-	@echo "... src/TickEvent.o"
-	@echo "... src/TickEvent.i"
-	@echo "... src/TickEvent.s"
+	@echo "... src/PlatformCollisionHandler.o"
+	@echo "... src/PlatformCollisionHandler.i"
+	@echo "... src/PlatformCollisionHandler.s"
+	@echo "... src/PlatformFactory.o"
+	@echo "... src/PlatformFactory.i"
+	@echo "... src/PlatformFactory.s"
+	@echo "... src/Server.o"
+	@echo "... src/Server.i"
+	@echo "... src/Server.s"
+	@echo "... src/ServerController.o"
+	@echo "... src/ServerController.i"
+	@echo "... src/ServerController.s"
+	@echo "... src/ServerCreateCharacterHandler.o"
+	@echo "... src/ServerCreateCharacterHandler.i"
+	@echo "... src/ServerCreateCharacterHandler.s"
+	@echo "... src/ServerCreateMovingPlatformHandler.o"
+	@echo "... src/ServerCreateMovingPlatformHandler.i"
+	@echo "... src/ServerCreateMovingPlatformHandler.s"
+	@echo "... src/ServerCreatePlatformHandler.o"
+	@echo "... src/ServerCreatePlatformHandler.i"
+	@echo "... src/ServerCreatePlatformHandler.s"
+	@echo "... src/ServerDeleteAssetHandler.o"
+	@echo "... src/ServerDeleteAssetHandler.i"
+	@echo "... src/ServerDeleteAssetHandler.s"
+	@echo "... src/ServerReadAssetHandler.o"
+	@echo "... src/ServerReadAssetHandler.i"
+	@echo "... src/ServerReadAssetHandler.s"
+	@echo "... src/ServerUpdateAssetHandler.o"
+	@echo "... src/ServerUpdateAssetHandler.i"
+	@echo "... src/ServerUpdateAssetHandler.s"
+	@echo "... src/TimingConfig.o"
+	@echo "... src/TimingConfig.i"
+	@echo "... src/TimingConfig.s"
+	@echo "... src/UnorderedMapObjectModel.o"
+	@echo "... src/UnorderedMapObjectModel.i"
+	@echo "... src/UnorderedMapObjectModel.s"
+	@echo "... src/UnorderedStandingConfig.o"
+	@echo "... src/UnorderedStandingConfig.i"
+	@echo "... src/UnorderedStandingConfig.s"
 	@echo "... test/Demo.o"
 	@echo "... test/Demo.i"
 	@echo "... test/Demo.s"
 	@echo "... test/TestAssetFactory.o"
 	@echo "... test/TestAssetFactory.i"
 	@echo "... test/TestAssetFactory.s"
+	@echo "... test/TestClient.o"
+	@echo "... test/TestClient.i"
+	@echo "... test/TestClient.s"
 	@echo "... test/TestGameObjectModel.o"
 	@echo "... test/TestGameObjectModel.i"
 	@echo "... test/TestGameObjectModel.s"
 	@echo "... test/TestSerialization.o"
 	@echo "... test/TestSerialization.i"
 	@echo "... test/TestSerialization.s"
+	@echo "... test/TestServer.o"
+	@echo "... test/TestServer.i"
+	@echo "... test/TestServer.s"
 .PHONY : help
 
 
