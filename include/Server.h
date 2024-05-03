@@ -35,8 +35,6 @@ namespace SPlat {
 
         Model::Asset& get_spawnpoint();
 
-        void set_spawnpoint(Model::Asset&);
-
     };
 
 }

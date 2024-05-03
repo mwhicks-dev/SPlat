@@ -158,3 +158,8 @@ ControllerInterface& Server::get_controller() {
     const std::lock_guard<std::mutex> lock(m);
     return controller;
 }
+
+Model::Asset& Server::get_spawnpoint() {
+    const std::lock_guard<std::mutex> lock(m);
+    return spawnpoint;
+}

@@ -3,6 +3,8 @@
 
 #include "EventHandlerInterface.h"
 
+#include <cereal/cereal.hpp>
+
 namespace SPlat {
 
     namespace Events {
@@ -14,6 +16,11 @@ namespace SPlat {
             struct Args {
 
                 size_t asset_id;
+
+                template <class Archive>
+                void serialize(Archive& ar) {
+                    ar(asset_id);
+                }
 
             };
 
